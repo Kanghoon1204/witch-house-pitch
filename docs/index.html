@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마녀의 집 — 잊혀진 이야기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+KR:wght@300;400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0d0d14;--bg2:#14141c;--bg3:#1e1e2a;
+  --gold:#e0c05a;--gold-l:#f5e8a0;--gold-d:#b89d48;
+  --green:#45916a;--green-l:#6dd49a;
+  --t:#f5f3ed;--t2:#d0cdc5;--t3:#9e9b93;
+}
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--t);font-family:'Noto Serif KR','Crimson Pro',serif;font-weight:400;line-height:1.8;-webkit-font-smoothing:antialiased}
+
+.slide{min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:60px 80px;position:relative;overflow:hidden}
+.inner{max-width:960px;width:100%;z-index:2}
+
+h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(3.2rem,6vw,5.5rem);color:var(--gold);line-height:1.15}
+h2{font-family:'Cormorant Garamond','Noto Serif KR',serif;font-weight:600;font-size:clamp(1.8rem,3.2vw,2.6rem);color:var(--gold);margin-bottom:1rem;line-height:1.3}
+h3{font-weight:600;font-size:1.05rem;color:var(--gold-l);margin-bottom:0.5rem;letter-spacing:0.03em}
+p{font-size:1.05rem;color:var(--t);margin-bottom:0.6rem;max-width:660px}
+.lb{font-size:0.75rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.dim{color:var(--t2)}.faint{color:var(--t3)}
+.ln{width:50px;height:1px;background:linear-gradient(90deg,var(--gold-d),transparent);margin:1.2rem 0}
+strong{color:var(--gold-l);font-weight:600}
+
+.c{background:rgba(30,30,42,0.9);border:1px solid rgba(224,192,90,0.2);border-radius:3px;padding:1.2rem 1.4rem}
+.c:hover{border-color:rgba(201,168,76,0.22)}
+.c .cl{font-size:0.7rem;font-weight:600;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem}
+.c p{font-size:0.95rem;color:var(--t2);margin-bottom:0.35rem}
+.c p:last-child{margin-bottom:0}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.1rem}
+.tc{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+
+table{width:100%;border-collapse:collapse;font-size:0.95rem;margin-top:0.8rem}
+th{text-align:left;padding:0.5rem 0.7rem;border-bottom:1px solid var(--gold-d);color:var(--gold);font-size:0.78rem;letter-spacing:0.1em;font-weight:600}
+td{padding:0.5rem 0.7rem;border-bottom:1px solid rgba(255,255,255,0.05);color:var(--t2);vertical-align:top}
+td strong{color:var(--gold-l)}td em{color:var(--t3);font-size:0.88rem}
+
+/* memory cards */
+.mc{background:var(--bg3);border:1px solid rgba(201,168,76,0.1);border-radius:3px;padding:1rem 1.2rem;font-style:italic;color:var(--t2);font-size:0.88rem;line-height:1.65;position:relative}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.mc.kr::before{background:linear-gradient(90deg,var(--gold-d),transparent)}
+.mc.en::before{background:linear-gradient(90deg,var(--green),transparent)}
+.mc .tg{font-size:0.58rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;font-style:normal;margin-bottom:0.4rem;display:block}
+.mc.kr .tg{color:var(--gold-d)}.mc.en .tg{color:var(--green)}
+
+/* chat bubble */
+.chat{display:flex;flex-direction:column;gap:0.6rem;margin:1rem 0}
+.bubble{display:flex;gap:0.7rem;align-items:flex-start}
+.bubble .who{flex-shrink:0;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.55rem;font-weight:700;color:var(--bg);letter-spacing:0}
+.bubble .who.a{background:#6a8f5e}.bubble .who.b{background:#8b5e5e}.bubble .who.c{background:#5e6a8b}.bubble .who.d{background:#8b7a5e}
+.bubble .msg{background:var(--bg3);border:1px solid rgba(255,255,255,0.05);border-radius:0 8px 8px 8px;padding:0.6rem 0.9rem;font-size:0.85rem;color:var(--t2);font-style:italic;max-width:85%;line-height:1.55}
+.bubble .msg em{color:var(--gold-l);font-style:normal;font-weight:600}
+
+/* bars */
+.bt{height:5px;background:rgba(255,255,255,0.04);border-radius:3px;overflow:hidden;margin-top:0.2rem}
+.bf{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold-d),var(--gold));width:0;transition:width 1s cubic-bezier(.22,1,.36,1)}
+.bf.v{width:var(--w)}
+
+.rv{opacity:0;transform:translateY(20px);transition:opacity 0.6s,transform 0.6s}
+.rv.v{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+.nav{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:6px}
+.nav a{display:block;width:5px;height:5px;border-radius:50%;background:var(--t3);opacity:0.2;transition:all 0.3s;text-decoration:none}
+.nav a.on{opacity:1;background:var(--gold);box-shadow:0 0 6px rgba(201,168,76,0.3);transform:scale(1.3)}
+
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+@media(max-width:768px){.slide{padding:40px 20px}.g2,.g3{grid-template-columns:1fr}.tc{grid-template-columns:1fr;gap:1.5rem}.nav{display:none}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<nav class="nav" id="nav"></nav>
+
+<!-- ===== 1. 이게 뭔데? ===== -->
+<section class="slide" id="s1" style="background:radial-gradient(ellipse at 30% 60%,#2a2218,var(--bg) 75%);text-align:center">
+  <div class="inner">
+    <div class="lb rv">영어 수업용 협력 보드게임</div>
+    <h1 class="rv d1">마녀의 집</h1>
+    <div style="width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-d),transparent);margin:1.2rem auto" class="rv d1"></div>
+    <p class="rv d2" style="text-align:center;max-width:640px;margin:0 auto;font-size:1.4rem;line-height:1.85;color:var(--t)">
+      동화 속 캐릭터가 되어<br>
+      <strong>영어로 단서를 나누고, 토론하고, 추리해서</strong><br>
+      함께 마녀의 집을 탈출하는 게임입니다.
+    </p>
+
+    <div class="rv d3" style="max-width:680px;margin:2.5rem auto 0;background:rgba(35,32,25,0.95);border:1px solid rgba(224,192,90,0.35);border-radius:4px;padding:1.8rem 2rem">
+      <p style="color:var(--t);font-size:1.15rem;text-align:center;line-height:2.1;margin-bottom:0">
+        <strong>헨젤, 그레텔, 견우, 직녀</strong> —<br>
+        서로 다른 이야기 속 인물 4명이<br>
+        <strong>"이야기 수집가" 마녀</strong>에게 납치당해 기억을 잃은 채 깨어납니다.<br>
+        마녀가 돌아오기 전까지 <strong>3라운드</strong>. 서로의 기억을 맞춰 탈출해야 합니다.
+      </p>
+      <div style="width:40px;height:1px;background:var(--gold-d);margin:1rem auto"></div>
+      <p style="text-align:center;font-size:1.1rem;color:var(--t);margin-bottom:0">
+        마녀의 마법은 한국어에 걸려 있어서<br>기억을 나누려면 <strong style="color:var(--green-l);font-size:1.2rem">영어</strong>로 말해야 합니다.
+      </p>
+    </div>
+
+    <div style="display:flex;gap:0.5rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap" class="rv d4">
+      <span style="padding:0.35rem 1rem;border:1px solid var(--gold);font-size:0.85rem;color:var(--gold-l)">4명</span>
+      <span style="padding:0.35rem 1rem;border:1px solid var(--gold);font-size:0.85rem;color:var(--gold-l)">100분 수업</span>
+      <span style="padding:0.35rem 1rem;border:1px solid var(--gold);font-size:0.85rem;color:var(--gold-l)">중학교 영어</span>
+      <span style="padding:0.35rem 1rem;border:1px solid var(--gold);font-size:0.85rem;color:var(--gold-l)">말하기 중심</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2. 어떻게 돌아가는데? ===== -->
+<section class="slide" id="s2" style="background:radial-gradient(ellipse at 65% 35%,#13110e,var(--bg) 70%)">
+  <div class="inner">
+    <div class="lb rv">수업 활용</div>
+    <h2 class="rv d1">100분 수업 시간표</h2>
+    <div class="ln rv d1"></div>
+    <div class="tc">
+      <div>
+        <table class="rv d2">
+          <thead><tr><th>시간</th><th>활동</th><th>언어</th></tr></thead>
+          <tbody>
+            <tr style="background:rgba(201,168,76,0.04)"><td><strong>15분</strong></td><td>단어 워밍업 — 40단어 단어장 학습, 짝끼리 영어 퀴즈<br><em style="font-size:0.78rem;color:var(--t3)">예: iron bars, ritual, memory, escape, witch…</em></td><td><em>한+영</em></td></tr>
+            <tr><td><strong>5분</strong></td><td>프롤로그 — 선생님이 마녀의 편지를 읽어줌, 캐릭터 배부<br><em style="font-size:0.78rem;color:var(--t3)">"너희는 기억을 잃은 채 이 집에서 깨어났다…"</em></td><td><em>한국어</em></td></tr>
+            <tr style="background:rgba(45,94,68,0.04)"><td><strong>25분</strong></td><td>라운드 1 — 개인 단서 카드 읽기(10) + 영어로 공유·토론(15)<br><em style="font-size:0.78rem;color:var(--t3)">희미한 기억 조각… 서로 연결점을 찾기 시작</em></td><td><em>영어</em></td></tr>
+            <tr style="background:rgba(45,94,68,0.06)"><td><strong>25분</strong></td><td>라운드 2 — 새 단서 카드 추가(10) + 기억이 맞물리기 시작(15)<br><em style="font-size:0.78rem;color:var(--t3)">"네 기억에도 쇠창살이 나왔어?" 연결 발견</em></td><td><em>영어</em></td></tr>
+            <tr style="background:rgba(45,94,68,0.08)"><td><strong>25분</strong></td><td>라운드 3 — 핵심 단서 공개(10) + 탈출 방법 추리(15)<br><em style="font-size:0.78rem;color:var(--t3)">문으로 나갈까? 기억을 완성할까? 최종 결론</em></td><td><em>영어</em></td></tr>
+            <tr style="background:rgba(139,47,58,0.04)"><td><strong>5분</strong></td><td>최종 투표 — 4명 합의로 탈출 방법 선택 → 엔딩 카드 오픈<br><em style="font-size:0.78rem;color:var(--t3)">해피 / 배드 / 새드 — 3가지 엔딩 중 하나</em></td><td><em>영어</em></td></tr>
+            <tr><td><strong>10분</strong></td><td>디브리핑 — 게임 중 어려웠던 표현 공유, 새 단어 정리<br><em style="font-size:0.78rem;color:var(--t3)">"iron bars를 어떻게 말했어?" → 표현 복습</em></td><td><em>한+영</em></td></tr>
+          </tbody>
+        </table>
+        <p class="rv d3 faint" style="font-size:0.8rem;margin-top:0.8rem">영어 사용 시간: 약 <strong style="color:var(--green-l)">60분</strong> / 전체 100분</p>
+      </div>
+      <div>
+        <div class="c rv d2" style="margin-bottom:1rem">
+          <div class="cl">조사 단계 (10분) — 혼자 읽고 생각하기</div>
+          <p>밀봉 봉투에서 <strong>개인 단서 카드</strong>를 꺼내 읽습니다.</p>
+          <p class="faint" style="font-size:0.82rem">예: "달콤한 냄새가 나는 집. 쇠창살 사이로 빛이…"</p>
+          <p class="faint" style="font-size:0.82rem">한국어로 적힌 기억 조각 — 이걸 어떻게 영어로 전달할지 단어장을 보며 준비합니다.</p>
+        </div>
+        <div class="c rv d3" style="margin-bottom:1rem">
+          <div class="cl">토론 단계 (15분) — 영어로 나누고 추리하기</div>
+          <p>모래시계를 뒤집고, 4명이 <strong>영어로</strong> 자기 기억을 전달합니다.</p>
+          <p class="faint" style="font-size:0.82rem">표현 가이드 참고: "I remember ___", "In my card, there was ___"</p>
+          <p class="faint" style="font-size:0.82rem">서로의 기억을 합쳐서 → "이 단서와 저 단서가 연결된다!" 추리</p>
+        </div>
+        <div class="c rv d4">
+          <div class="cl">왜 영어를 쓰게 되는가</div>
+          <p>개인 단서 카드가 <strong>한국어</strong> — 팀원에게 전달하려면 <strong>영어로 말해야</strong> 합니다.</p>
+          <p class="faint" style="font-size:0.82rem">세계관: "마녀의 마법이 한국어에 걸려 있어서, 기억을 나누려면 마법이 통하지 않는 언어를 써야 한다."</p>
+          <p class="faint" style="font-size:0.82rem">→ 학생이 "왜 영어로 해야 해?"라고 묻지 않습니다. 게임 안에서 자연스럽게 납득됩니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. 실제로 학생들이 뭐라고 말하는데? ===== -->
+<section class="slide" id="s3" style="background:radial-gradient(ellipse at 25% 65%,#0f1a15,var(--bg) 70%)">
+  <div class="inner">
+    <div class="lb rv">실제 플레이 예시</div>
+    <h2 class="rv d1">라운드 2에서 학생들이 나누는 대화</h2>
+    <div class="ln rv d1"></div>
+
+    <div class="tc">
+      <div>
+        <h3 class="rv d2">이번 라운드에 받은 카드</h3>
+        <div style="display:flex;flex-direction:column;gap:0.7rem;margin-bottom:1.5rem" class="rv d2">
+          <div class="mc kr">
+            <span class="tg">헨젤의 개인 단서 (한국어) — 본인만 봄</span>
+            "달콤한 냄새가 나는 집. 쇠창살 사이로 빛이 들어왔다. 누군가 울면서 내 이름을 부르는 소리가…"
+          </div>
+          <div class="mc en">
+            <span class="tg">공용 단서 (영어) — 모두 공개</span>
+            "Memory Erasure Ritual: When subjects completely forget each other, the story's power transfers to the caster."
+          </div>
+        </div>
+
+        <h3 class="rv d3" style="margin-bottom:0.3rem">토론 시작 — 학생의 머릿속</h3>
+        <div class="c rv d3" style="margin-bottom:1rem;border-color:rgba(201,168,76,0.15);padding:0.8rem 1rem">
+          <p style="font-size:0.82rem;color:var(--t3);margin-bottom:0.2rem">헨젤 역할 학생이 카드를 보고 생각합니다:</p>
+          <p style="font-size:0.85rem;color:var(--t2)"><em style="color:var(--gold-d);font-style:normal">"달콤한 냄새가 나는 집"</em> → sweet-smelling house…<br><em style="color:var(--gold-d);font-style:normal">"쇠창살"</em> → 단어장 확인 → iron bars!<br><em style="color:var(--gold-d);font-style:normal">"누군가 울면서 내 이름을 불렀다"</em> → someone was crying… calling my name</p>
+        </div>
+
+        <h3 class="rv d3">그리고 영어로 말합니다</h3>
+        <div class="chat rv d3">
+          <div class="bubble">
+            <div class="who a">헨</div>
+            <div class="msg">"In my card… there was a <em>sweet-smelling house</em>. I was behind <em>iron bars</em>. Someone was crying and calling my name."</div>
+          </div>
+          <div class="bubble">
+            <div class="who b">그</div>
+            <div class="msg">"Wait — <em>iron bars</em>? In my memory, I was trying to <em>save someone</em> behind bars!"</div>
+          </div>
+          <div class="bubble">
+            <div class="who c">견</div>
+            <div class="msg">"The English card says <em>'forget each other'</em>… maybe the witch wants us to forget?"</div>
+          </div>
+          <div class="bubble">
+            <div class="who d">직</div>
+            <div class="msg">"So if we <em>remember</em> each other, the witch's magic breaks? That's the way out!"</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="c rv d2" style="margin-bottom:1rem;border-color:rgba(45,94,68,0.25)">
+          <div class="cl" style="color:var(--green)">이 대화에서 일어나는 학습</div>
+          <p><strong>말하기</strong> — 한국어 단서를 영어로 재구성해서 전달</p>
+          <p><strong>듣기</strong> — 다른 학생이 영어로 말하는 기억을 이해</p>
+          <p><strong>읽기</strong> — 영어 단서 카드의 핵심 내용 파악</p>
+          <p><strong>추리</strong> — 정보를 종합해서 결론 도출</p>
+          <p class="faint" style="font-size:0.8rem;margin-top:0.5rem">학생들은 "영어 공부를 하고 있다"는 인식 없이, 스토리에 몰입해서 자연스럽게 영어를 사용합니다.</p>
+        </div>
+        <div class="c rv d3" style="margin-bottom:1rem">
+          <div class="cl">어눌해도 괜찮은 이유</div>
+          <p>캐릭터 설정 자체가 <strong>"기억을 잃어 더듬거리는 상태"</strong>입니다.</p>
+          <p class="faint" style="font-size:0.82rem">학생의 어눌한 영어 = 캐릭터의 흐릿한 기억</p>
+          <p class="faint" style="font-size:0.82rem">→ 틀려도 자연스러운 환경. 영어 말하기 두려움 감소.</p>
+        </div>
+        <div class="c rv d4">
+          <div class="cl">보조 도구</div>
+          <p><strong>단어장</strong> — 40단어. 게임 전 학습 + 게임 중 참고 가능</p>
+          <p><strong>표현 가이드</strong> — "I found ___", "I think ___", "I remember ___"</p>
+          <p><strong>난이도 3단계</strong> — Easy(한국어 혼용) / Normal / Hard</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. 교육 효과 + 기존 교구와 차이 ===== -->
+<section class="slide" id="s4" style="background:radial-gradient(ellipse at 60% 40%,#101520,var(--bg) 70%)">
+  <div class="inner">
+    <div class="lb rv">교육 효과</div>
+    <h2 class="rv d1">기존 영어 교구와 무엇이 다른가</h2>
+    <div class="ln rv d1"></div>
+    <div class="tc">
+      <div>
+        <table class="rv d2">
+          <thead><tr><th></th><th>기존 영어 교구</th><th style="color:var(--gold-l)">마녀의 집</th></tr></thead>
+          <tbody>
+            <tr><td><strong>영어 사용</strong></td><td>단어 맞추기, 퀴즈<br><em style="font-size:0.78rem">"Apple!" "Banana!"</em></td><td><strong>문장으로 설명·토론·추리</strong><br><em style="font-size:0.78rem">"In my card, there was iron bars…"</em></td></tr>
+            <tr><td><strong>대화량</strong></td><td>단답 위주, 수 초</td><td><strong>60분간 지속 영어 대화</strong><br><em style="font-size:0.78rem">라운드당 15분 × 3라운드 토론</em></td></tr>
+            <tr><td><strong>동기</strong></td><td>점수, 승패</td><td><strong>"마녀가 돌아오기 전에 탈출"</strong><br><em style="font-size:0.78rem">스토리 긴장감이 동기 부여</em></td></tr>
+            <tr><td><strong>말하기</strong></td><td>정해진 문장 읽기</td><td><strong>한국어 단서를 자기 말로 전달</strong><br><em style="font-size:0.78rem">"쇠창살" → "I was behind iron bars"</em></td></tr>
+            <tr><td><strong>협력</strong></td><td>개인 경쟁 위주</td><td><strong>4인 완전 협력</strong><br><em style="font-size:0.78rem">4명의 단서를 합쳐야만 탈출 가능</em></td></tr>
+            <tr><td><strong>몰입</strong></td><td>게임판 위 토큰 이동</td><td><strong>동화 캐릭터가 되어 롤플레이</strong><br><em style="font-size:0.78rem">"나는 헨젤, 기억을 잃었다…"</em></td></tr>
+          </tbody>
+        </table>
+
+        <div class="ln rv d3"></div>
+        <h3 class="rv d3">영어 4 Skills 훈련 비중</h3>
+        <div class="rv d3" style="display:flex;flex-direction:column;gap:0.6rem">
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:0.82rem"><span class="dim">말하기</span><span class="faint">한국어 단서를 영어로 전달</span></div>
+            <div class="bt"><div class="bf" style="--w:95%"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:0.82rem"><span class="dim">듣기</span><span class="faint">타인의 영어 설명 이해</span></div>
+            <div class="bt"><div class="bf" style="--w:85%"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:0.82rem"><span class="dim">읽기</span><span class="faint">영어 단서 카드 해석</span></div>
+            <div class="bt"><div class="bf" style="--w:70%"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:0.82rem"><span class="dim">쓰기</span><span class="faint">영어 메모 정리</span></div>
+            <div class="bt"><div class="bf" style="--w:45%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 class="rv d2">핵심 교육 원리</h3>
+        <div class="c rv d2" style="margin-bottom:1rem">
+          <div class="cl">몰입이 만드는 자연스러운 영어 사용</div>
+          <p>학생들은 "영어 연습"이 아니라 <strong>"마녀의 집에서 탈출"</strong>하려고 영어를 씁니다.</p>
+          <p class="faint" style="font-size:0.82rem">스토리에 빠져든 상태에서 영어를 사용하면, "틀릴까봐 무서운" 감정 대신 "빨리 전달해야 하는" 긴장감이 작동합니다.</p>
+          <p class="faint" style="font-size:0.82rem">이것이 기존 교구와의 본질적 차이입니다.</p>
+        </div>
+        <div class="c rv d3" style="margin-bottom:1rem">
+          <div class="cl">영어를 써야 하는 실제 이유</div>
+          <p>내 카드에 중요한 정보가 있다.</p>
+          <p>팀원에게 전달해야 다같이 탈출할 수 있다.</p>
+          <p>하지만 카드는 한국어이고, 전달은 영어로만 가능하다.</p>
+          <p style="margin-top:0.4rem"><strong>→ "말해야 할 내용"이 명확하니, 영어가 목적이 아니라 수단이 됩니다.</strong></p>
+        </div>
+        <div class="c rv d4">
+          <div class="cl">보완 예정 사항</div>
+          <p><strong>학습 성과 측정</strong> — 게임 전후 어휘 테스트지 추가</p>
+          <p><strong>문법 연계</strong> — 단서 카드에 목표 문법 구조 반영</p>
+          <p><strong>반복 학습</strong> — 테마별 확장팩으로 시나리오 추가</p>
+          <p><strong>교과서 연계</strong> — 중학 영어 단원별 어휘 매칭 가이드</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. 구성품 + 사양 ===== -->
+<section class="slide" id="s5" style="background:radial-gradient(ellipse at 50% 50%,#131210,var(--bg) 70%)">
+  <div class="inner">
+    <div class="lb rv">제품 구성</div>
+    <h2 class="rv d1">박스 안에 들어있는 것</h2>
+    <div class="ln rv d1"></div>
+    <div class="tc">
+      <div>
+        <table class="rv d2">
+          <thead><tr><th>구성품</th><th>수량</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td>캐릭터 시트</td><td>4장</td><td><em>헨젤, 그레텔, 견우, 직녀 — 이름·성격·첫 기억</em></td></tr>
+            <tr><td><strong>개인 서사 카드</strong></td><td>12장</td><td><em>한국어. 밀봉 봉투 (라운드별 1장씩 오픈)</em><br><em style="font-size:0.76rem;color:var(--t3)">"달콤한 냄새… 쇠창살… 누군가 울면서…"</em></td></tr>
+            <tr><td><strong>공용 단서 카드</strong></td><td>15장</td><td><em>한국어 6장 + 영어 9장</em><br><em style="font-size:0.76rem;color:var(--t3)">"Memory Erasure Ritual: When subjects…"</em></td></tr>
+            <tr><td>힌트 카드</td><td>9장</td><td><em>영어. 막힐 때 단계별로 오픈 (3단계×3R)</em></td></tr>
+            <tr><td>엔딩 카드</td><td>3장</td><td><em>해피엔딩 / 배드엔딩 / 새드엔딩</em></td></tr>
+            <tr><td><strong>단어장</strong></td><td>4부</td><td><em>40단어 + 발음 + 예문</em><br><em style="font-size:0.76rem;color:var(--t3)">iron bars, ritual, escape, memory, witch…</em></td></tr>
+            <tr><td><strong>표현 가이드</strong></td><td>4장</td><td><em>기본 문장 패턴 6종</em><br><em style="font-size:0.76rem;color:var(--t3)">"I remember ___" "I found ___" "I think ___"</em></td></tr>
+            <tr><td>투표 토큰</td><td>12개</td><td><em>A 문으로 탈출 / B 기억 완성 / C 마녀 대면</em></td></tr>
+            <tr><td>모래시계</td><td>1개</td><td><em>15분 — 토론 시간 제한용</em></td></tr>
+            <tr><td>메모지 + 펜</td><td>4세트</td><td><em>영어 메모 정리용</em></td></tr>
+            <tr><td>규칙서 + 수업 스크립트</td><td>1부</td><td><em>선생님용 진행 대본 포함</em></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="c rv d2" style="margin-bottom:1rem">
+          <div class="cl">사양</div>
+          <p><strong>인원:</strong> 4명 (고정)</p>
+          <p><strong>시간:</strong> 100분 (영어 수업 2교시)</p>
+          <p><strong>대상:</strong> 중학교 영어 수준 (초급~중급)</p>
+          <p><strong>장르:</strong> 협력 추리 보드게임 × 영어 교육</p>
+        </div>
+        <div class="c rv d3" style="margin-bottom:1rem">
+          <div class="cl">활용처</div>
+          <p><strong>영어 수업</strong> — 스피킹 중심 게이미피케이션 교구</p>
+          <p><strong>영어 캠프</strong> — 팀빌딩 + 영어 체험 프로그램</p>
+          <p><strong>방과후/특별수업</strong> — 몰입형 체험 학습</p>
+        </div>
+        <div class="c rv d4">
+          <div class="cl">확장</div>
+          <p>동화 × 설화 조합으로 시나리오 확장팩</p>
+          <p class="faint" style="font-size:0.82rem">신데렐라 × 춘향, 피터팬 × 손오공 등</p>
+          <p class="faint" style="font-size:0.82rem">난이도 변형: 초등용, 고등·성인용</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. 끝 ===== -->
+<section class="slide" id="s6" style="background:radial-gradient(ellipse at 40% 60%,#1a1510,var(--bg) 70%);text-align:center">
+  <div class="inner">
+    <h1 class="rv" style="font-size:clamp(2rem,3.5vw,2.8rem)">마녀의 집</h1>
+    <div style="width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-d),transparent);margin:1.2rem auto" class="rv d1"></div>
+    <p class="rv d2" style="text-align:center;max-width:480px;margin:0 auto;font-size:1.1rem;color:var(--t);line-height:1.9">
+      스토리에 몰입해서<br>자연스럽게 영어를 쓰게 되는 게임.
+    </p>
+  </div>
+</section>
+
+<script>
+const slides=document.querySelectorAll('.slide'),nav=document.getElementById('nav');
+slides.forEach((_,i)=>{const a=document.createElement('a');a.href='#s'+(i+1);nav.appendChild(a)});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  e.target.querySelectorAll('.rv').forEach(el=>el.classList.add('v'));
+  e.target.querySelectorAll('.bf').forEach(el=>el.classList.add('v'));
+  const i=Array.from(slides).indexOf(e.target);
+  nav.querySelectorAll('a').forEach((a,j)=>a.classList.toggle('on',i===j));
+}})},{threshold:0.25});
+slides.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
