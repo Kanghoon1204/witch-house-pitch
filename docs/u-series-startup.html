@@ -24,11 +24,11 @@ body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable','N
 /* ── SLIDES ── */
 .slide{width:100%;min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;position:relative}
 .slide-body{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:50px 80px}
-.inner{max-width:1100px;width:100%;position:relative}
+.inner{max-width:1440px;width:100%;position:relative}
 
 /* ── COVER SLIDE (blue) ── */
 .slide-cover{background:var(--primary);color:#fff;justify-content:center;align-items:center;position:relative}
-.slide-cover .inner{max-width:1100px;padding:60px 80px;position:relative;z-index:2}
+.slide-cover .inner{max-width:1440px;padding:60px 80px;position:relative;z-index:2}
 /* dot pattern overlay */
 .dot-pattern{position:absolute;inset:0;z-index:1;overflow:hidden;opacity:0.12}
 .dot-pattern::before{content:'';position:absolute;right:-5%;top:5%;width:55%;height:90%;
@@ -107,7 +107,7 @@ em{color:var(--primary);font-style:normal;font-weight:800}
 .metric .lbl{font-size:1.15rem;color:var(--dim);margin-top:0.4rem;font-weight:600}
 
 /* ── QUOTE ── */
-.quote{border-left:4px solid var(--primary);padding:1.4rem 2rem;background:var(--primary-light);margin:1rem 0;font-weight:600;color:var(--text);font-size:1.4rem;line-height:1.9;max-width:700px;border-radius:0 var(--radius) var(--radius) 0}
+.quote{border-left:4px solid var(--primary);padding:1.4rem 2rem;background:var(--primary-light);margin:1rem 0;font-weight:600;color:var(--text);font-size:1.4rem;line-height:1.9;max-width:none;border-radius:0 var(--radius) var(--radius) 0}
 
 /* ── COMPARISON TABLE ── */
 .cmp{width:100%;border-collapse:separate;border-spacing:0;margin-top:0.8rem;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)}
@@ -332,7 +332,7 @@ async function savePDF(){
   <div style="position:absolute;inset:0;opacity:0.04;background-image:url('data:image/svg+xml,%3Csvg width=%2280%22 height=%2280%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cline x1=%220%22 y1=%220%22 x2=%2280%22 y2=%2280%22 stroke=%22%23fff%22 stroke-width=%220.5%22/%3E%3Cline x1=%2280%22 y1=%220%22 x2=%220%22 y2=%2280%22 stroke=%22%23fff%22 stroke-width=%220.3%22/%3E%3C/svg%3E');z-index:0"></div>
 
   <div class="slide-body" style="padding:40px 60px;z-index:1;position:relative">
-    <div class="inner" style="max-width:1300px;display:grid;grid-template-columns:420px 1fr;gap:3.5rem;align-items:center">
+    <div class="inner" style="display:grid;grid-template-columns:420px 1fr;gap:3.5rem;align-items:center">
 
       <!-- 왼쪽: WANTED 포스터 -->
       <div class="rv" style="position:relative">
@@ -411,7 +411,7 @@ async function savePDF(){
 <!-- ═══ SLIDE 2: CHARACTERS ═══ -->
 <section class="slide slide-dark" id="s2" style="justify-content:center;align-items:center">
   <div class="slide-body" style="padding-top:36px;padding-bottom:36px">
-    <div class="inner" style="max-width:1200px">
+    <div class="inner">
       <div class="rv" style="text-align:center;margin-bottom:2rem">
         <div class="sec-label" style="color:rgba(255,255,255,0.4)">CHARACTERS</div>
         <h2 style="font-family:'Black Han Sans',sans-serif;font-weight:400;font-size:2.8rem;color:#fff;margin-bottom:0.4rem">4인의 용의자, 4개의 서사</h2>
@@ -1069,7 +1069,7 @@ async function savePDF(){
 <!-- ═══ SLIDE 15: CLOSING ═══ -->
 <section class="slide slide-cover" id="s15" style="justify-content:center;align-items:center">
   <div class="dot-pattern"></div>
-  <div class="inner" style="max-width:800px;text-align:center">
+  <div class="inner" style="max-width:960px;text-align:center">
     <p class="rv" style="font-size:1.35rem;color:rgba(255,255,255,0.45);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:2.5rem">CASE CLOSED</p>
     <div class="rv d1" style="font-weight:900;font-size:clamp(2rem,4.5vw,3.2rem);color:#fff;line-height:1.6;margin-bottom:2rem">
       성적표가 아닌<br><span style="color:#FFB800">'승리'</span>로 증명되는 교육
