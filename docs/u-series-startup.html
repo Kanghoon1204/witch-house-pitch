@@ -197,20 +197,21 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
 .slide-dark .tag-blue{background:rgba(51,102,255,0.2);color:#7799FF}
 .slide-dark .tag-gold{background:rgba(255,159,10,0.2);color:#FFB84D}
 
-/* ── PRINT / PDF (1280×1080) ── */
+/* ── PRINT / PDF (1920×1080) ── */
 @media print{
-  @page{size:1280px 1080px;margin:0}
-  html{scroll-snap-type:none!important}
-  body{font-size:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .slide{width:1280px!important;height:1080px!important;min-height:1080px!important;max-height:1080px!important;overflow:hidden!important;page-break-after:always;page-break-inside:avoid;break-after:page;break-inside:avoid}
-  .slide-body{padding:30px 60px!important}
+  @page{size:1920px 1080px;margin:0}
+  html{scroll-snap-type:none!important;overflow:visible!important}
+  body{font-size:18px;-webkit-print-color-adjust:exact;print-color-adjust:exact;overflow:visible!important}
+  .slide{width:1920px!important;height:1080px!important;min-height:1080px!important;max-height:1080px!important;overflow:hidden!important;page-break-after:always;page-break-inside:avoid;break-after:page;break-inside:avoid}
+  .slide-body{padding:30px 80px!important}
   .nav,.pdf-btn{display:none!important}
   .rv{opacity:1!important;transform:none!important;transition:none!important}
   .bar-fill{width:var(--w)!important;transition:none!important}
   .slide-dark,.slide-cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .inner{max-width:1160px}
-  .sec-title{font-size:2.2rem}
-  .sec-sub{font-size:1.1rem;margin-bottom:1.5rem}
+  .inner{max-width:1760px}
+  .sec-label{font-size:1rem;margin-bottom:0.4rem}
+  .sec-title{font-size:2.4rem;margin-bottom:0.3rem}
+  .sec-sub{font-size:1.15rem;margin-bottom:1.2rem}
   .card p{font-size:1rem}
   .card h3{font-size:1.2rem}
   h3{font-size:1.3rem}
@@ -219,7 +220,10 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
   .metric .val{font-size:2.6rem}
   .g4{gap:1rem}
   .g3{gap:1rem}
+  .g2{gap:1rem}
   .tc{gap:2rem}
+  table{font-size:0.95rem}
+  .keyword{font-size:0.85rem}
 }
 
 /* ── ALT BG SLIDE ── */
@@ -238,17 +242,7 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
   .sec-title{font-size:1.8rem}
 }
 
-/* ── PRINT / PDF ── */
-@media print{
-  html{scroll-snap-type:none}
-  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .slide{min-height:auto;height:100vh;page-break-after:always;page-break-inside:avoid}
-  .slide-cover{height:100vh;page-break-after:always}
-  .slide:last-child{page-break-after:auto}
-  .nav,.pdf-btn{display:none!important}
-  .rv{opacity:1!important;transform:none!important}
-  @page{size:landscape;margin:0}
-}
+/* (duplicate print block removed — see primary @media print above) */
 </style>
 </head>
 <body>
@@ -270,8 +264,10 @@ async function savePDF(){
     const Wmm=W*0.264583,Hmm=H*0.264583;
     document.querySelectorAll('.rv').forEach(r=>r.classList.add('v'));
     document.querySelector('.nav').style.display='none';
-    // 1단계: 슬라이드 너비만 고정하고 높이는 auto로 측정
+    // 1단계: 슬라이드를 1920×1080에 맞추고 inner 너비 확장
     const orig=[];
+    const inners=document.querySelectorAll('.inner');
+    inners.forEach(el=>el.style.maxWidth='1760px');
     slides.forEach(s=>{
       orig.push(s.getAttribute('style')||'');
       s.style.width=W+'px';
@@ -340,6 +336,7 @@ async function savePDF(){
       fitCanvas.remove();
     }
     slides.forEach((s,i)=>s.setAttribute('style',orig[i]));
+    inners.forEach(el=>el.style.maxWidth='');
     document.querySelector('.nav').style.display='';
     pdf.save('AI기반_스토리추리학습_보드게임_발표.pdf');
   }catch(e){
@@ -560,7 +557,7 @@ async function savePDF(){
       <div class="rv">
         <div class="sec-label">PROBLEM</div>
         <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">창업 아이템 배경 및 필요성</h2>
-        <p class="sec-sub" style="margin-bottom:1rem">영어교육의 구조적 문제</p>
+        <p class="sec-sub" style="margin-bottom:1rem">한국 영어교육의 구조적 한계</p>
       </div>
       <div class="tc rv d1" style="gap:2rem">
         <div class="card" style="border:2px solid var(--border);padding:1.2rem 1.5rem">
@@ -617,7 +614,7 @@ async function savePDF(){
       <div class="rv">
         <div class="sec-label">SOLUTION</div>
         <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">스토리 추리 보드게임의 몰입 선순환</h2>
-        <p class="sec-sub" style="margin-bottom:1.2rem">이용자가 등장인물의 역할을 수행하며 단서를 수집·추론하여 사건을 해결하는 <em>정보 비대칭</em> 구조. 영어로 공유하지 않으면 아무도 범인을 잡을 수 없습니다.</p>
+        <p class="sec-sub" style="margin-bottom:1.2rem">정보 비대칭 구조 기반. 영어로 공유해야만 추리가 가능한 자발적 학습 메커니즘</p>
       </div>
       <!-- 솔루션 플로우 SVG -->
       <div class="rv d1" style="text-align:center;margin-bottom:2rem;background:var(--bg-alt);border-radius:var(--radius);padding:2rem 1.5rem">
@@ -635,8 +632,8 @@ async function savePDF(){
           <polygon points="220,69 233,76 220,83" fill="#3366FF"/>
           <text x="325" y="14" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#2952CC" text-anchor="middle" font-weight="600" letter-spacing="0.08em">STEP 2</text>
           <rect x="235" y="24" width="180" height="105" rx="14" fill="#fff" stroke="#2952CC" stroke-width="2.5" filter="url(#card-shadow)"/>
-          <text x="325" y="68" font-family="'Noto Sans KR',sans-serif" font-size="20" fill="#2952CC" text-anchor="middle" font-weight="800">강제적 몰입</text>
-          <text x="325" y="92" font-family="'Noto Sans KR',sans-serif" font-size="14" fill="#999" text-anchor="middle" font-weight="500">살아남으려면 읽어야</text>
+          <text x="325" y="68" font-family="'Noto Sans KR',sans-serif" font-size="20" fill="#2952CC" text-anchor="middle" font-weight="800">서사 몰입</text>
+          <text x="325" y="92" font-family="'Noto Sans KR',sans-serif" font-size="14" fill="#999" text-anchor="middle" font-weight="500">게임 진행을 위해 필수</text>
           <line x1="420" y1="76" x2="450" y2="76" stroke="#2952CC" stroke-width="2.5" stroke-linecap="round"/>
           <polygon points="450,69 463,76 450,83" fill="#2952CC"/>
           <text x="555" y="14" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#3366FF" text-anchor="middle" font-weight="600" letter-spacing="0.08em">STEP 3</text>
@@ -700,12 +697,12 @@ async function savePDF(){
                 <text x="90" y="14" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">x4</text>
               </g>
               <text x="177" y="155" font-size="11" fill="#555" text-anchor="middle" font-weight="700">캐릭터 시트</text>
-              <!-- 개인 서사 카드 x12 -->
+              <!-- 공개 불가 카드 x12 -->
               <g transform="translate(250,0)">
                 <rect x="10" y="10" width="90" height="120" rx="5" fill="#2a1f4e" stroke="#3d3070" stroke-width="1" opacity="0.5"/>
                 <rect x="5" y="5" width="90" height="120" rx="5" fill="#2a1f4e" stroke="#4a3580" stroke-width="1.5"/>
                 <text x="50" y="35" font-size="7" fill="rgba(255,255,255,0.3)" text-anchor="middle">밀봉 봉투</text>
-                <text x="50" y="55" font-size="10" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-weight="700">개인 서사</text>
+                <text x="50" y="55" font-size="10" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-weight="700">공개 불가</text>
                 <text x="50" y="70" font-size="10" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-weight="700">카드</text>
                 <text x="50" y="90" font-size="7" fill="rgba(255,255,255,0.25)" text-anchor="middle">본인만 열람 가능</text>
                 <circle cx="50" cy="105" r="6" fill="none" stroke="rgba(232,183,48,0.2)" stroke-width="0.8"/>
@@ -713,12 +710,12 @@ async function savePDF(){
                 <text x="90" y="14" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">x12</text>
               </g>
               <text x="300" y="155" font-size="11" fill="#555" text-anchor="middle" font-weight="700">서사 카드</text>
-              <!-- 공용 단서 카드 x15 + 기타 -->
+              <!-- 공개 가능 카드 x15 + 기타 -->
               <g transform="translate(370,0)">
                 <rect x="15" y="15" width="88" height="110" rx="5" fill="#1f4a2a" stroke="#2d6b3a" stroke-width="1" opacity="0.35"/>
                 <rect x="8" y="8" width="88" height="110" rx="5" fill="#1f4a2a" stroke="#2d6b3a" stroke-width="1" opacity="0.65"/>
                 <rect x="0" y="0" width="88" height="110" rx="5" fill="#1f4a2a" stroke="#2d6b3a" stroke-width="1.5"/>
-                <text x="44" y="25" font-size="7" fill="rgba(255,255,255,0.3)" text-anchor="middle">공용 단서</text>
+                <text x="44" y="25" font-size="7" fill="rgba(255,255,255,0.3)" text-anchor="middle">공개 가능</text>
                 <text x="44" y="45" font-size="10" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-weight="700">단서 카드</text>
                 <text x="44" y="60" font-size="7" fill="rgba(255,255,255,0.3)" text-anchor="middle">한/영 혼합</text>
                 <text x="44" y="82" font-size="7" fill="rgba(255,255,255,0.2)" text-anchor="middle">+ 힌트 카드 x9</text>
@@ -811,7 +808,7 @@ async function savePDF(){
             </div>
           </div>
           <div class="card" style="padding:1rem 1.3rem">
-            <h3 style="font-size:1.3rem">✅ 검증된 3가지 가설</h3>
+            <h3 style="font-size:1.3rem">입증된 3가지 핵심 가설</h3>
             <p style="font-size:1.05rem;margin-bottom:0.2rem"><strong>1.</strong> 서사 몰입 → 영어 거부감 제거 <span class="tag tag-blue" style="font-size:0.9rem;padding:2px 8px">검증</span></p>
             <p style="font-size:1.05rem;margin-bottom:0.2rem"><strong>2.</strong> 정보 비대칭 → 자발적 영어 소통 <span class="tag tag-blue" style="font-size:0.9rem;padding:2px 8px">검증</span></p>
             <p style="font-size:1.05rem;margin-bottom:0.2rem"><strong>3.</strong> QR 에필로그 → 재방문/후속 결제 <span class="tag tag-blue" style="font-size:0.9rem;padding:2px 8px">검증</span></p>
@@ -837,11 +834,22 @@ async function savePDF(){
               <p style="font-size:1.05rem">지역 관광 연동 모델 설계, 울산 대왕암 시나리오 개발</p>
             </div>
           </div>
-          <div class="card card-dark" style="margin-top:0.8rem;padding:1rem 1.3rem">
-            <h3 style="color:var(--primary);font-size:1.3rem">기술적 우위 및 차별성</h3>
-            <p style="font-size:1.05rem">텀블벅 180% 달성으로 <em style="color:#7799FF">스토리 설계 역량</em> 시장 검증</p>
-            <p style="font-size:1.05rem">QR 기반 에필로그 방식 적용. 앱·AI 연계형 상호작용 구조 확장 가능</p>
-            <p style="font-size:1.05rem">영어·역사·지역문화 등 다양한 주제와 결합하는 확장형 콘텐츠</p>
+          <div class="card" style="margin-top:0.8rem;padding:1rem 1.3rem">
+            <h3 style="color:var(--primary);font-size:1.3rem;margin-bottom:0.5rem">기술적 우위 및 차별성</h3>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem">
+              <div style="background:var(--gold-bg);border-radius:10px;padding:0.5rem 0.7rem">
+                <div style="font-weight:800;color:var(--gold);font-size:0.95rem;margin-bottom:0.15rem">시장 검증</div>
+                <div style="font-size:0.9rem;color:var(--dim)">텀블벅 <strong style="color:var(--text)">180%</strong> 달성 → 스토리 설계 역량 확인</div>
+              </div>
+              <div style="background:var(--primary-light);border-radius:10px;padding:0.5rem 0.7rem">
+                <div style="font-weight:800;color:var(--primary);font-size:0.95rem;margin-bottom:0.15rem">디지털 확장</div>
+                <div style="font-size:0.9rem;color:var(--dim)">QR 에필로그 + <strong style="color:var(--text)">앱·AI</strong> 연계 상호작용</div>
+              </div>
+              <div style="background:rgba(90,200,250,0.07);border-radius:10px;padding:0.5rem 0.7rem">
+                <div style="font-weight:800;color:var(--ice);font-size:0.95rem;margin-bottom:0.15rem">확장형 콘텐츠</div>
+                <div style="font-size:0.9rem;color:var(--dim)">영어·역사·지역문화 등 <strong style="color:var(--text)">다주제 결합</strong></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -886,7 +894,7 @@ async function savePDF(){
           </div>
           <div class="card card-red" style="padding:1.2rem 1.5rem">
             <h3 style="color:var(--red);font-size:1.4rem;margin-bottom:0.3rem">경쟁 환경 공백</h3>
-            <p style="font-size:1.05rem;margin-bottom:0.2rem">"서사 기반 몰입형 영어 보드게임"은 국내 시장에 <em style="color:var(--red)">경쟁자가 없는</em> 블루오션.</p>
+            <p style="font-size:1.05rem;margin-bottom:0.2rem">"서사 기반 몰입형 영어 보드게임"은 국내 시장에 <em style="color:var(--red)">직접 경쟁자가 부재한</em> 블루오션.</p>
             <p style="font-size:1.05rem;margin:0">기존 제품: 단순 워드게임(스크래블) or 디지털 앱(듀오링고). 서사 부재.</p>
           </div>
           <div class="metrics" style="margin-top:0.8rem;gap:2rem">
@@ -996,30 +1004,26 @@ async function savePDF(){
               </g>
             </svg>
           </div>
-          <h3 style="margin-bottom:0.4rem;font-size:1.4rem;color:var(--primary)">보드게임 박스 구성품</h3>
-          <div class="card" style="padding:0.8rem 1.2rem">
-          <table style="font-size:1rem">
-            <thead><tr><th style="padding:0.4rem 0.8rem;font-size:0.95rem">구성품</th><th style="padding:0.4rem 0.8rem;font-size:0.95rem">수량</th><th style="padding:0.4rem 0.8rem;font-size:0.95rem">역할</th></tr></thead>
+          <div class="card" style="padding:0.6rem 1rem">
+          <table style="font-size:0.9rem">
+            <thead><tr><th style="padding:0.25rem 0.6rem;font-size:0.85rem">구성품</th><th style="padding:0.25rem 0.6rem;font-size:0.85rem">수량</th><th style="padding:0.25rem 0.6rem;font-size:0.85rem">역할</th></tr></thead>
             <tbody>
-              <tr><td style="padding:0.35rem 0.8rem"><strong>캐릭터 시트</strong></td><td style="padding:0.35rem 0.8rem">4장</td><td style="padding:0.35rem 0.8rem">배경, 비밀, 표현 포함</td></tr>
-              <tr><td style="padding:0.35rem 0.8rem"><strong>비밀 카드</strong></td><td style="padding:0.35rem 0.8rem">12장</td><td style="padding:0.35rem 0.8rem">라운드별 개인 단서</td></tr>
-              <tr><td style="padding:0.35rem 0.8rem"><strong>공용 단서</strong></td><td style="padding:0.35rem 0.8rem">9장</td><td style="padding:0.35rem 0.8rem">전체 공개 증거물</td></tr>
-              <tr><td style="padding:0.35rem 0.8rem"><strong>힌트 봉투</strong></td><td style="padding:0.35rem 0.8rem">3세트</td><td style="padding:0.35rem 0.8rem">자율 개봉 구조</td></tr>
-              <tr><td style="padding:0.35rem 0.8rem"><strong>표현 가이드</strong></td><td style="padding:0.35rem 0.8rem">4장</td><td style="padding:0.35rem 0.8rem">상황별 영어 문장</td></tr>
-              <tr><td style="padding:0.35rem 0.8rem"><strong>어휘장+진행카드</strong></td><td style="padding:0.35rem 0.8rem">9장</td><td style="padding:0.35rem 0.8rem">40단어+룰북 대체</td></tr>
-              <tr><td style="padding:0.35rem 0.8rem"><strong>투표/엔딩</strong></td><td style="padding:0.35rem 0.8rem">7장</td><td style="padding:0.35rem 0.8rem">멀티 엔딩 분기</td></tr>
-              <tr><td style="padding:0.35rem 0.8rem"><strong>미플(Meeple)</strong></td><td style="padding:0.35rem 0.8rem">4개</td><td style="padding:0.35rem 0.8rem">캐릭터별 말</td></tr>
-              <tr><td style="padding:0.35rem 0.8rem"><strong>토큰</strong></td><td style="padding:0.35rem 0.8rem">12개</td><td style="padding:0.35rem 0.8rem">단서/투표/행동 마커</td></tr>
+              <tr><td style="padding:0.2rem 0.6rem"><strong>캐릭터 시트</strong></td><td style="padding:0.2rem 0.6rem">4장</td><td style="padding:0.2rem 0.6rem">배경+비밀+표현</td></tr>
+              <tr><td style="padding:0.2rem 0.6rem"><strong>공개 불가 카드</strong></td><td style="padding:0.2rem 0.6rem">12장</td><td style="padding:0.2rem 0.6rem">라운드별 개인 단서 (한국어)</td></tr>
+              <tr><td style="padding:0.2rem 0.6rem"><strong>공개 가능 카드</strong></td><td style="padding:0.2rem 0.6rem">15장</td><td style="padding:0.2rem 0.6rem">전체 공개 (한/영 혼합)</td></tr>
+              <tr><td style="padding:0.2rem 0.6rem"><strong>힌트 카드</strong></td><td style="padding:0.2rem 0.6rem">9장</td><td style="padding:0.2rem 0.6rem">3단계 자율 개봉</td></tr>
+              <tr><td style="padding:0.2rem 0.6rem"><strong>단어장+표현가이드</strong></td><td style="padding:0.2rem 0.6rem">각 4장</td><td style="padding:0.2rem 0.6rem">40단어+6패턴 스캐폴딩</td></tr>
+              <tr><td style="padding:0.2rem 0.6rem"><strong>투표/엔딩+미플+토큰</strong></td><td style="padding:0.2rem 0.6rem">7+4+12</td><td style="padding:0.2rem 0.6rem">멀티엔딩·캐릭터말·마커</td></tr>
             </tbody>
           </table>
           </div>
-          <p style="margin-top:0.5rem;font-size:1.15rem"><em>선생님 없이, 이 박스만으로 완전한 게임 가능.</em> 90분+ 기본 플레이.</p>
+          <p style="margin-top:0.4rem;font-size:1rem"><em>선생님 없이, 이 박스만으로 완전한 게임.</em> 90분+ 플레이.</p>
         </div>
         <div>
           <h3 style="margin-bottom:0.6rem;font-size:1.4rem;color:var(--primary)">3라운드 시스템</h3>
           <div class="round" style="margin:0.8rem 0">
             <div class="round-item" style="padding-top:2.5rem"><div class="round-dot"></div><h3 style="color:var(--primary);font-size:1.2rem">R1 탐색</h3><p style="font-size:1.05rem">단서 카드 공개, 단어장 탐색</p><span class="keyword" style="font-size:0.9rem">Reading+Listening</span></div>
-            <div class="round-item" style="padding-top:2.5rem"><div class="round-dot"></div><h3 style="color:var(--primary-dark);font-size:1.2rem">R2 이해</h3><p style="font-size:1.05rem">개인 서사를 영어로 공유·토론</p><span class="keyword" style="font-size:0.9rem">Speaking+Reasoning</span></div>
+            <div class="round-item" style="padding-top:2.5rem"><div class="round-dot"></div><h3 style="color:var(--primary-dark);font-size:1.2rem">R2 이해</h3><p style="font-size:1.05rem">공개 불가 카드를 영어로 공유·토론</p><span class="keyword" style="font-size:0.9rem">Speaking+Reasoning</span></div>
             <div class="round-item" style="padding-top:2.5rem"><div class="round-dot"></div><h3 style="color:var(--primary);font-size:1.2rem">R3 실행</h3><p style="font-size:1.05rem">전략 수립, 설득·반박·기록</p><span class="keyword" style="font-size:0.9rem">Persuasion+Writing</span></div>
             <div class="round-item" style="padding-top:2.5rem"><div class="round-dot"></div><h3 style="font-size:1.2rem">투표</h3><p style="font-size:1.05rem">최종 합의 → 멀티 엔딩</p><span class="keyword" style="font-size:0.9rem">All 4 Skills</span></div>
           </div>
@@ -1043,14 +1047,14 @@ async function savePDF(){
     <div class="inner">
       <div class="rv">
         <div class="sec-label">LEARNING DESIGN</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">영어 학습 설계</h2>
-        <p class="sec-sub" style="margin-bottom:1.5rem">게임 구조 자체가 <strong style="color:var(--primary)">R·W·L·S 4Skills</strong>를 자연스럽게 유도</p>
+        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">영어 학습 설계 전략</h2>
+        <p class="sec-sub" style="margin-bottom:1.5rem">게임 구조를 통한 <strong style="color:var(--primary)">R·W·L·S 4Skills</strong> 자연 습득 설계</p>
       </div>
 
       <!-- Top: Card language design (핵심) -->
       <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.5rem">
         <div class="card" style="padding:1.3rem 1.5rem;border-left:4px solid var(--red)">
-          <h3 style="font-size:1.3rem;margin-bottom:0.6rem;color:var(--red)">개인 서사 카드 <span style="font-family:'IBM Plex Mono',monospace;font-size:0.9rem;color:var(--dim);font-weight:400">12장</span></h3>
+          <h3 style="font-size:1.3rem;margin-bottom:0.6rem;color:var(--red)">공개 불가 카드 <span style="font-family:'IBM Plex Mono',monospace;font-size:0.9rem;color:var(--dim);font-weight:400">12장</span></h3>
           <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.6rem">
             <div style="background:var(--bg-alt);border-radius:10px;padding:0.6rem 1rem;text-align:center;flex:1">
               <div style="font-size:0.85rem;color:var(--dim)">카드 언어</div>
@@ -1062,10 +1066,10 @@ async function savePDF(){
               <div style="font-size:1.3rem;font-weight:800;color:var(--red)">영어 필수</div>
             </div>
           </div>
-          <p style="font-size:0.95rem;color:var(--dim);margin:0">본인만 열람 가능. 팀에 전달하려면 <strong style="color:var(--text)">반드시 영어로 변환</strong>해서 말해야 함 — 가장 중요한 정보일수록 Speaking 압력 ↑</p>
+          <p style="font-size:0.95rem;color:var(--dim);margin:0">본인만 열람 가능. 팀에 전달하려면 <strong style="color:var(--text)">반드시 영어로 변환</strong>해서 말해야 합니다. 핵심 정보일수록 Speaking 압력이 높아집니다</p>
         </div>
         <div class="card" style="padding:1.3rem 1.5rem;border-left:4px solid var(--primary)">
-          <h3 style="font-size:1.3rem;margin-bottom:0.6rem;color:var(--primary)">공용 단서 카드 <span style="font-family:'IBM Plex Mono',monospace;font-size:0.9rem;color:var(--dim);font-weight:400">15장</span></h3>
+          <h3 style="font-size:1.3rem;margin-bottom:0.6rem;color:var(--primary)">공개 가능 카드 <span style="font-family:'IBM Plex Mono',monospace;font-size:0.9rem;color:var(--dim);font-weight:400">15장</span></h3>
           <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.6rem">
             <div style="background:var(--primary-light);border-radius:10px;padding:0.6rem 1rem;text-align:center;flex:1">
               <div style="font-size:0.85rem;color:var(--primary)">영어 카드</div>
@@ -1160,122 +1164,140 @@ async function savePDF(){
       <div class="rv">
         <div class="sec-label">GAME FLOW</div>
         <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.2rem">게임 진행과정</h2>
-        <p class="sec-sub" style="margin-bottom:1.2rem">90분 완결 — 준비부터 에필로그까지 <strong style="color:var(--primary)">6단계</strong> 몰입 설계</p>
+        <p class="sec-sub" style="margin-bottom:1.2rem">90분 완결 | 준비부터 에필로그까지 <strong style="color:var(--primary)">6단계</strong> 몰입 설계</p>
       </div>
 
-      <!-- Timeline -->
-      <div class="rv d1" style="position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:0.8rem">
-        <!-- Connecting line -->
-        <div style="position:absolute;top:28px;left:8%;right:8%;height:3px;background:linear-gradient(90deg,var(--primary),var(--ice),var(--primary),var(--red),var(--gold),var(--primary));border-radius:2px;z-index:0"></div>
+      <!-- Timeline: ㄹ자 serpentine layout (3col × 2row) -->
+      <div class="rv d1" style="position:relative">
+        <!-- Row 1: Steps 1→2→3 (left to right) -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:0.5rem;position:relative">
+          <!-- Row 1 connecting line -->
+          <div style="position:absolute;top:28px;left:8%;right:8%;height:3px;background:linear-gradient(90deg,var(--primary),var(--ice),var(--primary));border-radius:2px;z-index:0"></div>
+          <!-- Row 1 arrow indicator -->
+          <div style="position:absolute;top:22px;right:4%;font-size:1rem;color:var(--primary);z-index:2">▶</div>
 
-        <!-- Step 1: 게임 준비 -->
-        <div style="position:relative;z-index:1;text-align:center">
-          <div style="width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.6rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(51,102,255,0.3)">
-            <span style="font-size:1.5rem">🎭</span>
+          <!-- Step 1: 게임 준비 -->
+          <div style="position:relative;z-index:1;text-align:center">
+            <div style="width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(51,102,255,0.3)">
+              <span style="font-size:1.5rem">🎭</span>
+            </div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--primary);font-weight:700;letter-spacing:0.06em;margin-bottom:0.1rem">STEP 01</div>
+            <h4 style="font-size:1.1rem;font-weight:800;margin-bottom:0.1rem">게임 준비</h4>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem;color:var(--primary);font-weight:700;margin-bottom:0.3rem">5 min</div>
+            <div class="card" style="padding:0.5rem 0.7rem;font-size:0.85rem;line-height:1.6;text-align:left">
+              <div style="margin-bottom:0.15rem">• 단어장 배부 + 발음 연습</div>
+              <div style="margin-bottom:0.15rem">• 짝 퀴즈 워밍업</div>
+              <div>• 표현 가이드 롤플레이</div>
+            </div>
           </div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--primary);font-weight:700;letter-spacing:0.06em;margin-bottom:0.15rem">STEP 01</div>
-          <h4 style="font-size:1.05rem;font-weight:800;margin-bottom:0.15rem">게임 준비</h4>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--primary);font-weight:700;margin-bottom:0.3rem">5 min</div>
-          <div class="card" style="padding:0.5rem 0.6rem;font-size:0.8rem;line-height:1.5;text-align:left">
-            <div style="margin-bottom:0.2rem">• 단어장 배부 + 발음 연습</div>
-            <div style="margin-bottom:0.2rem">• 짝 퀴즈 워밍업</div>
-            <div>• 표현 가이드 롤플레이</div>
+
+          <!-- Step 2: R1 탐색 -->
+          <div style="position:relative;z-index:1;text-align:center">
+            <div style="width:56px;height:56px;border-radius:50%;background:var(--ice);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(90,200,250,0.3)">
+              <span style="font-size:1.5rem">🔍</span>
+            </div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--ice);font-weight:700;letter-spacing:0.06em;margin-bottom:0.1rem">ROUND 1</div>
+            <h4 style="font-size:1.1rem;font-weight:800;margin-bottom:0.1rem">탐색</h4>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem;color:var(--ice);font-weight:700;margin-bottom:0.3rem">20 min</div>
+            <div class="card" style="padding:0.5rem 0.7rem;font-size:0.85rem;line-height:1.6;text-align:left;border-color:rgba(90,200,250,0.2)">
+              <div style="margin-bottom:0.15rem">• 공개 가능 카드 5장 + 공개 불가 카드 배분</div>
+              <div style="margin-bottom:0.15rem">• 자료조사 10분 (단어장 탐색)</div>
+              <div style="margin-bottom:0.15rem">• 영어 토론 10분</div>
+              <div>• <span style="color:var(--primary)">Reading + Listening</span></div>
+            </div>
+          </div>
+
+          <!-- Step 3: R2 추론 -->
+          <div style="position:relative;z-index:1;text-align:center">
+            <div style="width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(51,102,255,0.3)">
+              <span style="font-size:1.5rem">🧩</span>
+            </div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--primary);font-weight:700;letter-spacing:0.06em;margin-bottom:0.1rem">ROUND 2</div>
+            <h4 style="font-size:1.1rem;font-weight:800;margin-bottom:0.1rem">추론</h4>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem;color:var(--primary);font-weight:700;margin-bottom:0.3rem">25 min</div>
+            <div class="card card-blue" style="padding:0.5rem 0.7rem;font-size:0.85rem;line-height:1.6;text-align:left">
+              <div style="margin-bottom:0.15rem">• 새 공개 가능 카드 5장 + 공개 불가 카드</div>
+              <div style="margin-bottom:0.15rem">• 공개 불가 카드를 <strong>영어로</strong> 공유</div>
+              <div style="margin-bottom:0.15rem">• 표현 가이드 참조하며 토론</div>
+              <div>• <span style="color:var(--primary)">Speaking + Reasoning</span></div>
+            </div>
           </div>
         </div>
 
-        <!-- Step 2: R1 탐색 -->
-        <div style="position:relative;z-index:1;text-align:center">
-          <div style="width:56px;height:56px;border-radius:50%;background:var(--ice);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.6rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(90,200,250,0.3)">
-            <span style="font-size:1.5rem">🔍</span>
-          </div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--ice);font-weight:700;letter-spacing:0.06em;margin-bottom:0.15rem">ROUND 1</div>
-          <h4 style="font-size:1.05rem;font-weight:800;margin-bottom:0.15rem">탐색</h4>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--ice);font-weight:700;margin-bottom:0.3rem">20 min</div>
-          <div class="card" style="padding:0.5rem 0.6rem;font-size:0.8rem;line-height:1.5;text-align:left;border-color:rgba(90,200,250,0.2)">
-            <div style="margin-bottom:0.2rem">• 공용 단서 5장 + 개인 서사 배분</div>
-            <div style="margin-bottom:0.2rem">• 자료조사 10분 (단어장 탐색)</div>
-            <div style="margin-bottom:0.2rem">• 영어 토론 10분</div>
-            <div>• <span style="color:var(--primary)">Reading + Listening</span></div>
-          </div>
+        <!-- Vertical connector (right side, ㄹ자 꺾임) -->
+        <div style="display:flex;justify-content:flex-end;padding-right:calc(33.33% / 2 + 0.6rem);margin:-0.2rem 0">
+          <div style="width:3px;height:28px;background:linear-gradient(var(--primary),var(--red));border-radius:2px"></div>
         </div>
 
-        <!-- Step 3: R2 추론 -->
-        <div style="position:relative;z-index:1;text-align:center">
-          <div style="width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.6rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(51,102,255,0.3)">
-            <span style="font-size:1.5rem">🧩</span>
-          </div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--primary);font-weight:700;letter-spacing:0.06em;margin-bottom:0.15rem">ROUND 2</div>
-          <h4 style="font-size:1.05rem;font-weight:800;margin-bottom:0.15rem">추론</h4>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--primary);font-weight:700;margin-bottom:0.3rem">25 min</div>
-          <div class="card card-blue" style="padding:0.5rem 0.6rem;font-size:0.8rem;line-height:1.5;text-align:left">
-            <div style="margin-bottom:0.2rem">• 새 공용 단서 5장 + 개인 서사</div>
-            <div style="margin-bottom:0.2rem">• 개인 서사를 <strong>영어로</strong> 공유</div>
-            <div style="margin-bottom:0.2rem">• 표현 가이드 참조하며 토론</div>
-            <div>• <span style="color:var(--primary)">Speaking + Reasoning</span></div>
-          </div>
-        </div>
+        <!-- Row 2: Steps 4←5←6 (right to left visual, but 4→5→6 flow) -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;position:relative">
+          <!-- Row 2 connecting line -->
+          <div style="position:absolute;top:28px;left:8%;right:8%;height:3px;background:linear-gradient(90deg,var(--primary),var(--gold),var(--red));border-radius:2px;z-index:0"></div>
+          <!-- Row 2 arrow indicator (left, reversed flow) -->
+          <div style="position:absolute;top:22px;left:4%;font-size:1rem;color:var(--primary);z-index:2">◀</div>
 
-        <!-- Step 4: R3 반전 -->
-        <div style="position:relative;z-index:1;text-align:center">
-          <div style="width:56px;height:56px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.6rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(255,59,48,0.3)">
-            <span style="font-size:1.5rem">💥</span>
+          <!-- Column 1: Step 6 QR 에필로그 (visual left = flow end) -->
+          <div style="position:relative;z-index:1;text-align:center">
+            <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--ice));color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(51,102,255,0.2)">
+              <span style="font-size:1.5rem">📱</span>
+            </div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--primary);font-weight:700;letter-spacing:0.06em;margin-bottom:0.1rem">EPILOGUE</div>
+            <h4 style="font-size:1.1rem;font-weight:800;margin-bottom:0.1rem">QR 에필로그</h4>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem;color:var(--primary);font-weight:700;margin-bottom:0.3rem">+α</div>
+            <div class="card card-blue" style="padding:0.5rem 0.7rem;font-size:0.85rem;line-height:1.6;text-align:left">
+              <div style="margin-bottom:0.15rem">• QR 스캔으로 후속 서사</div>
+              <div style="margin-bottom:0.15rem">• 세계관 확장 콘텐츠</div>
+              <div>• AI 맞춤 피드백 (향후)</div>
+            </div>
           </div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--red);font-weight:700;letter-spacing:0.06em;margin-bottom:0.15rem">ROUND 3</div>
-          <h4 style="font-size:1.05rem;font-weight:800;margin-bottom:0.15rem">반전</h4>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--red);font-weight:700;margin-bottom:0.3rem">25 min</div>
-          <div class="card card-red" style="padding:0.5rem 0.6rem;font-size:0.8rem;line-height:1.5;text-align:left">
-            <div style="margin-bottom:0.2rem">• 최종 단서 해독 + 전략 수립</div>
-            <div style="margin-bottom:0.2rem">• 영어로 <strong style="color:var(--red)">설득·반박·기록</strong></div>
-            <div style="margin-bottom:0.2rem">• 힌트 봉투 자율 개봉</div>
-            <div>• <span style="color:var(--red)">Persuasion + Writing</span></div>
-          </div>
-        </div>
 
-        <!-- Step 5: 투표 & 엔딩 -->
-        <div style="position:relative;z-index:1;text-align:center">
-          <div style="width:56px;height:56px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.6rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(255,159,10,0.3)">
-            <span style="font-size:1.5rem">🗳️</span>
+          <!-- Column 2: Step 5 투표 & 엔딩 -->
+          <div style="position:relative;z-index:1;text-align:center">
+            <div style="width:56px;height:56px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(255,159,10,0.3)">
+              <span style="font-size:1.5rem">🗳️</span>
+            </div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--gold);font-weight:700;letter-spacing:0.06em;margin-bottom:0.1rem">VOTE</div>
+            <h4 style="font-size:1.1rem;font-weight:800;margin-bottom:0.1rem">투표 & 엔딩</h4>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem;color:var(--gold);font-weight:700;margin-bottom:0.3rem">15 min</div>
+            <div class="card" style="padding:0.5rem 0.7rem;font-size:0.85rem;line-height:1.6;text-align:left;border-color:rgba(255,159,10,0.2)">
+              <div style="margin-bottom:0.15rem">• 범인 지목 투표</div>
+              <div style="margin-bottom:0.15rem">• <strong style="color:var(--gold)">멀티 엔딩</strong> 분기</div>
+              <div>• 결과 공개 + 해설</div>
+            </div>
           </div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--gold);font-weight:700;letter-spacing:0.06em;margin-bottom:0.15rem">VOTE</div>
-          <h4 style="font-size:1.05rem;font-weight:800;margin-bottom:0.15rem">투표 & 엔딩</h4>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--gold);font-weight:700;margin-bottom:0.3rem">15 min</div>
-          <div class="card" style="padding:0.5rem 0.6rem;font-size:0.8rem;line-height:1.5;text-align:left;border-color:rgba(255,159,10,0.2)">
-            <div style="margin-bottom:0.2rem">• 범인 지목 투표</div>
-            <div style="margin-bottom:0.2rem">• <strong style="color:var(--gold)">멀티 엔딩</strong> 분기</div>
-            <div>• 결과 공개 + 해설</div>
-          </div>
-        </div>
 
-        <!-- Step 6: QR 에필로그 -->
-        <div style="position:relative;z-index:1;text-align:center">
-          <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--ice));color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.6rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(51,102,255,0.2)">
-            <span style="font-size:1.5rem">📱</span>
-          </div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--primary);font-weight:700;letter-spacing:0.06em;margin-bottom:0.15rem">EPILOGUE</div>
-          <h4 style="font-size:1.05rem;font-weight:800;margin-bottom:0.15rem">QR 에필로그</h4>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--primary);font-weight:700;margin-bottom:0.3rem">+α</div>
-          <div class="card card-blue" style="padding:0.5rem 0.6rem;font-size:0.8rem;line-height:1.5;text-align:left">
-            <div style="margin-bottom:0.2rem">• QR 스캔 → 후속 서사</div>
-            <div style="margin-bottom:0.2rem">• 세계관 확장 콘텐츠</div>
-            <div>• AI 맞춤 피드백 (향후)</div>
+          <!-- Column 3: Step 4 R3 반전 (visual right = continues from row 1 right) -->
+          <div style="position:relative;z-index:1;text-align:center">
+            <div style="width:56px;height:56px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(255,59,48,0.3)">
+              <span style="font-size:1.5rem">💥</span>
+            </div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--red);font-weight:700;letter-spacing:0.06em;margin-bottom:0.1rem">ROUND 3</div>
+            <h4 style="font-size:1.1rem;font-weight:800;margin-bottom:0.1rem">반전</h4>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem;color:var(--red);font-weight:700;margin-bottom:0.3rem">25 min</div>
+            <div class="card card-red" style="padding:0.5rem 0.7rem;font-size:0.85rem;line-height:1.6;text-align:left">
+              <div style="margin-bottom:0.15rem">• 최종 단서 해독 + 전략 수립</div>
+              <div style="margin-bottom:0.15rem">• 영어로 <strong style="color:var(--red)">설득·반박·기록</strong></div>
+              <div style="margin-bottom:0.15rem">• 힌트 봉투 자율 개봉</div>
+              <div>• <span style="color:var(--red)">Persuasion + Writing</span></div>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Bottom: Key insight -->
-      <div class="rv d2" style="margin-top:1.2rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-        <div class="card card-blue" style="padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.8rem">
-          <div style="font-size:2rem;flex-shrink:0">🔄</div>
+      <div class="rv d2" style="margin-top:1rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div class="card card-blue" style="padding:0.7rem 1rem;display:flex;align-items:center;gap:0.8rem">
+          <div style="font-size:1.8rem;flex-shrink:0">🔄</div>
           <div>
-            <h4 style="color:var(--primary);font-size:1rem;margin-bottom:0.1rem">매 라운드 반복: 카드 배부 → 자료조사(10분) → 영어 토론(15분)</h4>
-            <p style="font-size:0.85rem;color:var(--dim);margin:0">자료조사 시 <strong>단어장 탐색</strong>하며 표현 준비 → 토론 시 <strong style="color:var(--primary)">영어로 공유·질문·반박</strong>. 찾아보고 말하는 과정 자체가 학습</p>
+            <h4 style="color:var(--primary);font-size:0.95rem;margin-bottom:0.1rem">매 라운드 반복: 카드 배부 > 자료조사(10분) > 영어 토론(15분)</h4>
+            <p style="font-size:0.8rem;color:var(--dim);margin:0">자료조사 시 <strong>단어장 탐색</strong>하며 표현 준비, 토론 시 <strong style="color:var(--primary)">영어로 공유·질문·반박</strong></p>
           </div>
         </div>
-        <div class="card" style="padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.8rem">
-          <div style="font-size:2rem;flex-shrink:0">📱</div>
+        <div class="card" style="padding:0.7rem 1rem;display:flex;align-items:center;gap:0.8rem">
+          <div style="font-size:1.8rem;flex-shrink:0">📱</div>
           <div>
-            <h4 style="color:var(--text);font-size:1rem;margin-bottom:0.1rem">게임 후: 복습 + QR 에필로그</h4>
-            <p style="font-size:0.85rem;color:var(--dim);margin:0">가장 어려웠던 표현 공유, 핵심 단서 영어로 다시 설명, 새 단어 3개 기록. QR 스캔으로 후속 서사 + 세계관 확장</p>
+            <h4 style="color:var(--text);font-size:0.95rem;margin-bottom:0.1rem">게임 후: 복습 + QR 에필로그</h4>
+            <p style="font-size:0.8rem;color:var(--dim);margin:0">핵심 표현 공유, 영어 단서 재설명, 새 단어 3개 기록. QR 후속 서사 + 세계관 확장</p>
           </div>
         </div>
       </div>
@@ -1290,7 +1312,7 @@ async function savePDF(){
       <div class="rv">
         <div class="sec-label">COMPETITIVE ANALYSIS</div>
         <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">경쟁 환경 분석 및 차별화 전략</h2>
-        <p class="sec-sub" style="margin-bottom:1.2rem">서사 몰입형 방탈출 학습. 기존 영어교육 방식과의 구조적 차이</p>
+        <p class="sec-sub" style="margin-bottom:1.2rem">기존 영어교육 방식과의 구조적 차별점</p>
       </div>
       <div class="card rv d1" style="padding:0;overflow:hidden;margin-bottom:1.2rem">
       <table class="cmp">
@@ -1433,8 +1455,8 @@ async function savePDF(){
     <div class="inner">
       <div class="rv">
         <div class="sec-label">RISK MANAGEMENT</div>
-        <h2 class="sec-title">생존을 위한 노력</h2>
-        <p class="sec-sub" style="margin-bottom:2rem">리스크 관리 및 피봇 전략</p>
+        <h2 class="sec-title">위기 대응 전략</h2>
+        <p class="sec-sub" style="margin-bottom:2rem">리스크 식별 및 선제적 대응 방안</p>
       </div>
       <div class="g2 rv d1">
         <div class="card">
@@ -1527,7 +1549,7 @@ async function savePDF(){
     <div class="inner">
       <div class="rv">
         <div class="sec-label">TEAM</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.5rem">대표자(팀) 현황 및 보유역량</h2>
+        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.5rem">팀 현황 및 핵심 역량</h2>
       </div>
       <div class="img-placeholder rv d1" style="min-height:200px;margin-bottom:1rem">
         <span class="ph-text">팀 활동 사진 삽입</span>
@@ -1628,24 +1650,24 @@ async function savePDF(){
       <div class="rv">
         <div class="sec-label">APPENDIX 01</div>
         <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">업무협약(MOU) · 유통의향서</h2>
-        <p class="sec-sub" style="margin-bottom:1.2rem">8개 기관 MOU 체결 완료 — 교육기관 · 기업 · 학계</p>
+        <p class="sec-sub" style="margin-bottom:1.2rem">8개 기관 8개 기관 MOU 체결 완료 | 교육기관 · 기업 · 학계</p>
       </div>
       <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem">
         <div class="card" style="padding:0.6rem;text-align:center">
           <img src="evidence/mou-bottling.png" alt="MOU 보틀링컴퍼니" style="width:100%;border-radius:8px;border:1px solid var(--border)">
-          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>MOU</strong> — 보틀링컴퍼니 (유통·제작 파트너)</p>
+          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>MOU</strong> |보틀링컴퍼니 (유통·제작 파트너)</p>
         </div>
         <div class="card" style="padding:0.6rem;text-align:center">
           <img src="evidence/loi-distribution.png" alt="유통의향서 보틀링컴퍼니" style="width:100%;border-radius:8px;border:1px solid var(--border)">
-          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>유통의향서</strong> — 보틀링컴퍼니 (온·오프라인 유통)</p>
+          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>유통의향서</strong> |보틀링컴퍼니 (온·오프라인 유통)</p>
         </div>
         <div class="card" style="padding:0.6rem;text-align:center">
           <img src="evidence/mou-maeul.png" alt="MOU 마을을누이다" style="width:100%;border-radius:8px;border:1px solid var(--border)">
-          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>MOU</strong> — 마을을누이다 심리상담센터 (교육 파트너)</p>
+          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>MOU</strong> |마을을누이다 심리상담센터 (교육 파트너)</p>
         </div>
         <div class="card" style="padding:0.6rem;text-align:center">
           <img src="evidence/mou-handong.png" alt="MOU 한동대 교수" style="width:100%;border-radius:8px;border:1px solid var(--border)">
-          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>MOU</strong> — 한동대 AI컴퓨터전자학부 교수 (학술)</p>
+          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>MOU</strong> |한동대 AI컴퓨터전자학부 교수 (학술)</p>
         </div>
       </div>
       <div class="rv d2" style="display:flex;gap:0.8rem;margin-top:1rem">
@@ -1681,15 +1703,15 @@ async function savePDF(){
       <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem">
         <div class="card" style="padding:0.6rem;text-align:center">
           <img src="evidence/purchase-maeul.png" alt="구매의향서 마을을누이다" style="width:100%;border-radius:8px;border:1px solid var(--border)">
-          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>구매의향서</strong> — 마을을누이다 (20세트)</p>
+          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>구매의향서</strong> |마을을누이다 (20세트)</p>
         </div>
         <div class="card" style="padding:0.6rem;text-align:center">
           <img src="evidence/trademark-notice.png" alt="상표출원 통지서" style="width:100%;border-radius:8px;border:1px solid var(--border)">
-          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>상표출원</strong> — 40-2026-0054857 (뱀이 죽은 축제)</p>
+          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>상표출원</strong> |40-2026-0054857 (뱀이 죽은 축제)</p>
         </div>
         <div class="card" style="padding:0.6rem;text-align:center">
           <img src="evidence/contract-sales.png" alt="위탁판매계약서" style="width:100%;border-radius:8px;border:1px solid var(--border)">
-          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>위탁판매계약</strong> — 보틀링컴퍼니 (500부 판매)</p>
+          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>위탁판매계약</strong> |보틀링컴퍼니 (500부 판매)</p>
         </div>
       </div>
       <div class="rv d2" style="display:flex;gap:1rem;margin-top:1rem">
@@ -1731,7 +1753,7 @@ async function savePDF(){
     <div class="inner">
       <div class="rv">
         <div class="sec-label">APPENDIX 03</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">시장 검증 설문 — 플레이 기대</h2>
+        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">시장 검증 설문: 플레이 기대</h2>
         <p class="sec-sub" style="margin-bottom:0.8rem">N=169 · 온라인 설문 (2026.03) · 리커트 5점 척도</p>
       </div>
       <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
@@ -1762,7 +1784,7 @@ async function savePDF(){
     <div class="inner">
       <div class="rv">
         <div class="sec-label">APPENDIX 04</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">시장 검증 설문 — 구매 의향 · 이용 선호</h2>
+        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">시장 검증 설문: 구매 의향 · 이용 선호</h2>
         <p class="sec-sub" style="margin-bottom:0.8rem">N=169 · 구매 고려 87.6% · 사용 상황별 선호도</p>
       </div>
       <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem">
