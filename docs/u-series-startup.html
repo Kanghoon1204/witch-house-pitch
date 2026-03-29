@@ -197,6 +197,31 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
 .slide-dark .tag-blue{background:rgba(51,102,255,0.2);color:#7799FF}
 .slide-dark .tag-gold{background:rgba(255,159,10,0.2);color:#FFB84D}
 
+/* ── PRINT / PDF (1280×1080) ── */
+@media print{
+  @page{size:1280px 1080px;margin:0}
+  html{scroll-snap-type:none!important}
+  body{font-size:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .slide{width:1280px!important;height:1080px!important;min-height:1080px!important;max-height:1080px!important;overflow:hidden!important;page-break-after:always;page-break-inside:avoid;break-after:page;break-inside:avoid}
+  .slide-body{padding:30px 60px!important}
+  .nav,.pdf-btn{display:none!important}
+  .rv{opacity:1!important;transform:none!important;transition:none!important}
+  .bar-fill{width:var(--w)!important;transition:none!important}
+  .slide-dark,.slide-cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .inner{max-width:1160px}
+  .sec-title{font-size:2.2rem}
+  .sec-sub{font-size:1.1rem;margin-bottom:1.5rem}
+  .card p{font-size:1rem}
+  .card h3{font-size:1.2rem}
+  h3{font-size:1.3rem}
+  p{font-size:1rem}
+  .big-num{font-size:3rem}
+  .metric .val{font-size:2.6rem}
+  .g4{gap:1rem}
+  .g3{gap:1rem}
+  .tc{gap:2rem}
+}
+
 /* ── ALT BG SLIDE ── */
 .slide-alt{background:var(--bg-alt)}
 .slide-alt .round-dot{border-color:var(--bg-alt)}
@@ -1013,8 +1038,138 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 9: 차별화 ═══ -->
+<!-- ═══ SLIDE 9: 게임 진행과정 ═══ -->
 <section class="slide" id="s9">
+  <div class="slide-body" style="padding:30px 80px">
+    <div class="inner">
+      <div class="rv">
+        <div class="sec-label">GAME FLOW</div>
+        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.2rem">게임 진행과정</h2>
+        <p class="sec-sub" style="margin-bottom:1.2rem">90분 완결 — 준비부터 에필로그까지 <strong style="color:var(--primary)">6단계</strong> 몰입 설계</p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="rv d1" style="position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:0.8rem">
+        <!-- Connecting line -->
+        <div style="position:absolute;top:28px;left:8%;right:8%;height:3px;background:linear-gradient(90deg,var(--primary),var(--ice),var(--primary),var(--red),var(--gold),var(--primary));border-radius:2px;z-index:0"></div>
+
+        <!-- Step 1: 게임 준비 -->
+        <div style="position:relative;z-index:1;text-align:center">
+          <div style="width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.6rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(51,102,255,0.3)">
+            <span style="font-size:1.5rem">🎭</span>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--primary);font-weight:700;letter-spacing:0.06em;margin-bottom:0.15rem">STEP 01</div>
+          <h4 style="font-size:1.05rem;font-weight:800;margin-bottom:0.15rem">게임 준비</h4>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--primary);font-weight:700;margin-bottom:0.3rem">5 min</div>
+          <div class="card" style="padding:0.5rem 0.6rem;font-size:0.8rem;line-height:1.5;text-align:left">
+            <div style="margin-bottom:0.2rem">• 캐릭터 시트 선택</div>
+            <div style="margin-bottom:0.2rem">• 어휘장 확인</div>
+            <div>• 미플·토큰 배치</div>
+          </div>
+        </div>
+
+        <!-- Step 2: R1 탐색 -->
+        <div style="position:relative;z-index:1;text-align:center">
+          <div style="width:56px;height:56px;border-radius:50%;background:var(--ice);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.6rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(90,200,250,0.3)">
+            <span style="font-size:1.5rem">🔍</span>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--ice);font-weight:700;letter-spacing:0.06em;margin-bottom:0.15rem">ROUND 1</div>
+          <h4 style="font-size:1.05rem;font-weight:800;margin-bottom:0.15rem">탐색</h4>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--ice);font-weight:700;margin-bottom:0.3rem">20 min</div>
+          <div class="card" style="padding:0.5rem 0.6rem;font-size:0.8rem;line-height:1.5;text-align:left;border-color:rgba(90,200,250,0.2)">
+            <div style="margin-bottom:0.2rem">• 공용 단서 9장 공개</div>
+            <div style="margin-bottom:0.2rem">• 비밀 카드 배분</div>
+            <div style="margin-bottom:0.2rem">• <strong style="color:var(--red)">함정 단서</strong> 매력적 등장</div>
+            <div>• <span style="color:var(--primary)">Reading + Listening</span></div>
+          </div>
+        </div>
+
+        <!-- Step 3: R2 추론 -->
+        <div style="position:relative;z-index:1;text-align:center">
+          <div style="width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.6rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(51,102,255,0.3)">
+            <span style="font-size:1.5rem">🧩</span>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--primary);font-weight:700;letter-spacing:0.06em;margin-bottom:0.15rem">ROUND 2</div>
+          <h4 style="font-size:1.05rem;font-weight:800;margin-bottom:0.15rem">추론</h4>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--primary);font-weight:700;margin-bottom:0.3rem">25 min</div>
+          <div class="card card-blue" style="padding:0.5rem 0.6rem;font-size:0.8rem;line-height:1.5;text-align:left">
+            <div style="margin-bottom:0.2rem">• 새 단서 카드 등장</div>
+            <div style="margin-bottom:0.2rem">• <strong>역할 교차</strong> 대화</div>
+            <div style="margin-bottom:0.2rem">• "이상한데?" 의심 시작</div>
+            <div>• <span style="color:var(--primary)">Speaking + Reasoning</span></div>
+          </div>
+        </div>
+
+        <!-- Step 4: R3 반전 -->
+        <div style="position:relative;z-index:1;text-align:center">
+          <div style="width:56px;height:56px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.6rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(255,59,48,0.3)">
+            <span style="font-size:1.5rem">💥</span>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--red);font-weight:700;letter-spacing:0.06em;margin-bottom:0.15rem">ROUND 3</div>
+          <h4 style="font-size:1.05rem;font-weight:800;margin-bottom:0.15rem">반전</h4>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--red);font-weight:700;margin-bottom:0.3rem">25 min</div>
+          <div class="card card-red" style="padding:0.5rem 0.6rem;font-size:0.8rem;line-height:1.5;text-align:left">
+            <div style="margin-bottom:0.2rem">• <strong style="color:var(--red)">함정 완전 무너짐</strong></div>
+            <div style="margin-bottom:0.2rem">• 영어 단서만이 열쇠</div>
+            <div style="margin-bottom:0.2rem">• 힌트 봉투 자율 개봉</div>
+            <div>• <span style="color:var(--red)">Persuasion + Writing</span></div>
+          </div>
+        </div>
+
+        <!-- Step 5: 투표 & 엔딩 -->
+        <div style="position:relative;z-index:1;text-align:center">
+          <div style="width:56px;height:56px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.6rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(255,159,10,0.3)">
+            <span style="font-size:1.5rem">🗳️</span>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--gold);font-weight:700;letter-spacing:0.06em;margin-bottom:0.15rem">VOTE</div>
+          <h4 style="font-size:1.05rem;font-weight:800;margin-bottom:0.15rem">투표 & 엔딩</h4>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--gold);font-weight:700;margin-bottom:0.3rem">15 min</div>
+          <div class="card" style="padding:0.5rem 0.6rem;font-size:0.8rem;line-height:1.5;text-align:left;border-color:rgba(255,159,10,0.2)">
+            <div style="margin-bottom:0.2rem">• 범인 지목 투표</div>
+            <div style="margin-bottom:0.2rem">• <strong style="color:var(--gold)">멀티 엔딩</strong> 분기</div>
+            <div>• 결과 공개 + 해설</div>
+          </div>
+        </div>
+
+        <!-- Step 6: QR 에필로그 -->
+        <div style="position:relative;z-index:1;text-align:center">
+          <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--ice));color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.6rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(51,102,255,0.2)">
+            <span style="font-size:1.5rem">📱</span>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--primary);font-weight:700;letter-spacing:0.06em;margin-bottom:0.15rem">EPILOGUE</div>
+          <h4 style="font-size:1.05rem;font-weight:800;margin-bottom:0.15rem">QR 에필로그</h4>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--primary);font-weight:700;margin-bottom:0.3rem">+α</div>
+          <div class="card card-blue" style="padding:0.5rem 0.6rem;font-size:0.8rem;line-height:1.5;text-align:left">
+            <div style="margin-bottom:0.2rem">• QR 스캔 → 후속 서사</div>
+            <div style="margin-bottom:0.2rem">• 세계관 확장 콘텐츠</div>
+            <div>• AI 맞춤 피드백 (향후)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom: Key insight -->
+      <div class="rv d2" style="margin-top:1.2rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div class="card card-red" style="padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.8rem">
+          <div style="font-size:2rem;flex-shrink:0">⚠️</div>
+          <div>
+            <h4 style="color:var(--red);font-size:1rem;margin-bottom:0.1rem">핵심 메커니즘: 함정 → 무너짐 → 반전</h4>
+            <p style="font-size:0.85rem;color:var(--dim);margin:0">R1에서 심은 <em style="color:var(--red)">매력적인 가짜 답</em>이 R3에서 무너지며, <strong>영어 단서를 통해서만</strong> 진실 발견 → "영어를 안 하면 영원히 속는다"</p>
+          </div>
+        </div>
+        <div class="card card-blue" style="padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.8rem">
+          <div style="font-size:2rem;flex-shrink:0">🎯</div>
+          <div>
+            <h4 style="color:var(--primary);font-size:1rem;margin-bottom:0.1rem">학습 목표 달성 경로</h4>
+            <p style="font-size:0.85rem;color:var(--dim);margin:0">R1 Reading/Listening → R2 Speaking/Reasoning → R3 Persuasion/Writing — <strong style="color:var(--primary)">4대 영어 스킬 자연 통합</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 10: 차별화 ═══ -->
+<section class="slide" id="s10">
   <div class="slide-body" style="padding:40px 80px">
     <div class="inner">
       <div class="rv">
@@ -1054,8 +1209,8 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 10: 사업화 추진전략 ═══ -->
-<section class="slide slide-alt" id="s10">
+<!-- ═══ SLIDE 11: 사업화 추진전략 ═══ -->
+<section class="slide slide-alt" id="s11">
   <div class="slide-body" style="padding:28px 80px">
     <div class="inner">
       <div class="rv">
@@ -1118,8 +1273,8 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 11: 생존 노력 ═══ -->
-<section class="slide" id="s11">
+<!-- ═══ SLIDE 12: 생존 노력 ═══ -->
+<section class="slide" id="s12">
   <div class="slide-body" style="padding:50px 80px">
     <div class="inner">
       <div class="rv">
@@ -1153,8 +1308,8 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 12: 일정 + 자금 ═══ -->
-<section class="slide slide-alt" id="s12">
+<!-- ═══ SLIDE 13: 일정 + 자금 ═══ -->
+<section class="slide slide-alt" id="s13">
   <div class="slide-body" style="padding:28px 80px">
     <div class="inner">
       <div class="rv">
@@ -1212,8 +1367,8 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 13: 팀 구성 ═══ -->
-<section class="slide" id="s13">
+<!-- ═══ SLIDE 14: 팀 구성 ═══ -->
+<section class="slide" id="s14">
   <div class="slide-body" style="padding:28px 80px">
     <div class="inner">
       <div class="rv">
@@ -1265,8 +1420,8 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 14: 협력 + 사회적 가치 ═══ -->
-<section class="slide slide-alt" id="s14">
+<!-- ═══ SLIDE 15: 협력 + 사회적 가치 ═══ -->
+<section class="slide slide-alt" id="s15">
   <div class="slide-body" style="padding:32px 80px">
     <div class="inner">
       <div class="rv">
@@ -1312,8 +1467,8 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 15: 참조자료 ═══ -->
-<section class="slide" id="s15">
+<!-- ═══ SLIDE 16: 참조자료 ═══ -->
+<section class="slide" id="s16">
   <div class="slide-body" style="padding:28px 80px">
     <div class="inner">
       <div class="rv">
@@ -1360,8 +1515,8 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 16: APPENDIX 02 — 구매의향서 · 상표출원 ═══ -->
-<section class="slide slide-alt" id="s16">
+<!-- ═══ SLIDE 17: APPENDIX 02 — 구매의향서 · 상표출원 ═══ -->
+<section class="slide slide-alt" id="s17">
   <div class="slide-body" style="padding:28px 80px">
     <div class="inner">
       <div class="rv">
@@ -1416,66 +1571,73 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 17: APPENDIX 03 — 설문 상세 ═══ -->
-<section class="slide" id="s17">
-  <div class="slide-body" style="padding:28px 80px">
+<!-- ═══ SLIDE 18: APPENDIX 03 — 설문 상세 (이미지) ═══ -->
+<section class="slide" id="s18">
+  <div class="slide-body" style="padding:24px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">APPENDIX 03</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">시장 검증 설문 상세</h2>
-        <p class="sec-sub" style="margin-bottom:1.2rem">N=169 · 온라인 설문 (2026.03)</p>
+        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">시장 검증 설문 — 플레이 기대</h2>
+        <p class="sec-sub" style="margin-bottom:0.8rem">N=169 · 온라인 설문 (2026.03) · 리커트 5점 척도</p>
       </div>
-      <div class="tc rv d1" style="gap:1.5rem">
-        <div>
-          <div class="card" style="padding:0.8rem 1.2rem;margin-bottom:0.8rem">
-            <h3 style="font-size:1.1rem;margin-bottom:0.4rem;color:var(--primary)">플레이 기대 경험</h3>
-            <table style="font-size:0.85rem;width:100%">
-              <thead><tr><th style="padding:0.2rem 0.4rem;text-align:left">문항</th><th style="padding:0.2rem 0.4rem;text-align:right">동의(4+5)</th></tr></thead>
-              <tbody>
-                <tr><td style="padding:0.2rem 0.4rem">추론 과정이 두뇌를 쓰게 함</td><td style="padding:0.2rem 0.4rem;text-align:right;font-weight:700;color:var(--primary)">92.9%</td></tr>
-                <tr><td style="padding:0.2rem 0.4rem">높은 집중이 요구됨</td><td style="padding:0.2rem 0.4rem;text-align:right;font-weight:700;color:var(--primary)">88.7%</td></tr>
-                <tr><td style="padding:0.2rem 0.4rem">재미와 만족을 높임</td><td style="padding:0.2rem 0.4rem;text-align:right;font-weight:700;color:var(--primary)">86.4%</td></tr>
-                <tr><td style="padding:0.2rem 0.4rem">협업/의사소통 활용 가능</td><td style="padding:0.2rem 0.4rem;text-align:right;font-weight:700">84.6%</td></tr>
-                <tr><td style="padding:0.2rem 0.4rem">스토리 → 게임 집중</td><td style="padding:0.2rem 0.4rem;text-align:right;font-weight:700">81.6%</td></tr>
-                <tr><td style="padding:0.2rem 0.4rem">교육 목적 활용 가능</td><td style="padding:0.2rem 0.4rem;text-align:right;font-weight:700">72.2%</td></tr>
-                <tr><td style="padding:0.2rem 0.4rem">역할 몰입 기대</td><td style="padding:0.2rem 0.4rem;text-align:right;font-weight:700">67.5%</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="card card-blue" style="padding:0.8rem 1.2rem">
-            <h3 style="color:var(--primary);font-size:1.1rem;margin-bottom:0.3rem">매력 요소 (응답자 인식)</h3>
-            <p style="font-size:0.9rem;margin:0">반전의 재미 33.1% · 대화/협력 29% · 이야기 몰입 17.8% · 추리 과정 14.2%</p>
-          </div>
+      <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div class="card" style="padding:0.5rem;text-align:center">
+          <img src="evidence/survey-07-web.png" alt="추론/집중 기대 설문" style="width:100%;border-radius:8px">
+          <p style="font-size:0.8rem;margin-top:0.3rem;color:var(--dim)">추론 과정 <strong style="color:var(--primary)">92.9%</strong> · 높은 집중 <strong style="color:var(--primary)">88.7%</strong> (4+5점 동의)</p>
         </div>
-        <div>
-          <div class="card" style="padding:0.8rem 1.2rem;margin-bottom:0.8rem">
-            <h3 style="font-size:1.1rem;margin-bottom:0.3rem;color:var(--primary)">구매 의향 · 이용 선호</h3>
-            <p style="font-size:0.9rem;margin-bottom:0.15rem">• 구매 고려 의향 <strong style="color:var(--primary)">87.6%</strong> (3+4+5점)</p>
-            <p style="font-size:0.9rem;margin-bottom:0.15rem">• 29,900원 구매 고려 <strong>69.3%</strong></p>
-            <p style="font-size:0.9rem;margin-bottom:0.15rem">• 적정 인원 4~5명 <strong>78.1%</strong> · 선호 시간 60~90분 <strong>63.9%</strong></p>
-            <p style="font-size:0.9rem;margin-bottom:0.15rem">• 사용 상황: 친구 모임 58%, 동아리 29.6%</p>
-            <p style="font-size:0.9rem;margin:0">• 교육 프로그램 우선 선택 <strong>66%</strong> (97명 응답)</p>
-          </div>
-          <div class="card" style="padding:0.8rem 1.2rem;margin-bottom:0.8rem">
-            <h3 style="font-size:1.1rem;margin-bottom:0.3rem;color:var(--red)">디지털 피로 · 오프라인 수요</h3>
-            <p style="font-size:0.9rem;margin-bottom:0.15rem">• 디지털 후 집중력 저하 <strong style="color:var(--red)">78.7%</strong></p>
-            <p style="font-size:0.9rem;margin-bottom:0.15rem">• 참여형 오프라인 필요성 <strong>68.6%</strong></p>
-            <p style="font-size:0.9rem;margin:0">• 보드게임 카페 경험 <strong>71.6%</strong> · 추리게임 경험 <strong>63.3%</strong></p>
-          </div>
-          <div class="card" style="padding:0.8rem 1.2rem">
-            <h3 style="font-size:1.1rem;margin-bottom:0.3rem">응답자 프로필</h3>
-            <p style="font-size:0.9rem;margin-bottom:0.15rem">• 총 응답자 <strong>169명</strong></p>
-            <p style="font-size:0.9rem;margin-bottom:0.15rem">• 보드게임 카페 방문 경험 <strong>71.6%</strong></p>
-            <p style="font-size:0.9rem;margin:0">• 추리·방탈출 게임 경험 <strong>63.3%</strong></p>
-          </div>
+        <div class="card" style="padding:0.5rem;text-align:center">
+          <img src="evidence/survey-05-web.png" alt="디지털 피로 설문" style="width:100%;border-radius:8px">
+          <p style="font-size:0.8rem;margin-top:0.3rem;color:var(--dim)">디지털 피로 <strong style="color:var(--red)">78.7%</strong> · 오프라인 필요성 <strong>68.6%</strong></p>
         </div>
+      </div>
+      <div class="rv d2" style="display:flex;gap:0.8rem;margin-top:0.8rem">
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">92.9%</div><div style="font-size:0.75rem;color:var(--dim)">두뇌 활용</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">88.7%</div><div style="font-size:0.75rem;color:var(--dim)">집중 요구</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">86.4%</div><div style="font-size:0.75rem;color:var(--dim)">재미/만족</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">84.6%</div><div style="font-size:0.75rem;color:var(--dim)">협업 가능</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">81.6%</div><div style="font-size:0.75rem;color:var(--dim)">스토리 집중</div></div>
+        <div class="card" style="flex:1;text-align:center;padding:0.5rem;border-color:var(--red)"><div style="font-size:1.4rem;font-weight:900;color:var(--red)">78.7%</div><div style="font-size:0.75rem;color:var(--dim)">디지털 피로</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ SLIDE 18: CLOSING ═══ -->
-<section class="slide slide-cover" id="s18" style="justify-content:center;align-items:center">
+<!-- ═══ SLIDE 19: APPENDIX 04 — 설문 상세 (구매의향) ═══ -->
+<section class="slide slide-alt" id="s19">
+  <div class="slide-body" style="padding:24px 80px">
+    <div class="inner">
+      <div class="rv">
+        <div class="sec-label">APPENDIX 04</div>
+        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">시장 검증 설문 — 구매 의향 · 이용 선호</h2>
+        <p class="sec-sub" style="margin-bottom:0.8rem">N=169 · 구매 고려 87.6% · 사용 상황별 선호도</p>
+      </div>
+      <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem">
+        <div class="card" style="padding:0.5rem;text-align:center">
+          <img src="evidence/survey-10-web.png" alt="사용 상황 및 인원" style="width:100%;border-radius:8px">
+          <p style="font-size:0.8rem;margin-top:0.3rem;color:var(--dim)">사용 상황: 친구 모임 <strong>58%</strong> · 4~5명 <strong>78.1%</strong></p>
+        </div>
+        <div class="card" style="padding:0.5rem;text-align:center">
+          <img src="evidence/survey-11-web.png" alt="구매 판단 요소 및 의향" style="width:100%;border-radius:8px">
+          <p style="font-size:0.8rem;margin-top:0.3rem;color:var(--dim)">29,900원 구매 고려 <strong>69.3%</strong> · 60~90분 <strong>63.9%</strong></p>
+        </div>
+        <div class="card" style="padding:0.5rem;text-align:center">
+          <img src="evidence/survey-15-web.png" alt="매력 요소" style="width:100%;border-radius:8px">
+          <p style="font-size:0.8rem;margin-top:0.3rem;color:var(--dim)">반전의 재미 <strong>33.1%</strong> · 대화/협력 <strong>29%</strong></p>
+        </div>
+      </div>
+      <div class="rv d2" style="display:flex;gap:0.8rem;margin-top:0.8rem">
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">87.6%</div><div style="font-size:0.75rem;color:var(--dim)">구매 고려 의향</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">69.3%</div><div style="font-size:0.75rem;color:var(--dim)">29,900원 수용</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">78.1%</div><div style="font-size:0.75rem;color:var(--dim)">4~5명 선호</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">63.9%</div><div style="font-size:0.75rem;color:var(--dim)">60~90분 선호</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">66%</div><div style="font-size:0.75rem;color:var(--dim)">교육 우선 선택</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 20: CLOSING ═══ -->
+<section class="slide slide-cover" id="s20" style="justify-content:center;align-items:center">
   <div class="dot-pattern"></div>
   <div class="inner" style="max-width:960px;text-align:center">
     <p class="rv" style="font-size:1.35rem;color:rgba(255,255,255,0.45);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:2.5rem">CASE CLOSED</p>
@@ -1496,6 +1658,8 @@ async function savePDF(){
     </div>
   </div>
 </section>
+
+<button class="pdf-btn" onclick="window.print()">PDF 다운로드</button>
 
 <script>
 (function(){
