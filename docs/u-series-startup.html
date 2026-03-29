@@ -234,45 +234,43 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
 <script>
 async function savePDF(){
   const btn=document.querySelector('.pdf-btn');
-  btn.textContent='생성 중...';btn.disabled=true;
-  const slides=document.querySelectorAll('.slide');
-  const W=1920,H=1080;
-  // show all reveal animations
-  document.querySelectorAll('.rv').forEach(r=>r.classList.add('v'));
-  // hide nav/btn during capture
-  document.querySelector('.nav').style.display='none';
-  btn.style.display='none';
-  // save & override slide styles for capture
-  const orig=[];
-  slides.forEach(s=>{
-    orig.push(s.getAttribute('style')||'');
-    s.style.width=W+'px';
-    s.style.minHeight=H+'px';
-    s.style.height=H+'px';
-    s.style.overflow='hidden';
-  });
-  const {jsPDF}=window.jspdf;
-  const pdf=new jsPDF({orientation:'landscape',unit:'px',format:[W,H],hotfixes:['px_scaling']});
-  for(let i=0;i<slides.length;i++){
-    // scroll slide into view for html2canvas
-    slides[i].scrollIntoView();
-    await new Promise(r=>setTimeout(r,100));
-    const canvas=await html2canvas(slides[i],{
-      scale:2,useCORS:true,width:W,height:H,
-      windowWidth:W,windowHeight:H,
-      x:0,y:slides[i].offsetTop,
-      scrollX:0,scrollY:slides[i].offsetTop
+  btn.textContent='준비 중...';btn.disabled=true;
+  try{
+    const slides=document.querySelectorAll('.slide');
+    const W=1920,H=1080;
+    // show all reveal animations
+    document.querySelectorAll('.rv').forEach(r=>r.classList.add('v'));
+    // hide nav during capture (keep btn for progress)
+    document.querySelector('.nav').style.display='none';
+    // force each slide to exact page dimensions
+    const orig=[];
+    slides.forEach(s=>{
+      orig.push(s.getAttribute('style')||'');
+      const st=s.style;
+      st.width=W+'px';st.minHeight=H+'px';st.height=H+'px';st.maxHeight=H+'px';
+      st.overflow='hidden';st.position='relative';
     });
-    const img=canvas.toDataURL('image/jpeg',0.92);
-    if(i>0) pdf.addPage([W,H],'landscape');
-    pdf.addImage(img,'JPEG',0,0,W,H);
-    btn.textContent='생성 중... ('+(i+1)+'/'+slides.length+')';
+    await new Promise(r=>setTimeout(r,200));
+    const {jsPDF}=window.jspdf;
+    const pdf=new jsPDF({orientation:'landscape',unit:'px',format:[W,H],hotfixes:['px_scaling']});
+    for(let i=0;i<slides.length;i++){
+      btn.textContent='생성 중 ('+(i+1)+'/'+slides.length+')';
+      const canvas=await html2canvas(slides[i],{
+        scale:2,useCORS:true,logging:false,
+        width:W,height:H,windowWidth:W
+      });
+      const img=canvas.toDataURL('image/jpeg',0.92);
+      if(i>0) pdf.addPage([W,H],'landscape');
+      pdf.addImage(img,'JPEG',0,0,W,H);
+    }
+    pdf.save('NASH_창업중심대학_발표.pdf');
+    // restore
+    slides.forEach((s,i)=>s.setAttribute('style',orig[i]));
+    document.querySelector('.nav').style.display='';
+  }catch(e){
+    console.error('PDF 생성 오류:',e);
+    alert('PDF 생성 중 오류가 발생했습니다.');
   }
-  // restore
-  slides.forEach((s,i)=>s.setAttribute('style',orig[i]));
-  document.querySelector('.nav').style.display='';
-  btn.style.display='';
-  pdf.save('NASH_창업중심대학_발표.pdf');
   btn.textContent='PDF 다운로드';btn.disabled=false;
 }
 </script>
