@@ -17,6 +17,14 @@
   --gold:#FF9F0A;--gold-bg:rgba(255,159,10,0.07);
   --ice:#5AC8FA;
   --radius:16px;
+  /* Shadow/Depth System */
+  --shadow-sm:0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md:0 4px 16px rgba(0,0,0,0.12);
+  --shadow-lg:0 8px 32px rgba(0,0,0,0.15);
+  --shadow-xl:0 12px 48px rgba(0,0,0,0.18);
+  --shadow-card:0 6px 24px rgba(0,0,0,0.10),0 2px 8px rgba(0,0,0,0.06);
+  --shadow-blue:0 8px 24px rgba(51,102,255,0.20);
+  --shadow-red:0 8px 24px rgba(255,59,48,0.20);
 }
 html{scroll-snap-type:y mandatory;scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable','Noto Sans KR',sans-serif;font-weight:500;line-height:1.7;-webkit-font-smoothing:antialiased;font-size:22px;word-break:keep-all}
@@ -40,11 +48,11 @@ body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable','N
 
 /* ── SECTION LABEL (replaces black header bars) ── */
 .sec-label{font-family:'IBM Plex Mono',monospace;font-size:1.1rem;font-weight:600;color:var(--primary);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.6rem}
-.sec-title{font-family:'Black Han Sans','Pretendard Variable',sans-serif;font-weight:400;font-size:2.8rem;color:var(--text);line-height:1.4;margin-bottom:0.5rem;letter-spacing:-0.01em}
-.sec-sub{font-size:1.3rem;color:var(--dim);font-weight:500;margin-bottom:2.5rem}
+.sec-title{font-family:'Black Han Sans','Pretendard Variable',sans-serif;font-weight:400;font-size:3.2rem;color:var(--text);line-height:1.4;margin-bottom:0.5rem;letter-spacing:-0.01em}
+.sec-sub{font-size:1.5rem;color:var(--dim);font-weight:500;margin-bottom:2.5rem}
 
 /* ── CARDS (RISE style: white rounded on any bg) ── */
-.card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem 1.8rem;position:relative}
+.card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem 1.8rem;position:relative;box-shadow:var(--shadow-sm)}
 .card-blue{background:var(--primary-light);border-color:rgba(51,102,255,0.15)}
 .card-blue h3{color:var(--primary)}
 .card-dark{background:var(--bg-dark);color:#fff;border:none;border-radius:var(--radius)}
@@ -144,7 +152,8 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
 .rev-block .pct{float:right;font-weight:900;font-size:1.8rem;color:var(--primary);line-height:1}
 
 /* ── TEAM CARDS ── */
-.team-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;display:flex;gap:1.2rem;align-items:center}
+.team-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;display:flex;gap:1.2rem;align-items:center;box-shadow:var(--shadow-sm);transition:box-shadow 0.3s,transform 0.3s}
+.team-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
 .team-avatar{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;background:var(--primary-light);border:2px solid rgba(51,102,255,0.15)}
 .team-info h3{font-size:1.3rem;color:var(--text);margin-bottom:0.15rem;font-weight:700}
 .team-info p{font-size:1.15rem;color:var(--dim);margin:0;font-weight:500}
@@ -210,8 +219,8 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
   .slide-dark,.slide-cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .inner{max-width:1760px}
   .sec-label{font-size:1rem;margin-bottom:0.4rem}
-  .sec-title{font-size:2.4rem;margin-bottom:0.3rem}
-  .sec-sub{font-size:1.15rem;margin-bottom:1.2rem}
+  .sec-title{font-size:2.8rem;margin-bottom:0.3rem}
+  .sec-sub{font-size:1.25rem;margin-bottom:1.2rem}
   .card p{font-size:1rem}
   .card h3{font-size:1.2rem}
   h3{font-size:1.3rem}
@@ -224,6 +233,13 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
   .tc{gap:2rem}
   table{font-size:0.95rem}
   .keyword{font-size:0.85rem}
+  .card-elevated{box-shadow:var(--shadow-sm)!important}
+  .char-card{box-shadow:0 4px 12px rgba(0,0,0,0.3)!important}
+  .toc-card{box-shadow:var(--shadow-sm)!important}
+  .roadmap-h{padding:2rem 0 0.5rem}
+  .rm-h-step .dot{width:56px;height:56px}
+  .rm-h-step{padding-top:3.5rem}
+  .poster-paper{box-shadow:8px 8px 24px rgba(0,0,0,0.4)!important}
 }
 
 /* ── ALT BG SLIDE ── */
@@ -243,6 +259,44 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
 }
 
 /* (duplicate print block removed — see primary @media print above) */
+
+/* ── ELEVATED / DEPTH SYSTEM ── */
+.card-elevated{box-shadow:var(--shadow-card);transition:box-shadow 0.3s,transform 0.3s}
+.card-elevated:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.card-physical{background:linear-gradient(145deg,rgba(255,255,255,0.95),rgba(240,240,245,0.95));border:none;box-shadow:0 8px 32px rgba(0,0,0,0.12),0 2px 8px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.8);position:relative}
+.card-physical::after{content:'';position:absolute;bottom:-6px;left:8%;right:8%;height:12px;background:rgba(0,0,0,0.06);filter:blur(8px);border-radius:50%;z-index:-1}
+.char-card{background:linear-gradient(180deg,rgba(22,22,42,0.95) 0%,rgba(12,12,24,0.98) 100%);border:none;border-top:3px solid;border-radius:var(--radius);padding:1.6rem 1.2rem;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,0.5),0 4px 12px rgba(0,0,0,0.3);position:relative;overflow:hidden}
+.char-card::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,0.4));pointer-events:none;z-index:0}
+.char-card>*{position:relative;z-index:1}
+.hero-metric{text-align:center;padding:1.5rem 2rem}
+.hero-metric .val{font-family:'Black Han Sans',sans-serif;font-weight:400;font-size:5rem;line-height:1;color:var(--primary)}
+.hero-metric .lbl{font-size:1.2rem;color:var(--dim);margin-top:0.6rem;font-weight:600}
+.hero-metric .src{font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--faint);margin-top:0.3rem}
+
+/* ── HORIZONTAL ROADMAP ── */
+.roadmap-h{display:flex;align-items:flex-start;position:relative;padding:3rem 0 1rem}
+.roadmap-h::before{content:'';position:absolute;top:36px;left:5%;right:5%;height:4px;background:linear-gradient(90deg,var(--primary),var(--primary-dark),var(--dim) 60%,var(--dim));border-radius:2px}
+.rm-h-step{flex:1;text-align:center;position:relative;padding-top:4.5rem}
+.rm-h-step .dot{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;position:absolute;top:0;left:50%;transform:translateX(-50%);font-size:1.5rem;font-weight:700;box-shadow:0 0 0 5px var(--bg-alt),var(--shadow-md);z-index:2}
+.rm-h-step.current .dot{box-shadow:0 0 0 5px var(--bg-alt),0 0 0 10px rgba(51,102,255,0.25),var(--shadow-blue);animation:pulse-glow 2s infinite}
+.rm-h-step.current::after{content:'YOU ARE HERE';position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-family:'IBM Plex Mono',monospace;font-size:0.7rem;font-weight:700;color:var(--primary);letter-spacing:0.1em;white-space:nowrap;background:rgba(51,102,255,0.08);padding:2px 10px;border-radius:4px}
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 0 5px var(--bg-alt),0 0 0 10px rgba(51,102,255,0.25),var(--shadow-blue)}50%{box-shadow:0 0 0 5px var(--bg-alt),0 0 0 14px rgba(51,102,255,0.1),0 0 28px rgba(51,102,255,0.08)}}
+
+/* ── SOURCE CITATION ── */
+.source-cite{font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--faint);font-weight:400;letter-spacing:0.02em}
+
+/* ── PSST TOC CARDS ── */
+.toc-card{border-radius:var(--radius);padding:1.8rem;position:relative;overflow:hidden;box-shadow:var(--shadow-card);transition:transform 0.3s,box-shadow 0.3s;cursor:default}
+.toc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.toc-card .toc-num{font-family:'Bebas Neue',sans-serif;font-size:4rem;line-height:1;opacity:0.15;position:absolute;top:12px;right:16px}
+.toc-card h3{font-size:1.6rem;margin-bottom:0.6rem}
+.toc-card ul{list-style:none;padding:0;margin:0;font-size:1.05rem;line-height:1.9}
+.toc-card ul li::before{content:'·';margin-right:0.5rem;font-weight:700}
+
+/* ── COVER POSTER (Uncle Sam parody) ── */
+.poster-frame{position:relative;max-width:420px}
+.poster-paper{background:linear-gradient(175deg,#f5e6c8 0%,#e8d5a8 30%,#dcc896 60%,#d4be88 100%);border-radius:8px;padding:2rem 1.8rem;position:relative;box-shadow:12px 12px 40px rgba(0,0,0,0.6),inset 0 0 60px rgba(139,109,56,0.15);transform:rotate(-1deg)}
+.poster-paper::before{content:'';position:absolute;inset:0;border-radius:8px;box-shadow:inset 0 0 30px rgba(120,90,40,0.2);pointer-events:none}
 </style>
 </head>
 <body>
@@ -375,8 +429,187 @@ async function savePDF(){
 }
 </script>
 
-<!-- ═══ SLIDE 1: IMPACT OPENING — WESTERN WANTED POSTER ═══ -->
-<section class="slide slide-dark" id="s1" style="justify-content:center;align-items:center;overflow:hidden;position:relative">
+<!-- ═══ SLIDE 1: 표지 (COVER) — Uncle Sam 패러디 ═══ -->
+<section class="slide slide-dark" id="s1" style="justify-content:center;align-items:center;overflow:hidden">
+  <!-- 배경 텍스처 -->
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0a0a18 0%,#111128 40%,#0d0d1a 100%);z-index:0"></div>
+  <div style="position:absolute;inset:0;opacity:0.035;background-image:url('data:image/svg+xml,%3Csvg width=%2240%22 height=%2240%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%221%22 fill=%22%23fff%22/%3E%3C/svg%3E');z-index:0"></div>
+
+  <div class="slide-body" style="padding:40px 80px;z-index:1;position:relative">
+    <div class="inner" style="display:grid;grid-template-columns:400px 1fr;gap:4rem;align-items:center">
+
+      <!-- 왼쪽: Uncle Sam 패러디 포스터 -->
+      <div class="rv poster-frame">
+        <div class="poster-paper">
+          <!-- 핀 장식 -->
+          <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:24px;height:24px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#aaa,#666);box-shadow:0 3px 10px rgba(0,0,0,0.5)"></div>
+
+          <!-- 별 테두리 상단 -->
+          <div style="text-align:center;margin-bottom:0.6rem">
+            <span style="font-size:0.75rem;color:#8a6b35;letter-spacing:0.4em">★ ★ ★ ★ ★ ★ ★</span>
+          </div>
+
+          <!-- 메인 텍스트 -->
+          <div style="text-align:center;border-bottom:3px double #3a2a10;padding-bottom:0.8rem;margin-bottom:1rem">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:#3a2a10;letter-spacing:0.2em;line-height:1;text-shadow:1px 1px 0 rgba(0,0,0,0.1)">YOUR ENGLISH</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:3.8rem;color:#8b1a1a;letter-spacing:0.15em;line-height:1.1;text-shadow:1px 1px 0 rgba(0,0,0,0.15)">IS NEEDED</div>
+          </div>
+
+          <!-- 탐정 캐릭터 (SVG) -->
+          <div style="text-align:center;margin-bottom:0.8rem">
+            <svg viewBox="0 0 200 200" width="180" height="180" style="display:block;margin:0 auto">
+              <!-- 배경 원 -->
+              <circle cx="100" cy="100" r="90" fill="#c4a96a" opacity="0.3"/>
+              <!-- 몸통 (코트) -->
+              <path d="M60,130 C50,140 40,165 35,200 L165,200 C160,165 150,140 140,130 Z" fill="#3a2a10" opacity="0.8"/>
+              <!-- 코트 라펠 -->
+              <path d="M85,130 L100,155 L115,130" fill="none" stroke="#6b5230" stroke-width="2"/>
+              <!-- 팔 (포인팅) -->
+              <path d="M140,140 L175,110 L182,112 L180,115 L148,142" fill="#c4a06a" stroke="#8a6b35" stroke-width="1.5"/>
+              <!-- 포인팅 손가락 -->
+              <path d="M175,110 L195,100" stroke="#c4a06a" stroke-width="6" stroke-linecap="round"/>
+              <path d="M182,112 L188,118" stroke="#c4a06a" stroke-width="4" stroke-linecap="round"/>
+              <!-- 머리 -->
+              <ellipse cx="100" cy="85" rx="28" ry="32" fill="#c4a06a"/>
+              <!-- 모자 (탐정 모자) -->
+              <path d="M65,72 Q70,48 100,42 Q130,48 135,72 Q120,65 100,63 Q80,65 65,72 Z" fill="#3a2a10"/>
+              <ellipse cx="100" cy="72" rx="40" ry="8" fill="#4a3a20"/>
+              <!-- 돋보기 -->
+              <circle cx="55" cy="140" r="18" fill="none" stroke="#8a6b35" stroke-width="3"/>
+              <circle cx="55" cy="140" r="14" fill="rgba(51,102,255,0.15)"/>
+              <line x1="68" y1="153" x2="80" y2="168" stroke="#8a6b35" stroke-width="4" stroke-linecap="round"/>
+              <!-- 눈 -->
+              <circle cx="90" cy="82" r="4" fill="#3a2a10"/>
+              <circle cx="110" cy="82" r="4" fill="#3a2a10"/>
+              <!-- 미소 -->
+              <path d="M92,95 Q100,102 108,95" fill="none" stroke="#3a2a10" stroke-width="2"/>
+            </svg>
+          </div>
+
+          <!-- 하단 텍스트 -->
+          <div style="text-align:center;border-top:2px solid #8a6b35;padding-top:0.6rem">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:#8a6b35;letter-spacing:0.15em;line-height:1.8">당신의 추리가 필요합니다<br>ENLIST IN THE STORY INVESTIGATION</div>
+          </div>
+
+          <!-- 별 테두리 하단 -->
+          <div style="text-align:center;margin-top:0.6rem">
+            <span style="font-size:0.75rem;color:#8a6b35;letter-spacing:0.4em">★ ★ ★ ★ ★ ★ ★</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 오른쪽: 팀 정보 -->
+      <div>
+        <div class="rv d1" style="margin-bottom:1.5rem">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:0.95rem;color:rgba(255,255,255,0.35);letter-spacing:0.15em;margin-bottom:0.8rem">예비창업패키지 발표</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:1rem;color:rgba(255,255,255,0.25);letter-spacing:0.08em">2026. 04. 02</div>
+        </div>
+
+        <div class="rv d2" style="margin-bottom:1.5rem">
+          <div style="font-weight:900;font-size:clamp(1.8rem,3.5vw,2.8rem);color:#fff;line-height:1.5;margin-bottom:0.8rem">
+            AI 기반 상호작용형<br>
+            <span style="color:var(--primary)">스토리 추리·학습</span><br>
+            보드게임 콘텐츠
+          </div>
+        </div>
+
+        <div class="rv d3" style="margin-bottom:2rem">
+          <div style="font-size:1.6rem;color:rgba(255,255,255,0.65);font-weight:600;line-height:1.8;font-style:italic">
+            "이야기가 시작되면,<br>
+            <span style="color:var(--gold);font-weight:700">학습은 저절로 따라온다</span>"
+          </div>
+        </div>
+
+        <div class="rv d4" style="display:flex;gap:2rem;align-items:center;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.08)">
+          <div>
+            <div style="font-family:'Black Han Sans',sans-serif;font-size:2rem;color:#fff;letter-spacing:0.05em">Project DullG</div>
+            <div style="font-size:1.1rem;color:rgba(255,255,255,0.4);margin-top:0.3rem">대표자 이성로</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 2: 목차 (TABLE OF CONTENTS) — PSST ═══ -->
+<section class="slide" id="s2" style="justify-content:center">
+  <div class="slide-body" style="padding:50px 80px">
+    <div class="inner">
+      <div class="rv" style="text-align:center;margin-bottom:3rem">
+        <div class="sec-label">TABLE OF CONTENTS</div>
+        <h2 class="sec-title" style="margin-bottom:0.5rem">발표 구성</h2>
+        <p class="sec-sub" style="margin-bottom:0">예비창업패키지 PSST 구조</p>
+      </div>
+      <div class="rv d1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem">
+        <!-- P: Problem -->
+        <div class="toc-card" style="background:linear-gradient(135deg,#FFF5F5,#FFF0F0);border:1px solid rgba(255,59,48,0.12)">
+          <div class="toc-num" style="color:var(--red)">P</div>
+          <div style="display:inline-block;padding:4px 12px;border-radius:6px;background:var(--red-bg);color:var(--red);font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:700;letter-spacing:0.08em;margin-bottom:0.8rem">PROBLEM</div>
+          <h3 style="color:var(--red)">문제 인식</h3>
+          <ul style="color:var(--dim)">
+            <li>임팩트 오프닝</li>
+            <li>캐릭터 소개</li>
+            <li>영어교육 현황</li>
+            <li>설문 검증</li>
+          </ul>
+        </div>
+        <!-- S: Solution -->
+        <div class="toc-card" style="background:linear-gradient(135deg,#F5F8FF,#EEF2FF);border:1px solid rgba(51,102,255,0.12)">
+          <div class="toc-num" style="color:var(--primary)">S</div>
+          <div style="display:inline-block;padding:4px 12px;border-radius:6px;background:var(--primary-light);color:var(--primary);font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:700;letter-spacing:0.08em;margin-bottom:0.8rem">SOLUTION</div>
+          <h3 style="color:var(--primary)">실현 가능성</h3>
+          <ul style="color:var(--dim)">
+            <li>몰입 선순환 구조</li>
+            <li>제품 구성</li>
+            <li>게임 진행과정</li>
+            <li>학습 설계</li>
+          </ul>
+        </div>
+        <!-- S: Scale-up -->
+        <div class="toc-card" style="background:linear-gradient(135deg,#FFFBF0,#FFF8E8);border:1px solid rgba(255,159,10,0.12)">
+          <div class="toc-num" style="color:var(--gold)">S</div>
+          <div style="display:inline-block;padding:4px 12px;border-radius:6px;background:var(--gold-bg);color:var(--gold);font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:700;letter-spacing:0.08em;margin-bottom:0.8rem">SCALE-UP</div>
+          <h3 style="color:var(--gold)">성장 전략</h3>
+          <ul style="color:var(--dim)">
+            <li>실증 로드맵</li>
+            <li>경쟁 분석</li>
+            <li>트랙션 성과</li>
+            <li>시장 분석 · 사업화</li>
+          </ul>
+        </div>
+        <!-- T: Team -->
+        <div class="toc-card" style="background:linear-gradient(135deg,#F5FCFF,#EEFAFF);border:1px solid rgba(90,200,250,0.15)">
+          <div class="toc-num" style="color:var(--ice)">T</div>
+          <div style="display:inline-block;padding:4px 12px;border-radius:6px;background:rgba(90,200,250,0.07);color:var(--ice);font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:700;letter-spacing:0.08em;margin-bottom:0.8rem">TEAM</div>
+          <h3 style="color:var(--ice)">팀 구성</h3>
+          <ul style="color:var(--dim)">
+            <li>일정 · 자금</li>
+            <li>위기 대응</li>
+            <li>팀 역량</li>
+            <li>협력기관 · 사회적 가치</li>
+          </ul>
+        </div>
+      </div>
+      <!-- 하단 진행 흐름 표시 -->
+      <div class="rv d2" style="text-align:center;margin-top:2.5rem">
+        <div style="display:inline-flex;align-items:center;gap:1rem;padding:0.8rem 2rem;background:var(--bg-alt);border-radius:12px">
+          <span style="font-weight:800;color:var(--red)">P</span>
+          <span style="color:var(--faint);font-size:1.2rem">→</span>
+          <span style="font-weight:800;color:var(--primary)">S</span>
+          <span style="color:var(--faint);font-size:1.2rem">→</span>
+          <span style="font-weight:800;color:var(--gold)">S</span>
+          <span style="color:var(--faint);font-size:1.2rem">→</span>
+          <span style="font-weight:800;color:var(--ice)">T</span>
+          <span style="color:var(--faint);font-size:0.95rem;margin-left:0.5rem">+ 부록 4개</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 3: IMPACT OPENING — WESTERN WANTED POSTER ═══ -->
+<section class="slide slide-dark" id="s3" style="justify-content:center;align-items:center;overflow:hidden;position:relative">
   <!-- 나무판 배경 그레인 -->
   <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0d0d1a 0%,#1a1520 40%,#12101c 100%);z-index:0"></div>
   <div style="position:absolute;inset:0;opacity:0.04;background-image:url('data:image/svg+xml,%3Csvg width=%2280%22 height=%2280%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cline x1=%220%22 y1=%220%22 x2=%2280%22 y2=%2280%22 stroke=%22%23fff%22 stroke-width=%220.5%22/%3E%3Cline x1=%2280%22 y1=%220%22 x2=%220%22 y2=%2280%22 stroke=%22%23fff%22 stroke-width=%220.3%22/%3E%3C/svg%3E');z-index:0"></div>
@@ -387,7 +620,7 @@ async function savePDF(){
       <!-- 왼쪽: WANTED 포스터 -->
       <div class="rv" style="position:relative">
         <!-- 포스터 종이 -->
-        <div style="background:linear-gradient(175deg,#f5e6c8 0%,#e8d5a8 30%,#dcc896 60%,#d4be88 100%);border-radius:6px;padding:2.2rem 2rem 2rem;position:relative;box-shadow:8px 8px 30px rgba(0,0,0,0.5),inset 0 0 60px rgba(139,109,56,0.15);transform:rotate(-1.5deg)">
+        <div style="background:linear-gradient(175deg,#f5e6c8 0%,#e8d5a8 30%,#dcc896 60%,#d4be88 100%);border-radius:6px;padding:2.2rem 2rem 2rem;position:relative;box-shadow:12px 12px 40px rgba(0,0,0,0.6),inset 0 0 60px rgba(139,109,56,0.15);transform:rotate(-1.5deg)">
           <!-- 종이 닳은 효과 -->
           <div style="position:absolute;inset:0;border-radius:6px;box-shadow:inset 0 0 30px rgba(120,90,40,0.2);pointer-events:none"></div>
           <!-- 핀/못 장식 -->
@@ -458,8 +691,8 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 2: CHARACTERS ═══ -->
-<section class="slide slide-dark" id="s2" style="justify-content:center;align-items:center">
+<!-- ═══ SLIDE 4: CHARACTERS ═══ -->
+<section class="slide slide-dark" id="s4" style="justify-content:center;align-items:center">
   <div class="slide-body" style="padding-top:36px;padding-bottom:36px">
     <div class="inner">
       <div class="rv" style="text-align:center;margin-bottom:2rem">
@@ -467,11 +700,11 @@ async function savePDF(){
         <h2 style="font-family:'Black Han Sans',sans-serif;font-weight:400;font-size:2.8rem;color:#fff;margin-bottom:0.4rem">4인의 용의자, 4개의 서사</h2>
         <p style="font-size:1.4rem;color:rgba(255,255,255,0.45)">각자가 가진 단서를 <span style="color:var(--primary);font-weight:700">영어로</span> 공유하지 않으면 아무도 범인을 잡을 수 없습니다</p>
       </div>
-      <!-- 1x4 캐릭터 일렬 배치 -->
-      <div class="rv d1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:1.5rem">
+      <!-- 1x4 캐릭터 3D 카드 배치 -->
+      <div class="rv d1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:1.5rem">
         <!-- 캐릭터 1: 선장 모리스 -->
-        <div style="background:rgba(255,59,48,0.06);border:1px solid rgba(255,59,48,0.15);border-radius:var(--radius);padding:1.4rem 1rem;text-align:center">
-          <svg viewBox="0 0 150 150" width="150" height="150" style="margin:0 auto 1rem;display:block">
+        <div class="char-card" style="border-top-color:var(--red)">
+          <svg viewBox="0 0 150 150" width="180" height="180" style="margin:0 auto 1rem;display:block">
             <defs><clipPath id="cc1"><circle cx="75" cy="75" r="73"/></clipPath></defs>
             <circle cx="75" cy="75" r="74" fill="#160505" stroke="rgba(255,59,48,0.3)" stroke-width="2"/>
             <g clip-path="url(#cc1)">
@@ -490,12 +723,11 @@ async function savePDF(){
           </svg>
           <div style="font-weight:900;font-size:1.5rem;color:#fff;margin-bottom:0.2rem">선장 모리스</div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:1.1rem;color:var(--red);letter-spacing:0.06em;margin-bottom:0.5rem;font-weight:600">THE GREEDY CAPTAIN</div>
-          <p style="font-size:1.15rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 0 0.5rem">"돈이라면 뭐든 합니다."<br><span style="color:var(--red);font-weight:600">재정적 단서</span> 보유</p>
-          <div><span class="keyword" style="background:rgba(255,59,48,0.12);color:var(--red)">탐욕</span><span class="keyword" style="background:rgba(255,59,48,0.12);color:var(--red)">거짓말</span></div>
+          <p style="font-size:1.15rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0">"돈이라면 뭐든 합니다."<br><span style="color:var(--red);font-weight:600">재정적 단서</span> 보유</p>
         </div>
         <!-- 캐릭터 2: 등대지기 엘라 -->
-        <div style="background:rgba(51,102,255,0.06);border:1px solid rgba(51,102,255,0.15);border-radius:var(--radius);padding:1.4rem 1rem;text-align:center">
-          <svg viewBox="0 0 150 150" width="150" height="150" style="margin:0 auto 1rem;display:block">
+        <div class="char-card" style="border-top-color:var(--primary)">
+          <svg viewBox="0 0 150 150" width="180" height="180" style="margin:0 auto 1rem;display:block">
             <defs><clipPath id="cc2"><circle cx="75" cy="75" r="73"/></clipPath></defs>
             <circle cx="75" cy="75" r="74" fill="#060d1a" stroke="rgba(51,102,255,0.3)" stroke-width="2"/>
             <g clip-path="url(#cc2)">
@@ -513,12 +745,11 @@ async function savePDF(){
           </svg>
           <div style="font-weight:900;font-size:1.5rem;color:#fff;margin-bottom:0.2rem">등대지기 엘라</div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:1.1rem;color:var(--primary);letter-spacing:0.06em;margin-bottom:0.5rem;font-weight:600">THE SILENT KEEPER</div>
-          <p style="font-size:1.15rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 0 0.5rem">"비밀은 나의 무기."<br><span style="color:var(--primary);font-weight:600">환경적 단서</span> 보유</p>
-          <div><span class="keyword">비밀</span><span class="keyword">관찰</span></div>
+          <p style="font-size:1.15rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0">"비밀은 나의 무기."<br><span style="color:var(--primary);font-weight:600">환경적 단서</span> 보유</p>
         </div>
         <!-- 캐릭터 3: 의사 한세진 -->
-        <div style="background:rgba(90,200,250,0.06);border:1px solid rgba(90,200,250,0.15);border-radius:var(--radius);padding:1.4rem 1rem;text-align:center">
-          <svg viewBox="0 0 150 150" width="150" height="150" style="margin:0 auto 1rem;display:block">
+        <div class="char-card" style="border-top-color:var(--ice)">
+          <svg viewBox="0 0 150 150" width="180" height="180" style="margin:0 auto 1rem;display:block">
             <defs><clipPath id="cc3"><circle cx="75" cy="75" r="73"/></clipPath></defs>
             <circle cx="75" cy="75" r="74" fill="#061218" stroke="rgba(90,200,250,0.3)" stroke-width="2"/>
             <g clip-path="url(#cc3)">
@@ -540,12 +771,11 @@ async function savePDF(){
           </svg>
           <div style="font-weight:900;font-size:1.5rem;color:#fff;margin-bottom:0.2rem">의사 한세진</div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:1.1rem;color:var(--ice);letter-spacing:0.06em;margin-bottom:0.5rem;font-weight:600">THE RELUCTANT DOCTOR</div>
-          <p style="font-size:1.15rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 0 0.5rem">"나는 돕고 싶을 뿐입니다."<br><span style="color:var(--ice);font-weight:600">의료 증거</span> 보유</p>
-          <div><span class="keyword" style="background:rgba(90,200,250,0.1);color:var(--ice)">죄책감</span><span class="keyword" style="background:rgba(90,200,250,0.1);color:var(--ice)">알리바이</span></div>
+          <p style="font-size:1.15rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0">"나는 돕고 싶을 뿐입니다."<br><span style="color:var(--ice);font-weight:600">의료 증거</span> 보유</p>
         </div>
         <!-- 캐릭터 4: 기자 윤서 -->
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:1.4rem 1rem;text-align:center">
-          <svg viewBox="0 0 150 150" width="150" height="150" style="margin:0 auto 1rem;display:block">
+        <div class="char-card" style="border-top-color:rgba(255,255,255,0.4)">
+          <svg viewBox="0 0 150 150" width="180" height="180" style="margin:0 auto 1rem;display:block">
             <defs><clipPath id="cc4"><circle cx="75" cy="75" r="73"/></clipPath></defs>
             <circle cx="75" cy="75" r="74" fill="#0e0e0e" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
             <g clip-path="url(#cc4)">
@@ -565,8 +795,7 @@ async function savePDF(){
           </svg>
           <div style="font-weight:900;font-size:1.5rem;color:#fff;margin-bottom:0.2rem">기자 윤서</div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:1.1rem;color:rgba(255,255,255,0.5);letter-spacing:0.06em;margin-bottom:0.5rem;font-weight:600">THE AMBITIOUS REPORTER</div>
-          <p style="font-size:1.15rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 0 0.5rem">"진실은 나의 목표."<br><span style="font-weight:600">정보 단서</span> 보유</p>
-          <div><span class="keyword" style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.55)">야망</span><span class="keyword" style="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.55)">추적</span></div>
+          <p style="font-size:1.15rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0">"진실은 나의 목표."<br><span style="font-weight:600">정보 단서</span> 보유</p>
         </div>
       </div>
       <div class="rv d2" style="text-align:center">
@@ -578,21 +807,21 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 3: 배경 및 필요성 (PROBLEM) ═══ -->
-<section class="slide slide-alt" id="s3">
+<!-- ═══ SLIDE 5: 배경 및 필요성 (PROBLEM) ═══ -->
+<section class="slide slide-alt" id="s5">
   <div class="slide-body" style="padding:28px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">PROBLEM</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">창업 아이템 배경 및 필요성</h2>
+        <h2 class="sec-title" style="margin-bottom:0.3rem">창업 아이템 배경 및 필요성</h2>
         <p class="sec-sub" style="margin-bottom:1rem">한국 영어교육의 구조적 한계</p>
       </div>
       <div class="tc rv d1" style="gap:2rem">
         <div class="card" style="border:2px solid var(--border);padding:1.2rem 1.5rem">
           <h3 style="color:var(--red);font-size:1.5rem;margin-bottom:0.4rem">공부는 세계 1위, 말은 못 하는 나라</h3>
-          <div class="bar-wrap" style="margin:0.3rem 0"><div class="bar-label" style="font-size:1.05rem"><span>영어 학습 시간 (초중고 12년)</span><span>1,800시간+</span></div><div class="bar"><div class="bar-fill v" style="--w:95%"></div></div></div>
-          <div class="bar-wrap" style="margin:0.3rem 0"><div class="bar-label" style="font-size:1.05rem"><span>영어 사교육비 (연간)</span><span style="color:var(--gold)">9.8조원</span></div><div class="bar"><div class="bar-fill gold v" style="--w:78%"></div></div></div>
-          <div class="bar-wrap" style="margin:0.3rem 0"><div class="bar-label" style="font-size:1.05rem"><span>EF EPI 회화 능력 순위</span><span>49위 / 113국</span></div><div class="bar"><div class="bar-fill red v" style="--w:32%"></div></div></div>
+          <div class="bar-wrap" style="margin:0.3rem 0"><div class="bar-label" style="font-size:1.05rem"><span>영어 학습 시간 (초중고 12년)</span><span>1,800시간+</span></div><div class="bar"><div class="bar-fill v" style="--w:95%"></div></div><div class="source-cite" style="text-align:right;margin-top:2px">출처: 교육부 교육과정</div></div>
+          <div class="bar-wrap" style="margin:0.3rem 0"><div class="bar-label" style="font-size:1.05rem"><span>영어 사교육비 (연간)</span><span style="color:var(--gold)">9.8조원</span></div><div class="bar"><div class="bar-fill gold v" style="--w:78%"></div></div><div class="source-cite" style="text-align:right;margin-top:2px">출처: 통계청 사교육비조사 2024</div></div>
+          <div class="bar-wrap" style="margin:0.3rem 0"><div class="bar-label" style="font-size:1.05rem"><span>EF EPI 회화 능력 순위</span><span>49위 / 113국</span></div><div class="bar"><div class="bar-fill red v" style="--w:32%"></div></div><div class="source-cite" style="text-align:right;margin-top:2px">출처: ef.co.kr/epi (2023)</div></div>
           <div style="margin-top:0.8rem">
             <h3 style="font-size:1.3rem;margin-bottom:0.3rem">구조적 원인 3가지</h3>
             <p style="font-size:1.05rem;margin-bottom:0.15rem"><strong style="color:var(--red)">1. 외재적 동기만 존재</strong> 시험/입시가 끝나면 영어도 끝</p>
@@ -635,13 +864,13 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 4: 솔루션 ═══ -->
-<section class="slide" id="s4">
+<!-- ═══ SLIDE 6: 솔루션 ═══ -->
+<section class="slide" id="s6">
   <div class="slide-body" style="padding:32px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">SOLUTION</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">스토리 추리 보드게임의 몰입 선순환</h2>
+        <h2 class="sec-title" style="margin-bottom:0.3rem">스토리 추리 보드게임의 몰입 선순환</h2>
         <p class="sec-sub" style="margin-bottom:1.2rem">정보 비대칭 구조 기반. 영어로 공유해야만 추리가 가능한 자발적 학습 메커니즘</p>
       </div>
       <!-- 솔루션 플로우 SVG -->
@@ -685,13 +914,13 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 5: 실증 및 개발 계획 ═══ -->
-<section class="slide slide-alt" id="s5">
+<!-- ═══ SLIDE 7: 실증 및 개발 계획 ═══ -->
+<section class="slide slide-alt" id="s7">
   <div class="slide-body" style="padding:28px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">DEVELOPMENT PLAN</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">실증 및 개발 계획</h2>
+        <h2 class="sec-title" style="margin-bottom:0.3rem">실증 및 개발 계획</h2>
         <p class="sec-sub" style="margin-bottom:1rem">교육·확장형 콘텐츠 고도화 → 시제품 제작 → 파일럿 테스트 → AI 기반 확장</p>
       </div>
       <div class="tc rv d1" style="gap:2rem">
@@ -770,27 +999,37 @@ async function savePDF(){
           </div>
         </div>
         <div>
-          <h3 style="margin-bottom:0.6rem;font-size:1.5rem;color:var(--primary)">5단계 실증·개발 로드맵</h3>
-          <div class="roadmap" style="margin:0">
-            <div class="rm-item" style="margin-bottom:0.8rem">
-              <h3 style="color:var(--primary);font-size:1.3rem">1단계. 시나리오/규칙 재정비 (2026. 4~6월)</h3>
-              <p style="font-size:1.05rem">시나리오, 규칙, 단서 구성, 플레이 흐름을 재정비하고 교육·확장형 방향에 맞는 개선안 도출</p>
+          <h3 style="margin-bottom:0.3rem;font-size:1.5rem;color:var(--primary)">5단계 실증·개발 로드맵</h3>
+          <div class="roadmap-h">
+            <div class="rm-h-step current">
+              <div class="dot" style="background:var(--primary);color:#fff">1</div>
+              <h3 style="color:var(--primary);font-size:1.1rem;margin-bottom:0.15rem">시나리오/규칙 재정비</h3>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--primary);font-weight:600;margin-bottom:0.2rem">4~6월</div>
+              <p style="font-size:0.9rem;line-height:1.5">시나리오·규칙·단서 구성 재정비. 교육·확장형 개선안 도출</p>
             </div>
-            <div class="rm-item" style="margin-bottom:0.8rem">
-              <h3 style="color:var(--primary-dark);font-size:1.3rem">2단계. 전문가 자문 (2026. 6~7월)</h3>
-              <p style="font-size:1.05rem">교육 활용 요소와 상호작용 구조를 점검하고 보완사항 반영</p>
+            <div class="rm-h-step">
+              <div class="dot" style="background:var(--primary-dark);color:#fff">2</div>
+              <h3 style="color:var(--primary-dark);font-size:1.1rem;margin-bottom:0.15rem">전문가 자문</h3>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--primary-dark);font-weight:600;margin-bottom:0.2rem">6~7월</div>
+              <p style="font-size:0.9rem;line-height:1.5">교육 활용 요소와 상호작용 구조 점검</p>
             </div>
-            <div class="rm-item" style="margin-bottom:0.8rem">
-              <h3 style="color:var(--primary);font-size:1.3rem">3단계. 시제품 제작 (2026. 7~8월)</h3>
-              <p style="font-size:1.05rem">구성물, 패키지, 규칙서, 웹페이지 개선 및 학습 연계 기능을 반영한 실증용 시제품 제작</p>
+            <div class="rm-h-step">
+              <div class="dot" style="background:var(--primary);color:#fff">3</div>
+              <h3 style="color:var(--primary);font-size:1.1rem;margin-bottom:0.15rem">시제품 제작</h3>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--primary);font-weight:600;margin-bottom:0.2rem">7~8월</div>
+              <p style="font-size:0.9rem;line-height:1.5">구성물·패키지·규칙서·웹 학습 연계 반영</p>
             </div>
-            <div class="rm-item" style="margin-bottom:0.8rem">
-              <h3 style="color:var(--primary-dark);font-size:1.3rem">4단계. 파일럿 테스트 (2026. 8~10월)</h3>
-              <p style="font-size:1.05rem">사전·사후 변화 및 집단 간 차이를 t-test 통계분석으로 검증. 몰입도, 이해도, 추론 참여도, 학습 성과 측정</p>
+            <div class="rm-h-step">
+              <div class="dot" style="background:var(--primary-dark);color:#fff">4</div>
+              <h3 style="color:var(--primary-dark);font-size:1.1rem;margin-bottom:0.15rem">파일럿 테스트</h3>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--primary-dark);font-weight:600;margin-bottom:0.2rem">8~10월</div>
+              <p style="font-size:0.9rem;line-height:1.5">t-test 통계분석으로 교육 효과 검증</p>
             </div>
-            <div class="rm-item" style="margin-bottom:0">
-              <h3 style="color:var(--dim);font-size:1.3rem">5단계. AI 고도화 + 앱·웹 확장 (2026. 9~10월)</h3>
-              <p style="font-size:1.05rem">테스트 및 자문 결과를 반영해 제품 완성도를 높이고, AI 기반 맞춤형 보조·상호작용 기능과 연계 가능한 앱·웹 확장형 구조로 고도화</p>
+            <div class="rm-h-step">
+              <div class="dot" style="background:var(--dim);color:#fff">5</div>
+              <h3 style="color:var(--dim);font-size:1.1rem;margin-bottom:0.15rem">AI 고도화</h3>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--dim);font-weight:600;margin-bottom:0.2rem">9~10월</div>
+              <p style="font-size:0.9rem;line-height:1.5">AI 기반 맞춤형 기능·앱·웹 확장</p>
             </div>
           </div>
         </div>
@@ -799,13 +1038,13 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 6: 검증 (트랙션) ═══ -->
-<section class="slide" id="s6">
+<!-- ═══ SLIDE 8: 검증 (트랙션) ═══ -->
+<section class="slide" id="s8">
   <div class="slide-body" style="padding:28px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">TRACTION</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">9,001,000원의 증명</h2>
+        <h2 class="sec-title" style="margin-bottom:0.3rem">9,001,000원의 증명</h2>
         <p class="sec-sub" style="margin-bottom:1rem">마케팅 비용 0원. 제품력만으로 PMF 검증 완료</p>
       </div>
       <div class="tc rv d1" style="gap:2rem">
@@ -825,7 +1064,7 @@ async function savePDF(){
                 <text x="70" y="82" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#999" text-anchor="middle" font-weight="600">텀블벅 달성</text>
               </svg>
               <div style="text-align:left">
-                <div style="font-weight:900;font-size:2.6rem;color:var(--text);line-height:1.1">9,001,000<span style="font-size:1.2rem;font-weight:500;color:var(--dim)">원</span></div>
+                <div style="font-weight:900;font-size:3.5rem;color:var(--text);line-height:1.1">9,001,000<span style="font-size:1.4rem;font-weight:500;color:var(--dim)">원</span></div>
                 <div style="font-size:1.2rem;color:var(--dim);margin-top:0.3rem;font-weight:500">마케팅 비용 <strong style="color:var(--red)">0원</strong></div>
               </div>
             </div>
@@ -885,18 +1124,18 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 7: 시장 분석 ═══ -->
-<section class="slide" id="s7">
+<!-- ═══ SLIDE 9: 시장 분석 ═══ -->
+<section class="slide" id="s9">
   <div class="slide-body" style="padding:28px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">MARKET</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.5rem">목표시장 현황 분석</h2>
+        <h2 class="sec-title" style="margin-bottom:0.5rem">목표시장 현황 분석</h2>
       </div>
       <div class="tc rv d1" style="gap:2rem">
         <div style="display:flex;flex-direction:column;align-items:center">
           <h3 style="margin-bottom:0.6rem;font-size:1.5rem;color:var(--primary)">국내 시장 규모</h3>
-          <svg viewBox="0 0 500 400" style="width:100%;max-width:480px">
+          <svg viewBox="0 0 500 400" style="width:100%;max-width:480px;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.08))">
             <ellipse cx="240" cy="210" rx="220" ry="170" fill="#f2f2f7" stroke="#e5e5ea" stroke-width="2"/>
             <text x="240" y="58" font-family="'Noto Sans KR',sans-serif" font-size="16" fill="#999" text-anchor="middle" font-weight="600">전체시장 (TAM)</text>
             <text x="240" y="78" font-family="'Noto Sans KR',sans-serif" font-size="13" fill="#bbb" text-anchor="middle">에듀테인먼트 + 보드게임</text>
@@ -936,13 +1175,13 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 8: 제품 구성 ═══ -->
-<section class="slide slide-alt" id="s8">
+<!-- ═══ SLIDE 10: 제품 구성 ═══ -->
+<section class="slide slide-alt" id="s10">
   <div class="slide-body" style="padding:24px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">PRODUCT</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">실현 및 구체화 방안</h2>
+        <h2 class="sec-title" style="margin-bottom:0.3rem">실현 및 구체화 방안</h2>
         <p class="sec-sub" style="margin-bottom:0.8rem">제품 구성 + 3라운드 시스템 + QR 연계·AI 확장</p>
       </div>
       <div class="tc rv d1" style="gap:2rem">
@@ -1069,114 +1308,76 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 9: 영어 학습 설계 ═══ -->
-<section class="slide" id="s9">
+<!-- ═══ SLIDE 11: 영어 학습 설계 ═══ -->
+<section class="slide" id="s11">
   <div class="slide-body" style="padding:40px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">LEARNING DESIGN</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">영어 학습 설계 전략</h2>
-        <p class="sec-sub" style="margin-bottom:1.5rem">게임 구조를 통한 <strong style="color:var(--primary)">R·W·L·S 4Skills</strong> 자연 습득 설계</p>
+        <h2 class="sec-title" style="margin-bottom:0.3rem">영어 학습 설계</h2>
+        <p class="sec-sub" style="margin-bottom:1rem">게임 구조 자체가 <strong style="color:var(--primary)">R·W·L·S 4Skills</strong>를 자연스럽게 유도</p>
       </div>
 
-      <!-- Top: Card language design (핵심) -->
-      <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.5rem">
-        <div class="card" style="padding:1.3rem 1.5rem;border-left:4px solid var(--red)">
-          <h3 style="font-size:1.3rem;margin-bottom:0.6rem;color:var(--red)">공개 불가 카드 <span style="font-family:'IBM Plex Mono',monospace;font-size:0.9rem;color:var(--dim);font-weight:400">12장</span></h3>
-          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.6rem">
-            <div style="background:var(--bg-alt);border-radius:10px;padding:0.6rem 1rem;text-align:center;flex:1">
-              <div style="font-size:0.85rem;color:var(--dim)">카드 언어</div>
-              <div style="font-size:1.3rem;font-weight:800">한국어</div>
-            </div>
-            <div style="font-size:1.5rem;color:var(--red)">→</div>
-            <div style="background:var(--red-bg);border-radius:10px;padding:0.6rem 1rem;text-align:center;flex:1">
-              <div style="font-size:0.85rem;color:var(--red)">공유 시</div>
-              <div style="font-size:1.3rem;font-weight:800;color:var(--red)">영어 필수</div>
-            </div>
-          </div>
-          <p style="font-size:0.95rem;color:var(--dim);margin:0">본인만 열람 가능. 팀에 전달하려면 <strong style="color:var(--text)">반드시 영어로 변환</strong>해서 말해야 합니다. 핵심 정보일수록 Speaking 압력이 높아집니다</p>
-        </div>
-        <div class="card" style="padding:1.3rem 1.5rem;border-left:4px solid var(--primary)">
-          <h3 style="font-size:1.3rem;margin-bottom:0.6rem;color:var(--primary)">공개 가능 카드 <span style="font-family:'IBM Plex Mono',monospace;font-size:0.9rem;color:var(--dim);font-weight:400">15장</span></h3>
-          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.6rem">
-            <div style="background:var(--primary-light);border-radius:10px;padding:0.6rem 1rem;text-align:center;flex:1">
-              <div style="font-size:0.85rem;color:var(--primary)">영어 카드</div>
-              <div style="font-size:1.3rem;font-weight:800;color:var(--primary)">9장 (60%)</div>
-            </div>
-            <div style="font-size:1.2rem;color:var(--dim)">+</div>
-            <div style="background:var(--bg-alt);border-radius:10px;padding:0.6rem 1rem;text-align:center;flex:1">
-              <div style="font-size:0.85rem;color:var(--dim)">한국어 카드</div>
-              <div style="font-size:1.3rem;font-weight:800">6장 (40%)</div>
-            </div>
-          </div>
-          <p style="font-size:0.95rem;color:var(--dim);margin:0">영어 카드 → Reading 훈련. 한국어 카드는 읽은 사람만 이해하므로 <strong style="color:var(--text)">영어로 설명해야</strong> 팀과 공유 가능</p>
+      <!-- Hero message -->
+      <div class="rv d1" style="text-align:center;margin-bottom:2rem">
+        <div class="quote" style="font-size:1.6rem;font-weight:700;padding:1.2rem 2.5rem;border-left-width:6px;display:inline-block">
+          한국어로 읽고, <span style="color:var(--primary)">영어로 말해야만</span> 게임이 진행된다
         </div>
       </div>
 
-      <!-- Middle: 학습 스캐폴딩 3-column -->
-      <div class="rv d2" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem">
-        <!-- 사전 학습 -->
-        <div class="card card-blue" style="padding:1.2rem 1.3rem">
-          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem">
-            <span style="font-size:1.3rem">📖</span>
-            <h4 style="color:var(--primary);font-size:1.15rem;margin:0">사전 학습</h4>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--primary);font-weight:700;margin-left:auto">10-15 min</span>
+      <!-- Card language flow: 2 cards -->
+      <div class="rv d2" style="display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center;margin-bottom:2rem">
+        <div class="card card-elevated" style="padding:1.5rem 1.8rem;border-left:5px solid var(--red)">
+          <h3 style="font-size:1.5rem;margin-bottom:0.8rem;color:var(--red)">공개 불가 카드 <span style="font-family:'IBM Plex Mono',monospace;font-size:1rem;color:var(--dim);font-weight:400">12장</span></h3>
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.8rem">
+            <div style="background:var(--bg-alt);border-radius:12px;padding:0.8rem 1.2rem;text-align:center;flex:1">
+              <div style="font-size:0.95rem;color:var(--dim)">카드 언어</div>
+              <div style="font-size:1.5rem;font-weight:800">한국어</div>
+            </div>
+            <div style="font-size:2rem;color:var(--red)">→</div>
+            <div style="background:var(--red-bg);border-radius:12px;padding:0.8rem 1.2rem;text-align:center;flex:1">
+              <div style="font-size:0.95rem;color:var(--red)">공유 시</div>
+              <div style="font-size:1.5rem;font-weight:800;color:var(--red)">영어 필수</div>
+            </div>
           </div>
-          <div style="font-size:0.95rem;line-height:1.7">
-            <div>1. 단어장 배부 + 발음 연습</div>
-            <div>2. 짝 퀴즈: 한→영 단어 맞추기</div>
-            <div>3. 표현 가이드 롤플레이 연습</div>
-          </div>
+          <p style="font-size:1.05rem;color:var(--dim);margin:0">본인만 열람 가능 → 팀에 <strong style="color:var(--text)">반드시 영어로 변환</strong>해서 전달</p>
         </div>
-        <!-- 단어장 -->
-        <div class="card" style="padding:1.2rem 1.3rem">
-          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem">
-            <span style="font-size:1.3rem">📝</span>
-            <h4 style="color:var(--text);font-size:1.15rem;margin:0">단어장</h4>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--primary);font-weight:700;margin-left:auto">40단어</span>
+
+        <div style="font-size:2.5rem;color:var(--faint);font-weight:300">+</div>
+
+        <div class="card card-elevated" style="padding:1.5rem 1.8rem;border-left:5px solid var(--primary)">
+          <h3 style="font-size:1.5rem;margin-bottom:0.8rem;color:var(--primary)">공개 가능 카드 <span style="font-family:'IBM Plex Mono',monospace;font-size:1rem;color:var(--dim);font-weight:400">15장</span></h3>
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.8rem">
+            <div style="background:var(--primary-light);border-radius:12px;padding:0.8rem 1.2rem;text-align:center;flex:1">
+              <div style="font-size:0.95rem;color:var(--primary)">영어 카드</div>
+              <div style="font-size:1.5rem;font-weight:800;color:var(--primary)">9장 (60%)</div>
+            </div>
+            <div style="font-size:1.5rem;color:var(--dim)">+</div>
+            <div style="background:var(--bg-alt);border-radius:12px;padding:0.8rem 1.2rem;text-align:center;flex:1">
+              <div style="font-size:0.95rem;color:var(--dim)">한국어</div>
+              <div style="font-size:1.5rem;font-weight:800">6장 (40%)</div>
+            </div>
           </div>
-          <div style="font-size:0.9rem;line-height:1.7">
-            <div><span style="color:var(--primary);font-weight:600">마녀의 집</span> witch, key, trap, escape…</div>
-            <div><span style="color:var(--primary);font-weight:600">동화/설화</span> fairy tale, bridge, star…</div>
-            <div><span style="color:var(--primary);font-weight:600">기억/감정</span> memory, promise, hope…</div>
-            <div><span style="color:var(--primary);font-weight:600">추리/토론</span> clue, truth, discuss…</div>
-          </div>
-          <p style="font-size:0.85rem;color:var(--dim);margin:0.4rem 0 0">게임 중 <strong>언제든</strong> 참조 가능</p>
-        </div>
-        <!-- 표현 가이드 -->
-        <div class="card" style="padding:1.2rem 1.3rem">
-          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem">
-            <span style="font-size:1.3rem">💬</span>
-            <h4 style="color:var(--text);font-size:1.15rem;margin:0">표현 가이드</h4>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:var(--primary);font-weight:700;margin-left:auto">6패턴</span>
-          </div>
-          <div style="font-size:0.9rem;line-height:1.7">
-            <div><span style="color:var(--dim)">단서 공유</span> "I found ___."</div>
-            <div><span style="color:var(--dim)">의견 제시</span> "I think ___."</div>
-            <div><span style="color:var(--dim)">동의/반대</span> "I don't think so because ___."</div>
-            <div><span style="color:var(--dim)">질문</span> "What does ___ mean?"</div>
-            <div><span style="color:var(--dim)">기억 공유</span> "I remember ___."</div>
-            <div><span style="color:var(--dim)">제안</span> "Let's ___."</div>
-          </div>
+          <p style="font-size:1.05rem;color:var(--dim);margin:0">영어 카드 = Reading. 한국어 카드 → <strong style="color:var(--text)">영어로 설명해야</strong> 공유</p>
         </div>
       </div>
 
-      <!-- Bottom: 난이도 -->
+      <!-- Difficulty 3-level bar -->
       <div class="rv d3">
-        <div class="card" style="padding:1rem 1.5rem">
-          <h4 style="font-size:1.15rem;margin-bottom:0.6rem">난이도 3단계</h4>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;font-size:0.95rem">
-            <div style="background:rgba(90,200,250,0.06);border:1px solid rgba(90,200,250,0.15);border-radius:10px;padding:0.7rem 1rem">
-              <div style="font-weight:800;color:var(--ice);margin-bottom:0.2rem">Easy <span style="font-size:0.8rem;font-weight:400;color:var(--dim)">영어 초급</span></div>
-              <div style="color:var(--dim);font-size:0.9rem">토론 시 한국어 혼용 OK. 핵심 단서만 영어로 전달</div>
+        <div class="card card-elevated" style="padding:1.2rem 2rem">
+          <h4 style="font-size:1.3rem;margin-bottom:0.8rem">난이도 3단계</h4>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem">
+            <div style="background:rgba(90,200,250,0.06);border:2px solid rgba(90,200,250,0.2);border-radius:12px;padding:1rem 1.2rem">
+              <div style="font-weight:800;color:var(--ice);font-size:1.2rem;margin-bottom:0.3rem">Easy</div>
+              <div style="color:var(--dim);font-size:1rem">한국어 혼용 OK<br>핵심 단서만 영어</div>
             </div>
-            <div style="background:var(--primary-light);border:1px solid rgba(51,102,255,0.15);border-radius:10px;padding:0.7rem 1rem">
-              <div style="font-weight:800;color:var(--primary);margin-bottom:0.2rem">Normal <span style="font-size:0.8rem;font-weight:400;color:var(--dim)">기본 모드</span></div>
-              <div style="color:var(--dim);font-size:0.9rem">영어 위주 사용. 단어장 + 표현 가이드 참조 허용</div>
+            <div style="background:var(--primary-light);border:2px solid rgba(51,102,255,0.2);border-radius:12px;padding:1rem 1.2rem">
+              <div style="font-weight:800;color:var(--primary);font-size:1.2rem;margin-bottom:0.3rem">Normal</div>
+              <div style="color:var(--dim);font-size:1rem">영어 위주 사용<br>단어장·표현가이드 참조</div>
             </div>
-            <div style="background:var(--red-bg);border:1px solid rgba(255,59,48,0.15);border-radius:10px;padding:0.7rem 1rem">
-              <div style="font-weight:800;color:var(--red);margin-bottom:0.2rem">Hard <span style="font-size:0.8rem;font-weight:400;color:var(--dim)">영어 상급</span></div>
-              <div style="color:var(--dim);font-size:0.9rem">영어 Only. 단어장만 참조 허용. 한국어 완전 금지</div>
+            <div style="background:var(--red-bg);border:2px solid rgba(255,59,48,0.2);border-radius:12px;padding:1rem 1.2rem">
+              <div style="font-weight:800;color:var(--red);font-size:1.2rem;margin-bottom:0.3rem">Hard</div>
+              <div style="color:var(--dim);font-size:1rem">영어 Only<br>한국어 완전 금지</div>
             </div>
           </div>
         </div>
@@ -1185,13 +1386,13 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 10: 게임 진행과정 ═══ -->
-<section class="slide" id="s10">
+<!-- ═══ SLIDE 12: 게임 진행과정 ═══ -->
+<section class="slide" id="s12">
   <div class="slide-body" style="padding:30px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">GAME FLOW</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.2rem">게임 진행과정</h2>
+        <h2 class="sec-title" style="margin-bottom:0.2rem">게임 진행과정</h2>
         <p class="sec-sub" style="margin-bottom:1.2rem">90분 완결 | 준비부터 에필로그까지 <strong style="color:var(--primary)">6단계</strong> 몰입 설계</p>
       </div>
 
@@ -1206,7 +1407,7 @@ async function savePDF(){
 
           <!-- Step 1: 게임 준비 -->
           <div style="position:relative;z-index:1;text-align:center">
-            <div style="width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(51,102,255,0.3)">
+            <div style="width:72px;height:72px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(51,102,255,0.3)">
               <span style="font-size:1.5rem">🎭</span>
             </div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--primary);font-weight:700;letter-spacing:0.06em;margin-bottom:0.1rem">STEP 01</div>
@@ -1221,7 +1422,7 @@ async function savePDF(){
 
           <!-- Step 2: R1 탐색 -->
           <div style="position:relative;z-index:1;text-align:center">
-            <div style="width:56px;height:56px;border-radius:50%;background:var(--ice);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(90,200,250,0.3)">
+            <div style="width:72px;height:72px;border-radius:50%;background:var(--ice);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(90,200,250,0.3)">
               <span style="font-size:1.5rem">🔍</span>
             </div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--ice);font-weight:700;letter-spacing:0.06em;margin-bottom:0.1rem">ROUND 1</div>
@@ -1237,7 +1438,7 @@ async function savePDF(){
 
           <!-- Step 3: R2 추론 -->
           <div style="position:relative;z-index:1;text-align:center">
-            <div style="width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(51,102,255,0.3)">
+            <div style="width:72px;height:72px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(51,102,255,0.3)">
               <span style="font-size:1.5rem">🧩</span>
             </div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--primary);font-weight:700;letter-spacing:0.06em;margin-bottom:0.1rem">ROUND 2</div>
@@ -1266,7 +1467,7 @@ async function savePDF(){
 
           <!-- Column 1: Step 6 QR 에필로그 (visual left = flow end) -->
           <div style="position:relative;z-index:1;text-align:center">
-            <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--ice));color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(51,102,255,0.2)">
+            <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--ice));color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(51,102,255,0.2)">
               <span style="font-size:1.5rem">📱</span>
             </div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--primary);font-weight:700;letter-spacing:0.06em;margin-bottom:0.1rem">EPILOGUE</div>
@@ -1281,7 +1482,7 @@ async function savePDF(){
 
           <!-- Column 2: Step 5 투표 & 엔딩 -->
           <div style="position:relative;z-index:1;text-align:center">
-            <div style="width:56px;height:56px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(255,159,10,0.3)">
+            <div style="width:72px;height:72px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(255,159,10,0.3)">
               <span style="font-size:1.5rem">🗳️</span>
             </div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--gold);font-weight:700;letter-spacing:0.06em;margin-bottom:0.1rem">VOTE</div>
@@ -1296,7 +1497,7 @@ async function savePDF(){
 
           <!-- Column 3: Step 4 R3 반전 (visual right = continues from row 1 right) -->
           <div style="position:relative;z-index:1;text-align:center">
-            <div style="width:56px;height:56px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(255,59,48,0.3)">
+            <div style="width:72px;height:72px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.1rem;box-shadow:0 0 0 4px var(--bg),0 0 0 6px rgba(255,59,48,0.3)">
               <span style="font-size:1.5rem">💥</span>
             </div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--red);font-weight:700;letter-spacing:0.06em;margin-bottom:0.1rem">ROUND 3</div>
@@ -1312,54 +1513,43 @@ async function savePDF(){
         </div>
       </div>
 
-      <!-- Bottom: Key insight -->
-      <div class="rv d2" style="margin-top:1rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-        <div class="card card-blue" style="padding:0.7rem 1rem;display:flex;align-items:center;gap:0.8rem">
-          <div style="font-size:1.8rem;flex-shrink:0">🔄</div>
-          <div>
-            <h4 style="color:var(--primary);font-size:0.95rem;margin-bottom:0.1rem">매 라운드 반복: 카드 배부 > 자료조사(10분) > 영어 토론(15분)</h4>
-            <p style="font-size:0.8rem;color:var(--dim);margin:0">자료조사 시 <strong>단어장 탐색</strong>하며 표현 준비, 토론 시 <strong style="color:var(--primary)">영어로 공유·질문·반박</strong></p>
-          </div>
-        </div>
-        <div class="card" style="padding:0.7rem 1rem;display:flex;align-items:center;gap:0.8rem">
-          <div style="font-size:1.8rem;flex-shrink:0">📱</div>
-          <div>
-            <h4 style="color:var(--text);font-size:0.95rem;margin-bottom:0.1rem">게임 후: 복습 + QR 에필로그</h4>
-            <p style="font-size:0.8rem;color:var(--dim);margin:0">핵심 표현 공유, 영어 단서 재설명, 새 단어 3개 기록. QR 후속 서사 + 세계관 확장</p>
-          </div>
+      <!-- Bottom: Key insight (simplified) -->
+      <div class="rv d2" style="margin-top:0.8rem;text-align:center">
+        <div style="display:inline-block;background:var(--primary-light);border:1px solid rgba(51,102,255,0.15);border-radius:12px;padding:0.8rem 2rem">
+          <p style="font-size:1.2rem;color:var(--text);margin:0;font-weight:600">핵심: 추리 몰입 → <span style="color:var(--primary)">자연스러운 영어 사용</span> → 학습 성취</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ SLIDE 11: 차별화 ═══ -->
-<section class="slide" id="s11">
+<!-- ═══ SLIDE 13: 차별화 ═══ -->
+<section class="slide" id="s13">
   <div class="slide-body" style="padding:40px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">COMPETITIVE ANALYSIS</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">경쟁 환경 분석 및 차별화 전략</h2>
+        <h2 class="sec-title" style="margin-bottom:0.3rem">경쟁 환경 분석 및 차별화 전략</h2>
         <p class="sec-sub" style="margin-bottom:1.2rem">기존 영어교육 방식과의 구조적 차별점</p>
       </div>
-      <div class="card rv d1" style="padding:0;overflow:hidden;margin-bottom:1.2rem">
+      <div class="card card-elevated rv d1" style="padding:0;overflow:hidden;margin-bottom:1.2rem">
       <table class="cmp">
-        <thead><tr><th style="min-width:110px">평가 기준</th><th>워드게임류</th><th>학습 앱(듀오링고 등)</th><th>학원/과외</th><th class="nash-col">서사 몰입형 보드게임</th></tr></thead>
+        <thead><tr style="background:var(--bg-dark)"><th style="min-width:110px;color:rgba(255,255,255,0.6)">평가 기준</th><th style="color:rgba(255,255,255,0.5)">워드게임류</th><th style="color:rgba(255,255,255,0.5)">학습 앱</th><th style="color:rgba(255,255,255,0.5)">학원/과외</th><th class="nash-col" style="background:rgba(51,102,255,0.25);color:#fff;font-size:1.15rem">우리 제품</th></tr></thead>
         <tbody>
-          <tr><td><strong>학습 동기</strong></td><td class="no">점수 경쟁(외재적)</td><td class="no">리워드/스트릭(외재적)</td><td class="no">시험/입시(외재적)</td><td class="nash-col yes"><strong>사건 해결(내재적)</strong></td></tr>
-          <tr><td><strong>서사 기반 몰입</strong></td><td class="no">없음</td><td class="no">없음</td><td class="no">없음</td><td class="nash-col yes"><strong>방탈출급 서사 몰입</strong></td></tr>
-          <tr><td><strong>4Skills 통합</strong></td><td class="no">Writing 단일</td><td class="no">R+L 위주</td><td class="yes" style="color:var(--dim)">가능(수동적)</td><td class="nash-col yes"><strong>R+W+L+S 자연 순환</strong></td></tr>
-          <tr><td><strong>정보 비대칭</strong></td><td class="no">없음</td><td class="no">없음</td><td class="no">없음</td><td class="nash-col yes"><strong>핵심 메커니즘</strong></td></tr>
-          <tr><td><strong>자발적 발화</strong></td><td class="no">제한적</td><td class="no">낮음(이탈↑)</td><td class="no">강제(수동적)</td><td class="nash-col yes"><strong>게임 진행상 필수</strong></td></tr>
-          <tr><td><strong>확장성</strong></td><td class="yes" style="color:var(--dim)">제한적</td><td class="no">콘텐츠 소모</td><td class="no">불가</td><td class="nash-col yes"><strong>시리즈 + 지역 연동</strong></td></tr>
-          <tr><td><strong>디지털 연계</strong></td><td class="no">없음</td><td class="yes" style="color:var(--dim)">앱 단독</td><td class="no">없음</td><td class="nash-col yes"><strong>QR + AI 하이브리드</strong></td></tr>
+          <tr><td><strong>학습 동기</strong></td><td class="no">✗ 외재적</td><td class="no">✗ 외재적</td><td class="no">✗ 외재적</td><td class="nash-col yes"><strong>✓ 사건 해결(내재적)</strong></td></tr>
+          <tr><td><strong>서사 기반 몰입</strong></td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="nash-col yes"><strong>✓ 방탈출급 서사</strong></td></tr>
+          <tr><td><strong>4Skills 통합</strong></td><td class="no">✗ Writing 단일</td><td class="no">✗ R+L 위주</td><td style="color:var(--dim)">△ 수동적</td><td class="nash-col yes"><strong>✓ R+W+L+S 순환</strong></td></tr>
+          <tr><td><strong>정보 비대칭</strong></td><td class="no">✗</td><td class="no">✗</td><td class="no">✗</td><td class="nash-col yes"><strong>✓ 핵심 메커니즘</strong></td></tr>
+          <tr><td><strong>자발적 발화</strong></td><td class="no">✗ 제한적</td><td class="no">✗ 낮음</td><td class="no">✗ 수동적</td><td class="nash-col yes"><strong>✓ 게임 진행상 필수</strong></td></tr>
+          <tr><td><strong>확장성</strong></td><td style="color:var(--dim)">△ 제한적</td><td class="no">✗ 소모</td><td class="no">✗</td><td class="nash-col yes"><strong>✓ 시리즈 + 지역</strong></td></tr>
+          <tr><td><strong>디지털 연계</strong></td><td class="no">✗</td><td style="color:var(--dim)">△ 앱 단독</td><td class="no">✗</td><td class="nash-col yes"><strong>✓ QR + AI</strong></td></tr>
         </tbody>
       </table>
       </div>
       <!-- 기술적 우위 3-column -->
       <div class="rv d2" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
         <!-- 1. 시장 검증 -->
-        <div class="card" style="padding:1.1rem 1.3rem;border-left:4px solid var(--gold);position:relative;overflow:hidden">
+        <div class="card card-elevated" style="padding:1.1rem 1.3rem;border-left:4px solid var(--gold);position:relative;overflow:hidden">
           <div style="position:absolute;top:10px;right:12px;font-family:'IBM Plex Mono',monospace;font-size:2.8rem;font-weight:900;color:rgba(255,159,10,0.08);line-height:1">01</div>
           <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem">
             <div style="width:36px;height:36px;border-radius:8px;background:var(--gold-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0">
@@ -1375,7 +1565,7 @@ async function savePDF(){
         </div>
 
         <!-- 2. 디지털 확장 -->
-        <div class="card" style="padding:1.1rem 1.3rem;border-left:4px solid var(--primary);position:relative;overflow:hidden">
+        <div class="card card-elevated" style="padding:1.1rem 1.3rem;border-left:4px solid var(--primary);position:relative;overflow:hidden">
           <div style="position:absolute;top:10px;right:12px;font-family:'IBM Plex Mono',monospace;font-size:2.8rem;font-weight:900;color:rgba(51,102,255,0.06);line-height:1">02</div>
           <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem">
             <div style="width:36px;height:36px;border-radius:8px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
@@ -1392,7 +1582,7 @@ async function savePDF(){
         </div>
 
         <!-- 3. 확장형 콘텐츠 -->
-        <div class="card" style="padding:1.1rem 1.3rem;border-left:4px solid var(--ice);position:relative;overflow:hidden">
+        <div class="card card-elevated" style="padding:1.1rem 1.3rem;border-left:4px solid var(--ice);position:relative;overflow:hidden">
           <div style="position:absolute;top:10px;right:12px;font-family:'IBM Plex Mono',monospace;font-size:2.8rem;font-weight:900;color:rgba(90,200,250,0.08);line-height:1">03</div>
           <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem">
             <div style="width:36px;height:36px;border-radius:8px;background:rgba(90,200,250,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0">
@@ -1413,40 +1603,45 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 12: 사업화 추진전략 ═══ -->
-<section class="slide slide-alt" id="s12">
+<!-- ═══ SLIDE 14: 사업화 추진전략 ═══ -->
+<section class="slide slide-alt" id="s14">
   <div class="slide-body" style="padding:28px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">BUSINESS MODEL</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">사업화 추진전략</h2>
+        <h2 class="sec-title" style="margin-bottom:0.3rem">사업화 추진전략</h2>
         <p class="sec-sub" style="margin-bottom:1rem">실증 기반 단계적 사업화. 검증된 교육형 콘텐츠로 시장 확대</p>
       </div>
       <div class="tc rv d1" style="gap:2rem">
         <div>
           <div style="text-align:center;margin-bottom:1rem">
             <svg viewBox="0 0 340 340" style="width:100%;max-width:320px">
-              <circle cx="170" cy="170" r="95" fill="none" stroke="#d0d0d8" stroke-width="42"/>
+              <defs>
+                <filter id="donut-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.1"/>
+                </filter>
+              </defs>
+              <circle cx="170" cy="170" r="95" fill="none" stroke="#d0d0d8" stroke-width="42" filter="url(#donut-shadow)"/>
+              <!-- B2C 55% = 0.55 × 596.90 = 328.30 -->
               <circle cx="170" cy="170" r="95" fill="none" stroke="#3366FF" stroke-width="42"
-                stroke-dasharray="328.19 596.90" stroke-dashoffset="0" transform="rotate(-90 170 170)"/>
+                stroke-dasharray="328.30 596.90" stroke-dashoffset="0" transform="rotate(-90 170 170)"/>
+              <!-- B2B 25% = 0.25 × 596.90 = 149.23 -->
               <circle cx="170" cy="170" r="95" fill="none" stroke="#2952CC" stroke-width="42"
-                stroke-dasharray="119.38 596.90" stroke-dashoffset="-328.19" transform="rotate(-90 170 170)"/>
+                stroke-dasharray="149.23 596.90" stroke-dashoffset="-328.30" transform="rotate(-90 170 170)"/>
+              <!-- B2G 20% = 0.20 × 596.90 = 119.38 -->
               <circle cx="170" cy="170" r="95" fill="none" stroke="#5AC8FA" stroke-width="42"
-                stroke-dasharray="89.54 596.90" stroke-dashoffset="-447.57" transform="rotate(-90 170 170)"/>
-              <circle cx="170" cy="170" r="95" fill="none" stroke="#999" stroke-width="42"
-                stroke-dasharray="59.69 596.90" stroke-dashoffset="-537.11" transform="rotate(-90 170 170)"/>
+                stroke-dasharray="119.38 596.90" stroke-dashoffset="-477.52" transform="rotate(-90 170 170)"/>
               <text x="170" y="162" font-family="'Noto Sans KR',sans-serif" font-size="17" fill="#1a1a1a" text-anchor="middle" font-weight="800">수익 구조</text>
-              <text x="170" y="182" font-family="'Noto Sans KR',sans-serif" font-size="13" fill="#999" text-anchor="middle" font-weight="500">4중 수익 모델</text>
-              <text x="255" y="80" font-family="'Noto Sans KR',sans-serif" font-size="14" fill="#3366FF" font-weight="800">B2C 55%</text>
-              <text x="280" y="215" font-family="'Noto Sans KR',sans-serif" font-size="14" fill="#2952CC" font-weight="700">B2B 20%</text>
-              <text x="45" y="290" font-family="'Noto Sans KR',sans-serif" font-size="14" fill="#5AC8FA" font-weight="700">확장팩 15%</text>
-              <text x="30" y="215" font-family="'Noto Sans KR',sans-serif" font-size="14" fill="#999" font-weight="700">관광 10%</text>
+              <text x="170" y="182" font-family="'Noto Sans KR',sans-serif" font-size="13" fill="#999" text-anchor="middle" font-weight="500">3중 수익 모델</text>
+              <!-- Labels positioned at arc midpoints -->
+              <text x="260" y="90" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#3366FF" font-weight="800">B2C 55%</text>
+              <text x="265" y="250" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#2952CC" font-weight="700">B2B 25%</text>
+              <text x="30" y="250" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#5AC8FA" font-weight="700">B2G 20%</text>
             </svg>
           </div>
-          <div class="rev-block" style="padding:0.7rem 1.2rem;margin-bottom:0.5rem"><div class="pct" style="font-size:1.5rem">55%</div><h3 style="font-size:1.2rem">B2C 판매</h3><p style="font-size:1rem">크라우드펀딩 + 스마트스토어. 시나리오당 39,900원. 시리즈 번들 할인.</p></div>
-          <div class="rev-block" style="border-left-color:var(--primary-dark);padding:0.7rem 1.2rem;margin-bottom:0.5rem"><div class="pct" style="color:var(--primary-dark);font-size:1.5rem">20%</div><h3 style="font-size:1.2rem">B2B 교육기관 납품</h3><p style="font-size:1rem">학교/학원/복지기관 파일럿 프로그램. 맞춤 시나리오 라이선스.</p></div>
-          <div class="rev-block" style="border-left-color:var(--ice);padding:0.7rem 1.2rem;margin-bottom:0.5rem"><div class="pct" style="color:var(--ice);font-size:1.5rem">15%</div><h3 style="font-size:1.2rem">시리즈 확장팩</h3><p style="font-size:1rem">U-시리즈 추가 시나리오 판매. 지역·테마별 신규 콘텐츠 IP 확장.</p></div>
-          <div class="rev-block" style="border-left-color:var(--dim);padding:0.7rem 1.2rem;margin-bottom:0"><div class="pct" style="color:var(--dim);font-size:1.5rem">10%</div><h3 style="font-size:1.2rem">지역 관광 연동</h3><p style="font-size:1rem">지자체/관광공사 제휴. 현장 QR 미션 + 보드게임 패키지.</p></div>
+          <div class="rev-block card-elevated" style="padding:0.8rem 1.3rem;margin-bottom:0.6rem"><div class="pct" style="font-size:1.8rem">55%</div><h3 style="font-size:1.3rem">B2C 판매</h3><p style="font-size:1.05rem">크라우드펀딩 + 스마트스토어. 시나리오당 39,900원. 시리즈 번들 할인. 확장팩 판매.</p></div>
+          <div class="rev-block card-elevated" style="border-left-color:var(--primary-dark);padding:0.8rem 1.3rem;margin-bottom:0.6rem"><div class="pct" style="color:var(--primary-dark);font-size:1.8rem">25%</div><h3 style="font-size:1.3rem">B2B 교육기관 납품</h3><p style="font-size:1.05rem">학교·학원·복지기관 파일럿 프로그램. 맞춤 시나리오 라이선스.</p></div>
+          <div class="rev-block card-elevated" style="border-left-color:var(--ice);padding:0.8rem 1.3rem;margin-bottom:0"><div class="pct" style="color:var(--ice);font-size:1.8rem">20%</div><h3 style="font-size:1.3rem">B2G 공공기관 연동</h3><p style="font-size:1.05rem">지자체·관광공사 제휴 패키지. 교육청 방과후 프로그램 납품.</p></div>
         </div>
         <div>
           <div class="card" style="margin-bottom:0.8rem;padding:1rem 1.3rem">
@@ -1477,8 +1672,8 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 13: 생존 노력 ═══ -->
-<section class="slide" id="s13">
+<!-- ═══ SLIDE 15: 위기 대응 ═══ -->
+<section class="slide" id="s15">
   <div class="slide-body" style="padding:50px 80px">
     <div class="inner">
       <div class="rv">
@@ -1512,13 +1707,13 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 14: 일정 + 자금 ═══ -->
-<section class="slide slide-alt" id="s14">
+<!-- ═══ SLIDE 16: 일정 + 자금 ═══ -->
+<section class="slide slide-alt" id="s16">
   <div class="slide-body" style="padding:28px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">PLAN & BUDGET</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.5rem">실증·개발 일정 및 자금 운용 계획</h2>
+        <h2 class="sec-title" style="margin-bottom:0.5rem">실증·개발 일정 및 자금 운용 계획</h2>
       </div>
       <div class="tc rv d1">
         <div>
@@ -1571,13 +1766,13 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 15: 팀 구성 ═══ -->
-<section class="slide" id="s15">
+<!-- ═══ SLIDE 17: 팀 구성 ═══ -->
+<section class="slide" id="s17">
   <div class="slide-body" style="padding:28px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">TEAM</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.5rem">팀 현황 및 핵심 역량</h2>
+        <h2 class="sec-title" style="margin-bottom:0.5rem">팀 현황 및 핵심 역량</h2>
       </div>
       <div class="img-placeholder rv d1" style="min-height:200px;margin-bottom:1rem">
         <span class="ph-text">팀 활동 사진 삽입</span>
@@ -1624,13 +1819,13 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 16: 협력 + 사회적 가치 ═══ -->
-<section class="slide slide-alt" id="s16">
+<!-- ═══ SLIDE 18: 협력 + 사회적 가치 ═══ -->
+<section class="slide slide-alt" id="s18">
   <div class="slide-body" style="padding:32px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">PARTNERSHIP & VALUE</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.5rem">외부 협력기관 및 사회적 가치</h2>
+        <h2 class="sec-title" style="margin-bottom:0.5rem">외부 협력기관 및 사회적 가치</h2>
       </div>
       <div class="tc rv d1" style="gap:2rem">
         <div>
@@ -1671,13 +1866,13 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 17: 참조자료 ═══ -->
-<section class="slide" id="s17">
+<!-- ═══ SLIDE 19: 참조자료 ═══ -->
+<section class="slide" id="s19">
   <div class="slide-body" style="padding:28px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">APPENDIX 01</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">업무협약(MOU) · 유통의향서</h2>
+        <h2 class="sec-title" style="margin-bottom:0.3rem">업무협약(MOU) · 유통의향서</h2>
         <p class="sec-sub" style="margin-bottom:1.2rem">8개 기관 8개 기관 MOU 체결 완료 | 교육기관 · 기업 · 학계</p>
       </div>
       <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem">
@@ -1719,13 +1914,13 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 18: APPENDIX 02 — 구매의향서 · 상표출원 ═══ -->
-<section class="slide slide-alt" id="s18">
+<!-- ═══ SLIDE 20: APPENDIX 02 — 구매의향서 · 상표출원 ═══ -->
+<section class="slide slide-alt" id="s20">
   <div class="slide-body" style="padding:28px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">APPENDIX 02</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">구매의향서 · 지식재산권</h2>
+        <h2 class="sec-title" style="margin-bottom:0.3rem">구매의향서 · 지식재산권</h2>
         <p class="sec-sub" style="margin-bottom:1.2rem">총 90세트 구매의향 확보 · 상표 출원 완료</p>
       </div>
       <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem">
@@ -1775,13 +1970,13 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 19: APPENDIX 03 — 설문 상세 (이미지) ═══ -->
-<section class="slide" id="s19">
+<!-- ═══ SLIDE 21: APPENDIX 03 — 설문 상세 (이미지) ═══ -->
+<section class="slide" id="s21">
   <div class="slide-body" style="padding:24px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">APPENDIX 03</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">시장 검증 설문: 플레이 기대</h2>
+        <h2 class="sec-title" style="margin-bottom:0.3rem">시장 검증 설문: 플레이 기대</h2>
         <p class="sec-sub" style="margin-bottom:0.8rem">N=169 · 온라인 설문 (2026.03) · 리커트 5점 척도</p>
       </div>
       <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
@@ -1806,13 +2001,13 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 20: APPENDIX 04 — 설문 상세 (구매의향) ═══ -->
-<section class="slide slide-alt" id="s20">
+<!-- ═══ SLIDE 22: APPENDIX 04 — 설문 상세 (구매의향) ═══ -->
+<section class="slide slide-alt" id="s22">
   <div class="slide-body" style="padding:24px 80px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">APPENDIX 04</div>
-        <h2 class="sec-title" style="font-size:2.4rem;margin-bottom:0.3rem">시장 검증 설문: 구매 의향 · 이용 선호</h2>
+        <h2 class="sec-title" style="margin-bottom:0.3rem">시장 검증 설문: 구매 의향 · 이용 선호</h2>
         <p class="sec-sub" style="margin-bottom:0.8rem">N=169 · 구매 고려 87.6% · 사용 상황별 선호도</p>
       </div>
       <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem">
@@ -1840,8 +2035,8 @@ async function savePDF(){
   </div>
 </section>
 
-<!-- ═══ SLIDE 21: CLOSING ═══ -->
-<section class="slide slide-cover" id="s21" style="justify-content:center;align-items:center">
+<!-- ═══ SLIDE 23: CLOSING ═══ -->
+<section class="slide slide-cover" id="s23" style="justify-content:center;align-items:center">
   <div class="dot-pattern"></div>
   <div class="inner" style="max-width:960px;text-align:center">
     <p class="rv" style="font-size:1.35rem;color:rgba(255,255,255,0.45);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:2.5rem">CASE CLOSED</p>
