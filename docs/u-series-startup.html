@@ -236,40 +236,43 @@ async function savePDF(){
   const btn=document.querySelector('.pdf-btn');
   btn.textContent='준비 중...';btn.disabled=true;
   try{
+    if(typeof html2canvas==='undefined'||!window.jspdf){
+      alert('라이브러리 로딩 실패. 페이지를 새로고침 후 다시 시도해주세요.');
+      btn.textContent='PDF 다운로드';btn.disabled=false;return;
+    }
     const slides=document.querySelectorAll('.slide');
     const W=1920,H=1080;
-    // show all reveal animations
+    // mm 변환 (1px = 0.264583mm)
+    const Wmm=W*0.264583,Hmm=H*0.264583;
     document.querySelectorAll('.rv').forEach(r=>r.classList.add('v'));
-    // hide nav during capture (keep btn for progress)
     document.querySelector('.nav').style.display='none';
-    // force each slide to exact page dimensions
     const orig=[];
     slides.forEach(s=>{
       orig.push(s.getAttribute('style')||'');
       const st=s.style;
       st.width=W+'px';st.minHeight=H+'px';st.height=H+'px';st.maxHeight=H+'px';
-      st.overflow='hidden';st.position='relative';
+      st.overflow='hidden';
     });
-    await new Promise(r=>setTimeout(r,200));
+    await new Promise(r=>setTimeout(r,300));
     const {jsPDF}=window.jspdf;
-    const pdf=new jsPDF({orientation:'landscape',unit:'px',format:[W,H],hotfixes:['px_scaling']});
+    const pdf=new jsPDF({orientation:'landscape',unit:'mm',format:[Wmm,Hmm]});
     for(let i=0;i<slides.length;i++){
       btn.textContent='생성 중 ('+(i+1)+'/'+slides.length+')';
       const canvas=await html2canvas(slides[i],{
-        scale:2,useCORS:true,logging:false,
+        scale:1.5,useCORS:true,logging:false,
         width:W,height:H,windowWidth:W
       });
-      const img=canvas.toDataURL('image/jpeg',0.92);
-      if(i>0) pdf.addPage([W,H],'landscape');
-      pdf.addImage(img,'JPEG',0,0,W,H);
+      const img=canvas.toDataURL('image/jpeg',0.90);
+      if(i>0) pdf.addPage([Wmm,Hmm],'landscape');
+      pdf.addImage(img,'JPEG',0,0,Wmm,Hmm,'slide'+i,'FAST');
+      canvas.remove();
     }
-    pdf.save('NASH_창업중심대학_발표.pdf');
-    // restore
     slides.forEach((s,i)=>s.setAttribute('style',orig[i]));
     document.querySelector('.nav').style.display='';
+    pdf.save('NASH_창업중심대학_발표.pdf');
   }catch(e){
-    console.error('PDF 생성 오류:',e);
-    alert('PDF 생성 중 오류가 발생했습니다.');
+    console.error('PDF error:',e);
+    alert('PDF 오류: '+e.message);
   }
   btn.textContent='PDF 다운로드';btn.disabled=false;
 }
