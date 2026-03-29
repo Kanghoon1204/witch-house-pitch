@@ -242,30 +242,77 @@ async function savePDF(){
     }
     const slides=document.querySelectorAll('.slide');
     const W=1920,H=1080;
-    // mm 변환 (1px = 0.264583mm)
     const Wmm=W*0.264583,Hmm=H*0.264583;
     document.querySelectorAll('.rv').forEach(r=>r.classList.add('v'));
     document.querySelector('.nav').style.display='none';
+    // 1단계: 슬라이드 너비만 고정하고 높이는 auto로 측정
     const orig=[];
     slides.forEach(s=>{
       orig.push(s.getAttribute('style')||'');
-      const st=s.style;
-      st.width=W+'px';st.minHeight=H+'px';st.height=H+'px';st.maxHeight=H+'px';
-      st.overflow='hidden';
+      s.style.width=W+'px';
+      s.style.minHeight=H+'px';
+      s.style.height='auto';
+      s.style.maxHeight='none';
+      s.style.overflow='visible';
     });
     await new Promise(r=>setTimeout(r,300));
+    // 2단계: 각 슬라이드의 실제 높이 측정 후, 넘치면 scale 적용
+    const scaleData=[];
+    slides.forEach(s=>{
+      const natural=s.scrollHeight;
+      if(natural>H){
+        const scale=H/natural;
+        scaleData.push({scale,natural});
+        s.style.height=natural+'px';
+        s.style.transformOrigin='top left';
+        s.style.transform='scale('+scale+')';
+        // scale 적용 시 부모 영역이 줄어들지 않도록 wrapper 역할
+        s.style.marginBottom=-(natural-H)+'px';
+      }else{
+        scaleData.push({scale:1,natural:H});
+        s.style.height=H+'px';
+      }
+      s.style.overflow='hidden';
+    });
+    await new Promise(r=>setTimeout(r,200));
     const {jsPDF}=window.jspdf;
     const pdf=new jsPDF({orientation:'landscape',unit:'mm',format:[Wmm,Hmm]});
     for(let i=0;i<slides.length;i++){
       btn.textContent='생성 중 ('+(i+1)+'/'+slides.length+')';
+      const sd=scaleData[i];
+      // scale이 적용된 슬라이드는 원본 크기로 캡처 후 PDF에 맞춤
+      const captureH=sd.scale<1?sd.natural:H;
+      // transform 제거 후 원본 크기로 캡처
+      if(sd.scale<1){
+        slides[i].style.transform='none';
+        slides[i].style.height=sd.natural+'px';
+        slides[i].style.overflow='hidden';
+      }
       const canvas=await html2canvas(slides[i],{
         scale:1.5,useCORS:true,logging:false,
-        width:W,height:H,windowWidth:W
+        width:W,height:captureH,windowWidth:W
       });
-      const img=canvas.toDataURL('image/jpeg',0.90);
+      // 캡처 후 캔버스를 1920x1080 비율로 리사이즈
+      const fitCanvas=document.createElement('canvas');
+      fitCanvas.width=W*1.5;fitCanvas.height=H*1.5;
+      const ctx=fitCanvas.getContext('2d');
+      ctx.fillStyle='#ffffff';
+      ctx.fillRect(0,0,fitCanvas.width,fitCanvas.height);
+      // 슬라이드 배경색 확인
+      const bg=getComputedStyle(slides[i]).backgroundColor;
+      if(bg&&bg!=='rgba(0, 0, 0, 0)'){ctx.fillStyle=bg;ctx.fillRect(0,0,fitCanvas.width,fitCanvas.height);}
+      // 비율 유지하며 축소 그리기
+      const drawScale=Math.min((W*1.5)/canvas.width,(H*1.5)/canvas.height);
+      const dw=canvas.width*drawScale;
+      const dh=canvas.height*drawScale;
+      const dx=(fitCanvas.width-dw)/2;
+      const dy=(fitCanvas.height-dh)/2;
+      ctx.drawImage(canvas,0,0,canvas.width,canvas.height,dx,dy,dw,dh);
+      canvas.remove();
+      const img=fitCanvas.toDataURL('image/jpeg',0.90);
       if(i>0) pdf.addPage([Wmm,Hmm],'landscape');
       pdf.addImage(img,'JPEG',0,0,Wmm,Hmm,'slide'+i,'FAST');
-      canvas.remove();
+      fitCanvas.remove();
     }
     slides.forEach((s,i)=>s.setAttribute('style',orig[i]));
     document.querySelector('.nav').style.display='';
