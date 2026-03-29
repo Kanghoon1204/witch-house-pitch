@@ -228,29 +228,52 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
 </head>
 <body>
 <nav class="nav" id="nav"></nav>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
 <button class="pdf-btn" onclick="savePDF()">PDF 다운로드</button>
 <script>
-function savePDF(){
+async function savePDF(){
   const btn=document.querySelector('.pdf-btn');
   btn.textContent='생성 중...';btn.disabled=true;
-  const el=document.body;
   const slides=document.querySelectorAll('.slide');
-  // temporarily show all reveal elements
+  const W=1920,H=1080;
+  // show all reveal animations
   document.querySelectorAll('.rv').forEach(r=>r.classList.add('v'));
-  const opt={
-    margin:0,
-    filename:'NASH_창업중심대학_발표.pdf',
-    image:{type:'jpeg',quality:0.95},
-    html2canvas:{scale:2,useCORS:true,scrollY:0,windowWidth:1920},
-    jsPDF:{unit:'px',format:[1920,1080],orientation:'landscape'},
-    pagebreak:{mode:['css','legacy'],avoid:'.card'}
-  };
-  html2pdf().set(opt).from(el).save().then(()=>{
-    btn.textContent='PDF 다운로드';btn.disabled=false;
-  }).catch(()=>{
-    btn.textContent='PDF 다운로드';btn.disabled=false;
+  // hide nav/btn during capture
+  document.querySelector('.nav').style.display='none';
+  btn.style.display='none';
+  // save & override slide styles for capture
+  const orig=[];
+  slides.forEach(s=>{
+    orig.push(s.getAttribute('style')||'');
+    s.style.width=W+'px';
+    s.style.minHeight=H+'px';
+    s.style.height=H+'px';
+    s.style.overflow='hidden';
   });
+  const {jsPDF}=window.jspdf;
+  const pdf=new jsPDF({orientation:'landscape',unit:'px',format:[W,H],hotfixes:['px_scaling']});
+  for(let i=0;i<slides.length;i++){
+    // scroll slide into view for html2canvas
+    slides[i].scrollIntoView();
+    await new Promise(r=>setTimeout(r,100));
+    const canvas=await html2canvas(slides[i],{
+      scale:2,useCORS:true,width:W,height:H,
+      windowWidth:W,windowHeight:H,
+      x:0,y:slides[i].offsetTop,
+      scrollX:0,scrollY:slides[i].offsetTop
+    });
+    const img=canvas.toDataURL('image/jpeg',0.92);
+    if(i>0) pdf.addPage([W,H],'landscape');
+    pdf.addImage(img,'JPEG',0,0,W,H);
+    btn.textContent='생성 중... ('+(i+1)+'/'+slides.length+')';
+  }
+  // restore
+  slides.forEach((s,i)=>s.setAttribute('style',orig[i]));
+  document.querySelector('.nav').style.display='';
+  btn.style.display='';
+  pdf.save('NASH_창업중심대학_발표.pdf');
+  btn.textContent='PDF 다운로드';btn.disabled=false;
 }
 </script>
 
