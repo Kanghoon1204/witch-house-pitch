@@ -278,49 +278,86 @@ async function savePDF(){
 }
 </script>
 
-<!-- ═══ SLIDE 1: IMPACT OPENING ═══ -->
-<section class="slide slide-dark" id="s1" style="justify-content:center;align-items:center">
-  <div class="slide-body" style="text-align:center">
-    <div class="inner" style="max-width:900px;text-align:center">
-      <div class="rv" style="display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,5rem);color:var(--red);letter-spacing:0.3em;border:3px solid var(--red);padding:0.15em 0.6em;margin-bottom:2rem;position:relative">
-        WANTED
-        <div style="position:absolute;inset:-6px;border:1px solid rgba(255,59,48,0.3)"></div>
-      </div>
-      <div class="rv d1" style="font-weight:900;font-size:clamp(2.5rem,5vw,3.8rem);color:#fff;line-height:1.5;margin-bottom:1.2rem">
-        이 중에 <span style="color:var(--red)">범인</span>이 있습니다
-      </div>
-      <p class="rv d2" style="font-size:1.7rem;color:rgba(255,255,255,0.55);line-height:2.1;max-width:620px;margin:0 auto 2.5rem">
-        단서는 찾았습니다. 하지만<br>
-        결정적인 암호가 <span style="color:var(--primary);font-weight:700">영어</span>로 되어 있다면 —<br>
-        포기하시겠습니까, 범인을 잡으시겠습니까?
-      </p>
-      <div class="rv d3" style="display:flex;justify-content:center;gap:3rem;margin-bottom:2.5rem">
-        <div style="text-align:center">
-          <div style="width:70px;height:70px;border-radius:16px;background:rgba(255,59,48,0.1);border:2px solid rgba(255,59,48,0.25);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 0.5rem">🚢</div>
-          <div style="font-size:1.3rem;color:rgba(255,255,255,0.3);letter-spacing:0.1em;font-family:'IBM Plex Mono',monospace">SUSPECT 1</div>
+<!-- ═══ SLIDE 1: IMPACT OPENING — WESTERN WANTED POSTER ═══ -->
+<section class="slide slide-dark" id="s1" style="justify-content:center;align-items:center;overflow:hidden;position:relative">
+  <!-- 나무판 배경 그레인 -->
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0d0d1a 0%,#1a1520 40%,#12101c 100%);z-index:0"></div>
+  <div style="position:absolute;inset:0;opacity:0.04;background-image:url('data:image/svg+xml,%3Csvg width=%2280%22 height=%2280%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cline x1=%220%22 y1=%220%22 x2=%2280%22 y2=%2280%22 stroke=%22%23fff%22 stroke-width=%220.5%22/%3E%3Cline x1=%2280%22 y1=%220%22 x2=%220%22 y2=%2280%22 stroke=%22%23fff%22 stroke-width=%220.3%22/%3E%3C/svg%3E');z-index:0"></div>
+
+  <div class="slide-body" style="padding:40px 60px;z-index:1;position:relative">
+    <div class="inner" style="max-width:1300px;display:grid;grid-template-columns:420px 1fr;gap:3.5rem;align-items:center">
+
+      <!-- 왼쪽: WANTED 포스터 -->
+      <div class="rv" style="position:relative">
+        <!-- 포스터 종이 -->
+        <div style="background:linear-gradient(175deg,#f5e6c8 0%,#e8d5a8 30%,#dcc896 60%,#d4be88 100%);border-radius:6px;padding:2.2rem 2rem 2rem;position:relative;box-shadow:8px 8px 30px rgba(0,0,0,0.5),inset 0 0 60px rgba(139,109,56,0.15);transform:rotate(-1.5deg)">
+          <!-- 종이 닳은 효과 -->
+          <div style="position:absolute;inset:0;border-radius:6px;box-shadow:inset 0 0 30px rgba(120,90,40,0.2);pointer-events:none"></div>
+          <!-- 핀/못 장식 -->
+          <div style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#999,#555);box-shadow:0 3px 8px rgba(0,0,0,0.4)"></div>
+
+          <!-- WANTED 타이틀 -->
+          <div style="text-align:center;border-bottom:3px solid #3a2a10;padding-bottom:0.8rem;margin-bottom:1rem">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:4.5rem;color:#3a2a10;letter-spacing:0.25em;line-height:1;text-shadow:1px 1px 0 rgba(0,0,0,0.1)">WANTED</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.85rem;color:#8a6b35;letter-spacing:0.3em;margin-top:0.3rem">DEAD OR ALIVE</div>
+          </div>
+
+          <!-- 용의자 실루엣 4명 가로 배치 -->
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem;margin-bottom:1rem">
+            <div style="text-align:center">
+              <div style="width:72px;height:72px;margin:0 auto 0.4rem;border-radius:4px;background:#c4a96a;border:2px solid #8a6b35;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:inset 0 0 15px rgba(0,0,0,0.15)">🚢</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:#6b5230;letter-spacing:0.08em;font-weight:600">SUSPECT 1</div>
+            </div>
+            <div style="text-align:center">
+              <div style="width:72px;height:72px;margin:0 auto 0.4rem;border-radius:4px;background:#c4a96a;border:2px solid #8a6b35;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:inset 0 0 15px rgba(0,0,0,0.15)">🔦</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:#6b5230;letter-spacing:0.08em;font-weight:600">SUSPECT 2</div>
+            </div>
+            <div style="text-align:center">
+              <div style="width:72px;height:72px;margin:0 auto 0.4rem;border-radius:4px;background:#c4a96a;border:2px solid #8a6b35;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:inset 0 0 15px rgba(0,0,0,0.15)">🔬</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:#6b5230;letter-spacing:0.08em;font-weight:600">SUSPECT 3</div>
+            </div>
+            <div style="text-align:center">
+              <div style="width:72px;height:72px;margin:0 auto 0.4rem;border-radius:4px;background:#c4a96a;border:2px solid #8a6b35;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:inset 0 0 15px rgba(0,0,0,0.15)">📰</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:#6b5230;letter-spacing:0.08em;font-weight:600">SUSPECT 4</div>
+            </div>
+          </div>
+
+          <!-- 현상금 -->
+          <div style="text-align:center;border-top:2px solid #8a6b35;border-bottom:2px solid #8a6b35;padding:0.6rem 0;margin-bottom:0.8rem">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.8rem;color:#6b5230;letter-spacing:0.15em">REWARD</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:#8b1a1a;letter-spacing:0.1em;line-height:1.1">$ 10,000</div>
+          </div>
+
+          <!-- 하단 문구 -->
+          <div style="text-align:center">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:#8a6b35;letter-spacing:0.12em;line-height:1.8">FOR CRIMES AGAINST<br>THE ENGLISH LANGUAGE</div>
+          </div>
         </div>
-        <div style="text-align:center">
-          <div style="width:70px;height:70px;border-radius:16px;background:rgba(51,102,255,0.1);border:2px solid rgba(51,102,255,0.25);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 0.5rem">🔦</div>
-          <div style="font-size:1.3rem;color:rgba(255,255,255,0.3);letter-spacing:0.1em;font-family:'IBM Plex Mono',monospace">SUSPECT 2</div>
+      </div>
+
+      <!-- 오른쪽: 텍스트 영역 -->
+      <div>
+        <div class="rv d1" style="font-weight:900;font-size:clamp(2.2rem,4.5vw,3.4rem);color:#fff;line-height:1.5;margin-bottom:1.2rem">
+          우리 중에 <span style="color:var(--red)">범인</span>이 있습니다
         </div>
-        <div style="text-align:center">
-          <div style="width:70px;height:70px;border-radius:16px;background:rgba(90,200,250,0.1);border:2px solid rgba(90,200,250,0.25);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 0.5rem">🔬</div>
-          <div style="font-size:1.3rem;color:rgba(255,255,255,0.3);letter-spacing:0.1em;font-family:'IBM Plex Mono',monospace">SUSPECT 3</div>
+        <p class="rv d2" style="font-size:1.5rem;color:rgba(255,255,255,0.5);line-height:2;margin-bottom:2rem;max-width:540px">
+          단서는 찾았습니다. 하지만<br>
+          결정적인 암호가 <span style="color:var(--primary);font-weight:700">영어</span>로 되어 있다면 —<br>
+          포기하시겠습니까, 범인을 잡으시겠습니까?
+        </p>
+
+        <div class="rv d3" style="display:flex;gap:1.2rem;align-items:center;margin-bottom:2rem">
+          <span class="tag tag-red" style="font-size:1.3rem">시험을 위한 공부 ✗</span>
+          <span style="color:rgba(255,255,255,0.25);font-size:1.7rem">→</span>
+          <span class="tag tag-blue" style="font-size:1.3rem">이기기 위한 자발적 탐구 ✓</span>
         </div>
-        <div style="text-align:center">
-          <div style="width:70px;height:70px;border-radius:16px;background:rgba(255,255,255,0.05);border:2px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 0.5rem">📰</div>
-          <div style="font-size:1.3rem;color:rgba(255,255,255,0.3);letter-spacing:0.1em;font-family:'IBM Plex Mono',monospace">SUSPECT 4</div>
+
+        <div class="rv d4">
+          <p style="font-size:1.3rem;color:rgba(255,255,255,0.35);letter-spacing:0.03em;margin:0">AI 기반 상호작용형 스토리 추리·학습 보드게임 콘텐츠</p>
+          <p style="font-size:1.1rem;color:rgba(255,255,255,0.25);margin-top:0.4rem">Project DullG</p>
         </div>
       </div>
-      <div class="rv d4" style="display:flex;gap:1.2rem;justify-content:center;align-items:center;margin-bottom:2.5rem">
-        <span class="tag tag-red" style="font-size:1.4rem">시험을 위한 공부 ✗</span>
-        <span style="color:rgba(255,255,255,0.25);font-size:1.7rem">→</span>
-        <span class="tag tag-blue" style="font-size:1.4rem">이기기 위한 자발적 탐구 ✓</span>
-      </div>
-      <div class="rv d5">
-        <div style="font-weight:900;font-size:2.8rem;color:var(--primary);letter-spacing:0.15em;font-family:'Noto Sans KR',sans-serif">NASH</div>
-        <p style="font-size:1.4rem;color:rgba(255,255,255,0.35);letter-spacing:0.05em;margin-top:0.4rem">AI 기반 상호작용형 스토리 추리·학습 보드게임 콘텐츠 · Project DullG</p>
-      </div>
+
     </div>
   </div>
 </section>
@@ -641,7 +678,7 @@ async function savePDF(){
             <text x="240" y="250" font-family="'Noto Sans KR',sans-serif" font-size="13" fill="rgba(255,255,255,0.8)" text-anchor="middle">서사형 보드게임 × 영어교육</text>
             <text x="240" y="282" font-family="'Noto Sans KR',sans-serif" font-size="28" fill="#fff" text-anchor="middle" font-weight="900">120억</text>
             <line x1="320" y1="245" x2="370" y2="235" stroke="#3366FF" stroke-width="2" stroke-dasharray="4 3"/>
-            <text x="375" y="239" font-family="'Noto Sans KR',sans-serif" font-size="14" fill="#3366FF" font-weight="700">← NASH 진입점</text>
+            <text x="375" y="239" font-family="'Noto Sans KR',sans-serif" font-size="14" fill="#3366FF" font-weight="700">← 우리 진입점</text>
           </svg>
         </div>
         <div>
@@ -679,9 +716,9 @@ async function savePDF(){
       <div class="tc rv d1">
         <div>
           <div class="img-placeholder" style="min-height:420px;margin-bottom:1.2rem">
-            <span class="ph-text">NASH 제품 실물 사진 삽입</span>
+            <span class="ph-text">제품 실물 사진 삽입</span>
           </div>
-          <h3 style="margin-bottom:0.8rem;font-size:1.65rem;color:var(--primary)">NASH 박스 구성품</h3>
+          <h3 style="margin-bottom:0.8rem;font-size:1.65rem;color:var(--primary)">보드게임 박스 구성품</h3>
           <div class="card">
           <table>
             <thead><tr><th>구성품</th><th>수량</th><th>역할</th></tr></thead>
@@ -731,7 +768,7 @@ async function savePDF(){
       </div>
       <div class="card rv d1" style="padding:0;overflow:hidden">
       <table class="cmp">
-        <thead><tr><th></th><th>스크래블/워드게임</th><th>영어학습 앱</th><th>학원/과외</th><th class="nash-col">NASH</th></tr></thead>
+        <thead><tr><th></th><th>스크래블/워드게임</th><th>영어학습 앱</th><th>학원/과외</th><th class="nash-col">우리 제품</th></tr></thead>
         <tbody>
           <tr><td>학습 동기</td><td class="no">점수 경쟁</td><td class="no">리워드/스트릭</td><td class="no">시험/입시</td><td class="nash-col yes"><strong>"범인을 잡아야 해"</strong></td></tr>
           <tr><td>서사/몰입</td><td class="no">없음</td><td class="no">없음</td><td class="no">없음</td><td class="nash-col yes"><strong>머더미스터리급</strong></td></tr>
@@ -780,7 +817,7 @@ async function savePDF(){
           <div class="rev-block"><div class="pct">55%</div><h3>보드게임 판매 (B2C)</h3><p>온/오프라인. 시나리오당 39,900원. 시리즈 번들 할인.</p></div>
           <div class="rev-block" style="border-left-color:var(--primary-dark)"><div class="pct" style="color:var(--primary-dark)">20%</div><h3>B2B 라이선스</h3><p>학교/학원/기업 연수. 맞춤 시나리오. 건당 200~500만원.</p></div>
           <div class="rev-block" style="border-left-color:var(--ice)"><div class="pct" style="color:var(--ice)">15%</div><h3>QR 에필로그 콘텐츠</h3><p>후속 스토리 결제형 디지털 콘텐츠. 건당 4,900원.</p></div>
-          <div class="rev-block" style="border-left-color:var(--dim)"><div class="pct" style="color:var(--dim)">10%</div><h3>지역 관광 패키지</h3><p>지자체/관광공사 제휴. 관광+NASH. 인당 15,000원.</p></div>
+          <div class="rev-block" style="border-left-color:var(--dim)"><div class="pct" style="color:var(--dim)">10%</div><h3>지역 관광 패키지</h3><p>지자체/관광공사 제휴. 관광+보드게임. 인당 15,000원.</p></div>
         </div>
         <div>
           <div class="card" style="margin-bottom:1.5rem">
@@ -816,7 +853,7 @@ async function savePDF(){
       <div class="g2 rv d1">
         <div class="card">
           <h3 style="color:var(--red)">Risk 1. 보드게임 시장 포화</h3>
-          <p><strong>대응:</strong> NASH는 '보드게임'이 아닌 <em style="color:var(--red)">'교육 솔루션'</em>으로 포지셔닝. B2B 교육 시장 진출로 채널 다각화.</p>
+          <p><strong>대응:</strong> 단순 '보드게임'이 아닌 <em style="color:var(--red)">'교육 솔루션'</em>으로 포지셔닝. B2B 교육 시장 진출로 채널 다각화.</p>
           <p><strong>피봇:</strong> 보드게임 판매 부진 시 → B2B 라이선스 + 디지털 전환 가속.</p>
         </div>
         <div class="card">
@@ -1003,8 +1040,8 @@ async function savePDF(){
       이제 여러분, 사건을 해결할 준비가 되셨습니까?
     </p>
     <div class="rv d4">
-      <div style="font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:3.2rem;color:#fff;letter-spacing:0.15em;margin-bottom:0.4rem">NASH</div>
-      <p style="font-size:1.25rem;color:rgba(255,255,255,0.4);letter-spacing:0.03em">AI 기반 상호작용형 스토리 추리·학습 보드게임 콘텐츠</p>
+      <p style="font-size:1.5rem;color:rgba(255,255,255,0.5);letter-spacing:0.03em;margin-bottom:0.3rem">AI 기반 상호작용형 스토리 추리·학습 보드게임 콘텐츠</p>
+      <p style="font-size:1.15rem;color:rgba(255,255,255,0.3);letter-spacing:0.05em">Project DullG</p>
     </div>
     <div class="rv d5" style="margin-top:3rem">
       <span style="display:inline-block;font-size:1.35rem;padding:8px 20px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);border-radius:10px;font-weight:600;backdrop-filter:blur(4px)">Contact: projectdullg@gmail.com</span>
