@@ -919,8 +919,8 @@ async function savePDF(){
       </div>
       <div class="tc rv d1" style="gap:2rem">
         <div>
-          <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:0.8rem">
-            <svg viewBox="0 0 500 248" style="width:100%">
+          <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:0.8rem;margin-bottom:0.6rem">
+            <svg viewBox="0 0 500 220" style="width:100%;max-height:300px">
               <!-- Card Drawing -->
               <g>
                 <text x="65" y="12" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3366FF" text-anchor="middle" font-weight="600" letter-spacing="0.05em">CARD SPEC</text>
@@ -975,7 +975,7 @@ async function savePDF(){
                 <text x="70" y="188" font-size="8" fill="#999" text-anchor="middle">상판 155×218×38mm</text>
               </g>
               <!-- Meeples & Tokens -->
-              <g transform="translate(20,195)">
+              <g transform="translate(20,180)">
                 <text x="0" y="0" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#3366FF" font-weight="600" letter-spacing="0.05em">COMPONENTS</text>
                 <!-- Meeple 1 - Blue -->
                 <path d="M35,22 C35,18 38,15 40,13 C42,15 45,18 45,22 L44,22 L46,28 L34,28 L36,22 Z" fill="#3366FF"/>
@@ -1017,23 +1017,23 @@ async function savePDF(){
             </tbody>
           </table>
           </div>
-          <p style="margin-top:0.4rem;font-size:1rem"><em>선생님 없이, 이 박스만으로 완전한 게임.</em> 90분+ 플레이.</p>
+          <p style="margin-top:0.3rem;font-size:0.95rem"><em>선생님 없이, 이 박스만으로 완전한 게임.</em> 90분+ 플레이.</p>
         </div>
         <div>
-          <h3 style="margin-bottom:0.6rem;font-size:1.4rem;color:var(--primary)">3라운드 시스템</h3>
-          <div class="round" style="margin:0.8rem 0">
-            <div class="round-item" style="padding-top:2.5rem"><div class="round-dot"></div><h3 style="color:var(--primary);font-size:1.2rem">R1 탐색</h3><p style="font-size:1.05rem">단서 카드 공개, 단어장 탐색</p><span class="keyword" style="font-size:0.9rem">Reading+Listening</span></div>
-            <div class="round-item" style="padding-top:2.5rem"><div class="round-dot"></div><h3 style="color:var(--primary-dark);font-size:1.2rem">R2 이해</h3><p style="font-size:1.05rem">공개 불가 카드를 영어로 공유·토론</p><span class="keyword" style="font-size:0.9rem">Speaking+Reasoning</span></div>
-            <div class="round-item" style="padding-top:2.5rem"><div class="round-dot"></div><h3 style="color:var(--primary);font-size:1.2rem">R3 실행</h3><p style="font-size:1.05rem">전략 수립, 설득·반박·기록</p><span class="keyword" style="font-size:0.9rem">Persuasion+Writing</span></div>
-            <div class="round-item" style="padding-top:2.5rem"><div class="round-dot"></div><h3 style="font-size:1.2rem">투표</h3><p style="font-size:1.05rem">최종 합의 → 멀티 엔딩</p><span class="keyword" style="font-size:0.9rem">All 4 Skills</span></div>
+          <h3 style="margin-bottom:0.4rem;font-size:1.3rem;color:var(--primary)">3라운드 시스템</h3>
+          <div class="round" style="margin:0.5rem 0">
+            <div class="round-item" style="padding-top:2rem"><div class="round-dot"></div><h3 style="color:var(--primary);font-size:1.1rem">R1 탐색</h3><p style="font-size:0.95rem">단서 카드 공개, 단어장 탐색</p><span class="keyword" style="font-size:0.85rem">Reading+Listening</span></div>
+            <div class="round-item" style="padding-top:2rem"><div class="round-dot"></div><h3 style="color:var(--primary-dark);font-size:1.1rem">R2 이해</h3><p style="font-size:0.95rem">공개 불가 카드를 영어로 공유·토론</p><span class="keyword" style="font-size:0.85rem">Speaking+Reasoning</span></div>
+            <div class="round-item" style="padding-top:2rem"><div class="round-dot"></div><h3 style="color:var(--primary);font-size:1.1rem">R3 실행</h3><p style="font-size:0.95rem">전략 수립, 설득·반박·기록</p><span class="keyword" style="font-size:0.85rem">Persuasion+Writing</span></div>
+            <div class="round-item" style="padding-top:2rem"><div class="round-dot"></div><h3 style="font-size:1.1rem">투표</h3><p style="font-size:0.95rem">최종 합의 → 멀티 엔딩</p><span class="keyword" style="font-size:0.85rem">All 4 Skills</span></div>
           </div>
-          <div class="card card-blue" style="margin-top:1rem;padding:1.2rem 1.5rem">
-            <h3 style="color:var(--primary);font-size:1.3rem;margin-bottom:0.3rem">핵심: 추리 몰입 → 자연스러운 영어 사용</h3>
-            <p style="font-size:1.1rem;margin:0">사건 해결을 위해 <strong>단어장 직접 탐색</strong>, 영어 단서 읽기·토론·기록이 필수. 학습이 아닌 <em style="color:var(--primary)">추리 도구</em>로서 R·W·L·S가 자연 발생.</p>
-          </div>
-          <div class="card card-blue" style="margin-top:0.8rem;padding:1.2rem 1.5rem">
-            <h3 style="color:var(--primary);font-size:1.3rem;margin-bottom:0.3rem">QR 연계 + AI 기반 확장</h3>
-            <p style="font-size:1.1rem;margin:0">QR 에필로그로 후속 서사 확장. 향후 AI 맞춤형 난이도 조절 및 개인화된 학습 경험 제공</p>
+          <div class="card card-blue" style="margin-top:0.6rem;padding:1rem 1.3rem">
+            <h3 style="color:var(--primary);font-size:1.15rem;margin-bottom:0.2rem">핵심 메커니즘</h3>
+            <p style="font-size:1rem;margin:0 0 0.4rem">사건 해결을 위해 <strong>단어장 직접 탐색</strong>, 영어 단서 읽기·토론·기록이 필수. 학습이 아닌 <em style="color:var(--primary)">추리 도구</em>로서 R·W·L·S가 자연 발생.</p>
+            <div style="border-top:1px solid rgba(51,102,255,0.1);padding-top:0.4rem">
+              <h4 style="color:var(--primary);font-size:1rem;margin-bottom:0.15rem">QR 연계 + AI 기반 확장</h4>
+              <p style="font-size:0.95rem;margin:0">QR 에필로그로 후속 서사 확장. 향후 AI 맞춤형 난이도 조절 및 개인화 학습 제공</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1834,8 +1834,6 @@ async function savePDF(){
     </div>
   </div>
 </section>
-
-<button class="pdf-btn" onclick="window.print()">PDF 다운로드</button>
 
 <script>
 (function(){
