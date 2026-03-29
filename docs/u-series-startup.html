@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI 기반 상호작용형 스토리 추리·학습 보드게임 콘텐츠 — 창업중심대학 발표</title>
+<title>AI 기반 상호작용형 스토리 추리·학습 보드게임 콘텐츠</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700;900&family=IBM+Plex+Mono:wght@400;600&family=Black+Han+Sans&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -19,7 +19,7 @@
   --radius:16px;
 }
 html{scroll-snap-type:y mandatory;scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable','Noto Sans KR',sans-serif;font-weight:500;line-height:1.7;-webkit-font-smoothing:antialiased;font-size:22px}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable','Noto Sans KR',sans-serif;font-weight:500;line-height:1.7;-webkit-font-smoothing:antialiased;font-size:22px;word-break:keep-all}
 
 /* ── SLIDES ── */
 .slide{width:100%;min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;position:relative}
@@ -341,9 +341,8 @@ async function savePDF(){
           우리 중에 <span style="color:var(--red)">범인</span>이 있습니다
         </div>
         <p class="rv d2" style="font-size:1.5rem;color:rgba(255,255,255,0.5);line-height:2;margin-bottom:2rem;max-width:540px">
-          단서는 찾았습니다. 하지만<br>
-          결정적인 암호가 <span style="color:var(--primary);font-weight:700">영어</span>로 되어 있다면 —<br>
-          포기하시겠습니까, 범인을 잡으시겠습니까?
+          <span style="color:var(--primary);font-weight:700">영어</span>를 사용해야만<br>
+          결정적인 단서를 얻을 수 있다면?
         </p>
 
         <div class="rv d3" style="display:flex;gap:1.2rem;align-items:center;margin-bottom:2rem">
@@ -369,7 +368,7 @@ async function savePDF(){
       <div class="rv" style="text-align:center;margin-bottom:2rem">
         <div class="sec-label" style="color:rgba(255,255,255,0.4)">CHARACTERS</div>
         <h2 style="font-family:'Black Han Sans',sans-serif;font-weight:400;font-size:2.8rem;color:#fff;margin-bottom:0.4rem">4인의 용의자, 4개의 서사</h2>
-        <p style="font-size:1.4rem;color:rgba(255,255,255,0.45)">각자가 가진 단서를 <span style="color:var(--primary);font-weight:700">영어로</span> 공유하지 않으면 — 아무도 범인을 잡을 수 없습니다</p>
+        <p style="font-size:1.4rem;color:rgba(255,255,255,0.45)">각자가 가진 단서를 <span style="color:var(--primary);font-weight:700">영어로</span> 공유하지 않으면 아무도 범인을 잡을 수 없습니다</p>
       </div>
       <!-- 1x4 캐릭터 일렬 배치 -->
       <div class="rv d1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:1.5rem">
@@ -412,7 +411,7 @@ async function savePDF(){
       </div>
       <div class="rv d2" style="text-align:center">
         <div style="display:inline-block;background:rgba(51,102,255,0.08);border:1px solid rgba(51,102,255,0.2);border-radius:12px;padding:0.8rem 2rem">
-          <p style="font-size:1.4rem;color:rgba(255,255,255,0.7);margin:0;font-weight:600"><span style="color:var(--red);font-weight:900">정보 비대칭</span>이 핵심 — 내 단서를 <span style="color:var(--primary);font-weight:800">영어로</span> 전달하지 않으면 추리는 불가능</p>
+          <p style="font-size:1.4rem;color:rgba(255,255,255,0.7);margin:0;font-weight:600"><span style="color:var(--red);font-weight:900">정보 비대칭</span>이 핵심. 내 단서를 <span style="color:var(--primary);font-weight:800">영어로</span> 전달하지 않으면 추리는 불가능</p>
         </div>
       </div>
     </div>
@@ -461,9 +460,9 @@ async function savePDF(){
         </svg>
       </div>
       <div class="g3 rv d2">
-        <div class="card card-blue"><h3 style="color:var(--primary)">Reading — 읽어야 산다</h3><p>비밀 카드의 단서가 영어. 읽지 않으면 정보가 없다.</p></div>
-        <div class="card card-blue"><h3 style="color:var(--primary-dark)">Speaking — 말해야 이긴다</h3><p>내 단서를 팀에게 영어로 전달해야 추리 가능.</p></div>
-        <div class="card card-blue"><h3 style="color:var(--primary)">Winning — 배우면 이긴다</h3><p>영어 표현을 많이 아는 사람이 더 정확한 추리.</p></div>
+        <div class="card card-blue"><h3 style="color:var(--primary)">Reading. 읽어야 산다</h3><p>비밀 카드의 단서가 영어. 읽지 않으면 정보가 없다.</p></div>
+        <div class="card card-blue"><h3 style="color:var(--primary-dark)">Speaking. 말해야 이긴다</h3><p>내 단서를 팀에게 영어로 전달해야 추리 가능.</p></div>
+        <div class="card card-blue"><h3 style="color:var(--primary)">Winning. 배우면 이긴다</h3><p>영어 표현을 많이 아는 사람이 더 정확한 추리.</p></div>
       </div>
     </div>
   </div>
@@ -500,27 +499,27 @@ async function savePDF(){
           <h3 style="margin-bottom:1rem;font-size:1.65rem;color:var(--primary)">5단계 실증·개발 로드맵</h3>
           <div class="roadmap">
             <div class="rm-item">
-              <h3 style="color:var(--primary)">1단계 — 시나리오/규칙 재정비 (4~6월)</h3>
+              <h3 style="color:var(--primary)">1단계. 시나리오/규칙 재정비 (4~6월)</h3>
               <p>기존 보드게임의 시나리오, 규칙, 단서 구성, 플레이 흐름을 재정비하고 교육·확장형 방향에 맞는 개선안 도출</p>
               <div><span class="tag tag-blue">산출물: 시나리오/규칙 개선안, 개발 기획안</span></div>
             </div>
             <div class="rm-item">
-              <h3 style="color:var(--primary-dark)">2단계 — 전문가 자문 (6~7월)</h3>
+              <h3 style="color:var(--primary-dark)">2단계. 전문가 자문 (6~7월)</h3>
               <p>전문가 자문을 통해 교육 활용 요소와 상호작용 구조를 점검하고 보완사항 반영</p>
               <div><span class="tag tag-blue">산출물: 전문가 자문 결과, 보완 반영 기획안</span></div>
             </div>
             <div class="rm-item">
-              <h3 style="color:var(--primary)">3단계 — 시제품 제작 (7~8월)</h3>
+              <h3 style="color:var(--primary)">3단계. 시제품 제작 (7~8월)</h3>
               <p>구성물, 패키지, 규칙서, 웹페이지 개선 및 학습 연계 기능을 반영한 실증용 시제품 제작</p>
               <div><span class="tag tag-blue">산출물: 시제품 1차 완성본, 웹페이지 개선본</span></div>
             </div>
             <div class="rm-item">
-              <h3 style="color:var(--primary-dark)">4단계 — 파일럿 테스트 (8~10월)</h3>
+              <h3 style="color:var(--primary-dark)">4단계. 파일럿 테스트 (8~10월)</h3>
               <p>이용자 파일럿 테스트를 실시하여 사전·사후 변화 및 집단 간 차이를 t-test 통계 분석으로 검증</p>
               <div><span class="tag tag-red">산출물: 파일럿 테스트 결과보고서</span></div>
             </div>
             <div class="rm-item">
-              <h3 style="color:var(--dim)">5단계 — AI 고도화 + 앱·웹 확장 (9~10월)</h3>
+              <h3 style="color:var(--dim)">5단계. AI 고도화 + 앱·웹 확장 (9~10월)</h3>
               <p>테스트 및 자문 결과를 반영해 AI 기반 맞춤형 보조·상호작용 기능과 연계 가능한 앱·웹 확장형 구조로 고도화</p>
               <div><span class="tag tag-blue">산출물: 최종 시제품, 후속 개발안</span></div>
             </div>
@@ -538,7 +537,7 @@ async function savePDF(){
       <div class="rv">
         <div class="sec-label">TRACTION</div>
         <h2 class="sec-title">9,001,000원의 증명</h2>
-        <p class="sec-sub" style="margin-bottom:1.5rem">마케팅 비용 0원 — 제품력만으로 PMF 검증 완료</p>
+        <p class="sec-sub" style="margin-bottom:1.5rem">마케팅 비용 0원. 제품력만으로 PMF 검증 완료</p>
       </div>
       <div class="tc rv d1">
         <div>
@@ -623,9 +622,9 @@ async function savePDF(){
           <div class="bar-wrap"><div class="bar-label"><span>EF EPI 회화 능력 순위</span><span>49위 / 113국</span></div><div class="bar"><div class="bar-fill red v" style="--w:32%"></div></div></div>
           <div style="margin-top:1.2rem">
             <h3 style="font-size:1.4rem">구조적 원인 3가지</h3>
-            <p><strong style="color:var(--red)">1. 외재적 동기만 존재</strong> — 시험/입시가 끝나면 영어도 끝</p>
-            <p><strong style="color:var(--red)">2. 맥락 없는 반복</strong> — 문법 암기, 단어장 — 써먹을 데 없음</p>
-            <p><strong style="color:var(--red)">3. 실패 공포</strong> — "틀리면 안 돼" → 입을 닫는 악순환</p>
+            <p><strong style="color:var(--red)">1. 외재적 동기만 존재</strong> 시험/입시가 끝나면 영어도 끝</p>
+            <p><strong style="color:var(--red)">2. 맥락 없는 반복</strong> 문법 암기, 단어장. 써먹을 데 없음</p>
+            <p><strong style="color:var(--red)">3. 실패 공포</strong> "틀리면 안 돼" → 입을 닫는 악순환</p>
           </div>
         </div>
         <div>
@@ -637,7 +636,7 @@ async function savePDF(){
             </p>
           </div>
           <div class="quote">
-            "여러분 중에 살인자가 있습니다. 단서는 찾았지만, 결정적인 암호가 <em>영어</em>로 되어 있다면 — 포기하시겠습니까, 아니면 범인을 잡기 위해 당장 사전을 펼치시겠습니까?"
+            "여러분 중에 살인자가 있습니다. 영어를 사용해야만 결정적인 단서를 얻을 수 있다면, 범인을 잡기 위해 당장 사전을 펼치시겠습니까?"
           </div>
           <div style="margin-top:1.2rem;display:flex;align-items:center;gap:1rem">
             <span class="tag tag-red" style="font-size:1.4rem">시험을 위한 공부 ✗</span>
@@ -691,7 +690,7 @@ async function savePDF(){
           <div class="card card-red">
             <h3 style="color:var(--red);font-size:1.6rem">경쟁 환경 공백</h3>
             <p>"서사 기반 몰입형 영어 보드게임"은 국내 시장에 <em style="color:var(--red)">경쟁자가 없는</em> 블루오션.</p>
-            <p>기존 제품: 단순 워드게임(스크래블) or 디지털 앱(듀오링고) — 서사 부재.</p>
+            <p>기존 제품: 단순 워드게임(스크래블) or 디지털 앱(듀오링고). 서사 부재.</p>
           </div>
           <div class="metrics" style="margin-top:1rem">
             <div class="metric"><div class="val" style="font-size:2.4rem">12.3%</div><div class="lbl">에듀테인먼트 CAGR</div></div>
@@ -774,7 +773,7 @@ async function savePDF(){
           <tr><td>서사/몰입</td><td class="no">없음</td><td class="no">없음</td><td class="no">없음</td><td class="nash-col yes"><strong>머더미스터리급</strong></td></tr>
           <tr><td>4Skills 통합</td><td class="no">Writing만</td><td class="no">R+L 위주</td><td class="yes">가능(수동적)</td><td class="nash-col yes"><strong>자연 발생</strong></td></tr>
           <tr><td>자발성</td><td class="no">제한적</td><td class="no">낮음(이탈↑)</td><td class="no">강제</td><td class="nash-col yes"><strong>게임이니까 자발적</strong></td></tr>
-          <tr><td>재플레이</td><td class="yes" style="color:var(--dim)">가능</td><td class="no">콘텐츠 소모</td><td class="no">—</td><td class="nash-col yes"><strong>시리즈 확장</strong></td></tr>
+          <tr><td>재플레이</td><td class="yes" style="color:var(--dim)">가능</td><td class="no">콘텐츠 소모</td><td class="no">불가</td><td class="nash-col yes"><strong>시리즈 확장</strong></td></tr>
           <tr><td>오프라인 경험</td><td class="yes" style="color:var(--dim)">가능</td><td class="no">불가</td><td class="yes" style="color:var(--dim)">가능</td><td class="nash-col yes"><strong>핵심(손맛+심리전)</strong></td></tr>
           <tr><td>지역 연동</td><td class="no">불가</td><td class="no">불가</td><td class="no">불가</td><td class="nash-col yes"><strong>관광지 QR 미션</strong></td></tr>
         </tbody>
@@ -992,7 +991,7 @@ async function savePDF(){
           <h3 style="margin-bottom:1rem;font-size:1.5rem;color:var(--primary)">외부 협력기관 현황 및 활용계획</h3>
           <div class="card" style="margin-bottom:1rem;border-left:4px solid var(--primary)">
             <h3 style="color:var(--primary)">보드게임 제작업체</h3>
-            <p><strong>용성프린팅 & 보틀링컴퍼니</strong> — 캐릭터 카드, 사건 카드, 규칙서, 패키지 박스 인쇄 제작</p>
+            <p><strong>용성프린팅 & 보틀링컴퍼니</strong> 캐릭터 카드, 사건 카드, 규칙서, 패키지 박스 인쇄 제작</p>
             <p>구성 요소 규격·재질·인쇄 품질 검토 후 시제품 조립 및 패키징</p>
           </div>
           <div class="card card-blue" style="margin-bottom:1rem;border-left:4px solid var(--primary-dark)">
@@ -1002,8 +1001,8 @@ async function savePDF(){
           </div>
           <div class="card" style="border-left:4px solid var(--dim)">
             <h3>외부 전문가 활용</h3>
-            <p>사회복지·교육 분야 교수 및 실무자 — 교육 활용 요소와 상호작용 구조 자문</p>
-            <p>관련 전공 교수 — 웹·앱·AI 연계 기능 기술 자문, 파일럿 테스트 참여자 반응 수집</p>
+            <p>사회복지·교육 분야 교수 및 실무자. 교육 활용 요소와 상호작용 구조 자문</p>
+            <p>관련 전공 교수. 웹·앱·AI 연계 기능 기술 자문, 파일럿 테스트 참여자 반응 수집</p>
           </div>
         </div>
         <div>
