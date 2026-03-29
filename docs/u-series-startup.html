@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project DullG — 창업중심대학 발표</title>
+<title>AI 기반 상호작용형 스토리 추리·학습 보드게임 콘텐츠 — 창업중심대학 발표</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700;900&family=IBM+Plex+Mono:wght@400;600&family=Black+Han+Sans&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -269,7 +269,7 @@ async function savePDF(){
     }
     slides.forEach((s,i)=>s.setAttribute('style',orig[i]));
     document.querySelector('.nav').style.display='';
-    pdf.save('NASH_창업중심대학_발표.pdf');
+    pdf.save('AI기반_스토리추리학습_보드게임_발표.pdf');
   }catch(e){
     console.error('PDF error:',e);
     alert('PDF 오류: '+e.message);
@@ -319,7 +319,7 @@ async function savePDF(){
       </div>
       <div class="rv d5">
         <div style="font-weight:900;font-size:2.8rem;color:var(--primary);letter-spacing:0.15em;font-family:'Noto Sans KR',sans-serif">NASH</div>
-        <p style="font-size:1.4rem;color:rgba(255,255,255,0.35);letter-spacing:0.05em;margin-top:0.4rem">서사 기반 몰입형 영어교육 보드게임 · Project DullG</p>
+        <p style="font-size:1.4rem;color:rgba(255,255,255,0.35);letter-spacing:0.05em;margin-top:0.4rem">AI 기반 상호작용형 스토리 추리·학습 보드게임 콘텐츠 · Project DullG</p>
       </div>
     </div>
   </div>
@@ -388,8 +388,8 @@ async function savePDF(){
     <div class="inner">
       <div class="rv">
         <div class="sec-label">SOLUTION</div>
-        <h2 class="sec-title">NASH의 몰입 선순환</h2>
-        <p class="sec-sub">머더미스터리의 <em>정보 비대칭</em>이 핵심. 각자가 가진 단서를 영어로 공유하지 않으면 아무도 범인을 잡을 수 없습니다.</p>
+        <h2 class="sec-title">스토리 추리 보드게임의 몰입 선순환</h2>
+        <p class="sec-sub">이용자가 등장인물의 역할을 수행하며 단서를 수집·추론하여 사건을 해결하는 <em>정보 비대칭</em> 구조. 영어로 공유하지 않으면 아무도 범인을 잡을 수 없습니다.</p>
       </div>
       <!-- 솔루션 플로우 SVG -->
       <div class="rv d1" style="text-align:center;margin-bottom:2rem;background:var(--bg-alt);border-radius:var(--radius);padding:2rem 1.5rem">
@@ -437,74 +437,55 @@ async function savePDF(){
   <div class="slide-body" style="padding-top:36px;padding-bottom:36px">
     <div class="inner">
       <div class="rv">
-        <div class="sec-label">EXAMPLE</div>
-        <h2 class="sec-title" style="font-size:2.4rem">울산 대왕암 — NASH의 첫 번째 현장</h2>
-        <p class="sec-sub" style="margin-bottom:1.5rem">보드게임 → 관광지 QR 에필로그 → 오프라인 교육과 관광의 융합</p>
+        <div class="sec-label">DEVELOPMENT PLAN</div>
+        <h2 class="sec-title" style="font-size:2.4rem">실증 및 개발 계획</h2>
+        <p class="sec-sub" style="margin-bottom:1.5rem">교육·확장형 콘텐츠 고도화 → 시제품 제작 → 파일럿 테스트 → AI 기반 확장</p>
       </div>
       <div class="img-placeholder rv d1" style="min-height:420px;margin-bottom:1.5rem">
-        <span class="ph-text">대왕암 현장 사진 삽입</span>
+        <span class="ph-text">시제품 / 제작 과정 사진 삽입</span>
       </div>
       <div class="tc rv d2">
         <div>
           <div class="card card-blue" style="margin-bottom:1rem;padding:1.2rem 1.5rem">
-            <h3 style="color:var(--primary);font-size:1.55rem">🏔️ 울산 대왕암</h3>
-            <p>기암괴석이 단서, 울산의 역사가 시나리오 배경</p>
-            <p>관광객이 QR로 현장 미션 수행 → 영어로 단서 해독</p>
+            <h3 style="color:var(--primary);font-size:1.55rem">실증/개발 목표</h3>
+            <p>기존 스토리 추리 보드게임을 <em>교육·확장형 콘텐츠</em>로 고도화</p>
+            <p>시나리오, 규칙, 구성물, 패키지 및 웹페이지 연계 기능 개선</p>
+            <p>이용자 파일럿 테스트를 통해 몰입도, 이해도, 추론 참여도, 진행 안정성 및 재참여 의향 검증</p>
           </div>
-          <!-- U-시리즈 허브-스포크 다이어그램 -->
-          <div style="text-align:center;background:#fff;border-radius:var(--radius);padding:1.5rem;border:1px solid var(--border)">
-            <svg viewBox="0 0 480 360" style="width:100%;max-width:460px">
-              <defs>
-                <filter id="hub-shadow" x="-10%" y="-10%" width="120%" height="120%">
-                  <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#3366FF" flood-opacity="0.12"/>
-                </filter>
-              </defs>
-              <line x1="240" y1="180" x2="110" y2="70" stroke="#3366FF" stroke-width="2" stroke-dasharray="6 4" opacity="0.35"/>
-              <line x1="240" y1="180" x2="370" y2="70" stroke="#2952CC" stroke-width="2" stroke-dasharray="6 4" opacity="0.35"/>
-              <line x1="240" y1="180" x2="370" y2="290" stroke="#5AC8FA" stroke-width="2" stroke-dasharray="6 4" opacity="0.35"/>
-              <line x1="240" y1="180" x2="110" y2="290" stroke="#999" stroke-width="2" stroke-dasharray="6 4" opacity="0.35"/>
-              <circle cx="240" cy="180" r="50" fill="#16162a" stroke="#3366FF" stroke-width="3" filter="url(#hub-shadow)"/>
-              <text x="240" y="174" font-family="'Noto Sans KR',sans-serif" font-size="22" fill="#7799FF" text-anchor="middle" font-weight="900">NASH</text>
-              <text x="240" y="196" font-family="'Noto Sans KR',sans-serif" font-size="13" fill="rgba(255,255,255,0.55)" text-anchor="middle" font-weight="500">U-시리즈</text>
-              <circle cx="110" cy="70" r="44" fill="#f0f4ff" stroke="#3366FF" stroke-width="2.5"/>
-              <text x="110" y="58" font-family="'Noto Sans KR',sans-serif" font-size="12" fill="#3366FF" text-anchor="middle" font-weight="800">U-001</text>
-              <text x="110" y="74" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#1a1a1a" text-anchor="middle" font-weight="700">울산</text>
-              <text x="110" y="90" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#777" text-anchor="middle">대왕암의 비밀</text>
-              <circle cx="370" cy="70" r="44" fill="#f0f4ff" stroke="#2952CC" stroke-width="2.5"/>
-              <text x="370" y="58" font-family="'Noto Sans KR',sans-serif" font-size="12" fill="#2952CC" text-anchor="middle" font-weight="800">U-002</text>
-              <text x="370" y="74" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#1a1a1a" text-anchor="middle" font-weight="700">경주</text>
-              <text x="370" y="90" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#777" text-anchor="middle">첨성대의 그림자</text>
-              <circle cx="370" cy="290" r="44" fill="#f0f8ff" stroke="#5AC8FA" stroke-width="2.5"/>
-              <text x="370" y="278" font-family="'Noto Sans KR',sans-serif" font-size="12" fill="#5AC8FA" text-anchor="middle" font-weight="800">U-003</text>
-              <text x="370" y="294" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#1a1a1a" text-anchor="middle" font-weight="700">부산</text>
-              <text x="370" y="310" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#777" text-anchor="middle">해운대 미드나잇</text>
-              <circle cx="110" cy="290" r="44" fill="#f5f5f8" stroke="#999" stroke-width="2.5"/>
-              <text x="110" y="278" font-family="'Noto Sans KR',sans-serif" font-size="12" fill="#666" text-anchor="middle" font-weight="800">U-004</text>
-              <text x="110" y="294" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#1a1a1a" text-anchor="middle" font-weight="700">울릉도</text>
-              <text x="110" y="310" font-family="'Noto Sans KR',sans-serif" font-size="11" fill="#777" text-anchor="middle">울릉도 표류기</text>
-            </svg>
+          <div class="card" style="margin-bottom:1rem">
+            <h3 style="color:var(--primary-dark)">현재 개발 단계: <span class="tag tag-blue">기획</span></h3>
+            <p>기본 게임 구조와 시나리오 설계를 진행 중</p>
+            <p>QR 연계 페이지 및 웹 기반 확장 환경 구축 완료</p>
+            <p>향후 패키지 디자인, 사용자 테스트, AI 맞춤형 상호작용 기능을 단계적으로 접목</p>
           </div>
         </div>
         <div>
-          <h3 style="margin-bottom:1rem;font-size:1.65rem;color:var(--primary)">3단계 성장 로드맵</h3>
+          <h3 style="margin-bottom:1rem;font-size:1.65rem;color:var(--primary)">5단계 실증·개발 로드맵</h3>
           <div class="roadmap">
             <div class="rm-item">
-              <h3 style="color:var(--primary)">Phase 1 — 제품 검증 (현재~6개월)</h3>
-              <p>텀블벅 → 스마트스토어 → 서점 입점</p>
-              <p>U-시리즈 2종 추가 출시</p>
-              <div><span class="tag tag-blue">목표: 월 500세트</span></div>
+              <h3 style="color:var(--primary)">1단계 — 시나리오/규칙 재정비 (4~6월)</h3>
+              <p>기존 보드게임의 시나리오, 규칙, 단서 구성, 플레이 흐름을 재정비하고 교육·확장형 방향에 맞는 개선안 도출</p>
+              <div><span class="tag tag-blue">산출물: 시나리오/규칙 개선안, 개발 기획안</span></div>
             </div>
             <div class="rm-item">
-              <h3 style="color:var(--primary-dark)">Phase 2 — 지역 확장 (6~18개월)</h3>
-              <p>울산 → 경주/부산/제주 확대</p>
-              <p>지자체 관광 예산 + 교육청 협력</p>
-              <div><span class="tag tag-blue">목표: 5개 지역 MOU</span></div>
+              <h3 style="color:var(--primary-dark)">2단계 — 전문가 자문 (6~7월)</h3>
+              <p>전문가 자문을 통해 교육 활용 요소와 상호작용 구조를 점검하고 보완사항 반영</p>
+              <div><span class="tag tag-blue">산출물: 전문가 자문 결과, 보완 반영 기획안</span></div>
             </div>
             <div class="rm-item">
-              <h3 style="color:var(--dim)">Phase 3 — B2B + 글로벌 (18~36개월)</h3>
-              <p>학교/학원/기업 라이선스</p>
-              <p>해외 로컬라이제이션 (일→영, 중→영)</p>
-              <div><span class="tag tag-blue">목표: MAU 10만</span></div>
+              <h3 style="color:var(--primary)">3단계 — 시제품 제작 (7~8월)</h3>
+              <p>구성물, 패키지, 규칙서, 웹페이지 개선 및 학습 연계 기능을 반영한 실증용 시제품 제작</p>
+              <div><span class="tag tag-blue">산출물: 시제품 1차 완성본, 웹페이지 개선본</span></div>
+            </div>
+            <div class="rm-item">
+              <h3 style="color:var(--primary-dark)">4단계 — 파일럿 테스트 (8~10월)</h3>
+              <p>이용자 파일럿 테스트를 실시하여 사전·사후 변화 및 집단 간 차이를 t-test 통계 분석으로 검증</p>
+              <div><span class="tag tag-red">산출물: 파일럿 테스트 결과보고서</span></div>
+            </div>
+            <div class="rm-item">
+              <h3 style="color:var(--dim)">5단계 — AI 고도화 + 앱·웹 확장 (9~10월)</h3>
+              <p>테스트 및 자문 결과를 반영해 AI 기반 맞춤형 보조·상호작용 기능과 연계 가능한 앱·웹 확장형 구조로 고도화</p>
+              <div><span class="tag tag-blue">산출물: 최종 시제품, 후속 개발안</span></div>
             </div>
           </div>
         </div>
@@ -577,10 +558,10 @@ async function savePDF(){
             </div>
           </div>
           <div class="card card-dark" style="margin-top:1rem">
-            <h3 style="color:var(--primary)">핵심 자산</h3>
-            <p>시나리오 프레임워크 (3R×4명×정보비대칭) 보유</p>
-            <p>QR 에필로그 시스템 개발 완료</p>
-            <p>마케팅 0원으로 PMF 증명</p>
+            <h3 style="color:var(--primary)">기술적 우위 및 차별성</h3>
+            <p>텀블벅 180% 달성으로 <em style="color:#7799FF">스토리 설계 역량</em> 시장 검증</p>
+            <p>QR 기반 웹사이트 연계 에필로그 방식 적용 → 앱·AI 연계형 상호작용 구조 확장 가능</p>
+            <p>영어·역사·지역문화 등 다양한 주제와 결합, 오프라인과 온라인을 연결하는 확장형 콘텐츠</p>
           </div>
         </div>
       </div>
@@ -693,7 +674,7 @@ async function savePDF(){
       <div class="rv">
         <div class="sec-label">PRODUCT</div>
         <h2 class="sec-title">실현 및 구체화 방안</h2>
-        <p class="sec-sub" style="margin-bottom:1.5rem">제품 구성 + 3라운드 시스템</p>
+        <p class="sec-sub" style="margin-bottom:1.5rem">제품 구성 + 3라운드 시스템 + QR 연계·AI 확장</p>
       </div>
       <div class="tc rv d1">
         <div>
@@ -730,8 +711,9 @@ async function savePDF(){
             <p>R1에서 매력적인 가짜 답을 심고, R3에서 <em style="color:var(--red)">영어 단서를 통해서만</em> 진짜 답 발견. "영어를 안 하면 영원히 속는다."</p>
           </div>
           <div class="card card-blue" style="margin-top:0.8rem">
-            <h3 style="color:var(--primary)">QR 에필로그 확장</h3>
-            <p>오프라인 게임 클리어 → QR 스캔 → 후속 스토리(온라인) → 관광지 현장 방문 유도</p>
+            <h3 style="color:var(--primary)">QR 연계 + AI 기반 확장</h3>
+            <p>QR 연계 페이지를 통해 추가 단서 획득, 에필로그·후속 서사를 통한 세계관 확장</p>
+            <p>향후 AI 기반 맞춤형 상호작용 기능으로 난이도 조절 및 개인화된 학습 경험 제공</p>
           </div>
         </div>
       </div>
@@ -802,13 +784,13 @@ async function savePDF(){
         </div>
         <div>
           <div class="card" style="margin-bottom:1.5rem">
-            <h3 style="font-size:1.6rem;color:var(--primary)">📊 매출 전망</h3>
+            <h3 style="font-size:1.6rem;color:var(--primary)">📊 정량적 성과목표</h3>
             <table>
-              <thead><tr><th>연도</th><th>목표 매출</th><th>근거</th></tr></thead>
+              <thead><tr><th>구분</th><th>현재</th><th>1년 후</th><th>2년 후</th></tr></thead>
               <tbody>
-                <tr><td><strong>Year 1</strong></td><td><em>1.2억</em></td><td>B2C 3,000세트</td></tr>
-                <tr><td><strong>Year 2</strong></td><td><em>4.5억</em></td><td>B2B + 3개 지역</td></tr>
-                <tr><td><strong>Year 3</strong></td><td><em>12억</em></td><td>해외 + 디지털</td></tr>
+                <tr><td><strong>매출 (백만원)</strong></td><td>9</td><td><em>70</em></td><td><em>200</em></td></tr>
+                <tr><td><strong>고용 인원 (명)</strong></td><td>2</td><td><em>5</em></td><td><em>10</em></td></tr>
+                <tr><td><strong>지식재산권 (건)</strong></td><td>0</td><td><em>2</em></td><td><em>5</em></td></tr>
               </tbody>
             </table>
           </div>
@@ -844,7 +826,7 @@ async function savePDF(){
         </div>
         <div class="card">
           <h3 style="color:var(--primary-dark)">Risk 3. 교육 효과 입증</h3>
-          <p><strong>대응:</strong> 대학 교수진 자문, 사전/사후 테스트 데이터 수집. 논문화 추진.</p>
+          <p><strong>대응:</strong> 파일럿 테스트를 통한 사전·사후 비교 <em style="color:var(--primary-dark)">t-test 통계분석</em>으로 교육 효과 정량 검증. 전문가 자문 병행.</p>
           <p><strong>피봇:</strong> 효과 입증 부족 시 → '영어 체험 엔터테인먼트'로 리포지셔닝.</p>
         </div>
         <div class="card card-blue">
@@ -862,61 +844,44 @@ async function savePDF(){
   <div class="slide-body" style="padding-top:36px;padding-bottom:36px">
     <div class="inner">
       <div class="rv">
-        <div class="sec-label">PLAN</div>
-        <h2 class="sec-title">사업추진 일정 및 자금 운용 계획</h2>
+        <div class="sec-label">PLAN & BUDGET</div>
+        <h2 class="sec-title">실증·개발 일정 및 자금 운용 계획</h2>
       </div>
       <div class="tc rv d1">
         <div>
-          <h3 style="margin-bottom:0.8rem;font-size:1.65rem;color:var(--primary)">📋 사업추진 일정</h3>
+          <h3 style="margin-bottom:0.8rem;font-size:1.65rem;color:var(--primary)">📋 실증·개발 추진 일정</h3>
           <div class="card">
           <table>
-            <thead><tr><th>기간</th><th>마일스톤</th><th>산출물</th></tr></thead>
+            <thead><tr><th>단계</th><th>기간</th><th>추진 내용</th><th>산출물</th></tr></thead>
             <tbody>
-              <tr><td><strong>M1~M2</strong></td><td>U-001 시나리오 완성</td><td>대왕암 시나리오 패키지</td></tr>
-              <tr><td><strong>M3~M4</strong></td><td>디자인 + 인쇄 제작</td><td>완제품 1,000세트</td></tr>
-              <tr><td><strong>M5~M6</strong></td><td>판매 채널 구축</td><td>스마트스토어 + 서점 입점</td></tr>
-              <tr><td><strong>M7~M8</strong></td><td>울산 대왕암 QR 연동</td><td>현장 에필로그 시스템</td></tr>
-              <tr><td><strong>M9~M10</strong></td><td>U-002 개발 착수</td><td>경주 시나리오 프로토타입</td></tr>
-              <tr><td><strong>M11~M12</strong></td><td>B2B 파일럿</td><td>학교 3곳 시범 운영</td></tr>
+              <tr><td><strong>1</strong></td><td>4~6월</td><td>시나리오/규칙 재정비, 교육·확장형 개선안</td><td>개선안, 기획안</td></tr>
+              <tr><td><strong>2</strong></td><td>6~7월</td><td>전문가 자문, 상호작용 구조 보완</td><td>자문 결과, 보완 기획안</td></tr>
+              <tr><td><strong>3</strong></td><td>7~8월</td><td>실증용 시제품 제작</td><td>시제품 1차, 웹 개선</td></tr>
+              <tr><td><strong>4</strong></td><td>8~10월</td><td>파일럿 테스트 + t-test 통계 분석</td><td>테스트 결과보고서</td></tr>
+              <tr><td><strong>5</strong></td><td>9~10월</td><td>AI 맞춤형 기능 + 앱·웹 확장</td><td>최종 시제품</td></tr>
             </tbody>
           </table>
           </div>
         </div>
         <div>
-          <h3 style="margin-bottom:0.8rem;font-size:1.65rem;color:var(--primary)">💰 자금 운용 계획</h3>
-          <div style="text-align:center;margin-bottom:1rem">
-            <svg viewBox="0 0 400 200" style="width:100%;max-width:400px">
-              <circle cx="100" cy="100" r="78" fill="none" stroke="#d0d0d8" stroke-width="34"/>
-              <circle cx="100" cy="100" r="78" fill="none" stroke="#3366FF" stroke-width="34"
-                stroke-dasharray="171.53 490.09" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
-              <circle cx="100" cy="100" r="78" fill="none" stroke="#2952CC" stroke-width="34"
-                stroke-dasharray="98.02 490.09" stroke-dashoffset="-171.53" transform="rotate(-90 100 100)"/>
-              <circle cx="100" cy="100" r="78" fill="none" stroke="#5580FF" stroke-width="34"
-                stroke-dasharray="98.02 490.09" stroke-dashoffset="-269.55" transform="rotate(-90 100 100)"/>
-              <circle cx="100" cy="100" r="78" fill="none" stroke="#5AC8FA" stroke-width="34"
-                stroke-dasharray="73.51 490.09" stroke-dashoffset="-367.57" transform="rotate(-90 100 100)"/>
-              <circle cx="100" cy="100" r="78" fill="none" stroke="#999" stroke-width="34"
-                stroke-dasharray="49.01 490.09" stroke-dashoffset="-441.08" transform="rotate(-90 100 100)"/>
-              <rect x="210" y="40" width="12" height="12" rx="2" fill="#3366FF"/>
-              <text x="228" y="51" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#555" font-weight="600">제품제작 35%</text>
-              <rect x="210" y="62" width="12" height="12" rx="2" fill="#2952CC"/>
-              <text x="228" y="73" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#555" font-weight="600">디자인 20%</text>
-              <rect x="210" y="84" width="12" height="12" rx="2" fill="#5580FF"/>
-              <text x="228" y="95" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#555" font-weight="600">마케팅 20%</text>
-              <rect x="210" y="106" width="12" height="12" rx="2" fill="#5AC8FA"/>
-              <text x="228" y="117" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#555" font-weight="600">QR시스템 15%</text>
-              <rect x="210" y="128" width="12" height="12" rx="2" fill="#999"/>
-              <text x="228" y="139" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#555" font-weight="600">운영비 10%</text>
-            </svg>
+          <h3 style="margin-bottom:0.8rem;font-size:1.65rem;color:var(--primary)">💰 자금 운용 계획 <span style="font-size:1.2rem;color:var(--dim);font-weight:500">총 9,940,000원</span></h3>
+          <div class="card" style="margin-bottom:1rem">
+          <table>
+            <thead><tr><th>비목</th><th>세부 항목</th><th>소요액</th><th style="color:var(--primary)">지원금(80%)</th></tr></thead>
+            <tbody>
+              <tr><td rowspan="2"><strong>실증비용</strong></td><td>POC 테스트</td><td>2,500,000</td><td>2,000,000</td></tr>
+              <tr><td>기술 컨설팅</td><td>1,800,000</td><td>1,440,000</td></tr>
+              <tr><td rowspan="4"><strong>제작비용</strong></td><td>설계비 (AI 도구 구독)</td><td>1,200,000</td><td>960,000</td></tr>
+              <tr><td>재료비 (카드·규칙서 100세트)</td><td>1,750,000</td><td>1,400,000</td></tr>
+              <tr><td>가공비/조립비</td><td>1,690,000</td><td>1,352,000</td></tr>
+              <tr><td>부품비 (QR·웹 호스팅)</td><td>300,000</td><td>240,000</td></tr>
+              <tr><td><strong>지재권</strong></td><td>상표 출원료</td><td>700,000</td><td>560,000</td></tr>
+              <tr style="font-weight:800;border-top:2px solid var(--border)"><td colspan="2"><strong>총계</strong></td><td><strong>9,940,000</strong></td><td style="color:var(--primary)"><strong>7,952,000</strong></td></tr>
+            </tbody>
+          </table>
           </div>
-          <div class="card card-dark">
-            <h3 style="color:var(--primary)">핵심 KPI</h3>
-            <div class="metrics" style="justify-content:center">
-              <div class="metric"><div class="val" style="font-size:2.2rem;color:var(--primary)">3,000</div><div class="lbl" style="color:rgba(255,255,255,0.5)">1년차 판매 세트</div></div>
-              <div class="metric"><div class="val" style="font-size:2.2rem;color:var(--primary)">3</div><div class="lbl" style="color:rgba(255,255,255,0.5)">B2B 파일럿 학교</div></div>
-              <div class="metric"><div class="val" style="font-size:2.2rem;color:var(--primary)">2</div><div class="lbl" style="color:rgba(255,255,255,0.5)">U-시리즈 출시</div></div>
-              <div class="metric"><div class="val" style="font-size:2.2rem;color:var(--primary)">1</div><div class="lbl" style="color:rgba(255,255,255,0.5)">지역 MOU</div></div>
-            </div>
+          <div class="card card-blue" style="text-align:center;padding:1rem">
+            <p style="font-size:1.3rem;margin:0"><strong>지원금</strong> 7,952,000원 <span style="color:var(--primary);font-weight:800">(80%)</span> + <strong>자부담</strong> 1,988,000원 <span style="color:var(--dim)">(20%)</span></p>
           </div>
         </div>
       </div>
@@ -989,36 +954,34 @@ async function savePDF(){
         <div>
           <h3 style="margin-bottom:1rem;font-size:1.5rem;color:var(--primary)">외부 협력기관 현황 및 활용계획</h3>
           <div class="card" style="margin-bottom:1rem;border-left:4px solid var(--primary)">
-            <h3 style="color:var(--primary)">한동대학교</h3>
-            <p>영어교육학과 / 교육공학 교수진 자문</p>
-            <p>교육 효과 검증 연구 + 논문화 공동 추진</p>
+            <h3 style="color:var(--primary)">보드게임 제작업체</h3>
+            <p><strong>용성프린팅 & 보틀링컴퍼니</strong> — 캐릭터 카드, 사건 카드, 규칙서, 패키지 박스 인쇄 제작</p>
+            <p>구성 요소 규격·재질·인쇄 품질 검토 후 시제품 조립 및 패키징</p>
           </div>
           <div class="card card-blue" style="margin-bottom:1rem;border-left:4px solid var(--primary-dark)">
-            <h3 style="color:var(--primary-dark)">울산 관광공사 / 울릉군</h3>
-            <p>지역 관광 연동 시나리오 공동 개발</p>
-            <p>글로벌 생태관광 교육 프로그램 연계</p>
+            <h3 style="color:var(--primary-dark)">플레이 테스트 협력</h3>
+            <p><strong>보드라이프</strong>, 카카오톡 오픈채팅 보드게임 이용자 그룹, 지역 대학교 동아리</p>
+            <p>방탈출 카페 및 보드게임 카페에서 실제 플레이 테스트 진행 → 피드백 수집</p>
           </div>
           <div class="card" style="border-left:4px solid var(--dim)">
-            <h3>현직 교사 네트워크</h3>
-            <p>시범 수업 운영 + 교육과정 연계 자문</p>
-            <p>학교 현장 피드백 → 제품 개선 루프</p>
+            <h3>외부 전문가 활용</h3>
+            <p>사회복지·교육 분야 교수 및 실무자 — 교육 활용 요소와 상호작용 구조 자문</p>
+            <p>관련 전공 교수 — 웹·앱·AI 연계 기능 기술 자문, 파일럿 테스트 참여자 반응 수집</p>
           </div>
         </div>
         <div>
-          <h3 style="margin-bottom:1rem;font-size:1.5rem;color:var(--primary)">중장기 사회적 가치 도입계획</h3>
-          <div class="card card-red" style="margin-bottom:1rem">
-            <h3 style="color:var(--red)">교육 격차 해소</h3>
-            <p>고가 사교육 의존 없이 39,900원 보드게임으로 양질의 영어 학습 가능.</p>
-            <p>농산어촌/교육 소외 지역에 게임 기부 프로그램 운영 예정.</p>
-          </div>
+          <h3 style="margin-bottom:1rem;font-size:1.5rem;color:var(--primary)">기대효과</h3>
           <div class="card card-blue" style="margin-bottom:1rem">
-            <h3 style="color:var(--primary)">지역 경제 활성화</h3>
-            <p>관광지 연동으로 지역 방문객 유치. 지역 스토리를 콘텐츠 자산으로 전환.</p>
-            <p>지역 청년 시나리오 크리에이터 양성 계획.</p>
+            <h3 style="color:var(--primary)">기술적 기대효과</h3>
+            <p>교육형·확장형 콘텐츠로 고도화하여 적용 범위 확대</p>
+            <p>파일럿 테스트를 통한 <em>t-test 통계분석</em>으로 교육적 효과 정량 확인</p>
+            <p>AI 맞춤형 보조 기능의 기술적 기반 마련, 오프라인과 온라인 연결 확장형 콘텐츠 구조</p>
           </div>
-          <div class="card">
-            <h3 style="color:var(--primary-dark)">자발적 학습 문화 확산</h3>
-            <p>"성적표가 아닌 승리로 증명되는 교육" — 강제가 아닌 자발적 학습 동기 부여 모델 확산.</p>
+          <div class="card card-red" style="margin-bottom:1rem">
+            <h3 style="color:var(--red)">사업화 기대효과</h3>
+            <p>B2B 교육기관·복지기관 등 B2B 시장 진출로 제품 경쟁력 확보</p>
+            <p>시제품 완성 + 파일럿 테스트 결과를 활용한 <strong>2차 크라우드펀딩</strong> 및 B2C 채널 확대</p>
+            <p><strong>상표 출원</strong>으로 브랜드 자산 보호, 시리즈형 콘텐츠 IP 확장 및 라이선스 사업 기반</p>
           </div>
         </div>
       </div>
@@ -1041,7 +1004,7 @@ async function savePDF(){
     </p>
     <div class="rv d4">
       <div style="font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:3.2rem;color:#fff;letter-spacing:0.15em;margin-bottom:0.4rem">NASH</div>
-      <p style="font-size:1.4rem;color:rgba(255,255,255,0.4);letter-spacing:0.05em">Narrative-based Active Study through Hunting</p>
+      <p style="font-size:1.25rem;color:rgba(255,255,255,0.4);letter-spacing:0.03em">AI 기반 상호작용형 스토리 추리·학습 보드게임 콘텐츠</p>
     </div>
     <div class="rv d5" style="margin-top:3rem">
       <span style="display:inline-block;font-size:1.35rem;padding:8px 20px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);border-radius:10px;font-weight:600;backdrop-filter:blur(4px)">Contact: projectdullg@gmail.com</span>
