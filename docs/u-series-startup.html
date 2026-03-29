@@ -30,7 +30,7 @@ html{scroll-snap-type:y mandatory;scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--bg);color:var(--text);font-family:'Pretendard Variable','Noto Sans KR',sans-serif;font-weight:500;line-height:1.7;-webkit-font-smoothing:antialiased;font-size:28px;word-break:keep-all}
 
 /* ── SLIDES ── */
-.slide{width:100%;min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;position:relative}
+.slide{width:100%;height:100vh;max-height:100vh;overflow:hidden;scroll-snap-align:start;display:flex;flex-direction:column;position:relative}
 .slide-body{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:50px 80px}
 .inner{max-width:1440px;width:100%;position:relative}
 
@@ -1931,46 +1931,46 @@ async function savePDF(){
 
 <!-- ═══ SLIDE 19: 참조자료 ═══ -->
 <section class="slide" id="s19">
-  <div class="slide-body" style="padding:28px 80px">
+  <div class="slide-body" style="padding:16px 80px">
     <div class="inner">
       <div class="rv">
-        <div class="sec-label">APPENDIX 01</div>
-        <h2 class="sec-title" style="margin-bottom:0.3rem">업무협약(MOU) · 유통의향서</h2>
-        <p class="sec-sub" style="margin-bottom:1.2rem">8개 기관 8개 기관 MOU 체결 완료 | 교육기관 · 기업 · 학계</p>
+        <div class="sec-label" style="font-size:1.8rem;margin-bottom:0.3rem">APPENDIX 01</div>
+        <h2 class="sec-title" style="font-size:2.8rem;margin-bottom:0.2rem">업무협약(MOU) · 유통의향서</h2>
+        <p class="sec-sub" style="font-size:1.3rem;margin-bottom:0.6rem">8개 기관 MOU 체결 완료 | 교육기관 · 기업 · 학계</p>
       </div>
-      <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem">
-        <div class="card" style="padding:0.6rem;text-align:center">
-          <img src="evidence/mou-bottling.png" alt="MOU 보틀링컴퍼니" style="width:100%;border-radius:8px;border:1px solid var(--border)">
-          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>MOU</strong> |보틀링컴퍼니 (유통·제작 파트너)</p>
+      <div class="rv d1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem">
+        <div class="card" style="padding:0.4rem;text-align:center">
+          <img src="evidence/mou-bottling.png" alt="MOU 보틀링컴퍼니" style="width:100%;max-height:320px;object-fit:contain;border-radius:6px;border:1px solid var(--border)">
+          <p style="font-size:0.65rem;margin-top:0.2rem;color:var(--dim)"><strong>MOU</strong> 보틀링컴퍼니</p>
         </div>
-        <div class="card" style="padding:0.6rem;text-align:center">
-          <img src="evidence/loi-distribution.png" alt="유통의향서 보틀링컴퍼니" style="width:100%;border-radius:8px;border:1px solid var(--border)">
-          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>유통의향서</strong> |보틀링컴퍼니 (온·오프라인 유통)</p>
+        <div class="card" style="padding:0.4rem;text-align:center">
+          <img src="evidence/loi-distribution.png" alt="유통의향서 보틀링컴퍼니" style="width:100%;max-height:320px;object-fit:contain;border-radius:6px;border:1px solid var(--border)">
+          <p style="font-size:0.65rem;margin-top:0.2rem;color:var(--dim)"><strong>유통의향서</strong> 보틀링컴퍼니</p>
         </div>
-        <div class="card" style="padding:0.6rem;text-align:center">
-          <img src="evidence/mou-maeul.png" alt="MOU 마을을누이다" style="width:100%;border-radius:8px;border:1px solid var(--border)">
-          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>MOU</strong> |마을을누이다 심리상담센터 (교육 파트너)</p>
+        <div class="card" style="padding:0.4rem;text-align:center">
+          <img src="evidence/mou-maeul.png" alt="MOU 마을을누이다" style="width:100%;max-height:320px;object-fit:contain;border-radius:6px;border:1px solid var(--border)">
+          <p style="font-size:0.65rem;margin-top:0.2rem;color:var(--dim)"><strong>MOU</strong> 마을을누이다</p>
         </div>
-        <div class="card" style="padding:0.6rem;text-align:center">
-          <img src="evidence/mou-handong.png" alt="MOU 한동대 교수" style="width:100%;border-radius:8px;border:1px solid var(--border)">
-          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>MOU</strong> |한동대 AI컴퓨터전자학부 교수 (학술)</p>
+        <div class="card" style="padding:0.4rem;text-align:center">
+          <img src="evidence/mou-handong.png" alt="MOU 한동대 교수" style="width:100%;max-height:320px;object-fit:contain;border-radius:6px;border:1px solid var(--border)">
+          <p style="font-size:0.65rem;margin-top:0.2rem;color:var(--dim)"><strong>MOU</strong> 한동대 교수</p>
         </div>
       </div>
-      <div class="rv d2" style="display:flex;gap:0.8rem;margin-top:1rem">
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.6rem 1rem">
-          <div style="font-size:1.8rem;font-weight:900;color:var(--primary)">8건</div>
-          <div style="font-size:0.85rem;color:var(--dim)">MOU 체결</div>
+      <div class="rv d2" style="display:flex;gap:0.5rem;margin-top:0.5rem">
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.4rem 0.6rem">
+          <div style="font-size:1.4rem;font-weight:900;color:var(--primary)">8건</div>
+          <div style="font-size:0.7rem;color:var(--dim)">MOU 체결</div>
         </div>
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.6rem 1rem">
-          <div style="font-size:1.8rem;font-weight:900;color:var(--primary)">1건</div>
-          <div style="font-size:0.85rem;color:var(--dim)">유통의향서</div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.4rem 0.6rem">
+          <div style="font-size:1.4rem;font-weight:900;color:var(--primary)">1건</div>
+          <div style="font-size:0.7rem;color:var(--dim)">유통의향서</div>
         </div>
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.6rem 1rem">
-          <div style="font-size:1.8rem;font-weight:900;color:var(--primary)">1건</div>
-          <div style="font-size:0.85rem;color:var(--dim)">위탁판매계약</div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.4rem 0.6rem">
+          <div style="font-size:1.4rem;font-weight:900;color:var(--primary)">1건</div>
+          <div style="font-size:0.7rem;color:var(--dim)">위탁판매계약</div>
         </div>
-        <div class="card" style="flex:2;padding:0.6rem 1rem;font-size:0.85rem">
-          <strong>MOU 파트너:</strong> 보틀링컴퍼니 · 마을을누이다 · 다니엘영어 · Jason영어 · 원투영어 · 세진영어 · 책동클럽마인즈 · 헥사플러스 · 한동대 교수 2인
+        <div class="card" style="flex:2;padding:0.4rem 0.6rem;font-size:0.7rem">
+          <strong>파트너:</strong> 보틀링컴퍼니 · 마을을누이다 · 다니엘영어 · Jason영어 · 원투영어 · 세진영어 · 책동클럽마인즈 · 헥사플러스 · 한동대 교수 2인
         </div>
       </div>
     </div>
@@ -1979,53 +1979,52 @@ async function savePDF(){
 
 <!-- ═══ SLIDE 20: APPENDIX 02 — 구매의향서 · 상표출원 ═══ -->
 <section class="slide slide-alt" id="s20">
-  <div class="slide-body" style="padding:28px 80px">
+  <div class="slide-body" style="padding:16px 80px">
     <div class="inner">
       <div class="rv">
-        <div class="sec-label">APPENDIX 02</div>
-        <h2 class="sec-title" style="margin-bottom:0.3rem">구매의향서 · 지식재산권</h2>
-        <p class="sec-sub" style="margin-bottom:1.2rem">총 90세트 구매의향 확보 · 상표 출원 완료</p>
+        <div class="sec-label" style="font-size:1.8rem;margin-bottom:0.3rem">APPENDIX 02</div>
+        <h2 class="sec-title" style="font-size:2.8rem;margin-bottom:0.2rem">구매의향서 · 지식재산권</h2>
+        <p class="sec-sub" style="font-size:1.3rem;margin-bottom:0.5rem">총 90세트 구매의향 확보 · 상표 출원 완료</p>
       </div>
-      <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem">
-        <div class="card" style="padding:0.6rem;text-align:center">
-          <img src="evidence/purchase-maeul.png" alt="구매의향서 마을을누이다" style="width:100%;border-radius:8px;border:1px solid var(--border)">
-          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>구매의향서</strong> |마을을누이다 (20세트)</p>
+      <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem">
+        <div class="card" style="padding:0.4rem;text-align:center">
+          <img src="evidence/purchase-maeul.png" alt="구매의향서 마을을누이다" style="width:100%;max-height:240px;object-fit:contain;border-radius:6px;border:1px solid var(--border)">
+          <p style="font-size:0.65rem;margin-top:0.2rem;color:var(--dim)"><strong>구매의향서</strong> 마을을누이다 (20세트)</p>
         </div>
-        <div class="card" style="padding:0.6rem;text-align:center">
-          <img src="evidence/trademark-notice.png" alt="상표출원 통지서" style="width:100%;border-radius:8px;border:1px solid var(--border)">
-          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>상표출원</strong> |40-2026-0054857 (뱀이 죽은 축제)</p>
+        <div class="card" style="padding:0.4rem;text-align:center">
+          <img src="evidence/trademark-notice.png" alt="상표출원 통지서" style="width:100%;max-height:240px;object-fit:contain;border-radius:6px;border:1px solid var(--border)">
+          <p style="font-size:0.65rem;margin-top:0.2rem;color:var(--dim)"><strong>상표출원</strong> 40-2026-0054857</p>
         </div>
-        <div class="card" style="padding:0.6rem;text-align:center">
-          <img src="evidence/contract-sales.png" alt="위탁판매계약서" style="width:100%;border-radius:8px;border:1px solid var(--border)">
-          <p style="font-size:0.85rem;margin-top:0.4rem;color:var(--dim)"><strong>위탁판매계약</strong> |보틀링컴퍼니 (500부 판매)</p>
+        <div class="card" style="padding:0.4rem;text-align:center">
+          <img src="evidence/contract-sales.png" alt="위탁판매계약서" style="width:100%;max-height:240px;object-fit:contain;border-radius:6px;border:1px solid var(--border)">
+          <p style="font-size:0.65rem;margin-top:0.2rem;color:var(--dim)"><strong>위탁판매계약</strong> 보틀링컴퍼니</p>
         </div>
       </div>
-      <div class="rv d2" style="display:flex;gap:1rem;margin-top:1rem">
-        <div class="card" style="flex:3;padding:0.8rem 1.2rem">
-          <h3 style="font-size:1.1rem;margin-bottom:0.4rem;color:var(--primary)">구매의향서 상세 (7건 · 90세트)</h3>
-          <table style="font-size:0.85rem;width:100%">
-            <thead><tr><th style="padding:0.25rem 0.4rem;text-align:left">기관명</th><th style="padding:0.25rem 0.4rem">수량</th><th style="padding:0.25rem 0.4rem">단가</th><th style="padding:0.25rem 0.4rem;text-align:left">소재지</th></tr></thead>
+      <div class="rv d2" style="display:flex;gap:0.6rem;margin-top:0.5rem">
+        <div class="card" style="flex:3;padding:0.5rem 0.8rem">
+          <h3 style="font-size:0.9rem;margin-bottom:0.2rem;color:var(--primary)">구매의향서 상세 (7건 · 90세트)</h3>
+          <table style="font-size:0.65rem;width:100%">
+            <thead><tr><th style="padding:0.15rem 0.3rem;text-align:left">기관명</th><th style="padding:0.15rem 0.3rem">수량</th><th style="padding:0.15rem 0.3rem">단가</th><th style="padding:0.15rem 0.3rem;text-align:left">소재지</th></tr></thead>
             <tbody>
-              <tr><td style="padding:0.2rem 0.4rem">마을을누이다 심리상담</td><td style="padding:0.2rem 0.4rem;text-align:center">20세트</td><td style="padding:0.2rem 0.4rem;text-align:center">49,000원</td><td style="padding:0.2rem 0.4rem">포항</td></tr>
-              <tr><td style="padding:0.2rem 0.4rem">다니엘 영어학원</td><td style="padding:0.2rem 0.4rem;text-align:center">20세트</td><td style="padding:0.2rem 0.4rem;text-align:center">49,000원</td><td style="padding:0.2rem 0.4rem">포항</td></tr>
-              <tr><td style="padding:0.2rem 0.4rem">Jason 영어학원</td><td style="padding:0.2rem 0.4rem;text-align:center">10세트</td><td style="padding:0.2rem 0.4rem;text-align:center">49,000원</td><td style="padding:0.2rem 0.4rem">서울 강남</td></tr>
-              <tr><td style="padding:0.2rem 0.4rem">헥사플러스</td><td style="padding:0.2rem 0.4rem;text-align:center">10세트</td><td style="padding:0.2rem 0.4rem;text-align:center">49,000원</td><td style="padding:0.2rem 0.4rem">서울 종로</td></tr>
-              <tr><td style="padding:0.2rem 0.4rem">원투 영어교습소</td><td style="padding:0.2rem 0.4rem;text-align:center">10세트</td><td style="padding:0.2rem 0.4rem;text-align:center">49,000원</td><td style="padding:0.2rem 0.4rem">포항</td></tr>
-              <tr><td style="padding:0.2rem 0.4rem">책동클럽 마인즈영어</td><td style="padding:0.2rem 0.4rem;text-align:center">10세트</td><td style="padding:0.2rem 0.4rem;text-align:center">49,000원</td><td style="padding:0.2rem 0.4rem">춘천</td></tr>
-              <tr><td style="padding:0.2rem 0.4rem">세진 영어교습소</td><td style="padding:0.2rem 0.4rem;text-align:center">5세트</td><td style="padding:0.2rem 0.4rem;text-align:center">49,000원</td><td style="padding:0.2rem 0.4rem">대전</td></tr>
-              <tr><td style="padding:0.2rem 0.4rem">한동대 교수 2인</td><td style="padding:0.2rem 0.4rem;text-align:center">10세트</td><td style="padding:0.2rem 0.4rem;text-align:center">49,000원</td><td style="padding:0.2rem 0.4rem">포항</td></tr>
+              <tr><td style="padding:0.1rem 0.3rem">마을을누이다 심리상담</td><td style="padding:0.1rem 0.3rem;text-align:center">20세트</td><td style="padding:0.1rem 0.3rem;text-align:center">49,000원</td><td style="padding:0.1rem 0.3rem">포항</td></tr>
+              <tr><td style="padding:0.1rem 0.3rem">다니엘 영어학원</td><td style="padding:0.1rem 0.3rem;text-align:center">20세트</td><td style="padding:0.1rem 0.3rem;text-align:center">49,000원</td><td style="padding:0.1rem 0.3rem">포항</td></tr>
+              <tr><td style="padding:0.1rem 0.3rem">Jason 영어학원</td><td style="padding:0.1rem 0.3rem;text-align:center">10세트</td><td style="padding:0.1rem 0.3rem;text-align:center">49,000원</td><td style="padding:0.1rem 0.3rem">서울</td></tr>
+              <tr><td style="padding:0.1rem 0.3rem">헥사플러스</td><td style="padding:0.1rem 0.3rem;text-align:center">10세트</td><td style="padding:0.1rem 0.3rem;text-align:center">49,000원</td><td style="padding:0.1rem 0.3rem">서울</td></tr>
+              <tr><td style="padding:0.1rem 0.3rem">원투 영어교습소</td><td style="padding:0.1rem 0.3rem;text-align:center">10세트</td><td style="padding:0.1rem 0.3rem;text-align:center">49,000원</td><td style="padding:0.1rem 0.3rem">포항</td></tr>
+              <tr><td style="padding:0.1rem 0.3rem">책동클럽 마인즈영어</td><td style="padding:0.1rem 0.3rem;text-align:center">10세트</td><td style="padding:0.1rem 0.3rem;text-align:center">49,000원</td><td style="padding:0.1rem 0.3rem">춘천</td></tr>
+              <tr><td style="padding:0.1rem 0.3rem">세진/한동대 교수</td><td style="padding:0.1rem 0.3rem;text-align:center">15세트</td><td style="padding:0.1rem 0.3rem;text-align:center">49,000원</td><td style="padding:0.1rem 0.3rem">대전/포항</td></tr>
             </tbody>
-            <tfoot><tr style="border-top:2px solid var(--border)"><td style="padding:0.3rem 0.4rem;font-weight:700">합계</td><td style="padding:0.3rem 0.4rem;text-align:center;font-weight:900;color:var(--primary)">90세트</td><td colspan="2" style="padding:0.3rem 0.4rem;font-weight:900;color:var(--primary)">4,410,000원</td></tr></tfoot>
+            <tfoot><tr style="border-top:2px solid var(--border)"><td style="padding:0.15rem 0.3rem;font-weight:700">합계</td><td style="padding:0.15rem 0.3rem;text-align:center;font-weight:900;color:var(--primary)">90세트</td><td colspan="2" style="padding:0.15rem 0.3rem;font-weight:900;color:var(--primary)">4,410,000원</td></tr></tfoot>
           </table>
         </div>
-        <div style="flex:1;display:flex;flex-direction:column;gap:0.8rem">
-          <div class="card card-blue" style="padding:0.6rem 1rem;text-align:center">
-            <div style="font-size:0.75rem;color:var(--dim)">견적단가 (100세트)</div>
-            <div style="font-size:1.5rem;font-weight:900;color:var(--primary)">37,687원</div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:0.4rem">
+          <div class="card card-blue" style="padding:0.4rem 0.6rem;text-align:center">
+            <div style="font-size:0.65rem;color:var(--dim)">견적단가 (100세트)</div>
+            <div style="font-size:1.2rem;font-weight:900;color:var(--primary)">37,687원</div>
           </div>
-          <div class="card" style="padding:0.6rem 1rem">
-            <img src="evidence/quote-printing.png" alt="견적서" style="width:100%;border-radius:6px;border:1px solid var(--border)">
-            <p style="font-size:0.75rem;margin-top:0.3rem;color:var(--dim);text-align:center">제작 견적서 (홍컬러프린팅)</p>
+          <div class="card" style="padding:0.4rem 0.6rem">
+            <img src="evidence/quote-printing.png" alt="견적서" style="width:100%;max-height:180px;object-fit:contain;border-radius:4px;border:1px solid var(--border)">
+            <p style="font-size:0.6rem;margin-top:0.2rem;color:var(--dim);text-align:center">견적서 (홍컬러프린팅)</p>
           </div>
         </div>
       </div>
@@ -2035,30 +2034,30 @@ async function savePDF(){
 
 <!-- ═══ SLIDE 21: APPENDIX 03 — 설문 상세 (이미지) ═══ -->
 <section class="slide" id="s21">
-  <div class="slide-body" style="padding:24px 80px">
+  <div class="slide-body" style="padding:16px 80px">
     <div class="inner">
       <div class="rv">
-        <div class="sec-label">APPENDIX 03</div>
-        <h2 class="sec-title" style="margin-bottom:0.3rem">시장 검증 설문: 플레이 기대</h2>
-        <p class="sec-sub" style="margin-bottom:0.8rem">N=169 · 온라인 설문 (2026.03) · 리커트 5점 척도</p>
+        <div class="sec-label" style="font-size:1.8rem;margin-bottom:0.3rem">APPENDIX 03</div>
+        <h2 class="sec-title" style="font-size:2.8rem;margin-bottom:0.2rem">시장 검증 설문: 플레이 기대</h2>
+        <p class="sec-sub" style="font-size:1.3rem;margin-bottom:0.5rem">N=169 · 온라인 설문 (2026.03) · 리커트 5점 척도</p>
       </div>
-      <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-        <div class="card" style="padding:0.5rem;text-align:center">
-          <img src="evidence/survey-07-web.png" alt="추론/집중 기대 설문" style="width:100%;border-radius:8px">
-          <p style="font-size:0.8rem;margin-top:0.3rem;color:var(--dim)">추론 과정 <strong style="color:var(--primary)">92.9%</strong> · 높은 집중 <strong style="color:var(--primary)">88.7%</strong> (4+5점 동의)</p>
+      <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem">
+        <div class="card" style="padding:0.4rem;text-align:center">
+          <img src="evidence/survey-07-web.png" alt="추론/집중 기대 설문" style="width:100%;max-height:400px;object-fit:contain;border-radius:6px">
+          <p style="font-size:0.65rem;margin-top:0.2rem;color:var(--dim)">추론 과정 <strong style="color:var(--primary)">92.9%</strong> · 높은 집중 <strong style="color:var(--primary)">88.7%</strong></p>
         </div>
-        <div class="card" style="padding:0.5rem;text-align:center">
-          <img src="evidence/survey-05-web.png" alt="디지털 피로 설문" style="width:100%;border-radius:8px">
-          <p style="font-size:0.8rem;margin-top:0.3rem;color:var(--dim)">디지털 피로 <strong style="color:var(--red)">78.7%</strong> · 오프라인 필요성 <strong>68.6%</strong></p>
+        <div class="card" style="padding:0.4rem;text-align:center">
+          <img src="evidence/survey-05-web.png" alt="디지털 피로 설문" style="width:100%;max-height:400px;object-fit:contain;border-radius:6px">
+          <p style="font-size:0.65rem;margin-top:0.2rem;color:var(--dim)">디지털 피로 <strong style="color:var(--red)">78.7%</strong> · 오프라인 필요성 <strong>68.6%</strong></p>
         </div>
       </div>
-      <div class="rv d2" style="display:flex;gap:0.8rem;margin-top:0.8rem">
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">92.9%</div><div style="font-size:0.75rem;color:var(--dim)">두뇌 활용</div></div>
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">88.7%</div><div style="font-size:0.75rem;color:var(--dim)">집중 요구</div></div>
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">86.4%</div><div style="font-size:0.75rem;color:var(--dim)">재미/만족</div></div>
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">84.6%</div><div style="font-size:0.75rem;color:var(--dim)">협업 가능</div></div>
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">81.6%</div><div style="font-size:0.75rem;color:var(--dim)">스토리 집중</div></div>
-        <div class="card" style="flex:1;text-align:center;padding:0.5rem;border-color:var(--red)"><div style="font-size:1.4rem;font-weight:900;color:var(--red)">78.7%</div><div style="font-size:0.75rem;color:var(--dim)">디지털 피로</div></div>
+      <div class="rv d2" style="display:flex;gap:0.5rem;margin-top:0.5rem">
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.3rem"><div style="font-size:1.2rem;font-weight:900;color:var(--primary)">92.9%</div><div style="font-size:0.6rem;color:var(--dim)">두뇌 활용</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.3rem"><div style="font-size:1.2rem;font-weight:900;color:var(--primary)">88.7%</div><div style="font-size:0.6rem;color:var(--dim)">집중 요구</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.3rem"><div style="font-size:1.2rem;font-weight:900;color:var(--primary)">86.4%</div><div style="font-size:0.6rem;color:var(--dim)">재미/만족</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.3rem"><div style="font-size:1.2rem;font-weight:900;color:var(--primary)">84.6%</div><div style="font-size:0.6rem;color:var(--dim)">협업 가능</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.3rem"><div style="font-size:1.2rem;font-weight:900;color:var(--primary)">81.6%</div><div style="font-size:0.6rem;color:var(--dim)">스토리 집중</div></div>
+        <div class="card" style="flex:1;text-align:center;padding:0.3rem;border-color:var(--red)"><div style="font-size:1.2rem;font-weight:900;color:var(--red)">78.7%</div><div style="font-size:0.6rem;color:var(--dim)">디지털 피로</div></div>
       </div>
     </div>
   </div>
@@ -2066,33 +2065,33 @@ async function savePDF(){
 
 <!-- ═══ SLIDE 22: APPENDIX 04 — 설문 상세 (구매의향) ═══ -->
 <section class="slide slide-alt" id="s22">
-  <div class="slide-body" style="padding:24px 80px">
+  <div class="slide-body" style="padding:16px 80px">
     <div class="inner">
       <div class="rv">
-        <div class="sec-label">APPENDIX 04</div>
-        <h2 class="sec-title" style="margin-bottom:0.3rem">시장 검증 설문: 구매 의향 · 이용 선호</h2>
-        <p class="sec-sub" style="margin-bottom:0.8rem">N=169 · 구매 고려 87.6% · 사용 상황별 선호도</p>
+        <div class="sec-label" style="font-size:1.8rem;margin-bottom:0.3rem">APPENDIX 04</div>
+        <h2 class="sec-title" style="font-size:2.8rem;margin-bottom:0.2rem">시장 검증 설문: 구매 의향 · 이용 선호</h2>
+        <p class="sec-sub" style="font-size:1.3rem;margin-bottom:0.5rem">N=169 · 구매 고려 87.6% · 사용 상황별 선호도</p>
       </div>
-      <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem">
-        <div class="card" style="padding:0.5rem;text-align:center">
-          <img src="evidence/survey-10-web.png" alt="사용 상황 및 인원" style="width:100%;border-radius:8px">
-          <p style="font-size:0.8rem;margin-top:0.3rem;color:var(--dim)">사용 상황: 친구 모임 <strong>58%</strong> · 4~5명 <strong>78.1%</strong></p>
+      <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem">
+        <div class="card" style="padding:0.4rem;text-align:center">
+          <img src="evidence/survey-10-web.png" alt="사용 상황 및 인원" style="width:100%;max-height:380px;object-fit:contain;border-radius:6px">
+          <p style="font-size:0.65rem;margin-top:0.2rem;color:var(--dim)">친구 모임 <strong>58%</strong> · 4~5명 <strong>78.1%</strong></p>
         </div>
-        <div class="card" style="padding:0.5rem;text-align:center">
-          <img src="evidence/survey-11-web.png" alt="구매 판단 요소 및 의향" style="width:100%;border-radius:8px">
-          <p style="font-size:0.8rem;margin-top:0.3rem;color:var(--dim)">29,900원 구매 고려 <strong>69.3%</strong> · 60~90분 <strong>63.9%</strong></p>
+        <div class="card" style="padding:0.4rem;text-align:center">
+          <img src="evidence/survey-11-web.png" alt="구매 판단 요소 및 의향" style="width:100%;max-height:380px;object-fit:contain;border-radius:6px">
+          <p style="font-size:0.65rem;margin-top:0.2rem;color:var(--dim)">29,900원 구매 <strong>69.3%</strong> · 60~90분 <strong>63.9%</strong></p>
         </div>
-        <div class="card" style="padding:0.5rem;text-align:center">
-          <img src="evidence/survey-15-web.png" alt="매력 요소" style="width:100%;border-radius:8px">
-          <p style="font-size:0.8rem;margin-top:0.3rem;color:var(--dim)">반전의 재미 <strong>33.1%</strong> · 대화/협력 <strong>29%</strong></p>
+        <div class="card" style="padding:0.4rem;text-align:center">
+          <img src="evidence/survey-15-web.png" alt="매력 요소" style="width:100%;max-height:380px;object-fit:contain;border-radius:6px">
+          <p style="font-size:0.65rem;margin-top:0.2rem;color:var(--dim)">반전 재미 <strong>33.1%</strong> · 대화/협력 <strong>29%</strong></p>
         </div>
       </div>
-      <div class="rv d2" style="display:flex;gap:0.8rem;margin-top:0.8rem">
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">87.6%</div><div style="font-size:0.75rem;color:var(--dim)">구매 고려 의향</div></div>
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">69.3%</div><div style="font-size:0.75rem;color:var(--dim)">29,900원 수용</div></div>
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">78.1%</div><div style="font-size:0.75rem;color:var(--dim)">4~5명 선호</div></div>
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">63.9%</div><div style="font-size:0.75rem;color:var(--dim)">60~90분 선호</div></div>
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem"><div style="font-size:1.4rem;font-weight:900;color:var(--primary)">66%</div><div style="font-size:0.75rem;color:var(--dim)">교육 우선 선택</div></div>
+      <div class="rv d2" style="display:flex;gap:0.5rem;margin-top:0.5rem">
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.3rem"><div style="font-size:1.2rem;font-weight:900;color:var(--primary)">87.6%</div><div style="font-size:0.6rem;color:var(--dim)">구매 고려 의향</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.3rem"><div style="font-size:1.2rem;font-weight:900;color:var(--primary)">69.3%</div><div style="font-size:0.6rem;color:var(--dim)">29,900원 수용</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.3rem"><div style="font-size:1.2rem;font-weight:900;color:var(--primary)">78.1%</div><div style="font-size:0.6rem;color:var(--dim)">4~5명 선호</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.3rem"><div style="font-size:1.2rem;font-weight:900;color:var(--primary)">63.9%</div><div style="font-size:0.6rem;color:var(--dim)">60~90분 선호</div></div>
+        <div class="card card-blue" style="flex:1;text-align:center;padding:0.3rem"><div style="font-size:1.2rem;font-weight:900;color:var(--primary)">66%</div><div style="font-size:0.6rem;color:var(--dim)">교육 우선 선택</div></div>
       </div>
     </div>
   </div>
