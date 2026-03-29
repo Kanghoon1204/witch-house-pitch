@@ -421,8 +421,23 @@ async function savePDF(){
       <div class="rv d1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:1.5rem">
         <!-- 캐릭터 1: 선장 모리스 -->
         <div style="background:rgba(255,59,48,0.06);border:1px solid rgba(255,59,48,0.15);border-radius:var(--radius);padding:1.4rem 1rem;text-align:center">
-          <div class="img-placeholder" style="width:150px;height:150px;border-radius:50%;margin:0 auto 1rem;min-height:auto;border-color:rgba(255,59,48,0.25)">
-          </div>
+          <svg viewBox="0 0 150 150" width="150" height="150" style="margin:0 auto 1rem;display:block">
+            <defs><clipPath id="cc1"><circle cx="75" cy="75" r="73"/></clipPath></defs>
+            <circle cx="75" cy="75" r="74" fill="#160505" stroke="rgba(255,59,48,0.3)" stroke-width="2"/>
+            <g clip-path="url(#cc1)">
+              <ellipse cx="75" cy="145" rx="60" ry="18" fill="rgba(214,48,49,0.08)"/>
+              <path d="M55,88 C40,94 24,108 18,150 L132,150 C126,108 110,94 95,88 Z" fill="rgba(214,48,49,0.32)"/>
+              <path d="M67,88 L75,102 L83,88" fill="none" stroke="rgba(255,59,48,0.2)" stroke-width="1.5"/>
+              <rect x="34" y="100" width="10" height="3.5" rx="1.5" fill="rgba(255,59,48,0.22)" transform="rotate(-18,39,101)"/>
+              <rect x="106" y="100" width="10" height="3.5" rx="1.5" fill="rgba(255,59,48,0.22)" transform="rotate(18,111,101)"/>
+              <rect x="68" y="79" width="14" height="11" rx="3" fill="rgba(214,48,49,0.38)"/>
+              <ellipse cx="75" cy="57" rx="21" ry="26" fill="rgba(214,48,49,0.42)"/>
+              <ellipse cx="75" cy="39" rx="26" ry="5" fill="rgba(214,48,49,0.48)"/>
+              <path d="M53,37 Q55,23 75,19 Q95,23 97,37 Q86,35 75,34 Q64,35 53,37 Z" fill="rgba(214,48,49,0.45)"/>
+              <path d="M72,29 L75,25 L78,29 L75,33 Z" fill="rgba(255,59,48,0.35)"/>
+              <path d="M64,76 Q61,66 62,56 Q64,43 69,37" fill="none" stroke="rgba(255,59,48,0.12)" stroke-width="1"/>
+            </g>
+          </svg>
           <div style="font-weight:900;font-size:1.5rem;color:#fff;margin-bottom:0.2rem">선장 모리스</div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:1.1rem;color:var(--red);letter-spacing:0.06em;margin-bottom:0.5rem;font-weight:600">THE GREEDY CAPTAIN</div>
           <p style="font-size:1.15rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 0 0.5rem">"돈이라면 뭐든 합니다."<br><span style="color:var(--red);font-weight:600">재정적 단서</span> 보유</p>
@@ -430,8 +445,22 @@ async function savePDF(){
         </div>
         <!-- 캐릭터 2: 등대지기 엘라 -->
         <div style="background:rgba(51,102,255,0.06);border:1px solid rgba(51,102,255,0.15);border-radius:var(--radius);padding:1.4rem 1rem;text-align:center">
-          <div class="img-placeholder" style="width:150px;height:150px;border-radius:50%;margin:0 auto 1rem;min-height:auto;border-color:rgba(51,102,255,0.25)">
-          </div>
+          <svg viewBox="0 0 150 150" width="150" height="150" style="margin:0 auto 1rem;display:block">
+            <defs><clipPath id="cc2"><circle cx="75" cy="75" r="73"/></clipPath></defs>
+            <circle cx="75" cy="75" r="74" fill="#060d1a" stroke="rgba(51,102,255,0.3)" stroke-width="2"/>
+            <g clip-path="url(#cc2)">
+              <ellipse cx="75" cy="145" rx="55" ry="18" fill="rgba(51,102,255,0.06)"/>
+              <path d="M58,88 C44,94 28,108 22,150 L128,150 C122,108 106,94 92,88 Z" fill="rgba(51,102,255,0.28)"/>
+              <rect x="69" y="79" width="12" height="11" rx="3" fill="rgba(51,102,255,0.35)"/>
+              <ellipse cx="75" cy="55" rx="19" ry="25" fill="rgba(51,102,255,0.38)"/>
+              <path d="M56,48 C48,55 44,68 46,84 L52,81 C51,68 53,56 58,49 Z" fill="rgba(51,102,255,0.32)"/>
+              <path d="M94,48 C102,55 106,68 104,84 L98,81 C99,68 97,56 92,49 Z" fill="rgba(51,102,255,0.32)"/>
+              <path d="M56,42 Q60,28 75,25 Q90,28 94,42 Q85,36 75,35 Q65,36 56,42 Z" fill="rgba(51,102,255,0.38)"/>
+              <circle cx="82" cy="28" r="8" fill="rgba(51,102,255,0.32)"/>
+              <circle cx="86" cy="24" r="5" fill="rgba(51,102,255,0.28)"/>
+              <path d="M64,76 Q60,66 61,55 Q63,42 68,36" fill="none" stroke="rgba(51,102,255,0.12)" stroke-width="1"/>
+            </g>
+          </svg>
           <div style="font-weight:900;font-size:1.5rem;color:#fff;margin-bottom:0.2rem">등대지기 엘라</div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:1.1rem;color:var(--primary);letter-spacing:0.06em;margin-bottom:0.5rem;font-weight:600">THE SILENT KEEPER</div>
           <p style="font-size:1.15rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 0 0.5rem">"비밀은 나의 무기."<br><span style="color:var(--primary);font-weight:600">환경적 단서</span> 보유</p>
@@ -439,8 +468,26 @@ async function savePDF(){
         </div>
         <!-- 캐릭터 3: 의사 한세진 -->
         <div style="background:rgba(90,200,250,0.06);border:1px solid rgba(90,200,250,0.15);border-radius:var(--radius);padding:1.4rem 1rem;text-align:center">
-          <div class="img-placeholder" style="width:150px;height:150px;border-radius:50%;margin:0 auto 1rem;min-height:auto;border-color:rgba(90,200,250,0.25)">
-          </div>
+          <svg viewBox="0 0 150 150" width="150" height="150" style="margin:0 auto 1rem;display:block">
+            <defs><clipPath id="cc3"><circle cx="75" cy="75" r="73"/></clipPath></defs>
+            <circle cx="75" cy="75" r="74" fill="#061218" stroke="rgba(90,200,250,0.3)" stroke-width="2"/>
+            <g clip-path="url(#cc3)">
+              <ellipse cx="75" cy="145" rx="55" ry="18" fill="rgba(90,200,250,0.06)"/>
+              <path d="M55,88 C40,94 24,108 18,150 L132,150 C126,108 110,94 95,88 Z" fill="rgba(90,200,250,0.25)"/>
+              <path d="M65,88 L62,102 L72,96 L75,106 L78,96 L88,102 L85,88" fill="rgba(90,200,250,0.3)"/>
+              <rect x="68" y="79" width="14" height="11" rx="3" fill="rgba(90,200,250,0.35)"/>
+              <path d="M68,92 Q64,98 60,106 Q56,114 54,120" fill="none" stroke="rgba(90,200,250,0.3)" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="53" cy="122" r="4.5" fill="none" stroke="rgba(90,200,250,0.3)" stroke-width="2"/>
+              <circle cx="53" cy="122" r="1.5" fill="rgba(90,200,250,0.25)"/>
+              <ellipse cx="75" cy="55" rx="21" ry="26" fill="rgba(90,200,250,0.38)"/>
+              <path d="M54,45 Q58,30 75,28 Q92,30 96,45 Q86,36 75,34 Q64,36 54,45 Z" fill="rgba(90,200,250,0.4)"/>
+              <circle cx="66" cy="52" r="8" fill="none" stroke="rgba(90,200,250,0.5)" stroke-width="1.8"/>
+              <circle cx="86" cy="52" r="8" fill="none" stroke="rgba(90,200,250,0.5)" stroke-width="1.8"/>
+              <line x1="74" y1="52" x2="78" y2="52" stroke="rgba(90,200,250,0.5)" stroke-width="1.8"/>
+              <line x1="58" y1="50" x2="54" y2="48" stroke="rgba(90,200,250,0.4)" stroke-width="1.5"/>
+              <line x1="94" y1="50" x2="98" y2="48" stroke="rgba(90,200,250,0.4)" stroke-width="1.5"/>
+            </g>
+          </svg>
           <div style="font-weight:900;font-size:1.5rem;color:#fff;margin-bottom:0.2rem">의사 한세진</div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:1.1rem;color:var(--ice);letter-spacing:0.06em;margin-bottom:0.5rem;font-weight:600">THE RELUCTANT DOCTOR</div>
           <p style="font-size:1.15rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 0 0.5rem">"나는 돕고 싶을 뿐입니다."<br><span style="color:var(--ice);font-weight:600">의료 증거</span> 보유</p>
@@ -448,8 +495,24 @@ async function savePDF(){
         </div>
         <!-- 캐릭터 4: 기자 윤서 -->
         <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:1.4rem 1rem;text-align:center">
-          <div class="img-placeholder" style="width:150px;height:150px;border-radius:50%;margin:0 auto 1rem;min-height:auto;border-color:rgba(255,255,255,0.15)">
-          </div>
+          <svg viewBox="0 0 150 150" width="150" height="150" style="margin:0 auto 1rem;display:block">
+            <defs><clipPath id="cc4"><circle cx="75" cy="75" r="73"/></clipPath></defs>
+            <circle cx="75" cy="75" r="74" fill="#0e0e0e" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+            <g clip-path="url(#cc4)">
+              <ellipse cx="75" cy="145" rx="55" ry="18" fill="rgba(255,255,255,0.03)"/>
+              <path d="M55,88 C40,94 24,108 18,150 L132,150 C126,108 110,94 95,88 Z" fill="rgba(255,255,255,0.16)"/>
+              <path d="M65,88 L62,104 L75,97 L88,104 L85,88" fill="rgba(255,255,255,0.2)"/>
+              <rect x="68" y="79" width="14" height="11" rx="3" fill="rgba(255,255,255,0.2)"/>
+              <ellipse cx="75" cy="55" rx="20" ry="26" fill="rgba(255,255,255,0.22)"/>
+              <path d="M55,42 C48,50 45,62 47,78 L53,75 C52,63 54,52 58,45 Z" fill="rgba(255,255,255,0.18)"/>
+              <path d="M95,42 C102,50 105,62 103,78 L97,75 C98,63 96,52 92,45 Z" fill="rgba(255,255,255,0.18)"/>
+              <path d="M55,40 Q60,27 75,24 Q90,27 95,40 Q85,34 75,33 Q65,34 55,40 Z" fill="rgba(255,255,255,0.22)"/>
+              <path d="M38,108 Q40,98 47,92" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2.5"/>
+              <rect x="90" y="96" width="11" height="15" rx="2" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+              <line x1="92" y1="101" x2="99" y2="101" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
+              <line x1="92" y1="104" x2="97" y2="104" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+            </g>
+          </svg>
           <div style="font-weight:900;font-size:1.5rem;color:#fff;margin-bottom:0.2rem">기자 윤서</div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:1.1rem;color:rgba(255,255,255,0.5);letter-spacing:0.06em;margin-bottom:0.5rem;font-weight:600">THE AMBITIOUS REPORTER</div>
           <p style="font-size:1.15rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 0 0.5rem">"진실은 나의 목표."<br><span style="font-weight:600">정보 단서</span> 보유</p>
@@ -526,8 +589,63 @@ async function savePDF(){
       </div>
       <div class="tc rv d1" style="gap:2rem">
         <div>
-          <div class="img-placeholder" style="min-height:240px;margin-bottom:1rem">
-            <span class="ph-text">시제품 / 제작 과정 사진 삽입</span>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1rem">
+            <svg viewBox="0 0 480 210" style="width:100%">
+              <!-- 게임 설명서 x1 -->
+              <g transform="translate(0,0)">
+                <rect x="5" y="5" width="95" height="130" rx="5" fill="#fff" stroke="#d0d0d0" stroke-width="1.5"/>
+                <rect x="14" y="14" width="77" height="65" rx="3" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="1"/>
+                <text x="52" y="38" font-size="8" fill="#bbb" text-anchor="middle">뱀이 죽은</text>
+                <text x="52" y="52" font-size="10" fill="#999" text-anchor="middle" font-weight="700">축제</text>
+                <text x="52" y="68" font-size="7" fill="#ccc" text-anchor="middle">게임 설명서</text>
+                <text x="25" y="115" font-size="8" fill="#aaa">4인</text>
+                <text x="52" y="115" font-size="8" fill="#aaa">90m</text>
+                <text x="78" y="115" font-size="8" fill="#aaa">15+</text>
+                <circle cx="90" cy="10" r="13" fill="#333"/>
+                <text x="90" y="14" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">x1</text>
+              </g>
+              <text x="52" y="155" font-size="11" fill="#555" text-anchor="middle" font-weight="700">게임 설명서</text>
+              <!-- 인물 설명서 x4 -->
+              <g transform="translate(125,0)">
+                <rect x="5" y="5" width="95" height="130" rx="5" fill="#16162a" stroke="#2a2a40" stroke-width="1.5"/>
+                <text x="18" y="18" font-size="7" fill="rgba(255,255,255,0.4)">인물 설명서</text>
+                <rect x="14" y="25" width="77" height="70" rx="3" fill="rgba(51,102,255,0.12)"/>
+                <ellipse cx="52" cy="52" rx="14" ry="18" fill="rgba(51,102,255,0.35)"/>
+                <path d="M34,72 C38,66 45,63 52,63 C59,63 66,66 70,72 L70,95 L34,95 Z" fill="rgba(51,102,255,0.3)"/>
+                <text x="52" y="115" font-size="7" fill="rgba(255,255,255,0.35)" text-anchor="middle">캐릭터 배경·비밀</text>
+                <circle cx="90" cy="10" r="13" fill="#333"/>
+                <text x="90" y="14" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">x4</text>
+              </g>
+              <text x="177" y="155" font-size="11" fill="#555" text-anchor="middle" font-weight="700">인물 설명서</text>
+              <!-- 캐릭터 소지품 카드 x8 -->
+              <g transform="translate(250,0)">
+                <rect x="10" y="10" width="90" height="120" rx="5" fill="#2a1f4e" stroke="#3d3070" stroke-width="1" opacity="0.5"/>
+                <rect x="5" y="5" width="90" height="120" rx="5" fill="#2a1f4e" stroke="#4a3580" stroke-width="1.5"/>
+                <text x="50" y="40" font-size="8" fill="rgba(255,255,255,0.3)" text-anchor="middle">개인 소지품</text>
+                <text x="50" y="60" font-size="11" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-weight="700">용 가면의</text>
+                <text x="50" y="76" font-size="11" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-weight="700">소지품 I</text>
+                <!-- Decorative swirl -->
+                <circle cx="50" cy="100" r="8" fill="none" stroke="rgba(232,183,48,0.2)" stroke-width="0.8"/>
+                <circle cx="90" cy="10" r="13" fill="#333"/>
+                <text x="90" y="14" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">x8</text>
+              </g>
+              <text x="300" y="155" font-size="11" fill="#555" text-anchor="middle" font-weight="700">소지품 카드</text>
+              <!-- 탐색 카드 x20 -->
+              <g transform="translate(370,0)">
+                <rect x="15" y="15" width="88" height="110" rx="5" fill="#7a2828" stroke="#8b3535" stroke-width="1" opacity="0.35"/>
+                <rect x="8" y="8" width="88" height="110" rx="5" fill="#1f4a2a" stroke="#2d6b3a" stroke-width="1" opacity="0.65"/>
+                <rect x="0" y="0" width="88" height="110" rx="5" fill="#1f4a2a" stroke="#2d6b3a" stroke-width="1.5"/>
+                <text x="44" y="30" font-size="8" fill="rgba(255,255,255,0.3)" text-anchor="middle">회의실</text>
+                <text x="44" y="52" font-size="11" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-weight="700">교주의 자리</text>
+                <circle cx="44" cy="80" r="8" fill="none" stroke="rgba(232,183,48,0.15)" stroke-width="0.8"/>
+                <circle cx="88" cy="5" r="13" fill="#333"/>
+                <text x="88" y="9" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">x20</text>
+              </g>
+              <text x="414" y="155" font-size="11" fill="#555" text-anchor="middle" font-weight="700">탐색 카드</text>
+              <!-- Bottom label -->
+              <text x="240" y="185" font-size="10" fill="#999" text-anchor="middle">「뱀이 죽은 축제」 보드게임 구성품 일러스트</text>
+              <text x="240" y="200" font-size="9" fill="#bbb" text-anchor="middle">총 44장 구성 (설명서 1 + 인물 4 + 소지품 8 + 탐색 20 + 기타 11)</text>
+            </svg>
           </div>
           <div class="card card-blue" style="margin-bottom:0.8rem;padding:1rem 1.3rem">
             <h3 style="color:var(--primary);font-size:1.4rem;margin-bottom:0.3rem">실증/개발 목표</h3>
@@ -582,8 +700,42 @@ async function savePDF(){
       </div>
       <div class="tc rv d1" style="gap:2rem">
         <div>
-          <div class="img-placeholder" style="min-height:240px;margin-bottom:1rem">
-            <span class="ph-text">텀블벅 펀딩 페이지 캡처 삽입</span>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;margin-bottom:1rem">
+            <svg viewBox="0 0 520 200" style="width:100%">
+              <!-- Product box -->
+              <rect x="0" y="0" width="110" height="145" rx="6" fill="#16162a"/>
+              <rect x="10" y="10" width="90" height="100" rx="3" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+              <rect x="20" y="20" width="70" height="80" rx="2" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+              <text x="55" y="55" font-family="serif" font-size="11" fill="rgba(255,255,255,0.4)" text-anchor="middle">뱀이 죽은</text>
+              <text x="55" y="72" font-family="serif" font-size="14" fill="rgba(255,255,255,0.65)" text-anchor="middle" font-weight="900">축제</text>
+              <text x="55" y="125" font-size="8" fill="rgba(255,255,255,0.3)" text-anchor="middle">4인용 머더미스터리</text>
+              <!-- Badges -->
+              <rect x="125" y="2" width="38" height="18" rx="4" fill="#f0f0f5"/>
+              <text x="144" y="14.5" font-size="10" fill="#666" text-anchor="middle" font-weight="600">펀딩</text>
+              <rect x="168" y="2" width="78" height="18" rx="4" fill="#e8f5e9"/>
+              <text x="207" y="14.5" font-size="10" fill="#2e7d32" text-anchor="middle" font-weight="600">프로젝트 성공</text>
+              <rect x="252" y="2" width="148" height="18" rx="4" fill="#fff3e0"/>
+              <text x="326" y="14.5" font-size="9.5" fill="#e65100" text-anchor="middle" font-weight="500">예상 발송 시작일 2026.02.01</text>
+              <!-- Title -->
+              <text x="125" y="52" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#1a1a1a" font-weight="800">4인용 머더 미스터리 &lt;뱀이 죽은 축제&gt;</text>
+              <text x="125" y="72" font-size="10.5" fill="#888">비밀이 가득한 사교회에서 일어난 기묘한 살인 사건.</text>
+              <text x="125" y="87" font-size="10.5" fill="#888">가면을 쓰고 진실을 찾아라.</text>
+              <!-- Progress bar -->
+              <rect x="125" y="102" width="385" height="6" rx="3" fill="#e0e0e0"/>
+              <rect x="125" y="102" width="385" height="6" rx="3" fill="#3366FF"/>
+              <!-- Amount -->
+              <text x="125" y="135" font-family="'Noto Sans KR',sans-serif" font-size="22" fill="#3366FF" font-weight="900">180%</text>
+              <text x="210" y="135" font-size="18" fill="#1a1a1a" font-weight="600">9,001,000원</text>
+              <!-- Separator -->
+              <line x1="0" y1="155" x2="520" y2="155" stroke="#e5e5ea" stroke-width="1"/>
+              <!-- Bottom buttons -->
+              <rect x="5" y="163" width="165" height="30" rx="6" fill="none" stroke="#e5e5ea" stroke-width="1"/>
+              <text x="87" y="183" font-size="11" fill="#555" text-anchor="middle" font-weight="500">후원자 관리</text>
+              <rect x="178" y="163" width="165" height="30" rx="6" fill="none" stroke="#e5e5ea" stroke-width="1"/>
+              <text x="260" y="183" font-size="11" fill="#555" text-anchor="middle" font-weight="500">프로젝트 성과</text>
+              <rect x="350" y="163" width="165" height="30" rx="6" fill="none" stroke="#e5e5ea" stroke-width="1"/>
+              <text x="432" y="183" font-size="11" fill="#555" text-anchor="middle" font-weight="500">관리</text>
+            </svg>
           </div>
           <div class="card card-blue" style="text-align:center;margin-bottom:1rem;padding:1.2rem">
             <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:0.6rem">
@@ -684,8 +836,59 @@ async function savePDF(){
             <span style="color:var(--faint);font-size:1.5rem">→</span>
             <span class="tag tag-blue" style="font-size:1.2rem">이기기 위한 자발적 탐구 ✓</span>
           </div>
-          <div class="img-placeholder" style="min-height:200px;margin-top:0.8rem">
-            <span class="ph-text">설문 결과 / 통계 자료 삽입</span>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-top:0.8rem">
+            <svg viewBox="0 0 520 195" style="width:100%">
+              <!-- Title -->
+              <text x="260" y="16" font-family="'Noto Sans KR',sans-serif" font-size="12" fill="#1a1a1a" text-anchor="middle" font-weight="800">영어교육 현실 vs 게임 기반 학습 효과</text>
+              <!-- Divider -->
+              <line x1="260" y1="26" x2="260" y2="155" stroke="#e5e5ea" stroke-width="1" stroke-dasharray="3 3"/>
+              <!-- LEFT: 현재 문제점 -->
+              <text x="130" y="38" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#FF3B30" text-anchor="middle" font-weight="600" letter-spacing="0.1em">PROBLEM</text>
+              <!-- Stat 1 -->
+              <text x="20" y="62" font-family="'Noto Sans KR',sans-serif" font-size="28" fill="#FF3B30" font-weight="900">71.5%</text>
+              <text x="110" y="55" font-size="10" fill="#555">고등학생,</text>
+              <text x="110" y="68" font-size="10" fill="#555" font-weight="700">"영어에 흥미 없다"</text>
+              <!-- Bar -->
+              <rect x="20" y="76" width="225" height="4" rx="2" fill="#f0f0f0"/>
+              <rect x="20" y="76" width="161" height="4" rx="2" fill="#FF3B30" opacity="0.7"/>
+              <!-- Stat 2 -->
+              <text x="20" y="103" font-family="'Noto Sans KR',sans-serif" font-size="22" fill="#FF9F0A" font-weight="900">49위</text>
+              <text x="82" y="98" font-size="10" fill="#555">EF EPI 영어 능력 지수</text>
+              <text x="82" y="111" font-size="9" fill="#999">/113국 중 (2024)</text>
+              <!-- Stat 3 -->
+              <text x="20" y="138" font-family="'Noto Sans KR',sans-serif" font-size="22" fill="#999" font-weight="900">5%</text>
+              <text x="55" y="133" font-size="10" fill="#555">강의식 수업</text>
+              <text x="55" y="146" font-size="10" fill="#555" font-weight="700">학습 보존율</text>
+              <!-- Bar -->
+              <rect x="20" y="152" width="225" height="4" rx="2" fill="#f0f0f0"/>
+              <rect x="20" y="152" width="11" height="4" rx="2" fill="#999"/>
+              <!-- RIGHT: 게임 기반 학습 -->
+              <text x="390" y="38" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#3366FF" text-anchor="middle" font-weight="600" letter-spacing="0.1em">GAME-BASED LEARNING</text>
+              <!-- Stat 1 -->
+              <text x="275" y="62" font-family="'Noto Sans KR',sans-serif" font-size="28" fill="#3366FF" font-weight="900">75%</text>
+              <text x="340" y="55" font-size="10" fill="#555">게임 기반 학습</text>
+              <text x="340" y="68" font-size="10" fill="#555" font-weight="700">지식 보존율</text>
+              <!-- Bar -->
+              <rect x="275" y="76" width="225" height="4" rx="2" fill="rgba(51,102,255,0.1)"/>
+              <rect x="275" y="76" width="169" height="4" rx="2" fill="#3366FF" opacity="0.7"/>
+              <!-- Stat 2 -->
+              <text x="275" y="103" font-family="'Noto Sans KR',sans-serif" font-size="22" fill="#3366FF" font-weight="900">+60%</text>
+              <text x="345" y="98" font-size="10" fill="#555">학습 몰입도</text>
+              <text x="345" y="111" font-size="10" fill="#555" font-weight="700">향상</text>
+              <!-- Stat 3 -->
+              <text x="275" y="138" font-family="'Noto Sans KR',sans-serif" font-size="22" fill="#2952CC" font-weight="900">80%</text>
+              <text x="330" y="133" font-size="10" fill="#555">학습자, 게임 학습이</text>
+              <text x="330" y="146" font-size="10" fill="#555" font-weight="700">"더 동기부여 됨"</text>
+              <!-- Bar -->
+              <rect x="275" y="152" width="225" height="4" rx="2" fill="rgba(51,102,255,0.1)"/>
+              <rect x="275" y="152" width="180" height="4" rx="2" fill="#2952CC" opacity="0.7"/>
+              <!-- VS label -->
+              <circle cx="260" cy="90" r="14" fill="var(--bg-alt)" stroke="#e5e5ea" stroke-width="1"/>
+              <text x="260" y="94" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#999" text-anchor="middle" font-weight="700">VS</text>
+              <!-- Sources -->
+              <text x="260" y="175" font-size="7.5" fill="#bbb" text-anchor="middle">출처: 한국교육개발원 KEDI(2019) · EF EPI(2024) · National Training Laboratories · TalentLMS Survey(2019)</text>
+              <text x="260" y="188" font-size="7.5" fill="#bbb" text-anchor="middle">게임 기반 학습(GBL) 효과: Research and Markets(2020) · 학습 피라미드(NTL, Dale's Cone of Experience)</text>
+            </svg>
           </div>
         </div>
       </div>
@@ -755,8 +958,62 @@ async function savePDF(){
       </div>
       <div class="tc rv d1" style="gap:2rem">
         <div>
-          <div class="img-placeholder" style="min-height:220px;margin-bottom:0.8rem">
-            <span class="ph-text">제품 실물 사진 삽입</span>
+          <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:0.8rem">
+            <svg viewBox="0 0 500 200" style="width:100%">
+              <!-- Card Drawing -->
+              <g>
+                <text x="65" y="12" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3366FF" text-anchor="middle" font-weight="600" letter-spacing="0.05em">CARD SPEC</text>
+                <rect x="20" y="22" width="88" height="124" rx="4" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+                <rect x="24" y="26" width="80" height="116" rx="3" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+                <!-- Dimension arrows -->
+                <line x1="20" y1="155" x2="108" y2="155" stroke="#3366FF" stroke-width="1" marker-start="url(#arr)" marker-end="url(#arr)"/>
+                <text x="64" y="168" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3366FF" text-anchor="middle" font-weight="600">63mm</text>
+                <line x1="118" y1="22" x2="118" y2="146" stroke="#3366FF" stroke-width="1"/>
+                <text x="138" y="88" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3366FF" text-anchor="middle" font-weight="600">88mm</text>
+                <!-- R corner -->
+                <path d="M104,22 Q108,22 108,26" fill="none" stroke="#FF3B30" stroke-width="1.5"/>
+                <text x="118" y="18" font-size="8" fill="#FF3B30" font-weight="600">R=2</text>
+                <!-- Card content hint -->
+                <text x="64" y="75" font-size="8" fill="#ccc" text-anchor="middle">단서 카드</text>
+                <text x="64" y="88" font-size="8" fill="#ccc" text-anchor="middle">영문 표기</text>
+              </g>
+              <!-- Instruction Manual -->
+              <g transform="translate(165,0)">
+                <text x="80" y="12" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3366FF" text-anchor="middle" font-weight="600" letter-spacing="0.05em">MANUAL SPEC</text>
+                <!-- Unfolded -->
+                <rect x="0" y="22" width="160" height="75" rx="2" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+                <line x1="80" y1="22" x2="80" y2="97" stroke="#3366FF" stroke-width="1" stroke-dasharray="4 3"/>
+                <text x="80" y="110" font-size="8" fill="#3366FF" text-anchor="middle">중앙 접는 선</text>
+                <text x="40" y="55" font-size="8" fill="#bbb" text-anchor="middle">148mm</text>
+                <text x="120" y="55" font-size="8" fill="#bbb" text-anchor="middle">148mm</text>
+                <text x="80" y="70" font-size="7" fill="#ddd" text-anchor="middle">펼침 상태: 296×210mm</text>
+                <!-- Folded preview -->
+                <rect x="30" y="125" width="55" height="65" rx="2" fill="#f5f5f5" stroke="#1a1a1a" stroke-width="1.5"/>
+                <text x="57" y="162" font-size="8" fill="#999" text-anchor="middle">접힘</text>
+                <text x="100" y="158" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#3366FF">148×210mm</text>
+              </g>
+              <!-- Box Template -->
+              <g transform="translate(345,0)">
+                <text x="70" y="12" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3366FF" text-anchor="middle" font-weight="600" letter-spacing="0.05em">BOX SPEC</text>
+                <!-- 3D Isometric box -->
+                <!-- Bottom -->
+                <path d="M30,110 L110,110 L140,85 L60,85 Z" fill="#f5f5f5" stroke="#1a1a1a" stroke-width="1.8"/>
+                <!-- Front -->
+                <path d="M30,110 L30,155 L110,155 L110,110 Z" fill="#fafafa" stroke="#1a1a1a" stroke-width="1.8"/>
+                <!-- Side -->
+                <path d="M110,110 L140,85 L140,130 L110,155 Z" fill="#f0f0f0" stroke="#1a1a1a" stroke-width="1.5"/>
+                <!-- Lid (hovering) -->
+                <path d="M28,75 L108,75 L138,50 L58,50 Z" fill="rgba(51,102,255,0.08)" stroke="#3366FF" stroke-width="1.5"/>
+                <path d="M28,75 L28,68 L108,68 L108,75 Z" fill="rgba(51,102,255,0.05)" stroke="#3366FF" stroke-width="1"/>
+                <path d="M108,68 L138,43 L138,50 L108,75 Z" fill="rgba(51,102,255,0.03)" stroke="#3366FF" stroke-width="1"/>
+                <!-- Arrow down -->
+                <line x1="83" y1="58" x2="83" y2="72" stroke="#333" stroke-width="1.2"/>
+                <path d="M79,68 L83,75 L87,68" fill="#333"/>
+                <!-- Dimensions -->
+                <text x="70" y="174" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#3366FF" text-anchor="middle" font-weight="600">152×215×40mm</text>
+                <text x="70" y="188" font-size="8" fill="#999" text-anchor="middle">상판 155×218×38mm</text>
+              </g>
+            </svg>
           </div>
           <h3 style="margin-bottom:0.4rem;font-size:1.4rem;color:var(--primary)">보드게임 박스 구성품</h3>
           <div class="card" style="padding:0.8rem 1.2rem">
