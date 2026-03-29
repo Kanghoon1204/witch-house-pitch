@@ -228,7 +228,31 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
 </head>
 <body>
 <nav class="nav" id="nav"></nav>
-<button class="pdf-btn" onclick="window.print()">PDF 다운로드</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
+<button class="pdf-btn" onclick="savePDF()">PDF 다운로드</button>
+<script>
+function savePDF(){
+  const btn=document.querySelector('.pdf-btn');
+  btn.textContent='생성 중...';btn.disabled=true;
+  const el=document.body;
+  const slides=document.querySelectorAll('.slide');
+  // temporarily show all reveal elements
+  document.querySelectorAll('.rv').forEach(r=>r.classList.add('v'));
+  const opt={
+    margin:0,
+    filename:'NASH_창업중심대학_발표.pdf',
+    image:{type:'jpeg',quality:0.95},
+    html2canvas:{scale:2,useCORS:true,scrollY:0,windowWidth:1920},
+    jsPDF:{unit:'px',format:[1920,1080],orientation:'landscape'},
+    pagebreak:{mode:['css','legacy'],avoid:'.card'}
+  };
+  html2pdf().set(opt).from(el).save().then(()=>{
+    btn.textContent='PDF 다운로드';btn.disabled=false;
+  }).catch(()=>{
+    btn.textContent='PDF 다운로드';btn.disabled=false;
+  });
+}
+</script>
 
 <!-- ═══ SLIDE 1: IMPACT OPENING ═══ -->
 <section class="slide slide-dark" id="s1" style="justify-content:center;align-items:center">
