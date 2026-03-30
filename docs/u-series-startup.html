@@ -977,31 +977,31 @@ async function downloadFromPreview(){
             <p style="font-size:1.4rem">QR 연계 온라인 학습 시스템, AI 맞춤형 난이도 조절 · 학습분석 개발</p>
           </div>
         </div>
-        <!-- 우측: 이미지 그리드 -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem">
-          <!-- 1. 테스트 플레이 -->
-          <div style="border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-card);background:var(--primary);padding:0.6rem 0.8rem;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:150px">
+        <!-- 우측: 지그재그 이미지 -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 0.6rem;align-items:start">
+          <!-- 1. 테스트 플레이 — 왼쪽 위 -->
+          <div style="border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-card);background:var(--primary);padding:0.6rem 0.8rem;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:140px">
             <div style="font-family:'IBM Plex Mono',monospace;font-size:3rem;font-weight:900;color:#fff;line-height:1">24</div>
             <div style="font-size:1.3rem;color:rgba(255,255,255,0.9);font-weight:700;margin-top:0.2rem">명 테스트 플레이</div>
             <div style="font-size:1.1rem;color:rgba(255,255,255,0.6);margin-top:0.1rem">피드백 수집 완료</div>
           </div>
-          <!-- 2. 텀블벅 1차 펀딩 -->
-          <div style="border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-card)">
-            <img src="tumblbug-funding.png" alt="텀블벅 1차 펀딩" style="width:100%;max-height:150px;object-fit:cover;object-position:top;display:block">
+          <!-- 2. 텀블벅 1차 펀딩 — 오른쪽 (아래로 오프셋) -->
+          <div style="margin-top:2.5rem;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-card)">
+            <img src="tumblbug-funding.png" alt="텀블벅 1차 펀딩" style="width:100%;max-height:140px;object-fit:cover;object-position:top;display:block">
             <div style="padding:0.2rem 0.5rem;text-align:center;background:var(--bg)">
               <span style="font-size:1.1rem;color:var(--primary);font-weight:700">1차 펀딩 180%</span>
             </div>
           </div>
-          <!-- 3. 텀블벅 2차 펀딩 -->
-          <div style="border-radius:var(--radius);overflow:hidden;border:2px solid var(--primary);box-shadow:0 4px 16px rgba(51,102,255,0.15)">
-            <img src="tumblbug-funding2.png" alt="텀블벅 2차 펀딩" style="width:100%;max-height:150px;object-fit:cover;object-position:top;display:block">
+          <!-- 3. 텀블벅 2차 펀딩 — 왼쪽 (위로 당김) -->
+          <div style="margin-top:-1.5rem;border-radius:var(--radius);overflow:hidden;border:2px solid var(--primary);box-shadow:0 4px 16px rgba(51,102,255,0.15)">
+            <img src="tumblbug-funding2.png" alt="텀블벅 2차 펀딩" style="width:100%;max-height:140px;object-fit:cover;object-position:top;display:block">
             <div style="padding:0.2rem 0.5rem;text-align:center;background:var(--primary)">
               <span style="font-size:1.1rem;color:#fff;font-weight:700">2차 펀딩 1897%</span>
             </div>
           </div>
-          <!-- 4. 울산 대왕암 보드게임 -->
-          <div style="border-radius:var(--radius);overflow:hidden;border:2px solid var(--gold);box-shadow:0 4px 16px rgba(255,159,10,0.2)">
-            <img src="daewangam-title.png" alt="울산 대왕암 - 기묘한 사건" style="width:100%;max-height:150px;object-fit:cover;display:block">
+          <!-- 4. 울산 대왕암 — 오른쪽 (아래 오프셋) -->
+          <div style="margin-top:1rem;border-radius:var(--radius);overflow:hidden;border:2px solid var(--gold);box-shadow:0 4px 16px rgba(255,159,10,0.2)">
+            <img src="daewangam-title.png" alt="울산 대왕암 - 기묘한 사건" style="width:100%;max-height:140px;object-fit:cover;display:block">
             <div style="padding:0.2rem 0.5rem;text-align:center;background:var(--bg-dark)">
               <span style="font-size:1.1rem;color:var(--gold);font-weight:700">신규 — 울산 대왕암</span>
             </div>
@@ -1393,66 +1393,98 @@ async function downloadFromPreview(){
 </section>
 
 <!-- ═══ SLIDE 14b: 향후 확장 방향 ═══ -->
+<!-- ═══ SLIDE 14b: 지역 관광 연계 시나리오 ═══ -->
 <section class="slide slide-alt" id="s15b">
-  <div class="slide-body" style="padding:16px 60px">
+  <div class="slide-body" style="padding:14px 60px">
     <div class="inner">
       <div class="rv">
-        <div class="sec-label">FUTURE DIRECTION</div>
-        <h2 class="sec-title" style="margin-bottom:0.2rem">향후 콘텐츠 확장 방향</h2>
-        <p class="sec-sub" style="margin-bottom:0.6rem">지역 관광 연계 테마 시나리오 + UZU 앱 글로벌 시장 진출</p>
+        <div class="sec-label">REGIONAL CONTENT</div>
+        <h2 class="sec-title" style="margin-bottom:0.2rem">지역 관광 연계 시나리오 시리즈</h2>
+        <p class="sec-sub" style="margin-bottom:0.5rem">지역 문화·관광 자원을 보드게임 콘텐츠로 — 3종 시리즈 제작 · 테스트 플레이 완료</p>
+      </div>
+      <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;align-items:start">
+        <!-- 포항 호미곶 -->
+        <div style="border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-card)">
+          <img src="regional-game.png" alt="포항 호미곶 테마" style="width:100%;height:300px;object-fit:cover;object-position:top;display:block">
+          <div style="padding:0.5rem 0.7rem;background:var(--bg-dark)">
+            <div style="font-size:1.4rem;color:#fff;font-weight:800">포항 · 호미곶</div>
+            <div style="font-size:1.15rem;color:rgba(255,255,255,0.6);margin-top:0.1rem">영어 추리 보드게임</div>
+          </div>
+        </div>
+        <!-- 울산 대왕암 -->
+        <div style="border-radius:var(--radius);overflow:hidden;border:2px solid var(--primary);box-shadow:0 4px 16px rgba(51,102,255,0.15)">
+          <img src="daewangam-title.png" alt="울산 대왕암" style="width:100%;height:300px;object-fit:cover;object-position:center;display:block">
+          <div style="padding:0.5rem 0.7rem;background:var(--bg-dark)">
+            <div style="font-size:1.4rem;color:#fff;font-weight:800">울산 · 대왕암</div>
+            <div style="font-size:1.15rem;color:rgba(255,255,255,0.6);margin-top:0.1rem">역사 미스터리 · 제작 중</div>
+          </div>
+        </div>
+        <!-- 울릉 한 접시 -->
+        <div style="border-radius:var(--radius);overflow:hidden;border:2px solid var(--gold);box-shadow:0 4px 16px rgba(255,159,10,0.2)">
+          <img src="ulleung-dish.png" alt="울릉 한 접시" style="width:100%;height:300px;object-fit:cover;object-position:top;display:block">
+          <div style="padding:0.5rem 0.7rem;background:var(--gold)">
+            <div style="font-size:1.4rem;color:#fff;font-weight:800">울릉 · 한 접시</div>
+            <div style="font-size:1.15rem;color:rgba(255,255,255,0.8);margin-top:0.1rem">식문화 체험 · 테스트 완료</div>
+          </div>
+        </div>
+      </div>
+      <div class="rv d2" style="display:flex;gap:1rem;justify-content:center;margin-top:0.6rem;flex-wrap:wrap">
+        <span style="font-size:1.3rem;padding:0.25rem 1rem;border-radius:20px;background:var(--gold-bg);color:var(--gold);font-weight:700">지자체 · 관광공사 제휴</span>
+        <span style="font-size:1.3rem;padding:0.25rem 1rem;border-radius:20px;background:var(--primary-light);color:var(--primary);font-weight:700">영어 추리</span>
+        <span style="font-size:1.3rem;padding:0.25rem 1rem;border-radius:20px;background:rgba(255,159,10,0.08);color:var(--gold);font-weight:700">역사 미스터리</span>
+        <span style="font-size:1.3rem;padding:0.25rem 1rem;border-radius:20px;background:rgba(90,200,250,0.08);color:var(--ice);font-weight:700">지역문화 탐방</span>
+        <span style="font-size:1.3rem;padding:0.25rem 1rem;border-radius:20px;background:rgba(52,199,89,0.08);color:#34c759;font-weight:700">식문화 체험</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 14b2: UZU 글로벌 진출 ═══ -->
+<section class="slide" id="s15b2">
+  <div class="slide-body" style="padding:14px 60px">
+    <div class="inner">
+      <div class="rv">
+        <div class="sec-label">GLOBAL EXPANSION</div>
+        <h2 class="sec-title" style="margin-bottom:0.2rem">UZU 앱 글로벌 시장 진출</h2>
+        <p class="sec-sub" style="margin-bottom:0.5rem">머더미스터리 시나리오 → UZU STUDIO 일본어 로컬라이즈 제작 완료 — 계획이 아닌 실행</p>
       </div>
       <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
-        <!-- 지역 테마 확장 -->
-        <div>
-          <h3 style="font-size:1.5rem;color:var(--gold);margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem">
-            <span style="background:var(--gold);color:#fff;padding:2px 10px;border-radius:6px;font-size:1.3rem">국내</span>
-            지역 관광 연계 시나리오
-          </h3>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem">
-            <div style="border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-card)">
-              <img src="regional-game.png" alt="포항 테마 보드게임" style="width:100%;max-height:260px;object-fit:cover;object-position:top;display:block">
-              <div style="padding:0.3rem 0.6rem;background:var(--bg-dark)">
-                <span style="font-size:1.15rem;color:rgba(255,255,255,0.9);font-weight:700">포항 · 호미곶 테마</span>
-              </div>
-            </div>
-            <div style="border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-card)">
-              <img src="daewangam-title.png" alt="울산 대왕암 보드게임" style="width:100%;max-height:260px;object-fit:cover;object-position:center;display:block">
-              <div style="padding:0.3rem 0.6rem;background:var(--bg-dark)">
-                <span style="font-size:1.15rem;color:rgba(255,255,255,0.9);font-weight:700">울산 · 대왕암 테마</span>
-              </div>
-            </div>
-          </div>
-          <div style="display:flex;gap:0.5rem;margin-top:0.5rem;flex-wrap:wrap">
-            <span style="font-size:1.3rem;padding:0.2rem 0.8rem;border-radius:8px;background:var(--gold-bg);color:var(--gold);font-weight:600">지자체 · 관광공사 제휴</span>
-            <span style="font-size:1.3rem;padding:0.2rem 0.8rem;border-radius:8px;background:var(--primary-light);color:var(--primary);font-weight:600">2종 시나리오 제작 중</span>
-          </div>
-        </div>
-        <!-- 해외 시장 진출 -->
+        <!-- UZU 파트너십 -->
         <div>
           <h3 style="font-size:1.5rem;color:var(--ice);margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem">
-            <span style="background:var(--ice);color:#fff;padding:2px 10px;border-radius:6px;font-size:1.3rem">Global</span>
-            UZU 앱 연계 해외진출
+            <span style="background:var(--ice);color:#fff;padding:2px 10px;border-radius:6px;font-size:1.3rem">Partnership</span>
+            UZU 교육 플랫폼
           </h3>
           <div style="border-radius:var(--radius);overflow:hidden;border:2px solid var(--ice);box-shadow:0 4px 20px rgba(90,200,250,0.15)">
-            <img src="uzu-partnership.png" alt="UZU 앱 파트너십" style="width:100%;max-height:300px;object-fit:cover;object-position:top;display:block">
+            <img src="uzu-partnership.png" alt="UZU 파트너십" style="width:100%;max-height:340px;object-fit:cover;object-position:top;display:block">
             <div style="padding:0.4rem 0.8rem;background:var(--ice)">
-              <span style="font-size:1.3rem;color:#fff;font-weight:700">UZU 교육 플랫폼 파트너십</span>
+              <span style="font-size:1.3rem;color:#fff;font-weight:700">UZU STUDIO 파트너 등록 완료</span>
             </div>
           </div>
-          <div class="card" style="margin-top:0.5rem;padding:0.6rem 0.8rem;border-left:3px solid var(--ice)">
-            <p style="font-size:1.3rem;margin:0;line-height:1.7;color:var(--dim)">
-              보드게임 콘텐츠 → 디지털 학습 모듈 변환<br>
-              <strong style="color:var(--ice)">동남아 · 일본 시장</strong> 진출 교두보 확보
-            </p>
+        </div>
+        <!-- 실제 제작 완료 시나리오 -->
+        <div>
+          <h3 style="font-size:1.5rem;color:var(--ice);margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem">
+            <span style="background:#af52de;color:#fff;padding:2px 10px;border-radius:6px;font-size:1.3rem">Delivered</span>
+            일본어 시나리오 제작 완료
+          </h3>
+          <div style="border-radius:var(--radius);overflow:hidden;border:2px solid #af52de;box-shadow:0 4px 20px rgba(175,82,222,0.15)">
+            <img src="uzu-scenario.png" alt="UZU 일본어 시나리오" style="width:100%;max-height:340px;object-fit:cover;object-position:top;display:block">
+            <div style="padding:0.4rem 0.8rem;background:#af52de">
+              <span style="font-size:1.3rem;color:#fff;font-weight:700">「잿빛 소녀의 추억」 일본어판</span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="rv d2" style="display:flex;gap:1.5rem;justify-content:center;margin-top:0.6rem">
-        <span style="font-size:1.4rem;padding:0.3rem 1rem;border-radius:20px;background:var(--primary-light);color:var(--primary);font-weight:700">영어 추리</span>
-        <span style="font-size:1.4rem;padding:0.3rem 1rem;border-radius:20px;background:rgba(255,159,10,0.08);color:var(--gold);font-weight:700">역사 미스터리</span>
-        <span style="font-size:1.4rem;padding:0.3rem 1rem;border-radius:20px;background:rgba(90,200,250,0.08);color:var(--ice);font-weight:700">지역문화 탐방</span>
-        <span style="font-size:1.4rem;padding:0.3rem 1rem;border-radius:20px;background:rgba(52,199,89,0.08);color:#34c759;font-weight:700">과학 수사</span>
-        <span style="font-size:1.4rem;padding:0.3rem 1rem;border-radius:20px;background:rgba(175,82,222,0.08);color:#af52de;font-weight:700">SF 추리</span>
+      <div class="rv d2 card" style="margin-top:0.6rem;padding:0.6rem 1rem;border-left:4px solid var(--ice);display:flex;gap:2rem;align-items:center">
+        <p style="font-size:1.4rem;margin:0;line-height:1.6;color:var(--dim);flex:1">
+          보드게임 콘텐츠 → <strong style="color:var(--ice)">디지털 학습 모듈</strong> 변환 → UZU 앱 배포<br>
+          <strong style="color:var(--ice)">동남아 · 일본 시장</strong> 진출 교두보 확보 — 글로벌 콘텐츠 배포 역량 검증 완료
+        </p>
+        <div style="display:flex;gap:0.5rem;flex-shrink:0">
+          <span style="font-size:1.3rem;padding:0.25rem 1rem;border-radius:20px;background:rgba(90,200,250,0.08);color:var(--ice);font-weight:700">일본어</span>
+          <span style="font-size:1.3rem;padding:0.25rem 1rem;border-radius:20px;background:rgba(175,82,222,0.08);color:#af52de;font-weight:700">머더미스터리</span>
+        </div>
       </div>
     </div>
   </div>
