@@ -326,95 +326,126 @@ async function ensureLibs(){
 ensureLibs().catch(()=>{});
 
 async function savePDF(){
-  const btn=document.querySelector('.pdf-btn');
+  var btn=document.querySelector('.pdf-btn');
   btn.textContent='준비 중...';btn.disabled=true;
-  const slides=document.querySelectorAll('.slide');
-  const W=1920,H=1080;
-  const origStyles=[];
-  let styleTag=null;
+  var slides=document.querySelectorAll('.slide');
+  var W=1920,H=1080;
+  var origStyles=[];
+  var styleTag=null;
   try{
     await ensureLibs();
     if(typeof html2canvas==='undefined'||!window.jspdf){
       alert('PDF 라이브러리를 불러올 수 없습니다. 네트워크 연결을 확인하거나 광고차단기를 비활성화한 뒤 새로고침해주세요.');
       btn.textContent='PDF 다운로드';btn.disabled=false;return;
     }
-    const Wmm=W*0.264583,Hmm=H*0.264583;
+    var Wmm=W*0.264583,Hmm=H*0.264583;
     // 1단계: PDF 캡처용 전역 스타일 주입
     styleTag=document.createElement('style');
-    styleTag.textContent=`
-      .rv{opacity:1!important;transform:none!important;transition:none!important}
-      *{transition:none!important;animation:none!important}
-      .nav,.pdf-btn{display:none!important}
-      .slide{width:${W}px!important;height:${H}px!important;min-height:${H}px!important;max-height:${H}px!important;overflow:hidden!important}
-      .inner{max-width:1760px!important}
-    `;
+    styleTag.textContent='.rv{opacity:1!important;transform:none!important;transition:none!important}'
+      +'*{transition:none!important;animation:none!important}'
+      +'.nav,.pdf-btn{display:none!important}'
+      +'.slide{width:'+W+'px!important;height:'+H+'px!important;min-height:'+H+'px!important;max-height:'+H+'px!important;overflow:hidden!important}'
+      +'.inner{max-width:1760px!important}';
     document.head.appendChild(styleTag);
     // rv 클래스에 v 추가
-    document.querySelectorAll('.rv').forEach(r=>r.classList.add('v'));
+    document.querySelectorAll('.rv').forEach(function(r){r.classList.add('v')});
     // 원본 스타일 저장
-    slides.forEach(s=>origStyles.push(s.getAttribute('style')||''));
+    slides.forEach(function(s){origStyles.push(s.getAttribute('style')||'')});
+    // 외부 이미지를 인라인 base64로 변환 (tainted canvas 방지)
+    var imgs=document.querySelectorAll('.slide img');
+    var imgOrigSrcs=[];
+    for(var k=0;k<imgs.length;k++){
+      imgOrigSrcs.push(imgs[k].src);
+      try{
+        var c=document.createElement('canvas');
+        c.width=imgs[k].naturalWidth||imgs[k].width||400;
+        c.height=imgs[k].naturalHeight||imgs[k].height||300;
+        var cx=c.getContext('2d');
+        cx.drawImage(imgs[k],0,0,c.width,c.height);
+        imgs[k].src=c.toDataURL('image/png');
+        c.remove();
+      }catch(ie){
+        // 이미지 변환 실패 시 투명 placeholder
+        imgs[k].style.opacity='0';
+      }
+    }
     // 폰트 로딩 대기
-    if(document.fonts&&document.fonts.ready) await document.fonts.ready;
-    await new Promise(r=>setTimeout(r,500));
-    const {jsPDF}=window.jspdf;
-    const pdf=new jsPDF({orientation:'landscape',unit:'mm',format:[Wmm,Hmm]});
+    try{if(document.fonts)await document.fonts.ready}catch(fe){}
+    await new Promise(function(r){setTimeout(r,400)});
+    var jsPDF=window.jspdf.jsPDF;
+    var pdf=new jsPDF({orientation:'landscape',unit:'mm',format:[Wmm,Hmm]});
     // 2단계: 슬라이드별 캡처
-    for(let i=0;i<slides.length;i++){
+    for(var i=0;i<slides.length;i++){
       btn.textContent='생성 중 ('+(i+1)+'/'+slides.length+')';
-      const canvas=await html2canvas(slides[i],{
-        scale:2,
-        useCORS:true,
-        logging:false,
-        width:W,
-        height:H,
-        windowWidth:W,
-        windowHeight:H,
-        backgroundColor:null,
-        onclone:function(doc){
-          // 클론 DOM에서 모든 rv 요소 강제 표시
-          doc.querySelectorAll('.rv').forEach(el=>{
-            el.style.opacity='1';
-            el.style.transform='none';
-          });
-          // 클론 슬라이드 고정 크기
-          const cloneSlide=doc.querySelectorAll('.slide')[i];
-          if(cloneSlide){
-            cloneSlide.style.width=W+'px';
-            cloneSlide.style.height=H+'px';
-            cloneSlide.style.minHeight=H+'px';
-            cloneSlide.style.maxHeight=H+'px';
-            cloneSlide.style.overflow='hidden';
-          }
-        }
-      });
-      // 캔버스를 PDF 크기에 정확히 맞춤
-      const fitCanvas=document.createElement('canvas');
-      fitCanvas.width=W*2;fitCanvas.height=H*2;
-      const ctx=fitCanvas.getContext('2d');
-      // 슬라이드 배경색으로 채우기
-      const bg=getComputedStyle(slides[i]).backgroundColor;
-      ctx.fillStyle=(bg&&bg!=='rgba(0, 0, 0, 0)')?bg:'#ffffff';
-      ctx.fillRect(0,0,fitCanvas.width,fitCanvas.height);
-      // 캔버스를 1920x1080 영역에 꽉 채우기 (잘림 허용)
-      const sx=0,sy=0;
-      const sw=Math.min(canvas.width,W*2),sh=Math.min(canvas.height,H*2);
-      ctx.drawImage(canvas,sx,sy,sw,sh,0,0,fitCanvas.width,fitCanvas.height);
-      canvas.remove();
-      const img=fitCanvas.toDataURL('image/jpeg',0.92);
+      try{
+        var canvas=await html2canvas(slides[i],{
+          scale:2,
+          useCORS:true,
+          allowTaint:false,
+          logging:false,
+          width:W,
+          height:H,
+          windowWidth:W,
+          windowHeight:H,
+          backgroundColor:null,
+          onclone:function(doc,idx){
+            return function(clonedDoc){
+              clonedDoc.querySelectorAll('.rv').forEach(function(el){
+                el.style.setProperty('opacity','1','important');
+                el.style.setProperty('transform','none','important');
+              });
+              var cs=clonedDoc.querySelectorAll('.slide')[idx];
+              if(cs){
+                cs.style.width=W+'px';
+                cs.style.height=H+'px';
+                cs.style.overflow='hidden';
+              }
+            };
+          }(document,i)
+        });
+        // 캔버스 → JPEG
+        var fitCanvas=document.createElement('canvas');
+        fitCanvas.width=W*2;fitCanvas.height=H*2;
+        var ctx=fitCanvas.getContext('2d');
+        var bg=getComputedStyle(slides[i]).backgroundColor;
+        ctx.fillStyle=(bg&&bg!=='rgba(0, 0, 0, 0)')?bg:'#ffffff';
+        ctx.fillRect(0,0,fitCanvas.width,fitCanvas.height);
+        var sw=Math.min(canvas.width,W*2),sh=Math.min(canvas.height,H*2);
+        ctx.drawImage(canvas,0,0,sw,sh,0,0,fitCanvas.width,fitCanvas.height);
+        canvas.remove();
+        var imgData=fitCanvas.toDataURL('image/jpeg',0.92);
+        fitCanvas.remove();
+      }catch(slideErr){
+        console.warn('Slide '+(i+1)+' capture failed:',slideErr.message);
+        // 실패 시 빈 페이지 생성
+        var fallback=document.createElement('canvas');
+        fallback.width=W*2;fallback.height=H*2;
+        var fctx=fallback.getContext('2d');
+        var fbg=getComputedStyle(slides[i]).backgroundColor;
+        fctx.fillStyle=(fbg&&fbg!=='rgba(0, 0, 0, 0)')?fbg:'#ffffff';
+        fctx.fillRect(0,0,fallback.width,fallback.height);
+        fctx.fillStyle='#999';fctx.font='48px sans-serif';fctx.textAlign='center';
+        fctx.fillText('슬라이드 '+(i+1)+' (캡처 실패)',W,H);
+        var imgData=fallback.toDataURL('image/jpeg',0.92);
+        fallback.remove();
+      }
       if(i>0) pdf.addPage([Wmm,Hmm],'landscape');
-      pdf.addImage(img,'JPEG',0,0,Wmm,Hmm,'slide'+i,'FAST');
-      fitCanvas.remove();
+      pdf.addImage(imgData,'JPEG',0,0,Wmm,Hmm,'slide'+i,'FAST');
+    }
+    // 이미지 원본 복원
+    for(var k=0;k<imgs.length;k++){
+      imgs[k].src=imgOrigSrcs[k];
+      imgs[k].style.opacity='';
     }
     pdf.save('AI기반_스토리추리학습_보드게임_발표.pdf');
     btn.textContent='다운로드 완료!';
-    setTimeout(()=>{btn.textContent='PDF 다운로드';},2000);
+    setTimeout(function(){btn.textContent='PDF 다운로드'},2000);
   }catch(e){
     console.error('PDF error:',e);
     alert('PDF 생성 중 오류가 발생했습니다.\n\n'+e.message+'\n\n페이지를 새로고침 후 다시 시도해주세요.');
   }finally{
-    // 스타일 복원
-    if(styleTag) styleTag.remove();
-    slides.forEach((s,i)=>{if(origStyles[i]!==undefined)s.setAttribute('style',origStyles[i]);});
+    if(styleTag)styleTag.remove();
+    slides.forEach(function(s,i){if(origStyles[i]!==undefined)s.setAttribute('style',origStyles[i])});
     document.querySelector('.nav').style.display='';
     btn.textContent='PDF 다운로드';btn.disabled=false;
   }
