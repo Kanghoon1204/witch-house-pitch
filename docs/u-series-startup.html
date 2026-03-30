@@ -143,6 +143,7 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
 .rm-item:nth-child(1)::before{background:var(--primary)}
 .rm-item:nth-child(2)::before{background:var(--primary-dark)}
 .rm-item:nth-child(3)::before{background:var(--dim)}
+.rm-item:nth-child(4)::before{background:var(--primary)}
 .rm-item p{font-size:1.15rem;font-weight:500}
 
 /* ── REVENUE BLOCKS ── */
@@ -217,7 +218,7 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
   .rv{opacity:1!important;transform:none!important;transition:none!important}
   .bar-fill{width:var(--w)!important;transition:none!important}
   .slide-dark,.slide-cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .inner{max-width:1760px}
+  .inner{max-width:1840px!important;width:100%!important}
   .sec-label{font-size:2.2rem;margin-bottom:0.4rem}
   .sec-title{font-size:3.5rem;margin-bottom:0.3rem}
   .sec-sub{font-size:1.6rem;margin-bottom:1.2rem}
@@ -486,177 +487,9 @@ async function _doSavePDF(btn){
             <div style="font-family:'Bebas Neue',sans-serif;font-size:3.8rem;color:#8b1a1a;letter-spacing:0.15em;line-height:1.1;text-shadow:1px 1px 0 rgba(0,0,0,0.15)">IS NEEDED</div>
           </div>
 
-          <!-- Uncle Sam 패러디 캐릭터 (고퀄 SVG) -->
+          <!-- Uncle Sam 이미지 -->
           <div style="text-align:center;margin-bottom:0.6rem">
-            <svg viewBox="0 0 320 400" width="280" height="340" style="display:block;margin:0 auto">
-              <defs>
-                <radialGradient id="face-g" cx="50%" cy="38%" r="55%"><stop offset="0%" stop-color="#f0d5a8"/><stop offset="60%" stop-color="#d4a870"/><stop offset="100%" stop-color="#b8895c"/></radialGradient>
-                <linearGradient id="coat-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1c2856"/><stop offset="100%" stop-color="#0f1a3a"/></linearGradient>
-                <linearGradient id="hat-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f0ebe0"/><stop offset="100%" stop-color="#d8d0c0"/></linearGradient>
-                <linearGradient id="hat-side" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#c0b8a8"/><stop offset="100%" stop-color="#e8e0d0"/></linearGradient>
-                <linearGradient id="band-g" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1c2856"/><stop offset="50%" stop-color="#2a3a70"/><stop offset="100%" stop-color="#1c2856"/></linearGradient>
-                <linearGradient id="bow-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#cc2222"/><stop offset="100%" stop-color="#8b1a1a"/></linearGradient>
-                <linearGradient id="skin-arm" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8c99a"/><stop offset="100%" stop-color="#c49a6c"/></linearGradient>
-                <filter id="f-shadow"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000" flood-opacity="0.3"/></filter>
-                <filter id="f-glow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-              </defs>
-
-              <g filter="url(#f-shadow)">
-                <!-- ===== 몸통/코트 (네이비 블루) ===== -->
-                <path d="M95,248 C75,260 55,290 42,400 L278,400 C265,290 245,260 225,248 L190,238 L160,232 L130,238 Z" fill="url(#coat-g)"/>
-                <!-- 코트 라펠 왼쪽 -->
-                <path d="M120,248 L105,255 L130,290 L155,252 Z" fill="#243060" stroke="#1c2856" stroke-width="0.5"/>
-                <!-- 코트 라펠 오른쪽 -->
-                <path d="M200,248 L215,255 L190,290 L165,252 Z" fill="#243060" stroke="#1c2856" stroke-width="0.5"/>
-                <!-- 코트 음영 -->
-                <path d="M95,248 C75,260 55,290 42,400 L80,400 C90,310 100,275 115,258 Z" fill="rgba(0,0,0,0.15)"/>
-                <!-- 코트 단추 -->
-                <circle cx="160" cy="300" r="4.5" fill="#c8b060" stroke="#a08030" stroke-width="1"/>
-                <circle cx="160" cy="330" r="4.5" fill="#c8b060" stroke="#a08030" stroke-width="1"/>
-                <circle cx="160" cy="360" r="4.5" fill="#c8b060" stroke="#a08030" stroke-width="1"/>
-
-                <!-- 셔츠 -->
-                <path d="M130,248 L155,252 L160,310 L165,252 L190,248 L175,240 L160,235 L145,240 Z" fill="#f5f0e8"/>
-                <line x1="160" y1="252" x2="160" y2="310" stroke="#e0d8c8" stroke-width="1"/>
-
-                <!-- ===== 나비넥타이 (빨간색) ===== -->
-                <path d="M138,248 L148,240 L155,250 L148,252 Z" fill="url(#bow-g)"/>
-                <path d="M182,248 L172,240 L165,250 L172,252 Z" fill="url(#bow-g)"/>
-                <circle cx="160" cy="248" r="5" fill="#cc2222" stroke="#8b1a1a" stroke-width="1"/>
-                <!-- 나비넥타이 주름 -->
-                <path d="M142,245 Q145,248 142,251" fill="none" stroke="#6b1010" stroke-width="0.8" opacity="0.5"/>
-                <path d="M178,245 Q175,248 178,251" fill="none" stroke="#6b1010" stroke-width="0.8" opacity="0.5"/>
-
-                <!-- ===== 포인팅 팔 + 손 (정면 원근법 과장) ===== -->
-                <!-- 오른쪽 소매 (어깨→손목) -->
-                <path d="M225,250 C240,245 252,230 258,218 C264,206 268,195 265,188" fill="none" stroke="url(#coat-g)" stroke-width="28" stroke-linecap="round"/>
-                <!-- 소매 하이라이트 -->
-                <path d="M232,245 C244,238 254,225 260,212" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8" stroke-linecap="round"/>
-                <!-- 커프스 -->
-                <ellipse cx="264" cy="186" rx="16" ry="10" fill="#f5f0e8" stroke="#e0d8c8" stroke-width="1" transform="rotate(-15,264,186)"/>
-
-                <!-- ★★★ 포인팅 손 (과장된 원근법) ★★★ -->
-                <g transform="translate(256,140)">
-                  <!-- 손바닥 -->
-                  <ellipse cx="12" cy="28" rx="20" ry="16" fill="url(#skin-arm)" transform="rotate(-8,12,28)"/>
-                  <!-- 엄지 (접힘) -->
-                  <path d="M-4,20 Q-10,14 -6,8 Q-2,4 4,8 Q8,12 4,18" fill="#d4a870" stroke="#b8895c" stroke-width="1"/>
-                  <!-- 검지 (뻗어나옴 - 가장 크고 눈에 띄게) -->
-                  <path d="M8,14 Q10,4 14,-12 Q16,-22 16,-36" fill="none" stroke="url(#skin-arm)" stroke-width="14" stroke-linecap="round"/>
-                  <!-- 검지 손톱 -->
-                  <ellipse cx="16" cy="-38" rx="6" ry="4" fill="#e8c99a" stroke="#c49a6c" stroke-width="1"/>
-                  <!-- 검지 관절 주름 -->
-                  <path d="M10,-4 Q16,-2 22,-4" fill="none" stroke="#b8895c" stroke-width="0.8" opacity="0.5"/>
-                  <path d="M11,-14 Q16,-12 21,-14" fill="none" stroke="#b8895c" stroke-width="0.8" opacity="0.5"/>
-                  <!-- 중지 (접힘) -->
-                  <path d="M22,16 Q28,10 30,18 Q30,26 24,28" fill="#d4a870" stroke="#b8895c" stroke-width="0.8"/>
-                  <!-- 약지 (접힘) -->
-                  <path d="M24,24 Q30,20 32,26 Q32,34 26,34" fill="#c49a6c" stroke="#b8895c" stroke-width="0.8"/>
-                  <!-- 소지 (접힘) -->
-                  <path d="M24,32 Q28,30 30,34 Q30,40 26,40" fill="#c49a6c" stroke="#b0855a" stroke-width="0.8"/>
-                </g>
-
-                <!-- 왼팔 (허리 쪽으로) -->
-                <path d="M95,252 C72,265 58,288 52,320" fill="none" stroke="url(#coat-g)" stroke-width="26" stroke-linecap="round"/>
-                <!-- 왼쪽 소매 음영 -->
-                <path d="M95,252 C72,265 58,288 52,320" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="28" stroke-linecap="round"/>
-
-                <!-- ===== 목 ===== -->
-                <path d="M140,228 Q160,225 180,228 L178,240 Q160,235 142,240 Z" fill="#d4a870"/>
-
-                <!-- ===== 머리 ===== -->
-                <ellipse cx="160" cy="170" rx="46" ry="56" fill="url(#face-g)"/>
-                <!-- 광대뼈 음영 -->
-                <ellipse cx="130" cy="178" rx="12" ry="8" fill="rgba(180,120,80,0.15)"/>
-                <ellipse cx="190" cy="178" rx="12" ry="8" fill="rgba(180,120,80,0.15)"/>
-                <!-- 이마 주름 (찡그림) -->
-                <path d="M132,148 Q145,144 158,148" fill="none" stroke="#b8895c" stroke-width="1" opacity="0.4"/>
-                <path d="M162,148 Q175,144 188,148" fill="none" stroke="#b8895c" stroke-width="1" opacity="0.4"/>
-                <path d="M138,152 Q150,149 162,152" fill="none" stroke="#b8895c" stroke-width="0.8" opacity="0.3"/>
-
-                <!-- 귀 -->
-                <ellipse cx="112" cy="175" rx="9" ry="14" fill="#d4a870" stroke="#c49a6c" stroke-width="1"/>
-                <ellipse cx="115" cy="175" rx="4" ry="8" fill="rgba(180,120,80,0.2)"/>
-                <ellipse cx="208" cy="175" rx="9" ry="14" fill="#d4a870" stroke="#c49a6c" stroke-width="1"/>
-                <ellipse cx="205" cy="175" rx="4" ry="8" fill="rgba(180,120,80,0.2)"/>
-
-                <!-- 흰 곱슬 옆머리 -->
-                <path d="M108,155 Q100,158 98,168 Q96,178 100,186 Q102,190 108,192" fill="none" stroke="#e8e0d0" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
-                <path d="M104,160 Q95,165 94,175 Q93,185 98,192" fill="none" stroke="#f0ebe0" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
-                <path d="M212,155 Q220,158 222,168 Q224,178 220,186 Q218,190 212,192" fill="none" stroke="#e8e0d0" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
-                <path d="M216,160 Q225,165 226,175 Q227,185 222,192" fill="none" stroke="#f0ebe0" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
-
-                <!-- ===== 눈썹 (굵고 찡그린) ===== -->
-                <path d="M130,155 Q138,148 152,153" fill="none" stroke="#5a4030" stroke-width="4" stroke-linecap="round"/>
-                <path d="M168,153 Q182,148 190,155" fill="none" stroke="#5a4030" stroke-width="4" stroke-linecap="round"/>
-
-                <!-- ===== 눈 (날카로운 시선) ===== -->
-                <!-- 왼쪽 눈 -->
-                <ellipse cx="142" cy="168" rx="12" ry="7" fill="#fff"/>
-                <ellipse cx="142" cy="168" rx="12" ry="7" fill="none" stroke="#8a7060" stroke-width="1.5"/>
-                <circle cx="144" cy="168" r="5.5" fill="#4a6a9a"/>
-                <circle cx="144" cy="168" r="3" fill="#1a2a40"/>
-                <circle cx="146" cy="166" r="1.5" fill="#fff"/>
-                <!-- 아래 눈꺼풀 -->
-                <path d="M130,172 Q142,176 154,172" fill="none" stroke="#a08060" stroke-width="1" opacity="0.4"/>
-                <!-- 오른쪽 눈 -->
-                <ellipse cx="178" cy="168" rx="12" ry="7" fill="#fff"/>
-                <ellipse cx="178" cy="168" rx="12" ry="7" fill="none" stroke="#8a7060" stroke-width="1.5"/>
-                <circle cx="176" cy="168" r="5.5" fill="#4a6a9a"/>
-                <circle cx="176" cy="168" r="3" fill="#1a2a40"/>
-                <circle cx="174" cy="166" r="1.5" fill="#fff"/>
-                <path d="M166,172 Q178,176 190,172" fill="none" stroke="#a08060" stroke-width="1" opacity="0.4"/>
-
-                <!-- ===== 코 (길고 각진) ===== -->
-                <path d="M158,162 L155,188 Q153,193 157,194 L163,194 Q167,193 165,188 L162,162" fill="url(#face-g)" stroke="#b8895c" stroke-width="0.8"/>
-                <path d="M155,188 Q160,192 165,188" fill="none" stroke="#a0794e" stroke-width="1.2"/>
-                <!-- 콧볼 -->
-                <circle cx="154" cy="190" r="3" fill="rgba(180,120,80,0.15)"/>
-                <circle cx="166" cy="190" r="3" fill="rgba(180,120,80,0.15)"/>
-
-                <!-- ===== 입 (꾹 다문) ===== -->
-                <path d="M142,202 Q150,206 160,205 Q170,206 178,202" fill="none" stroke="#8b5a3a" stroke-width="2.5" stroke-linecap="round"/>
-                <!-- 입술 아래 그림자 -->
-                <path d="M145,206 Q160,210 175,206" fill="none" stroke="#b8895c" stroke-width="1" opacity="0.3"/>
-
-                <!-- ===== 턱수염 (흰 고티) ===== -->
-                <path d="M148,208 Q150,218 155,226 Q160,230 165,226 Q170,218 172,208" fill="#e8e0d0" stroke="#d8d0c0" stroke-width="0.8"/>
-                <path d="M150,212 Q155,220 160,224 Q165,220 170,212" fill="#f0ebe0" opacity="0.6"/>
-                <!-- 턱수염 결 -->
-                <line x1="155" y1="212" x2="157" y2="222" stroke="#d0c8b8" stroke-width="0.5" opacity="0.5"/>
-                <line x1="160" y1="210" x2="160" y2="226" stroke="#d0c8b8" stroke-width="0.5" opacity="0.5"/>
-                <line x1="165" y1="212" x2="163" y2="222" stroke="#d0c8b8" stroke-width="0.5" opacity="0.5"/>
-
-                <!-- 턱 -->
-                <path d="M120,198 Q160,232 200,198" fill="none" stroke="#c49a6c" stroke-width="1" opacity="0.3"/>
-                <!-- 팔자 주름 -->
-                <path d="M140,186 Q138,194 140,202" fill="none" stroke="#b8895c" stroke-width="1" opacity="0.3"/>
-                <path d="M180,186 Q182,194 180,202" fill="none" stroke="#b8895c" stroke-width="1" opacity="0.3"/>
-
-                <!-- ===== 탑햇 (흰색/크림 + 파란 밴드) ===== -->
-                <!-- 모자 챙 -->
-                <ellipse cx="160" cy="122" rx="62" ry="13" fill="#c0b8a8"/>
-                <ellipse cx="160" cy="120" rx="60" ry="11" fill="#e0d8c8"/>
-                <ellipse cx="160" cy="120" rx="60" ry="11" fill="none" stroke="#b0a890" stroke-width="1"/>
-                <!-- 모자 원통 -->
-                <path d="M118,120 L118,42 Q118,36 124,36 L196,36 Q202,36 202,42 L202,120" fill="url(#hat-g)" stroke="#c0b8a8" stroke-width="1"/>
-                <!-- 모자 상단 -->
-                <ellipse cx="160" cy="38" rx="42" ry="8" fill="#e8e0d0" stroke="#c0b8a8" stroke-width="1"/>
-                <!-- 모자 원통 하이라이트 -->
-                <rect x="145" y="40" width="6" height="76" rx="3" fill="rgba(255,255,255,0.12)"/>
-                <!-- 모자 원통 왼쪽 음영 -->
-                <rect x="118" y="40" width="14" height="80" fill="rgba(0,0,0,0.08)"/>
-                <!-- 파란 밴드 -->
-                <rect x="118" y="95" width="84" height="22" fill="url(#band-g)"/>
-                <rect x="118" y="95" width="84" height="22" fill="none" stroke="#152040" stroke-width="0.5"/>
-                <!-- 밴드 위 흰 별 -->
-                <text x="140" y="112" font-size="16" fill="#fff" text-anchor="middle" font-weight="900">★</text>
-                <text x="160" y="112" font-size="11" fill="rgba(255,255,255,0.5)" text-anchor="middle">★</text>
-                <text x="180" y="112" font-size="11" fill="rgba(255,255,255,0.5)" text-anchor="middle">★</text>
-                <!-- 밴드 음영 -->
-                <line x1="118" y1="117" x2="202" y2="117" stroke="rgba(0,0,0,0.15)" stroke-width="1"/>
-              </g>
-            </svg>
+            <img src="uncle-sam.png" alt="Uncle Sam" style="display:block;margin:0 auto;width:280px;height:auto;border-radius:4px">
           </div>
 
           <!-- 하단 텍스트 -->
@@ -716,7 +549,7 @@ async function _doSavePDF(btn){
         <h2 class="sec-title" style="margin-bottom:0.5rem">발표 구성</h2>
         <p class="sec-sub" style="margin-bottom:0"></p>
       </div>
-      <div class="rv d1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem">
+      <div class="rv d1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;max-width:65%;margin:0 auto">
         <!-- P: Problem -->
         <div class="toc-card" style="background:linear-gradient(135deg,#FFF5F5,#FFF0F0);border:1px solid rgba(255,59,48,0.12)">
           <div class="toc-num" style="color:var(--red)">P</div>
@@ -789,8 +622,8 @@ async function _doSavePDF(btn){
   <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0d0d1a 0%,#1a1520 40%,#12101c 100%);z-index:0"></div>
   <div style="position:absolute;inset:0;opacity:0.04;background-image:url('data:image/svg+xml,%3Csvg width=%2280%22 height=%2280%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cline x1=%220%22 y1=%220%22 x2=%2280%22 y2=%2280%22 stroke=%22%23fff%22 stroke-width=%220.5%22/%3E%3Cline x1=%2280%22 y1=%220%22 x2=%220%22 y2=%2280%22 stroke=%22%23fff%22 stroke-width=%220.3%22/%3E%3C/svg%3E');z-index:0"></div>
 
-  <div class="slide-body" style="padding:40px 60px;z-index:1;position:relative">
-    <div class="inner" style="display:grid;grid-template-columns:420px 1fr;gap:3.5rem;align-items:center">
+  <div class="slide-body" style="padding:40px 40px;z-index:1;position:relative">
+    <div class="inner" style="display:grid;grid-template-columns:420px 1fr;gap:3rem;align-items:center;max-width:1840px">
 
       <!-- 왼쪽: WANTED 포스터 -->
       <div class="rv" style="position:relative">
@@ -868,8 +701,8 @@ async function _doSavePDF(btn){
 
 <!-- ═══ SLIDE 4: CHARACTERS ═══ -->
 <section class="slide slide-dark" id="s4" style="justify-content:center;align-items:center">
-  <div class="slide-body" style="padding-top:36px;padding-bottom:36px">
-    <div class="inner">
+  <div class="slide-body" style="padding:36px 40px">
+    <div class="inner" style="max-width:1840px">
       <div class="rv" style="text-align:center;margin-bottom:2rem">
         <div class="sec-label" style="color:rgba(255,255,255,0.4)">CHARACTERS</div>
         <h2 style="font-family:'Black Han Sans',sans-serif;font-weight:400;font-size:2.8rem;color:#fff;margin-bottom:0.4rem">4인의 용의자, 4개의 서사</h2>
@@ -991,17 +824,20 @@ async function _doSavePDF(btn){
         <h2 class="sec-title" style="margin-bottom:0.3rem">창업 아이템 배경 및 필요성</h2>
         <p class="sec-sub" style="margin-bottom:1rem">한국 영어교육의 구조적 한계</p>
       </div>
-      <div class="tc rv d1" style="gap:2rem">
+      <div class="tc rv d1" style="gap:2.5rem;max-width:90%;margin:0 auto">
         <div class="card" style="border:2px solid var(--border);padding:1.2rem 1.5rem">
           <h3 style="color:var(--red);font-size:1.5rem;margin-bottom:0.4rem">공부는 세계 1위, 말은 못 하는 나라</h3>
           <div class="bar-wrap" style="margin:0.3rem 0"><div class="bar-label" style="font-size:1.05rem"><span>영어 학습 시간 (초중고 12년)</span><span>1,800시간+</span></div><div class="bar"><div class="bar-fill v" style="--w:95%"></div></div><div class="source-cite" style="text-align:right;margin-top:2px">출처: 교육부 교육과정</div></div>
           <div class="bar-wrap" style="margin:0.3rem 0"><div class="bar-label" style="font-size:1.05rem"><span>영어 사교육비 (연간)</span><span style="color:var(--gold)">9.8조원</span></div><div class="bar"><div class="bar-fill gold v" style="--w:78%"></div></div><div class="source-cite" style="text-align:right;margin-top:2px">출처: 통계청 사교육비조사 2024</div></div>
           <div class="bar-wrap" style="margin:0.3rem 0"><div class="bar-label" style="font-size:1.05rem"><span>EF EPI 회화 능력 순위</span><span>49위 / 113국</span></div><div class="bar"><div class="bar-fill red v" style="--w:32%"></div></div><div class="source-cite" style="text-align:right;margin-top:2px">출처: ef.co.kr/epi (2023)</div></div>
           <div style="margin-top:0.8rem">
-            <h3 style="font-size:1.3rem;margin-bottom:0.3rem">구조적 원인 3가지</h3>
-            <p style="font-size:1.05rem;margin-bottom:0.15rem"><strong style="color:var(--red)">1. 외재적 동기만 존재</strong> 시험/입시가 끝나면 영어도 끝</p>
-            <p style="font-size:1.05rem;margin-bottom:0.15rem"><strong style="color:var(--red)">2. 맥락 없는 반복</strong> 문법 암기, 단어장. 써먹을 데 없음</p>
-            <p style="font-size:1.05rem;margin-bottom:0"><strong style="color:var(--red)">3. 실패 공포</strong> "틀리면 안 돼" → 입을 닫는 악순환</p>
+            <h3 style="font-size:1.5rem;margin-bottom:0.4rem">구조적 원인 3가지</h3>
+            <p style="font-size:1.2rem;margin-bottom:0.2rem"><strong style="color:var(--red)">1. 외재적 동기만 존재</strong> 시험/입시가 끝나면 영어도 끝</p>
+            <p style="font-size:1.2rem;margin-bottom:0.2rem"><strong style="color:var(--red)">2. 맥락 없는 반복</strong> 문법 암기, 단어장. 써먹을 데 없음</p>
+            <p style="font-size:1.2rem;margin-bottom:0"><strong style="color:var(--red)">3. 실패 공포</strong> "틀리면 안 돼" → 입을 닫는 악순환</p>
+          </div>
+          <div style="margin-top:0.8rem;padding:0.6rem 1rem;background:var(--primary-light);border-radius:8px;border-left:3px solid var(--primary)">
+            <p style="font-size:1.1rem;color:var(--primary-dark);margin:0;font-weight:600">이처럼, 영어 뿐만 아니라 사회, 역사, 철학, 관광, 한국어 교육 등 다양한 교육 과정에도 적용이 가능합니다.</p>
           </div>
         </div>
         <div>
@@ -1013,7 +849,7 @@ async function _doSavePDF(btn){
             </p>
           </div>
           <div class="quote" style="padding:1rem 1.5rem;font-size:1.2rem;line-height:1.8;margin:0.8rem 0">
-            "여러분 중에 살인자가 있습니다. 영어를 사용해야만 결정적인 단서를 얻을 수 있다면, 범인을 잡기 위해 당장 사전을 펼치시겠습니까?"
+            "단서를 해금하기 위해, 주어진 사전에서 영어 단어를 찾아시오"
           </div>
           <div style="margin-top:0.8rem;display:flex;align-items:center;gap:1rem">
             <span class="tag tag-red" style="font-size:1.2rem">시험을 위한 공부 ✗</span>
@@ -1167,11 +1003,6 @@ async function _doSavePDF(btn){
             <p style="font-size:1.1rem;margin-bottom:0.2rem">시나리오, 규칙, 구성물, 패키지 및 웹페이지 연계 기능을 개선한 시제품 제작</p>
             <p style="font-size:1.1rem;margin:0">파일럿 테스트를 통해 몰입도, 이해도, 추론 참여도, 진행 안정성 및 재참여 의향 검증</p>
           </div>
-          <div class="card" style="padding:1rem 1.3rem">
-            <h3 style="color:var(--primary-dark);font-size:1.4rem;margin-bottom:0.3rem">현재 개발 단계: <span class="tag tag-blue" style="font-size:1rem;padding:2px 10px">기획</span></h3>
-            <p style="font-size:1.1rem;margin-bottom:0.2rem">기본 게임 구조와 시나리오 설계 진행 중, QR 연계 페이지 구축 완료</p>
-            <p style="font-size:1.1rem;margin:0">향후 패키지 디자인, 사용자 테스트, AI 맞춤형 기능을 단계적 접목</p>
-          </div>
         </div>
         <div>
           <h3 style="margin-bottom:0.3rem;font-size:1.5rem;color:var(--primary)">5단계 실증·개발 로드맵</h3>
@@ -1207,6 +1038,12 @@ async function _doSavePDF(btn){
               <p style="font-size:0.85rem;line-height:1.4">AI 기반 맞춤형 기능·앱·웹 확장</p>
             </div>
           </div>
+          <div class="card" style="margin-top:0.8rem;padding:1rem 1.3rem">
+            <h3 style="color:var(--primary-dark);font-size:1.4rem;margin-bottom:0.3rem">현재 개발 단계: <span class="tag tag-blue" style="font-size:1rem;padding:2px 10px">기획</span></h3>
+            <p style="font-size:1.1rem;margin-bottom:0.2rem">기본 게임 구조와 시나리오 설계 진행 중, QR 연계 페이지 구축 완료</p>
+            <p style="font-size:1.1rem;margin-bottom:0.2rem">향후 패키지 디자인, 사용자 테스트, AI 맞춤형 기능을 단계적 접목</p>
+            <p style="font-size:1.1rem;margin:0;color:var(--primary);font-weight:700">다양한 고객 업체와 MOU, LOI 진행 중</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1219,13 +1056,20 @@ async function _doSavePDF(btn){
     <div class="inner">
       <div class="rv">
         <div class="sec-label">TRACTION</div>
-        <h2 class="sec-title" style="margin-bottom:0.3rem">9,001,000원의 증명</h2>
+        <h2 class="sec-title" style="margin-bottom:0.3rem">시장 검증</h2>
         <p class="sec-sub" style="margin-bottom:1rem">마케팅 비용 0원. 제품력만으로 PMF 검증 완료</p>
       </div>
       <div class="tc rv d1" style="gap:2rem">
         <div>
-          <div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1rem">
-            <img src="tumblbug-funding.png" alt="텀블벅 펀딩 180% 달성 - 뱀이 죽은 축제" style="width:100%;display:block">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:1rem">
+            <div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden">
+              <img src="tumblbug-funding.png" alt="텀블벅 1차 펀딩 180% 달성" style="width:100%;display:block">
+              <div style="text-align:center;padding:0.3rem;font-size:0.9rem;color:var(--dim)">1차 펀딩 180% 달성</div>
+            </div>
+            <div style="border:2px dashed var(--border);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;min-height:120px;background:var(--bg-alt);flex-direction:column;gap:0.3rem">
+              <span style="font-size:1.1rem;color:var(--primary);font-weight:700">2차 펀딩 진행 중</span>
+              <span style="font-size:0.9rem;color:var(--faint)">이미지 추가 예정</span>
+            </div>
           </div>
           <div class="card card-blue" style="text-align:center;margin-bottom:1rem;padding:1.2rem">
             <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:0.6rem">
@@ -1251,8 +1095,8 @@ async function _doSavePDF(btn){
           </div>
           <div class="card" style="padding:1rem 1.3rem">
             <h3 style="font-size:1.3rem">입증된 3가지 핵심 가설</h3>
-            <p style="font-size:1.05rem;margin-bottom:0.2rem"><strong>1.</strong> 서사 몰입 → 영어 거부감 제거 <span class="tag tag-blue" style="font-size:1.1rem;padding:2px 8px">검증</span></p>
-            <p style="font-size:1.05rem;margin-bottom:0.2rem"><strong>2.</strong> 정보 비대칭 → 자발적 영어 소통 <span class="tag tag-blue" style="font-size:1.1rem;padding:2px 8px">검증</span></p>
+            <p style="font-size:1.05rem;margin-bottom:0.2rem"><strong>1.</strong> 서사 몰입 → 거부감 제거 <span class="tag tag-blue" style="font-size:1.1rem;padding:2px 8px">검증</span></p>
+            <p style="font-size:1.05rem;margin-bottom:0.2rem"><strong>2.</strong> 정보 비대칭 → 자발적 소통 <span class="tag tag-blue" style="font-size:1.1rem;padding:2px 8px">검증</span></p>
             <p style="font-size:1.05rem;margin-bottom:0.2rem"><strong>3.</strong> QR 에필로그 → 재방문/후속 결제 <span class="tag tag-blue" style="font-size:1.1rem;padding:2px 8px">검증</span></p>
             <p style="margin-top:0.4rem;font-size:1.05rem"><em>"뱀이 죽은 축제"</em>로 전 과정 실증 완료</p>
           </div>
@@ -1270,9 +1114,14 @@ async function _doSavePDF(btn){
               <h3 style="color:var(--primary-dark);font-size:1.3rem">텀블벅 펀딩 180% + 배송</h3>
               <p style="font-size:1.05rem">"뱀이 죽은 축제" 출시, QR 에필로그 시스템 실증</p>
             </div>
+            <div class="rm-item" style="margin-bottom:0.8rem">
+              <p style="font-size:1.1rem;color:var(--faint);margin-bottom:0">2025. 4Q</p>
+              <h3 style="color:var(--dim);font-size:1.3rem">2차 텀블벅 펀딩 진행 중</h3>
+              <p style="font-size:1.05rem">제품 3종 출시, 고객층 검증</p>
+            </div>
             <div class="rm-item" style="margin-bottom:0">
-              <p style="font-size:1.1rem;color:var(--faint);margin-bottom:0">2025. 4Q ~ 현재</p>
-              <h3 style="color:var(--dim);font-size:1.3rem">U-시리즈 기획 + 사업화 준비</h3>
+              <p style="font-size:1.1rem;color:var(--faint);margin-bottom:0">2026. 1Q ~ 현재</p>
+              <h3 style="color:var(--primary);font-size:1.3rem">U-시리즈 기획 + 사업화 준비</h3>
               <p style="font-size:1.05rem">지역 관광 연동 모델 설계, 울산 대왕암 시나리오 개발</p>
             </div>
           </div>
@@ -1281,7 +1130,7 @@ async function _doSavePDF(btn){
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem">
               <div style="background:var(--gold-bg);border-radius:10px;padding:0.5rem 0.7rem">
                 <div style="font-weight:800;color:var(--gold);font-size:1.15rem;margin-bottom:0.15rem">시장 검증</div>
-                <div style="font-size:1.1rem;color:var(--dim)">텀블벅 <strong style="color:var(--text)">180%</strong> 달성 → 스토리 설계 역량 확인</div>
+                <div style="font-size:1.1rem;color:var(--dim)">텀블벅 <strong style="color:var(--text)">180%</strong> 달성 및 추가 펀딩 성공 → 스토리 설계 역량 확인</div>
               </div>
               <div style="background:var(--primary-light);border-radius:10px;padding:0.5rem 0.7rem">
                 <div style="font-weight:800;color:var(--primary);font-size:1.15rem;margin-bottom:0.15rem">디지털 확장</div>
@@ -1499,7 +1348,7 @@ async function _doSavePDF(btn){
       </div>
 
       <!-- Card language flow: 2 cards -->
-      <div class="rv d2" style="display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center;margin-bottom:2rem">
+      <div class="rv d2" style="display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center;margin-bottom:2rem;max-width:85%;margin-left:auto;margin-right:auto">
         <div class="card card-elevated" style="padding:1.5rem 1.8rem;border-left:5px solid var(--red)">
           <h3 style="font-size:1.5rem;margin-bottom:0.8rem;color:var(--red)">공개 불가 카드 <span style="font-family:'IBM Plex Mono',monospace;font-size:1rem;color:var(--dim);font-weight:400">12장</span></h3>
           <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.8rem">
@@ -1536,7 +1385,7 @@ async function _doSavePDF(btn){
       </div>
 
       <!-- Difficulty 3-level bar -->
-      <div class="rv d3">
+      <div class="rv d3" style="max-width:85%;margin-left:auto;margin-right:auto">
         <div class="card card-elevated" style="padding:1.2rem 2rem">
           <h4 style="font-size:1.3rem;margin-bottom:0.8rem">난이도 3단계</h4>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem">
@@ -1570,7 +1419,7 @@ async function _doSavePDF(btn){
       </div>
 
       <!-- Timeline: ㄹ자 serpentine layout (3col × 2row) -->
-      <div class="rv d1" style="position:relative">
+      <div class="rv d1" style="position:relative;max-width:88%;margin-left:auto;margin-right:auto">
         <!-- Row 1: Steps 1→2→3 (left to right) -->
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:0.5rem;position:relative">
           <!-- Row 1 connecting line -->
@@ -1687,7 +1536,7 @@ async function _doSavePDF(btn){
       </div>
 
       <!-- Bottom: Key insight (simplified) -->
-      <div class="rv d2" style="margin-top:0.8rem;text-align:center">
+      <div class="rv d2" style="margin-top:0.8rem;text-align:center;max-width:88%;margin-left:auto;margin-right:auto">
         <div style="display:inline-block;background:var(--primary-light);border:1px solid rgba(51,102,255,0.15);border-radius:12px;padding:0.8rem 2rem">
           <p style="font-size:1.2rem;color:var(--text);margin:0;font-weight:600">핵심: 추리 몰입 → <span style="color:var(--primary)">자연스러운 영어 사용</span> → 학습 성취</p>
         </div>
@@ -1798,23 +1647,23 @@ async function _doSavePDF(btn){
               <!-- B2C 55% = 0.55 × 596.90 = 328.30 -->
               <circle cx="170" cy="170" r="95" fill="none" stroke="#3366FF" stroke-width="42"
                 stroke-dasharray="328.30 596.90" stroke-dashoffset="0" transform="rotate(-90 170 170)"/>
-              <!-- B2B 25% = 0.25 × 596.90 = 149.23 -->
-              <circle cx="170" cy="170" r="95" fill="none" stroke="#2952CC" stroke-width="42"
-                stroke-dasharray="149.23 596.90" stroke-dashoffset="-328.30" transform="rotate(-90 170 170)"/>
               <!-- B2G 20% = 0.20 × 596.90 = 119.38 -->
               <circle cx="170" cy="170" r="95" fill="none" stroke="#5AC8FA" stroke-width="42"
-                stroke-dasharray="119.38 596.90" stroke-dashoffset="-477.52" transform="rotate(-90 170 170)"/>
+                stroke-dasharray="119.38 596.90" stroke-dashoffset="-328.30" transform="rotate(-90 170 170)"/>
+              <!-- B2B 25% = 0.25 × 596.90 = 149.23 -->
+              <circle cx="170" cy="170" r="95" fill="none" stroke="#2952CC" stroke-width="42"
+                stroke-dasharray="149.23 596.90" stroke-dashoffset="-447.68" transform="rotate(-90 170 170)"/>
               <text x="170" y="162" font-family="'Noto Sans KR',sans-serif" font-size="17" fill="#1a1a1a" text-anchor="middle" font-weight="800">수익 구조</text>
               <text x="170" y="182" font-family="'Noto Sans KR',sans-serif" font-size="13" fill="#999" text-anchor="middle" font-weight="500">3중 수익 모델</text>
               <!-- Labels positioned at arc midpoints -->
               <text x="260" y="90" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#3366FF" font-weight="800">B2C 55%</text>
-              <text x="265" y="250" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#2952CC" font-weight="700">B2B 25%</text>
-              <text x="68" y="260" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#5AC8FA" font-weight="700">B2G 20%</text>
+              <text x="68" y="190" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#5AC8FA" font-weight="700">B2G 20%</text>
+              <text x="265" y="270" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#2952CC" font-weight="700">B2B 25%</text>
             </svg>
           </div>
           <div class="rev-block card-elevated" style="padding:0.8rem 1.3rem;margin-bottom:0.6rem"><div class="pct" style="font-size:1.8rem">55%</div><h3 style="font-size:1.3rem">B2C 판매</h3><p style="font-size:1.05rem">크라우드펀딩 + 스마트스토어. 시나리오당 39,900원. 시리즈 번들 할인. 확장팩 판매.</p></div>
-          <div class="rev-block card-elevated" style="border-left-color:var(--primary-dark);padding:0.8rem 1.3rem;margin-bottom:0.6rem"><div class="pct" style="color:var(--primary-dark);font-size:1.8rem">25%</div><h3 style="font-size:1.3rem">B2B 교육기관 납품</h3><p style="font-size:1.05rem">학교·학원·복지기관 파일럿 프로그램. 맞춤 시나리오 라이선스.</p></div>
-          <div class="rev-block card-elevated" style="border-left-color:var(--ice);padding:0.8rem 1.3rem;margin-bottom:0"><div class="pct" style="color:var(--ice);font-size:1.8rem">20%</div><h3 style="font-size:1.3rem">B2G 공공기관 연동</h3><p style="font-size:1.05rem">지자체·관광공사 제휴 패키지. 교육청 방과후 프로그램 납품.</p></div>
+          <div class="rev-block card-elevated" style="border-left-color:var(--ice);padding:0.8rem 1.3rem;margin-bottom:0.6rem"><div class="pct" style="color:var(--ice);font-size:1.8rem">20%</div><h3 style="font-size:1.3rem">B2G 공공기관 연동</h3><p style="font-size:1.05rem">지자체·관광공사 제휴 패키지. 교육청 방과후 프로그램 납품.</p></div>
+          <div class="rev-block card-elevated" style="border-left-color:var(--primary-dark);padding:0.8rem 1.3rem;margin-bottom:0"><div class="pct" style="color:var(--primary-dark);font-size:1.8rem">25%</div><h3 style="font-size:1.3rem">B2B 교육기관 납품</h3><p style="font-size:1.05rem">학교·학원·복지기관 파일럿 프로그램. 맞춤 시나리오 라이선스.</p></div>
         </div>
         <div>
           <div class="card" style="margin-bottom:0.8rem;padding:1rem 1.3rem">
@@ -1910,13 +1759,13 @@ async function _doSavePDF(btn){
           <table style="font-size:1.1rem">
             <thead><tr><th style="padding:0.35rem 0.6rem">비목</th><th style="padding:0.35rem 0.6rem">항목</th><th style="padding:0.35rem 0.6rem;text-align:right">금액</th><th style="padding:0.35rem 0.6rem;text-align:right">비율</th></tr></thead>
             <tbody>
-              <tr><td rowspan="3" style="padding:0.35rem 0.6rem;border-right:3px solid #3366FF"><strong>실증비용</strong></td><td style="padding:0.35rem 0.6rem">POC 테스트</td><td style="padding:0.35rem 0.6rem;text-align:right">2,500,000원</td><td rowspan="3" style="padding:0.35rem 0.6rem;text-align:right;font-weight:700;color:#3366FF">55.4%</td></tr>
+              <tr><td rowspan="2" style="padding:0.35rem 0.6rem;border-right:3px solid #3366FF"><strong>실증비용</strong></td><td style="padding:0.35rem 0.6rem">POC 테스트</td><td style="padding:0.35rem 0.6rem;text-align:right">2,500,000원</td><td rowspan="2" style="padding:0.35rem 0.6rem;text-align:right;font-weight:700;color:#3366FF">43.3%</td></tr>
               <tr><td style="padding:0.35rem 0.6rem">기술 컨설팅</td><td style="padding:0.35rem 0.6rem;text-align:right">1,800,000원</td></tr>
+              <tr><td rowspan="4" style="padding:0.35rem 0.6rem;border-right:3px solid #2952CC"><strong>제작비용</strong></td><td style="padding:0.35rem 0.6rem">재료비</td><td style="padding:0.35rem 0.6rem;text-align:right">1,750,000원</td><td rowspan="4" style="padding:0.35rem 0.6rem;text-align:right;font-weight:700;color:#2952CC">49.7%</td></tr>
               <tr><td style="padding:0.35rem 0.6rem">설계비(AI)</td><td style="padding:0.35rem 0.6rem;text-align:right">1,200,000원</td></tr>
-              <tr><td rowspan="2" style="padding:0.35rem 0.6rem;border-right:3px solid #2952CC"><strong>제작비용</strong></td><td style="padding:0.35rem 0.6rem">재료비</td><td style="padding:0.35rem 0.6rem;text-align:right">1,750,000원</td><td rowspan="2" style="padding:0.35rem 0.6rem;text-align:right;font-weight:700;color:#2952CC">34.6%</td></tr>
               <tr><td style="padding:0.35rem 0.6rem">가공/조립비</td><td style="padding:0.35rem 0.6rem;text-align:right">1,690,000원</td></tr>
-              <tr><td rowspan="2" style="padding:0.35rem 0.6rem;border-right:3px solid #FF9F0A"><strong>지재권 등</strong></td><td style="padding:0.35rem 0.6rem">상표 출원</td><td style="padding:0.35rem 0.6rem;text-align:right">700,000원</td><td rowspan="2" style="padding:0.35rem 0.6rem;text-align:right;font-weight:700;color:#FF9F0A">10.1%</td></tr>
               <tr><td style="padding:0.35rem 0.6rem">부품비(QR)</td><td style="padding:0.35rem 0.6rem;text-align:right">300,000원</td></tr>
+              <tr><td style="padding:0.35rem 0.6rem;border-right:3px solid #FF9F0A"><strong>지재권</strong></td><td style="padding:0.35rem 0.6rem">상표 출원</td><td style="padding:0.35rem 0.6rem;text-align:right">700,000원</td><td style="padding:0.35rem 0.6rem;text-align:right;font-weight:700;color:#FF9F0A">7.0%</td></tr>
             </tbody>
             <tfoot>
               <tr style="border-top:2px solid var(--border)"><td colspan="2" style="padding:0.5rem 0.6rem;font-weight:700;font-size:1.05rem">총 소요액</td><td style="padding:0.5rem 0.6rem;text-align:right;font-weight:900;color:#3366FF;font-size:1.1rem">9,940,000원</td><td style="padding:0.5rem 0.6rem;text-align:right;font-size:1.1rem;color:var(--dim)">100%</td></tr>
