@@ -387,6 +387,7 @@ async function _doCaptureSlides(btn){
       +' *{transition:none!important;animation:none!important}'
       +' .nav,.pdf-btn,#pdf-overlay,#pdf-preview{pointer-events:none}'
       +' .slide{width:'+W+'px!important;height:'+H+'px!important;min-height:'+H+'px!important;max-height:'+H+'px!important;overflow:hidden!important}'
+      +' .slide-body{transform:none!important;transform-origin:initial!important}'
       +' .inner{max-width:1840px!important}';
     document.head.appendChild(styleTag);
     document.querySelectorAll('.rv').forEach(function(r){r.classList.add('v')});
@@ -423,6 +424,10 @@ async function _doCaptureSlides(btn){
               clonedDoc.querySelectorAll('.rv').forEach(function(el){
                 el.style.setProperty('opacity','1','important');
                 el.style.setProperty('transform','none','important');
+              });
+              clonedDoc.querySelectorAll('.slide-body').forEach(function(el){
+                el.style.setProperty('transform','none','important');
+                el.style.setProperty('transform-origin','initial','important');
               });
               var cs=clonedDoc.querySelectorAll('.slide')[idx];
               if(cs){cs.style.width=W+'px';cs.style.height=H+'px';cs.style.overflow='hidden'}
@@ -767,95 +772,28 @@ async function downloadFromPreview(){
       <div class="rv d1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:1.5rem">
         <!-- 캐릭터 1: 선장 모리스 -->
         <div class="char-card" style="border-right-color:var(--red);--glow:rgba(255,59,48,0.25)">
-          <svg viewBox="0 0 150 150" width="180" height="180" style="margin:0 auto 1rem;display:block">
-            <defs><clipPath id="cc1"><circle cx="75" cy="75" r="73"/></clipPath></defs>
-            <circle cx="75" cy="75" r="74" fill="#160505" stroke="rgba(255,59,48,0.3)" stroke-width="2"/>
-            <g clip-path="url(#cc1)">
-              <ellipse cx="75" cy="145" rx="60" ry="18" fill="rgba(214,48,49,0.08)"/>
-              <path d="M55,88 C40,94 24,108 18,150 L132,150 C126,108 110,94 95,88 Z" fill="rgba(214,48,49,0.32)"/>
-              <path d="M67,88 L75,102 L83,88" fill="none" stroke="rgba(255,59,48,0.2)" stroke-width="1.5"/>
-              <rect x="34" y="100" width="10" height="3.5" rx="1.5" fill="rgba(255,59,48,0.22)" transform="rotate(-18,39,101)"/>
-              <rect x="106" y="100" width="10" height="3.5" rx="1.5" fill="rgba(255,59,48,0.22)" transform="rotate(18,111,101)"/>
-              <rect x="68" y="79" width="14" height="11" rx="3" fill="rgba(214,48,49,0.38)"/>
-              <ellipse cx="75" cy="57" rx="21" ry="26" fill="rgba(214,48,49,0.42)"/>
-              <ellipse cx="75" cy="39" rx="26" ry="5" fill="rgba(214,48,49,0.48)"/>
-              <path d="M53,37 Q55,23 75,19 Q95,23 97,37 Q86,35 75,34 Q64,35 53,37 Z" fill="rgba(214,48,49,0.45)"/>
-              <path d="M72,29 L75,25 L78,29 L75,33 Z" fill="rgba(255,59,48,0.35)"/>
-              <path d="M64,76 Q61,66 62,56 Q64,43 69,37" fill="none" stroke="rgba(255,59,48,0.12)" stroke-width="1"/>
-            </g>
-          </svg>
+          <img src="svg-img/s4-svg0.png" width="180" height="180" style="margin:0 auto 1rem;display:block" alt="선장 모리스">
           <div style="font-weight:900;font-size:1.5rem;color:#fff;margin-bottom:0.2rem">선장 모리스</div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:1.4rem;color:var(--red);letter-spacing:0.06em;margin-bottom:0.5rem;font-weight:600">THE GREEDY CAPTAIN</div>
           <p style="font-size:1.5rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0">"돈이라면 뭐든 합니다."<br><span style="color:var(--red);font-weight:600">재정적 단서</span> 보유</p>
         </div>
         <!-- 캐릭터 2: 등대지기 엘라 -->
         <div class="char-card" style="border-right-color:var(--primary);--glow:rgba(51,102,255,0.25)">
-          <svg viewBox="0 0 150 150" width="180" height="180" style="margin:0 auto 1rem;display:block">
-            <defs><clipPath id="cc2"><circle cx="75" cy="75" r="73"/></clipPath></defs>
-            <circle cx="75" cy="75" r="74" fill="#060d1a" stroke="rgba(51,102,255,0.3)" stroke-width="2"/>
-            <g clip-path="url(#cc2)">
-              <ellipse cx="75" cy="145" rx="55" ry="18" fill="rgba(51,102,255,0.06)"/>
-              <path d="M58,88 C44,94 28,108 22,150 L128,150 C122,108 106,94 92,88 Z" fill="rgba(51,102,255,0.28)"/>
-              <rect x="69" y="79" width="12" height="11" rx="3" fill="rgba(51,102,255,0.35)"/>
-              <ellipse cx="75" cy="55" rx="19" ry="25" fill="rgba(51,102,255,0.38)"/>
-              <path d="M56,48 C48,55 44,68 46,84 L52,81 C51,68 53,56 58,49 Z" fill="rgba(51,102,255,0.32)"/>
-              <path d="M94,48 C102,55 106,68 104,84 L98,81 C99,68 97,56 92,49 Z" fill="rgba(51,102,255,0.32)"/>
-              <path d="M56,42 Q60,28 75,25 Q90,28 94,42 Q85,36 75,35 Q65,36 56,42 Z" fill="rgba(51,102,255,0.38)"/>
-              <circle cx="82" cy="28" r="8" fill="rgba(51,102,255,0.32)"/>
-              <circle cx="86" cy="24" r="5" fill="rgba(51,102,255,0.28)"/>
-              <path d="M64,76 Q60,66 61,55 Q63,42 68,36" fill="none" stroke="rgba(51,102,255,0.12)" stroke-width="1"/>
-            </g>
-          </svg>
+          <img src="svg-img/s4-svg1.png" width="180" height="180" style="margin:0 auto 1rem;display:block" alt="등대지기 엘라">
           <div style="font-weight:900;font-size:1.5rem;color:#fff;margin-bottom:0.2rem">등대지기 엘라</div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:1.4rem;color:var(--primary);letter-spacing:0.06em;margin-bottom:0.5rem;font-weight:600">THE SILENT KEEPER</div>
           <p style="font-size:1.5rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0">"비밀은 나의 무기."<br><span style="color:var(--primary);font-weight:600">환경적 단서</span> 보유</p>
         </div>
         <!-- 캐릭터 3: 의사 한세진 -->
         <div class="char-card" style="border-right-color:var(--ice);--glow:rgba(90,200,250,0.25)">
-          <svg viewBox="0 0 150 150" width="180" height="180" style="margin:0 auto 1rem;display:block">
-            <defs><clipPath id="cc3"><circle cx="75" cy="75" r="73"/></clipPath></defs>
-            <circle cx="75" cy="75" r="74" fill="#061218" stroke="rgba(90,200,250,0.3)" stroke-width="2"/>
-            <g clip-path="url(#cc3)">
-              <ellipse cx="75" cy="145" rx="55" ry="18" fill="rgba(90,200,250,0.06)"/>
-              <path d="M55,88 C40,94 24,108 18,150 L132,150 C126,108 110,94 95,88 Z" fill="rgba(90,200,250,0.25)"/>
-              <path d="M65,88 L62,102 L72,96 L75,106 L78,96 L88,102 L85,88" fill="rgba(90,200,250,0.3)"/>
-              <rect x="68" y="79" width="14" height="11" rx="3" fill="rgba(90,200,250,0.35)"/>
-              <path d="M68,92 Q64,98 60,106 Q56,114 54,120" fill="none" stroke="rgba(90,200,250,0.3)" stroke-width="2.5" stroke-linecap="round"/>
-              <circle cx="53" cy="122" r="4.5" fill="none" stroke="rgba(90,200,250,0.3)" stroke-width="2"/>
-              <circle cx="53" cy="122" r="1.5" fill="rgba(90,200,250,0.25)"/>
-              <ellipse cx="75" cy="55" rx="21" ry="26" fill="rgba(90,200,250,0.38)"/>
-              <path d="M54,45 Q58,30 75,28 Q92,30 96,45 Q86,36 75,34 Q64,36 54,45 Z" fill="rgba(90,200,250,0.4)"/>
-              <circle cx="66" cy="52" r="8" fill="none" stroke="rgba(90,200,250,0.5)" stroke-width="1.8"/>
-              <circle cx="86" cy="52" r="8" fill="none" stroke="rgba(90,200,250,0.5)" stroke-width="1.8"/>
-              <line x1="74" y1="52" x2="78" y2="52" stroke="rgba(90,200,250,0.5)" stroke-width="1.8"/>
-              <line x1="58" y1="50" x2="54" y2="48" stroke="rgba(90,200,250,0.4)" stroke-width="1.5"/>
-              <line x1="94" y1="50" x2="98" y2="48" stroke="rgba(90,200,250,0.4)" stroke-width="1.5"/>
-            </g>
-          </svg>
+          <img src="svg-img/s4-svg2.png" width="180" height="180" style="margin:0 auto 1rem;display:block" alt="탐정 한세진">
           <div style="font-weight:900;font-size:1.5rem;color:#fff;margin-bottom:0.2rem">의사 한세진</div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:1.4rem;color:var(--ice);letter-spacing:0.06em;margin-bottom:0.5rem;font-weight:600">THE RELUCTANT DOCTOR</div>
           <p style="font-size:1.5rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0">"나는 돕고 싶을 뿐입니다."<br><span style="color:var(--ice);font-weight:600">의료 증거</span> 보유</p>
         </div>
         <!-- 캐릭터 4: 기자 윤서 -->
         <div class="char-card" style="border-right-color:rgba(255,255,255,0.4);--glow:rgba(255,255,255,0.12)">
-          <svg viewBox="0 0 150 150" width="180" height="180" style="margin:0 auto 1rem;display:block">
-            <defs><clipPath id="cc4"><circle cx="75" cy="75" r="73"/></clipPath></defs>
-            <circle cx="75" cy="75" r="74" fill="#0e0e0e" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
-            <g clip-path="url(#cc4)">
-              <ellipse cx="75" cy="145" rx="55" ry="18" fill="rgba(255,255,255,0.03)"/>
-              <path d="M55,88 C40,94 24,108 18,150 L132,150 C126,108 110,94 95,88 Z" fill="rgba(255,255,255,0.16)"/>
-              <path d="M65,88 L62,104 L75,97 L88,104 L85,88" fill="rgba(255,255,255,0.2)"/>
-              <rect x="68" y="79" width="14" height="11" rx="3" fill="rgba(255,255,255,0.2)"/>
-              <ellipse cx="75" cy="55" rx="20" ry="26" fill="rgba(255,255,255,0.22)"/>
-              <path d="M55,42 C48,50 45,62 47,78 L53,75 C52,63 54,52 58,45 Z" fill="rgba(255,255,255,0.18)"/>
-              <path d="M95,42 C102,50 105,62 103,78 L97,75 C98,63 96,52 92,45 Z" fill="rgba(255,255,255,0.18)"/>
-              <path d="M55,40 Q60,27 75,24 Q90,27 95,40 Q85,34 75,33 Q65,34 55,40 Z" fill="rgba(255,255,255,0.22)"/>
-              <path d="M38,108 Q40,98 47,92" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="2.5"/>
-              <rect x="90" y="96" width="11" height="15" rx="2" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-              <line x1="92" y1="101" x2="99" y2="101" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
-              <line x1="92" y1="104" x2="97" y2="104" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
-            </g>
-          </svg>
+          <img src="svg-img/s4-svg3.png" width="180" height="180" style="margin:0 auto 1rem;display:block" alt="기자 윤서">
           <div style="font-weight:900;font-size:1.5rem;color:#fff;margin-bottom:0.2rem">기자 윤서</div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:1.4rem;color:rgba(255,255,255,0.5);letter-spacing:0.06em;margin-bottom:0.5rem;font-weight:600">THE AMBITIOUS REPORTER</div>
           <p style="font-size:1.5rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0">"진실은 나의 목표."<br><span style="font-weight:600">정보 단서</span> 보유</p>
@@ -943,35 +881,7 @@ async function downloadFromPreview(){
       </div>
       <!-- 솔루션 플로우 SVG -->
       <div class="rv d1" style="text-align:center;margin-bottom:2rem;background:var(--bg-alt);border-radius:var(--radius);padding:2.5rem 2rem">
-        <svg viewBox="0 0 900 180" style="width:100%;max-width:1000px">
-          <defs>
-            <filter id="card-shadow" x="-4%" y="-4%" width="108%" height="116%">
-              <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#3366FF" flood-opacity="0.15"/>
-            </filter>
-          </defs>
-          <text x="95" y="18" font-family="'IBM Plex Mono',monospace" font-size="20" fill="#3366FF" text-anchor="middle" font-weight="700" letter-spacing="0.1em">STEP 1</text>
-          <rect x="5" y="30" width="180" height="125" rx="14" fill="#fff" stroke="#3366FF" stroke-width="3" filter="url(#card-shadow)"/>
-          <text x="95" y="80" font-family="'Noto Sans KR',sans-serif" font-size="28" fill="#3366FF" text-anchor="middle" font-weight="800">서사 부여</text>
-          <text x="95" y="110" font-family="'Noto Sans KR',sans-serif" font-size="20" fill="#999" text-anchor="middle" font-weight="500">"너는 용의자다"</text>
-          <line x1="190" y1="92" x2="220" y2="92" stroke="#3366FF" stroke-width="3" stroke-linecap="round"/>
-          <polygon points="220,84 236,92 220,100" fill="#3366FF"/>
-          <text x="325" y="18" font-family="'IBM Plex Mono',monospace" font-size="20" fill="#2952CC" text-anchor="middle" font-weight="700" letter-spacing="0.1em">STEP 2</text>
-          <rect x="235" y="30" width="180" height="125" rx="14" fill="#fff" stroke="#2952CC" stroke-width="3" filter="url(#card-shadow)"/>
-          <text x="325" y="80" font-family="'Noto Sans KR',sans-serif" font-size="28" fill="#2952CC" text-anchor="middle" font-weight="800">서사 몰입</text>
-          <text x="325" y="110" font-family="'Noto Sans KR',sans-serif" font-size="20" fill="#999" text-anchor="middle" font-weight="500">게임 진행을 위해 필수</text>
-          <line x1="420" y1="92" x2="450" y2="92" stroke="#2952CC" stroke-width="3" stroke-linecap="round"/>
-          <polygon points="450,84 466,92 450,100" fill="#2952CC"/>
-          <text x="555" y="18" font-family="'IBM Plex Mono',monospace" font-size="20" fill="#3366FF" text-anchor="middle" font-weight="700" letter-spacing="0.1em">STEP 3</text>
-          <rect x="465" y="30" width="180" height="125" rx="14" fill="#fff" stroke="#3366FF" stroke-width="3" filter="url(#card-shadow)"/>
-          <text x="555" y="80" font-family="'Noto Sans KR',sans-serif" font-size="28" fill="#3366FF" text-anchor="middle" font-weight="800">자발적 학습</text>
-          <text x="555" y="110" font-family="'Noto Sans KR',sans-serif" font-size="20" fill="#999" text-anchor="middle" font-weight="500">영어가 무기가 됨</text>
-          <line x1="650" y1="92" x2="680" y2="92" stroke="#3366FF" stroke-width="3" stroke-linecap="round"/>
-          <polygon points="680,84 696,92 680,100" fill="#3366FF"/>
-          <text x="790" y="18" font-family="'IBM Plex Mono',monospace" font-size="20" fill="#1a1a1a" text-anchor="middle" font-weight="700" letter-spacing="0.1em">STEP 4</text>
-          <rect x="695" y="30" width="190" height="125" rx="14" fill="#16162a" stroke="#16162a" stroke-width="3"/>
-          <text x="790" y="80" font-family="'Noto Sans KR',sans-serif" font-size="28" fill="#7799FF" text-anchor="middle" font-weight="800">성취 확인</text>
-          <text x="790" y="110" font-family="'Noto Sans KR',sans-serif" font-size="20" fill="rgba(255,255,255,0.65)" text-anchor="middle" font-weight="500">범인을 잡았다 = 배웠다</text>
-        </svg>
+        <img src="svg-img/s6-svg4.png" style="width:100%;max-width:1000px" alt="솔루션 플로우">
       </div>
       <div class="g3 rv d2">
         <div class="card card-blue"><h3 style="color:var(--primary)">Reading. 읽어야 산다</h3><p>비밀 카드의 단서가 영어. 읽지 않으면 정보가 없다.</p></div>
@@ -994,65 +904,7 @@ async function downloadFromPreview(){
       <div class="tc rv d1" style="gap:2rem">
         <div>
           <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1rem">
-            <svg viewBox="-5 -10 490 225" style="width:100%">
-              <!-- 규칙서/게임 설명서 x1 -->
-              <g transform="translate(0,0)">
-                <rect x="5" y="5" width="95" height="130" rx="5" fill="#fff" stroke="#d0d0d0" stroke-width="1.5"/>
-                <rect x="14" y="14" width="77" height="65" rx="3" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="1"/>
-                <text x="52" y="35" font-size="7" fill="#bbb" text-anchor="middle">AI 기반 상호작용형</text>
-                <text x="52" y="48" font-size="9" fill="#999" text-anchor="middle" font-weight="700">스토리 추리</text>
-                <text x="52" y="62" font-size="9" fill="#999" text-anchor="middle" font-weight="700">보드게임</text>
-                <text x="52" y="75" font-size="7" fill="#ccc" text-anchor="middle">규칙서</text>
-                <text x="25" y="115" font-size="8" fill="#aaa">4인</text>
-                <text x="52" y="115" font-size="8" fill="#aaa">90m</text>
-                <text x="78" y="115" font-size="8" fill="#aaa">15+</text>
-                <circle cx="90" cy="10" r="13" fill="#333"/>
-                <text x="90" y="14" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">x6</text>
-              </g>
-              <text x="52" y="155" font-size="11" fill="#555" text-anchor="middle" font-weight="700">규칙서/매뉴얼</text>
-              <!-- 캐릭터 시트 x4 -->
-              <g transform="translate(125,0)">
-                <rect x="5" y="5" width="95" height="130" rx="5" fill="#16162a" stroke="#2a2a40" stroke-width="1.5"/>
-                <text x="18" y="18" font-size="7" fill="rgba(255,255,255,0.4)">캐릭터 시트</text>
-                <rect x="14" y="25" width="77" height="70" rx="3" fill="rgba(51,102,255,0.12)"/>
-                <ellipse cx="52" cy="52" rx="14" ry="18" fill="rgba(51,102,255,0.35)"/>
-                <path d="M34,72 C38,66 45,63 52,63 C59,63 66,66 70,72 L70,95 L34,95 Z" fill="rgba(51,102,255,0.3)"/>
-                <text x="52" y="115" font-size="7" fill="rgba(255,255,255,0.35)" text-anchor="middle">일러스트 + 배경 설정</text>
-                <circle cx="90" cy="10" r="13" fill="#333"/>
-                <text x="90" y="14" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">x4</text>
-              </g>
-              <text x="177" y="155" font-size="11" fill="#555" text-anchor="middle" font-weight="700">캐릭터 시트</text>
-              <!-- 공개 불가 카드 x12 -->
-              <g transform="translate(250,0)">
-                <rect x="10" y="10" width="90" height="120" rx="5" fill="#2a1f4e" stroke="#3d3070" stroke-width="1" opacity="0.5"/>
-                <rect x="5" y="5" width="90" height="120" rx="5" fill="#2a1f4e" stroke="#4a3580" stroke-width="1.5"/>
-                <text x="50" y="35" font-size="7" fill="rgba(255,255,255,0.3)" text-anchor="middle">밀봉 봉투</text>
-                <text x="50" y="55" font-size="10" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-weight="700">공개 불가</text>
-                <text x="50" y="70" font-size="10" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-weight="700">카드</text>
-                <text x="50" y="90" font-size="7" fill="rgba(255,255,255,0.25)" text-anchor="middle">본인만 열람 가능</text>
-                <circle cx="50" cy="105" r="6" fill="none" stroke="rgba(232,183,48,0.2)" stroke-width="0.8"/>
-                <circle cx="90" cy="10" r="13" fill="#333"/>
-                <text x="90" y="14" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">x12</text>
-              </g>
-              <text x="300" y="155" font-size="11" fill="#555" text-anchor="middle" font-weight="700">서사 카드</text>
-              <!-- 공개 가능 카드 x15 + 기타 -->
-              <g transform="translate(370,0)">
-                <rect x="15" y="15" width="88" height="110" rx="5" fill="#1f4a2a" stroke="#2d6b3a" stroke-width="1" opacity="0.35"/>
-                <rect x="8" y="8" width="88" height="110" rx="5" fill="#1f4a2a" stroke="#2d6b3a" stroke-width="1" opacity="0.65"/>
-                <rect x="0" y="0" width="88" height="110" rx="5" fill="#1f4a2a" stroke="#2d6b3a" stroke-width="1.5"/>
-                <text x="44" y="25" font-size="7" fill="rgba(255,255,255,0.3)" text-anchor="middle">공개 가능</text>
-                <text x="44" y="45" font-size="10" fill="rgba(255,255,255,0.6)" text-anchor="middle" font-weight="700">단서 카드</text>
-                <text x="44" y="60" font-size="7" fill="rgba(255,255,255,0.3)" text-anchor="middle">한/영 혼합</text>
-                <text x="44" y="82" font-size="7" fill="rgba(255,255,255,0.2)" text-anchor="middle">+ 힌트 카드 x9</text>
-                <text x="44" y="95" font-size="7" fill="rgba(255,255,255,0.2)" text-anchor="middle">+ 엔딩 카드 x3</text>
-                <circle cx="88" cy="5" r="13" fill="#333"/>
-                <text x="88" y="9" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">x15</text>
-              </g>
-              <text x="414" y="155" font-size="11" fill="#555" text-anchor="middle" font-weight="700">단서/힌트 카드</text>
-              <!-- Bottom label -->
-              <text x="240" y="185" font-size="10" fill="#999" text-anchor="middle">보드게임 구성품 (게임 카드 36장 x 100세트 기준)</text>
-              <text x="240" y="200" font-size="9" fill="#bbb" text-anchor="middle">규칙서 6종 + 캐릭터 시트 4 + 서사 카드 12 + 단서 15 + 힌트 9 + 엔딩 3 + 기타</text>
-            </svg>
+            <img src="svg-img/s7-svg5.png" style="width:100%" alt="개발 로드맵">
           </div>
           <div class="card card-blue" style="margin-bottom:0.8rem;padding:1rem 1.3rem">
             <h3 style="color:var(--primary);font-size:1.4rem;margin-bottom:0.3rem">실증/개발 목표</h3>
@@ -1130,15 +982,7 @@ async function downloadFromPreview(){
           </div>
           <div class="card card-blue" style="text-align:center;padding:1.2rem">
             <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:0.6rem">
-              <svg viewBox="0 0 140 140" style="width:100px;height:100px">
-                <circle cx="70" cy="70" r="56" fill="none" stroke="#d8d8e0" stroke-width="12"/>
-                <circle cx="70" cy="70" r="56" fill="none" stroke="#3366FF" stroke-width="12"
-                  stroke-dasharray="351.86 351.86" stroke-dashoffset="0" transform="rotate(-90 70 70)" stroke-linecap="round"/>
-                <circle cx="70" cy="70" r="56" fill="none" stroke="#FF3B30" stroke-width="8"
-                  stroke-dasharray="281.49 351.86" stroke-dashoffset="0" transform="rotate(-90 70 70)" stroke-linecap="round" opacity="0.45"/>
-                <text x="70" y="64" font-family="'Noto Sans KR',sans-serif" font-size="32" fill="#3366FF" text-anchor="middle" font-weight="900">180%</text>
-                <text x="70" y="82" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#999" text-anchor="middle" font-weight="600">텀블벅 달성</text>
-              </svg>
+              <img src="svg-img/s8-svg6.png" style="width:100px;height:100px" alt="텀블벅 달성률">
               <div style="text-align:left">
                 <div style="font-weight:900;font-size:3.5rem;color:var(--text);line-height:1.1">9,001,000<span style="font-size:1.4rem;font-weight:500;color:var(--dim)">원</span></div>
                 <div style="font-size:1.5rem;color:var(--dim);margin-top:0.3rem;font-weight:500">마케팅 비용 <strong style="color:var(--red)">0원</strong></div>
@@ -1230,22 +1074,7 @@ async function downloadFromPreview(){
       <div class="tc rv d1" style="gap:2rem">
         <div style="display:flex;flex-direction:column;align-items:center">
           <h3 style="margin-bottom:0.6rem;font-size:1.5rem;color:var(--primary)">국내 시장 규모</h3>
-          <svg viewBox="0 0 500 400" style="width:100%;max-width:480px;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.08))">
-            <ellipse cx="240" cy="210" rx="220" ry="170" fill="#f2f2f7" stroke="#e5e5ea" stroke-width="2"/>
-            <text x="240" y="58" font-family="'Noto Sans KR',sans-serif" font-size="16" fill="#999" text-anchor="middle" font-weight="600">전체시장 (TAM)</text>
-            <text x="240" y="78" font-family="'Noto Sans KR',sans-serif" font-size="13" fill="#bbb" text-anchor="middle">에듀테인먼트 + 보드게임</text>
-            <text x="420" y="100" font-family="'Noto Sans KR',sans-serif" font-size="24" fill="#999" text-anchor="end" font-weight="900">2조</text>
-            <ellipse cx="240" cy="220" rx="155" ry="120" fill="rgba(51,102,255,0.06)" stroke="rgba(51,102,255,0.2)" stroke-width="2"/>
-            <text x="240" y="122" font-family="'Noto Sans KR',sans-serif" font-size="16" fill="#3366FF" text-anchor="middle" font-weight="700">유효시장 (SAM)</text>
-            <text x="240" y="142" font-family="'Noto Sans KR',sans-serif" font-size="13" fill="#5580FF" text-anchor="middle">영어교육 × 게임 기반 학습</text>
-            <text x="390" y="180" font-family="'Noto Sans KR',sans-serif" font-size="24" fill="#3366FF" text-anchor="end" font-weight="900">5,000억</text>
-            <ellipse cx="240" cy="245" rx="80" ry="65" fill="#3366FF" stroke="#2952CC" stroke-width="2"/>
-            <text x="240" y="230" font-family="'Noto Sans KR',sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="600">초기시장 (SOM)</text>
-            <text x="240" y="250" font-family="'Noto Sans KR',sans-serif" font-size="13" fill="rgba(255,255,255,0.8)" text-anchor="middle">서사형 보드게임 × 영어교육</text>
-            <text x="240" y="282" font-family="'Noto Sans KR',sans-serif" font-size="28" fill="#fff" text-anchor="middle" font-weight="900">120억</text>
-            <line x1="320" y1="245" x2="370" y2="235" stroke="#3366FF" stroke-width="2" stroke-dasharray="4 3"/>
-            <text x="375" y="239" font-family="'Noto Sans KR',sans-serif" font-size="14" fill="#3366FF" font-weight="700">← 우리 진입점</text>
-          </svg>
+          <img src="svg-img/s10-svg7.png" style="width:100%;max-width:480px" alt="TAM SAM SOM 시장규모">
         </div>
         <div>
           <div class="card card-blue" style="margin-bottom:1rem;padding:1.2rem 1.5rem">
@@ -1282,87 +1111,7 @@ async function downloadFromPreview(){
       <div class="tc rv d1" style="gap:2rem">
         <div>
           <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:0.8rem;margin-bottom:0.6rem">
-            <svg viewBox="0 0 560 220" style="width:100%;max-height:300px">
-              <!-- Card Drawing -->
-              <g>
-                <text x="65" y="12" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3366FF" text-anchor="middle" font-weight="600" letter-spacing="0.05em">CARD SPEC</text>
-                <rect x="20" y="22" width="88" height="124" rx="4" fill="none" stroke="#1a1a1a" stroke-width="2"/>
-                <rect x="24" y="26" width="80" height="116" rx="3" fill="none" stroke="#1a1a1a" stroke-width="1"/>
-                <!-- Dimension arrows -->
-                <line x1="20" y1="155" x2="108" y2="155" stroke="#3366FF" stroke-width="1" marker-start="url(#arr)" marker-end="url(#arr)"/>
-                <text x="64" y="168" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3366FF" text-anchor="middle" font-weight="600">63mm</text>
-                <line x1="118" y1="22" x2="118" y2="146" stroke="#3366FF" stroke-width="1"/>
-                <text x="138" y="88" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3366FF" text-anchor="middle" font-weight="600">88mm</text>
-                <!-- R corner -->
-                <path d="M104,22 Q108,22 108,26" fill="none" stroke="#FF3B30" stroke-width="1.5"/>
-                <text x="118" y="18" font-size="8" fill="#FF3B30" font-weight="600">R=2</text>
-                <!-- Card content hint -->
-                <text x="64" y="75" font-size="8" fill="#ccc" text-anchor="middle">단서 카드</text>
-                <text x="64" y="88" font-size="8" fill="#ccc" text-anchor="middle">영문 표기</text>
-              </g>
-              <!-- Instruction Manual -->
-              <g transform="translate(195,0)">
-                <text x="80" y="12" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3366FF" text-anchor="middle" font-weight="600" letter-spacing="0.05em">MANUAL SPEC</text>
-                <!-- Unfolded -->
-                <rect x="0" y="22" width="160" height="75" rx="2" fill="none" stroke="#1a1a1a" stroke-width="2"/>
-                <line x1="80" y1="22" x2="80" y2="97" stroke="#3366FF" stroke-width="1" stroke-dasharray="4 3"/>
-                <text x="80" y="110" font-size="8" fill="#3366FF" text-anchor="middle">중앙 접는 선</text>
-                <text x="40" y="55" font-size="8" fill="#bbb" text-anchor="middle">148mm</text>
-                <text x="120" y="55" font-size="8" fill="#bbb" text-anchor="middle">148mm</text>
-                <text x="80" y="70" font-size="7" fill="#ddd" text-anchor="middle">펼침 상태: 296×210mm</text>
-                <!-- Folded preview -->
-                <rect x="30" y="125" width="55" height="65" rx="2" fill="#f5f5f5" stroke="#1a1a1a" stroke-width="1.5"/>
-                <text x="57" y="162" font-size="8" fill="#999" text-anchor="middle">접힘</text>
-                <text x="100" y="158" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#3366FF">148×210mm</text>
-              </g>
-              <!-- Box Template -->
-              <g transform="translate(400,0)">
-                <text x="70" y="12" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3366FF" text-anchor="middle" font-weight="600" letter-spacing="0.05em">BOX SPEC</text>
-                <!-- 3D Isometric box -->
-                <!-- Bottom -->
-                <path d="M30,110 L110,110 L140,85 L60,85 Z" fill="#f5f5f5" stroke="#1a1a1a" stroke-width="1.8"/>
-                <!-- Front -->
-                <path d="M30,110 L30,155 L110,155 L110,110 Z" fill="#fafafa" stroke="#1a1a1a" stroke-width="1.8"/>
-                <!-- Side -->
-                <path d="M110,110 L140,85 L140,130 L110,155 Z" fill="#f0f0f0" stroke="#1a1a1a" stroke-width="1.5"/>
-                <!-- Lid (hovering) -->
-                <path d="M28,75 L108,75 L138,50 L58,50 Z" fill="rgba(51,102,255,0.08)" stroke="#3366FF" stroke-width="1.5"/>
-                <path d="M28,75 L28,68 L108,68 L108,75 Z" fill="rgba(51,102,255,0.05)" stroke="#3366FF" stroke-width="1"/>
-                <path d="M108,68 L138,43 L138,50 L108,75 Z" fill="rgba(51,102,255,0.03)" stroke="#3366FF" stroke-width="1"/>
-                <!-- Arrow down -->
-                <line x1="83" y1="58" x2="83" y2="72" stroke="#333" stroke-width="1.2"/>
-                <path d="M79,68 L83,75 L87,68" fill="#333"/>
-                <!-- Dimensions -->
-                <text x="70" y="174" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#3366FF" text-anchor="middle" font-weight="600">152×215×40mm</text>
-                <text x="70" y="188" font-size="8" fill="#999" text-anchor="middle">상판 155×218×38mm</text>
-              </g>
-              <!-- Meeples & Tokens -->
-              <g transform="translate(20,180)">
-                <text x="0" y="0" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#3366FF" font-weight="600" letter-spacing="0.05em">COMPONENTS</text>
-                <!-- Meeple 1 - Blue -->
-                <path d="M35,22 C35,18 38,15 40,13 C42,15 45,18 45,22 L44,22 L46,28 L34,28 L36,22 Z" fill="#3366FF"/>
-                <circle cx="40" cy="10" r="3.5" fill="#3366FF"/>
-                <!-- Meeple 2 - Red -->
-                <path d="M55,22 C55,18 58,15 60,13 C62,15 65,18 65,22 L64,22 L66,28 L54,28 L56,22 Z" fill="#FF3B30"/>
-                <circle cx="60" cy="10" r="3.5" fill="#FF3B30"/>
-                <!-- Meeple 3 - Gold -->
-                <path d="M75,22 C75,18 78,15 80,13 C82,15 85,18 85,22 L84,22 L86,28 L74,28 L76,22 Z" fill="#FF9F0A"/>
-                <circle cx="80" cy="10" r="3.5" fill="#FF9F0A"/>
-                <!-- Meeple 4 - Teal -->
-                <path d="M95,22 C95,18 98,15 100,13 C102,15 105,18 105,22 L104,22 L106,28 L94,28 L96,22 Z" fill="#5AC8FA"/>
-                <circle cx="100" cy="10" r="3.5" fill="#5AC8FA"/>
-                <text x="70" y="28" font-size="7" fill="#999" text-anchor="middle" dy="12">미플 ×4</text>
-                <!-- Tokens -->
-                <circle cx="145" cy="18" r="8" fill="none" stroke="#3366FF" stroke-width="1.5"/>
-                <text x="145" y="21" font-size="7" fill="#3366FF" text-anchor="middle" font-weight="700">?</text>
-                <circle cx="165" cy="18" r="8" fill="none" stroke="#2952CC" stroke-width="1.5"/>
-                <text x="165" y="21" font-size="7" fill="#2952CC" text-anchor="middle" font-weight="700">!</text>
-                <circle cx="185" cy="18" r="8" fill="#f0f0f5" stroke="#999" stroke-width="1"/>
-                <text x="185" y="21" font-size="7" fill="#666" text-anchor="middle" font-weight="600">V</text>
-                <text x="165" y="28" font-size="7" fill="#999" text-anchor="middle" dy="12">토큰 ×12</text>
-                <!-- Time badge -->
-              </g>
-            </svg>
+            <img src="svg-img/s11-svg8.png" style="width:100%;max-height:300px" alt="제품 스펙">
           </div>
           <div class="card" style="padding:0.6rem 1rem">
           <table style="font-size:1.4rem">
@@ -1714,20 +1463,7 @@ async function downloadFromPreview(){
           <div class="rev-block card-elevated" style="border-left-color:var(--ice);padding:0.8rem 1.5rem;margin-bottom:0.5rem"><div class="pct" style="color:var(--ice);font-size:2rem">20%</div><h3 style="font-size:1.5rem">B2G 공공기관 연동</h3><p style="font-size:1.5rem">지자체·관광공사 제휴 패키지. 교육청 방과후 프로그램 납품.</p></div>
           <!-- 도넛 차트: 좌측 하단 소형 배치 -->
           <div style="text-align:left">
-            <svg viewBox="0 0 260 180" style="width:240px">
-              <circle cx="90" cy="90" r="60" fill="none" stroke="#d0d0d8" stroke-width="28"/>
-              <circle cx="90" cy="90" r="60" fill="none" stroke="#3366FF" stroke-width="28"
-                stroke-dasharray="207.35 376.99" stroke-dashoffset="0" transform="rotate(-90 90 90)"/>
-              <circle cx="90" cy="90" r="60" fill="none" stroke="#5AC8FA" stroke-width="28"
-                stroke-dasharray="75.40 376.99" stroke-dashoffset="-207.35" transform="rotate(-90 90 90)"/>
-              <circle cx="90" cy="90" r="60" fill="none" stroke="#2952CC" stroke-width="28"
-                stroke-dasharray="94.25 376.99" stroke-dashoffset="-282.74" transform="rotate(-90 90 90)"/>
-              <text x="90" y="86" font-family="'Noto Sans KR',sans-serif" font-size="13" fill="#1a1a1a" text-anchor="middle" font-weight="800">수익 구조</text>
-              <text x="90" y="100" font-family="'Noto Sans KR',sans-serif" font-size="10" fill="#999" text-anchor="middle">3중 수익 모델</text>
-              <text x="190" y="40" font-family="'Noto Sans KR',sans-serif" font-size="13" fill="#3366FF" font-weight="800">B2C 55%</text>
-              <text x="190" y="100" font-family="'Noto Sans KR',sans-serif" font-size="13" fill="#2952CC" font-weight="700">B2B 25%</text>
-              <text x="190" y="155" font-family="'Noto Sans KR',sans-serif" font-size="13" fill="#5AC8FA" font-weight="700">B2G 20%</text>
-            </svg>
+            <img src="svg-img/s16-svg9.png" style="width:240px" alt="수익구조 도넛차트">
           </div>
         </div>
         <div>
@@ -1976,20 +1712,20 @@ async function downloadFromPreview(){
           <p style="font-size:1.5rem;margin-top:0.3rem;color:var(--dim)"><strong>MOU</strong> 한동대 교수</p>
         </div>
       </div>
-      <div class="rv d2" style="display:flex;gap:1.5rem;margin-top:1rem;max-width:90%;margin-left:auto;margin-right:auto">
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem 0.8rem">
+      <div class="rv d2" style="display:flex;gap:2rem;margin-top:1rem;max-width:90%;margin-left:auto;margin-right:auto;align-items:center;justify-content:center">
+        <div class="card card-blue" style="flex:none;text-align:center;padding:0.5rem 1.2rem">
           <div style="font-size:1.6rem;font-weight:900;color:var(--primary)">8건</div>
           <div style="font-size:1.4rem;color:var(--dim)">MOU 체결</div>
         </div>
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem 0.8rem">
+        <div class="card card-blue" style="flex:none;text-align:center;padding:0.5rem 1.2rem">
           <div style="font-size:1.6rem;font-weight:900;color:var(--primary)">1건</div>
           <div style="font-size:1.4rem;color:var(--dim)">유통의향서</div>
         </div>
-        <div class="card card-blue" style="flex:1;text-align:center;padding:0.5rem 0.8rem">
+        <div class="card card-blue" style="flex:none;text-align:center;padding:0.5rem 1.2rem">
           <div style="font-size:1.6rem;font-weight:900;color:var(--primary)">1건</div>
           <div style="font-size:1.4rem;color:var(--dim)">위탁판매계약</div>
         </div>
-        <div class="card" style="flex:2;padding:0.5rem 0.8rem;font-size:1.4rem">
+        <div class="card" style="flex:1;padding:0.5rem 1rem;font-size:1.4rem">
           <strong>파트너:</strong> 보틀링컴퍼니 · 마을을누이다 · 다니엘영어 · Jason영어 · 원투영어 · 세진영어 · 책동클럽마인즈 · 헥사플러스 · 한동대 교수 2인
         </div>
       </div>
