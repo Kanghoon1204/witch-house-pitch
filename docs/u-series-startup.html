@@ -896,54 +896,48 @@ async function downloadFromPreview(){
 
 <!-- ═══ SLIDE 8: 검증 — 트랙션 성과 ═══ -->
 <section class="slide" id="s8">
-  <div class="slide-body" style="padding:28px 60px">
+  <div class="slide-body" style="padding:20px 60px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">TRACTION</div>
-        <h2 class="sec-title" style="margin-bottom:0.3rem">시장 검증</h2>
-        <p class="sec-sub" style="margin-bottom:1rem">마케팅 비용 0원. 제품력만으로 PMF 검증 완료</p>
+        <h2 class="sec-title" style="margin-bottom:0.2rem">시장 검증</h2>
+        <p class="sec-sub" style="margin-bottom:0.8rem">마케팅 비용 0원. 제품력만으로 누적 <strong style="color:var(--primary)">27,980,000원</strong> 달성</p>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem" class="rv d1">
-        <div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:1rem">
-            <div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden">
-              <img src="tumblbug-funding.png" alt="텀블벅 1차 펀딩 180% 달성" style="width:100%;display:block">
-              <div style="text-align:center;padding:0.4rem;font-size:1.4rem;color:var(--dim);font-weight:600">1차 펀딩 180% 달성</div>
-            </div>
-            <div style="border:2px dashed var(--border);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;min-height:160px;background:var(--bg-alt);flex-direction:column;gap:0.3rem">
-              <span style="font-size:1.5rem;color:var(--primary);font-weight:700">2차 펀딩 진행 중</span>
-              <span style="font-size:1.4rem;color:var(--faint)">이미지 추가 예정</span>
-            </div>
-          </div>
-          <div class="card card-blue" style="text-align:center;padding:1.2rem">
-            <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:0.6rem">
-              <img src="svg-img/s8-svg6.png" style="width:100px;height:100px" alt="텀블벅 달성률">
-              <div style="text-align:left">
-                <div style="font-weight:900;font-size:3.5rem;color:var(--text);line-height:1.1">9,001,000<span style="font-size:1.4rem;font-weight:500;color:var(--dim)">원</span></div>
-                <div style="font-size:1.5rem;color:var(--dim);margin-top:0.3rem;font-weight:500">마케팅 비용 <strong style="color:var(--red)">0원</strong></div>
-              </div>
-            </div>
-            <div class="metrics" style="justify-content:center;gap:2rem;margin:0">
-              <div class="metric"><div class="val" style="font-size:2.2rem">250</div><div class="lbl" style="font-size:1.5rem">후원자</div></div>
-              <div class="metric"><div class="val alt" style="font-size:2.2rem">4.8</div><div class="lbl" style="font-size:1.5rem">만족도 /5.0</div></div>
-              <div class="metric"><div class="val" style="font-size:2.2rem">90<span style="font-size:1.4rem;color:var(--dim)">분+</span></div><div class="lbl" style="font-size:1.5rem">게임 시간</div></div>
-            </div>
+      <!-- 이미지 중심: 1차/2차 펀딩 스크린샷 -->
+      <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1rem">
+        <div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff">
+          <img src="tumblbug-funding.png" alt="텀블벅 1차 펀딩" style="width:100%;display:block">
+          <div style="text-align:center;padding:0.5rem 0.8rem;display:flex;align-items:center;justify-content:space-between">
+            <span style="font-size:1.5rem;font-weight:700;color:var(--text)">1차 펀딩</span>
+            <span style="font-size:1.5rem;font-weight:900;color:var(--primary)">180% · 9,001,000원</span>
+            <span class="tag" style="font-size:1.3rem;padding:2px 8px;background:var(--ice);color:#fff">종료</span>
           </div>
         </div>
-        <div>
-          <div class="card" style="padding:1rem 1.3rem;margin-bottom:1rem">
-            <h3 style="font-size:1.6rem">입증된 3가지 핵심 가설</h3>
-            <p style="font-size:1.5rem;margin-bottom:0.2rem"><strong>1.</strong> 서사 몰입 → 거부감 제거 <span class="tag tag-blue" style="font-size:1.4rem;padding:2px 8px">검증</span></p>
-            <p style="font-size:1.5rem;margin-bottom:0.2rem"><strong>2.</strong> 정보 비대칭 → 자발적 소통 <span class="tag tag-blue" style="font-size:1.4rem;padding:2px 8px">검증</span></p>
-            <p style="font-size:1.5rem;margin-bottom:0.2rem"><strong>3.</strong> QR 에필로그 → 재방문/후속 결제 <span class="tag tag-blue" style="font-size:1.4rem;padding:2px 8px">검증</span></p>
-            <p style="margin-top:0.4rem;font-size:1.5rem"><em>"뱀이 죽은 축제"</em>로 전 과정 실증 완료</p>
+        <div style="border:2px solid var(--primary);border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:0 4px 20px rgba(51,102,255,0.15)">
+          <img src="tumblbug-funding2.png" alt="텀블벅 2차 펀딩" style="width:100%;display:block">
+          <div style="text-align:center;padding:0.5rem 0.8rem;display:flex;align-items:center;justify-content:space-between">
+            <span style="font-size:1.5rem;font-weight:700;color:var(--text)">2차 펀딩</span>
+            <span style="font-size:1.5rem;font-weight:900;color:var(--red)">1897% · 18,979,000원</span>
+            <span class="tag tag-blue" style="font-size:1.3rem;padding:2px 8px;animation:pulse 2s infinite">진행 중</span>
           </div>
-          <div class="card card-blue" style="padding:1rem 1.3rem">
-            <h3 style="color:var(--primary);font-size:1.6rem;margin-bottom:0.3rem">현재 개발 단계</h3>
-            <p style="font-size:1.5rem;margin-bottom:0.2rem"><span class="tag tag-blue" style="font-size:1.4rem;padding:2px 10px">기획 → 시제품</span> 기본 게임 구조·시나리오 설계 완료</p>
-            <p style="font-size:1.5rem;margin-bottom:0.2rem">QR 연계 페이지 구축 완료 · 2차 펀딩 진행 중</p>
-            <p style="font-size:1.5rem;margin:0;color:var(--primary);font-weight:700">8개 기관 MOU 체결 · 90세트 구매의향 확보</p>
+        </div>
+      </div>
+      <!-- 핵심 지표 + 가설 검증 (컴팩트) -->
+      <div class="rv d2" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+        <div class="card card-blue" style="padding:0.8rem 1.3rem">
+          <div class="metrics" style="justify-content:space-between;gap:1rem;margin:0">
+            <div class="metric"><div class="val" style="font-size:2.2rem">250+</div><div class="lbl" style="font-size:1.4rem">후원자</div></div>
+            <div class="metric"><div class="val alt" style="font-size:2.2rem">4.8</div><div class="lbl" style="font-size:1.4rem">만족도 /5</div></div>
+            <div class="metric"><div class="val" style="font-size:2.2rem;color:var(--red)">0원</div><div class="lbl" style="font-size:1.4rem">마케팅비</div></div>
+            <div class="metric"><div class="val" style="font-size:2.2rem">8건</div><div class="lbl" style="font-size:1.4rem">MOU</div></div>
+            <div class="metric"><div class="val" style="font-size:2.2rem">95</div><div class="lbl" style="font-size:1.4rem">구매의향</div></div>
           </div>
+        </div>
+        <div class="card" style="padding:0.8rem 1.3rem">
+          <h3 style="font-size:1.5rem;margin-bottom:0.2rem">입증된 핵심 가설</h3>
+          <p style="font-size:1.4rem;margin-bottom:0.1rem"><strong>1.</strong> 서사 몰입 → 거부감 제거 <span class="tag tag-blue" style="font-size:1.2rem;padding:1px 6px">검증</span></p>
+          <p style="font-size:1.4rem;margin-bottom:0.1rem"><strong>2.</strong> 정보 비대칭 → 자발적 소통 <span class="tag tag-blue" style="font-size:1.2rem;padding:1px 6px">검증</span></p>
+          <p style="font-size:1.4rem;margin:0"><strong>3.</strong> QR 에필로그 → 재방문 결제 <span class="tag tag-blue" style="font-size:1.2rem;padding:1px 6px">검증</span></p>
         </div>
       </div>
     </div>
