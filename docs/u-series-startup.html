@@ -304,54 +304,81 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
 <body>
 <nav class="nav" id="nav"></nav>
 <button class="pdf-btn" onclick="savePDF()">PDF 다운로드</button>
+<!-- PDF 프로그레스 오버레이 -->
+<div id="pdf-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:99999;justify-content:center;align-items:center;flex-direction:column;gap:1.5rem">
+  <div style="color:#fff;font-family:'Noto Sans KR',sans-serif;font-size:28px;font-weight:800" id="pdf-msg">PDF 준비 중...</div>
+  <div style="width:400px;height:8px;background:rgba(255,255,255,0.15);border-radius:4px;overflow:hidden">
+    <div id="pdf-bar" style="width:0%;height:100%;background:#3366FF;border-radius:4px;transition:width 0.3s"></div>
+  </div>
+  <div style="color:rgba(255,255,255,0.5);font-size:14px" id="pdf-detail">라이브러리 로딩 중...</div>
+</div>
 <script>
 /* ── PDF 라이브러리 동적 로딩 ── */
-function loadScript(src){
-  return new Promise((resolve,reject)=>{
-    const s=document.createElement('script');
+function loadScript(src,ms){
+  return new Promise(function(resolve,reject){
+    var s=document.createElement('script');
     s.src=src;s.crossOrigin='anonymous';
-    s.onload=resolve;s.onerror=reject;
+    var done=false;
+    var timer=setTimeout(function(){if(!done){done=true;reject(new Error('타임아웃: '+src))}},ms||15000);
+    s.onload=function(){if(!done){done=true;clearTimeout(timer);resolve()}};
+    s.onerror=function(){if(!done){done=true;clearTimeout(timer);reject(new Error('로드실패: '+src))}};
     document.head.appendChild(s);
   });
 }
-async function ensureLibs(){
-  if(typeof html2canvas==='undefined'){
-    await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
-  }
-  if(!window.jspdf){
-    await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
-  }
+function ensureLibs(){
+  var tasks=[];
+  if(typeof html2canvas==='undefined') tasks.push(loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',15000));
+  if(!window.jspdf) tasks.push(loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',15000));
+  return Promise.all(tasks);
 }
 /* 페이지 로드 시 미리 로딩 시도 */
-ensureLibs().catch(()=>{});
+ensureLibs().catch(function(){});
 
-async function savePDF(){
+function pdfUI(show,msg,pct,detail){
+  var ov=document.getElementById('pdf-overlay');
+  if(!show){ov.style.display='none';return}
+  ov.style.display='flex';
+  if(msg)document.getElementById('pdf-msg').textContent=msg;
+  if(pct!==undefined)document.getElementById('pdf-bar').style.width=pct+'%';
+  if(detail)document.getElementById('pdf-detail').textContent=detail;
+}
+function savePDF(){
   var btn=document.querySelector('.pdf-btn');
-  btn.textContent='준비 중...';btn.disabled=true;
+  btn.disabled=true;
+  pdfUI(true,'PDF 준비 중...',0,'라이브러리 로딩 중...');
+  // 렌더링을 위해 setTimeout으로 한 프레임 양보
+  setTimeout(function(){_doSavePDF(btn)},50);
+}
+async function _doSavePDF(btn){
   var slides=document.querySelectorAll('.slide');
   var W=1920,H=1080;
   var origStyles=[];
   var styleTag=null;
   try{
-    await ensureLibs();
-    if(typeof html2canvas==='undefined'||!window.jspdf){
-      alert('PDF 라이브러리를 불러올 수 없습니다. 네트워크 연결을 확인하거나 광고차단기를 비활성화한 뒤 새로고침해주세요.');
-      btn.textContent='PDF 다운로드';btn.disabled=false;return;
+    // 1단계: 라이브러리 로딩
+    pdfUI(true,'라이브러리 로딩 중...',5,'html2canvas + jsPDF');
+    try{await ensureLibs()}catch(le){
+      pdfUI(false);btn.disabled=false;
+      alert('PDF 라이브러리를 불러올 수 없습니다.\n\n'+le.message+'\n\n네트워크 연결을 확인하거나 광고차단기를 비활성화한 뒤 새로고침해주세요.');
+      return;
     }
+    if(typeof html2canvas==='undefined'||!window.jspdf){
+      pdfUI(false);btn.disabled=false;
+      alert('PDF 라이브러리를 불러올 수 없습니다.');return;
+    }
+    pdfUI(true,'캡처 준비 중...',10,'스타일 설정');
     var Wmm=W*0.264583,Hmm=H*0.264583;
-    // 1단계: PDF 캡처용 전역 스타일 주입
+    // 2단계: 캡처용 스타일 주입
     styleTag=document.createElement('style');
     styleTag.textContent='.rv{opacity:1!important;transform:none!important;transition:none!important}'
-      +'*{transition:none!important;animation:none!important}'
-      +'.nav,.pdf-btn{display:none!important}'
-      +'.slide{width:'+W+'px!important;height:'+H+'px!important;min-height:'+H+'px!important;max-height:'+H+'px!important;overflow:hidden!important}'
-      +'.inner{max-width:1760px!important}';
+      +' *{transition:none!important;animation:none!important}'
+      +' .nav,.pdf-btn,#pdf-overlay{pointer-events:none}'
+      +' .slide{width:'+W+'px!important;height:'+H+'px!important;min-height:'+H+'px!important;max-height:'+H+'px!important;overflow:hidden!important}'
+      +' .inner{max-width:1760px!important}';
     document.head.appendChild(styleTag);
-    // rv 클래스에 v 추가
     document.querySelectorAll('.rv').forEach(function(r){r.classList.add('v')});
-    // 원본 스타일 저장
     slides.forEach(function(s){origStyles.push(s.getAttribute('style')||'')});
-    // 외부 이미지를 인라인 base64로 변환 (tainted canvas 방지)
+    // 외부 이미지 base64 변환
     var imgs=document.querySelectorAll('.slide img');
     var imgOrigSrcs=[];
     for(var k=0;k<imgs.length;k++){
@@ -360,50 +387,38 @@ async function savePDF(){
         var c=document.createElement('canvas');
         c.width=imgs[k].naturalWidth||imgs[k].width||400;
         c.height=imgs[k].naturalHeight||imgs[k].height||300;
-        var cx=c.getContext('2d');
-        cx.drawImage(imgs[k],0,0,c.width,c.height);
-        imgs[k].src=c.toDataURL('image/png');
-        c.remove();
-      }catch(ie){
-        // 이미지 변환 실패 시 투명 placeholder
-        imgs[k].style.opacity='0';
-      }
+        c.getContext('2d').drawImage(imgs[k],0,0,c.width,c.height);
+        imgs[k].src=c.toDataURL('image/png');c.remove();
+      }catch(ie){imgs[k].style.opacity='0'}
     }
-    // 폰트 로딩 대기
     try{if(document.fonts)await document.fonts.ready}catch(fe){}
-    await new Promise(function(r){setTimeout(r,400)});
+    await new Promise(function(r){setTimeout(r,300)});
+    // 3단계: 슬라이드별 캡처
     var jsPDF=window.jspdf.jsPDF;
     var pdf=new jsPDF({orientation:'landscape',unit:'mm',format:[Wmm,Hmm]});
-    // 2단계: 슬라이드별 캡처
-    for(var i=0;i<slides.length;i++){
-      btn.textContent='생성 중 ('+(i+1)+'/'+slides.length+')';
+    var total=slides.length;
+    for(var i=0;i<total;i++){
+      var pct=Math.round(10+80*(i/total));
+      pdfUI(true,'슬라이드 캡처 중...',pct,(i+1)+' / '+total);
+      // 프레임 양보 → 프로그레스 바 렌더링
+      await new Promise(function(r){setTimeout(r,0)});
+      var imgData;
       try{
         var canvas=await html2canvas(slides[i],{
-          scale:2,
-          useCORS:true,
-          allowTaint:false,
-          logging:false,
-          width:W,
-          height:H,
-          windowWidth:W,
-          windowHeight:H,
+          scale:2,useCORS:true,allowTaint:false,logging:false,
+          width:W,height:H,windowWidth:W,windowHeight:H,
           backgroundColor:null,
-          onclone:function(doc,idx){
+          onclone:(function(idx){
             return function(clonedDoc){
               clonedDoc.querySelectorAll('.rv').forEach(function(el){
                 el.style.setProperty('opacity','1','important');
                 el.style.setProperty('transform','none','important');
               });
               var cs=clonedDoc.querySelectorAll('.slide')[idx];
-              if(cs){
-                cs.style.width=W+'px';
-                cs.style.height=H+'px';
-                cs.style.overflow='hidden';
-              }
+              if(cs){cs.style.width=W+'px';cs.style.height=H+'px';cs.style.overflow='hidden'}
             };
-          }(document,i)
+          })(i)
         });
-        // 캔버스 → JPEG
         var fitCanvas=document.createElement('canvas');
         fitCanvas.width=W*2;fitCanvas.height=H*2;
         var ctx=fitCanvas.getContext('2d');
@@ -413,37 +428,30 @@ async function savePDF(){
         var sw=Math.min(canvas.width,W*2),sh=Math.min(canvas.height,H*2);
         ctx.drawImage(canvas,0,0,sw,sh,0,0,fitCanvas.width,fitCanvas.height);
         canvas.remove();
-        var imgData=fitCanvas.toDataURL('image/jpeg',0.92);
+        imgData=fitCanvas.toDataURL('image/jpeg',0.92);
         fitCanvas.remove();
-      }catch(slideErr){
-        console.warn('Slide '+(i+1)+' capture failed:',slideErr.message);
-        // 실패 시 빈 페이지 생성
-        var fallback=document.createElement('canvas');
-        fallback.width=W*2;fallback.height=H*2;
-        var fctx=fallback.getContext('2d');
-        var fbg=getComputedStyle(slides[i]).backgroundColor;
-        fctx.fillStyle=(fbg&&fbg!=='rgba(0, 0, 0, 0)')?fbg:'#ffffff';
-        fctx.fillRect(0,0,fallback.width,fallback.height);
-        fctx.fillStyle='#999';fctx.font='48px sans-serif';fctx.textAlign='center';
-        fctx.fillText('슬라이드 '+(i+1)+' (캡처 실패)',W,H);
-        var imgData=fallback.toDataURL('image/jpeg',0.92);
-        fallback.remove();
+      }catch(se){
+        console.warn('Slide '+(i+1)+' failed:',se.message);
+        var fb=document.createElement('canvas');fb.width=W*2;fb.height=H*2;
+        var fc=fb.getContext('2d');fc.fillStyle='#fff';fc.fillRect(0,0,fb.width,fb.height);
+        fc.fillStyle='#999';fc.font='48px sans-serif';fc.textAlign='center';
+        fc.fillText('슬라이드 '+(i+1)+' (캡처 실패)',W,H);
+        imgData=fb.toDataURL('image/jpeg',0.92);fb.remove();
       }
-      if(i>0) pdf.addPage([Wmm,Hmm],'landscape');
+      if(i>0)pdf.addPage([Wmm,Hmm],'landscape');
       pdf.addImage(imgData,'JPEG',0,0,Wmm,Hmm,'slide'+i,'FAST');
     }
-    // 이미지 원본 복원
-    for(var k=0;k<imgs.length;k++){
-      imgs[k].src=imgOrigSrcs[k];
-      imgs[k].style.opacity='';
-    }
+    // 4단계: PDF 저장
+    pdfUI(true,'PDF 파일 생성 중...',95,'저장 준비');
+    for(var k=0;k<imgs.length;k++){imgs[k].src=imgOrigSrcs[k];imgs[k].style.opacity=''}
     pdf.save('AI기반_스토리추리학습_보드게임_발표.pdf');
-    btn.textContent='다운로드 완료!';
-    setTimeout(function(){btn.textContent='PDF 다운로드'},2000);
+    pdfUI(true,'다운로드 완료!',100,'');
+    await new Promise(function(r){setTimeout(r,1500)});
   }catch(e){
     console.error('PDF error:',e);
-    alert('PDF 생성 중 오류가 발생했습니다.\n\n'+e.message+'\n\n페이지를 새로고침 후 다시 시도해주세요.');
+    alert('PDF 생성 중 오류가 발생했습니다.\n\n'+e.message);
   }finally{
+    pdfUI(false);
     if(styleTag)styleTag.remove();
     slides.forEach(function(s,i){if(origStyles[i]!==undefined)s.setAttribute('style',origStyles[i])});
     document.querySelector('.nav').style.display='';
