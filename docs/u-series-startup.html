@@ -1761,51 +1761,92 @@ async function downloadFromPreview(){
 
 <!-- ═══ SLIDE 17: 팀 구성 ═══ -->
 <section class="slide" id="s19">
-  <div class="slide-body" style="padding:26px 60px">
+  <div class="slide-body" style="padding:12px 50px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">TEAM</div>
-        <h2 class="sec-title" style="margin-bottom:0.5rem">팀 현황 및 핵심 역량</h2>
+        <h2 class="sec-title" style="margin-bottom:0.4rem">팀 현황 및 핵심 역량</h2>
       </div>
-      <div class="img-placeholder rv d1" style="min-height:200px;margin-bottom:1rem">
-        <span class="ph-text">팀 활동 사진 삽입</span>
-      </div>
-      <div class="g2 rv d2" style="margin-bottom:1rem;gap:1rem">
-        <div class="team-card">
-          <div class="team-avatar" style="background:var(--primary-light)">🎯</div>
-          <div class="team-info">
-            <h3>이성로 <span style="color:var(--primary);font-size:1.6rem;font-weight:600">CEO / 기획</span></h3>
-            <p>Project DullG 총괄. 시나리오 설계 + 교육 커리큘럼. 텀블벅 180%. "뱀이 죽은 축제" 기획.</p>
+      <div class="rv d1" style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem">
+        <!-- CEO / 대표 -->
+        <div class="card" style="padding:0;overflow:hidden;border:2px solid var(--primary)">
+          <div style="padding:0.1rem 0.8rem;background:var(--primary);display:flex;align-items:center;gap:0.5rem">
+            <span style="font-size:1.3rem;color:#fff;font-weight:800;letter-spacing:0.05em">CEO</span>
+            <span style="font-size:1.15rem;color:rgba(255,255,255,0.8)">기획 총괄 · 데이터 분석</span>
+          </div>
+          <div style="display:flex;gap:0.7rem;padding:0.6rem 0.8rem;align-items:start">
+            <div style="width:120px;height:140px;border-radius:12px;background:linear-gradient(135deg,#e8ecf4,#d1d8e8);flex-shrink:0;display:flex;align-items:center;justify-content:center;border:2px dashed rgba(51,102,255,0.3)">
+              <span style="font-size:2.5rem;opacity:0.3">📷</span>
+            </div>
+            <div style="flex:1;min-width:0">
+              <ul style="margin:0;padding-left:1.1rem;font-size:1.1rem;line-height:1.55;color:var(--dim)">
+                <li>APA(미국심리학회) · 한국심리학회 <strong style="color:var(--text)">제1저자 포스터 논문</strong> 발표</li>
+                <li>빅데이터 마이크로디그리 이수, <strong style="color:var(--text)">데이터 분석 역량</strong></li>
+                <li>총학생회 국장 — 41개 로컬 업체 협약, <strong style="color:var(--primary)">기존 대비 200%</strong> 달성</li>
+                <li>크라우드펀딩 주도, RISE 사업 <strong style="color:var(--text)">게이미피케이션 영어 AI 교육</strong> 운영</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="team-card">
-          <div class="team-avatar">🎨</div>
-          <div class="team-info">
-            <h3>디자인 <span style="color:var(--primary-dark);font-size:1.6rem;font-weight:600">Art & Production</span></h3>
-            <p>카드/일러스트/패키지. 몰입감 비주얼 아이덴티티. 인쇄 및 제작 관리.</p>
+        <!-- CTO -->
+        <div class="card" style="padding:0;overflow:hidden;border:2px solid var(--primary-dark)">
+          <div style="padding:0.1rem 0.8rem;background:var(--primary-dark);display:flex;align-items:center;gap:0.5rem">
+            <span style="font-size:1.3rem;color:#fff;font-weight:800;letter-spacing:0.05em">CTO</span>
+            <span style="font-size:1.15rem;color:rgba(255,255,255,0.8)">기술총괄 · 기획 · 영업</span>
+          </div>
+          <div style="display:flex;gap:0.7rem;padding:0.6rem 0.8rem;align-items:start">
+            <div style="width:120px;height:140px;border-radius:12px;background:linear-gradient(135deg,#e8ecf4,#d1d8e8);flex-shrink:0;display:flex;align-items:center;justify-content:center;border:2px dashed rgba(41,82,204,0.3)">
+              <span style="font-size:2.5rem;opacity:0.3">📷</span>
+            </div>
+            <div style="flex:1;min-width:0">
+              <ul style="margin:0;padding-left:1.1rem;font-size:1.1rem;line-height:1.55;color:var(--dim)">
+                <li><strong style="color:var(--text)">전산학 전공</strong>, 3개 프로젝트 동시 펀딩 진행 중</li>
+                <li>학원 관리 앱 <strong style="color:var(--text)">자체 개발 완료</strong></li>
+                <li>총학생회 경험 — 소통 · 기획 · 운영 역량</li>
+                <li style="color:var(--primary);font-weight:600">합류 완료 ('25.03)</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="team-card">
-          <div class="team-avatar">💻</div>
-          <div class="team-info">
-            <h3>개발 <span style="color:var(--primary);font-size:1.6rem;font-weight:600">Tech</span></h3>
-            <p>QR 에필로그 시스템. 학습 데이터 대시보드. 디지털 하이브리드 개발.</p>
+        <!-- 교육사업 총괄 -->
+        <div class="card" style="padding:0;overflow:hidden;border:2px solid var(--gold)">
+          <div style="padding:0.1rem 0.8rem;background:var(--gold);display:flex;align-items:center;gap:0.5rem">
+            <span style="font-size:1.3rem;color:#fff;font-weight:800;letter-spacing:0.05em">교육사업 총괄</span>
+            <span style="font-size:1.15rem;color:rgba(255,255,255,0.8)">현장 운영 · 커리큘럼</span>
+          </div>
+          <div style="display:flex;gap:0.7rem;padding:0.6rem 0.8rem;align-items:start">
+            <div style="width:120px;height:140px;border-radius:12px;background:linear-gradient(135deg,#f4ece0,#e8dcc8);flex-shrink:0;display:flex;align-items:center;justify-content:center;border:2px dashed rgba(255,159,10,0.3)">
+              <span style="font-size:2.5rem;opacity:0.3">📷</span>
+            </div>
+            <div style="flex:1;min-width:0">
+              <ul style="margin:0;padding-left:1.1rem;font-size:1.1rem;line-height:1.55;color:var(--dim)">
+                <li>현장 테스트베드 운영 총괄 · <strong style="color:var(--text)">교육 커리큘럼 설계</strong></li>
+                <li><strong style="color:var(--text)">출판 및 유통 역량</strong> 보유, MOU · 구매의향서 확보</li>
+                <li>교육 현장 전문가 <strong style="color:var(--gold)">경력 9년</strong> — 현) 학원 2개 지점 대표원장</li>
+                <li style="color:var(--gold);font-weight:600">합류 완료 ('26.02)</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="team-card">
-          <div class="team-avatar">📚</div>
-          <div class="team-info">
-            <h3>교육 자문 <span style="color:var(--dim);font-size:1.6rem;font-weight:600">Advisory</span></h3>
-            <p>한동대 교수진(영어교육/교육공학). 현직 영어교사 네트워크.</p>
+        <!-- CDO -->
+        <div class="card" style="padding:0;overflow:hidden;border:2px solid var(--ice)">
+          <div style="padding:0.1rem 0.8rem;background:var(--ice);display:flex;align-items:center;gap:0.5rem">
+            <span style="font-size:1.3rem;color:#fff;font-weight:800;letter-spacing:0.05em">CDO</span>
+            <span style="font-size:1.15rem;color:rgba(255,255,255,0.8)">그래픽 · 제품디자인 · UX/UI</span>
           </div>
-        </div>
-      </div>
-      <div class="card rv d3" style="padding:1rem 1.5rem">
-        <h3 style="font-size:1.4rem;color:var(--primary);margin-bottom:0.4rem">대표자 핵심 역량</h3>
-        <div class="g3" style="margin-top:0.4rem;gap:1rem">
-          <div><h3 style="color:var(--primary);font-size:1.5rem">기획력</h3><p style="font-size:1.5rem">0→1 제품 기획부터 펀딩 달성까지 전 과정 수행. 시나리오 프레임워크 독자 개발.</p></div>
-          <div><h3 style="color:var(--primary-dark);font-size:1.5rem">실행력</h3><p style="font-size:1.5rem">마케팅 0원으로 PMF 증명. 아이디어→제품→판매 전체 사이클 완주.</p></div>
-          <div><h3 style="color:var(--primary);font-size:1.5rem">교육 전문성</h3><p style="font-size:1.5rem">영어교육×게임 융합 노하우. 교수진 자문 네트워크 구축.</p></div>
+          <div style="display:flex;gap:0.7rem;padding:0.6rem 0.8rem;align-items:start">
+            <div style="width:120px;height:140px;border-radius:12px;background:linear-gradient(135deg,#e4f2fa,#c8e4f4);flex-shrink:0;display:flex;align-items:center;justify-content:center;border:2px dashed rgba(90,200,250,0.3)">
+              <span style="font-size:2.5rem;opacity:0.3">📷</span>
+            </div>
+            <div style="flex:1;min-width:0">
+              <ul style="margin:0;padding-left:1.1rem;font-size:1.1rem;line-height:1.55;color:var(--dim)">
+                <li><strong style="color:var(--text)">ICT창업·디자인 전공</strong> 융합형 인재</li>
+                <li>실물 교구 디자인 + <strong style="color:var(--text)">웹/앱 UX/UI</strong> 동시 수행</li>
+                <li>텀블벅 180% <strong style="color:var(--ice)">비주얼 · 브랜딩 총괄</strong></li>
+                <li style="color:var(--ice);font-weight:600">합류 완료 ('25.04)</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
