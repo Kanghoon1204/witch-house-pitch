@@ -946,34 +946,65 @@ async function downloadFromPreview(){
 
 <!-- ═══ SLIDE 8b: 개발 타임라인 ═══ -->
 <section class="slide slide-alt" id="s9">
-  <div class="slide-body" style="padding:40px 60px">
+  <div class="slide-body" style="padding:14px 60px">
     <div class="inner">
       <div class="rv">
         <div class="sec-label">DEVELOPMENT TIMELINE</div>
-        <h2 class="sec-title" style="margin-bottom:0.3rem">개발 타임라인</h2>
-        <p class="sec-sub" style="margin-bottom:1.5rem">콘셉트 검증 → 펀딩 성공 → U-시리즈 기획까지</p>
+        <h2 class="sec-title" style="margin-bottom:0.2rem">개발 타임라인</h2>
+        <p class="sec-sub" style="margin-bottom:0.5rem">콘셉트 검증 → 펀딩 성공 → U-시리즈 기획까지</p>
       </div>
-      <div class="rv d1" style="margin:0 auto">
+      <div class="rv d1" style="display:grid;grid-template-columns:2fr 3fr;gap:1.5rem;align-items:start">
+        <!-- 좌측: 타임라인 -->
         <div class="roadmap" style="margin:0">
-          <div class="rm-item" style="margin-bottom:1.5rem">
-            <p style="font-size:1.4rem;color:var(--faint);margin-bottom:0">2025. 1Q</p>
-            <h3 style="color:var(--primary);font-size:1.8rem">콘셉트 검증 + 프로토타입</h3>
-            <p style="font-size:1.5rem">시나리오 프레임워크 개발, 3라운드 구조 설계</p>
+          <div class="rm-item" style="margin-bottom:1rem">
+            <p style="font-size:1.3rem;color:var(--faint);margin-bottom:0">2025. 1Q</p>
+            <h3 style="color:var(--primary);font-size:1.6rem">콘셉트 검증 + 프로토타입</h3>
+            <p style="font-size:1.4rem">시나리오 프레임워크 개발, 3라운드 구조 설계</p>
           </div>
-          <div class="rm-item" style="margin-bottom:1.5rem">
-            <p style="font-size:1.4rem;color:var(--faint);margin-bottom:0">2025. 2Q~3Q</p>
-            <h3 style="color:var(--primary-dark);font-size:1.8rem">텀블벅 펀딩 180% + 배송</h3>
-            <p style="font-size:1.5rem">"뱀이 죽은 축제" 출시, QR 에필로그 시스템 실증</p>
+          <div class="rm-item" style="margin-bottom:1rem">
+            <p style="font-size:1.3rem;color:var(--faint);margin-bottom:0">2025. 2Q~3Q</p>
+            <h3 style="color:var(--primary-dark);font-size:1.6rem">텀블벅 펀딩 180% + 배송</h3>
+            <p style="font-size:1.4rem">"뱀이 죽은 축제" 출시, QR 에필로그 시스템 실증</p>
           </div>
-          <div class="rm-item" style="margin-bottom:1.5rem">
-            <p style="font-size:1.4rem;color:var(--faint);margin-bottom:0">2025. 4Q</p>
-            <h3 style="color:var(--dim);font-size:1.8rem">2차 텀블벅 펀딩 진행 중</h3>
-            <p style="font-size:1.5rem">제품 3종 출시, 고객층 검증</p>
+          <div class="rm-item" style="margin-bottom:1rem">
+            <p style="font-size:1.3rem;color:var(--faint);margin-bottom:0">2025. 4Q</p>
+            <h3 style="color:var(--dim);font-size:1.6rem">2차 텀블벅 펀딩 진행 중</h3>
+            <p style="font-size:1.4rem">제품 3종 출시, 고객층 검증</p>
           </div>
           <div class="rm-item" style="margin-bottom:0">
-            <p style="font-size:1.4rem;color:var(--faint);margin-bottom:0">2026. 1Q ~ 현재</p>
-            <h3 style="color:var(--primary);font-size:1.8rem">U-시리즈 기획 + 사업화 준비</h3>
-            <p style="font-size:1.5rem">지역 관광 연동 모델 설계, 울산 대왕암 시나리오 개발</p>
+            <p style="font-size:1.3rem;color:var(--faint);margin-bottom:0">2026. 1Q ~ 현재</p>
+            <h3 style="color:var(--primary);font-size:1.6rem">U-시리즈 기획 + 사업화 준비</h3>
+            <p style="font-size:1.4rem">지역 관광 연동 모델 설계, 울산 대왕암 시나리오 개발</p>
+          </div>
+        </div>
+        <!-- 우측: 이미지 그리드 -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem">
+          <!-- 1. 테스트 플레이 -->
+          <div style="border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-card);background:var(--primary);padding:0.6rem 0.8rem;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:150px">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:3rem;font-weight:900;color:#fff;line-height:1">24</div>
+            <div style="font-size:1.3rem;color:rgba(255,255,255,0.9);font-weight:700;margin-top:0.2rem">명 테스트 플레이</div>
+            <div style="font-size:1.1rem;color:rgba(255,255,255,0.6);margin-top:0.1rem">피드백 수집 완료</div>
+          </div>
+          <!-- 2. 텀블벅 1차 펀딩 -->
+          <div style="border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-card)">
+            <img src="tumblbug-funding.png" alt="텀블벅 1차 펀딩" style="width:100%;max-height:150px;object-fit:cover;object-position:top;display:block">
+            <div style="padding:0.2rem 0.5rem;text-align:center;background:var(--bg)">
+              <span style="font-size:1.1rem;color:var(--primary);font-weight:700">1차 펀딩 180%</span>
+            </div>
+          </div>
+          <!-- 3. 텀블벅 2차 펀딩 -->
+          <div style="border-radius:var(--radius);overflow:hidden;border:2px solid var(--primary);box-shadow:0 4px 16px rgba(51,102,255,0.15)">
+            <img src="tumblbug-funding2.png" alt="텀블벅 2차 펀딩" style="width:100%;max-height:150px;object-fit:cover;object-position:top;display:block">
+            <div style="padding:0.2rem 0.5rem;text-align:center;background:var(--primary)">
+              <span style="font-size:1.1rem;color:#fff;font-weight:700">2차 펀딩 1897%</span>
+            </div>
+          </div>
+          <!-- 4. 울산 대왕암 보드게임 -->
+          <div style="border-radius:var(--radius);overflow:hidden;border:2px solid var(--gold);box-shadow:0 4px 16px rgba(255,159,10,0.2)">
+            <img src="daewangam-title.png" alt="울산 대왕암 - 기묘한 사건" style="width:100%;max-height:150px;object-fit:cover;display:block">
+            <div style="padding:0.2rem 0.5rem;text-align:center;background:var(--bg-dark)">
+              <span style="font-size:1.1rem;color:var(--gold);font-weight:700">신규 — 울산 대왕암</span>
+            </div>
           </div>
         </div>
       </div>
