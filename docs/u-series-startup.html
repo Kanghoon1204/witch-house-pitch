@@ -2149,6 +2149,25 @@ async function downloadFromPreview(){
 (function(){var els=document.querySelectorAll('.rv');var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})},{threshold:0.12});els.forEach(function(el){obs.observe(el)})})();
 (function(){var bars=document.querySelectorAll('.bar-fill');var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})},{threshold:0.3});bars.forEach(function(b){obs.observe(b)})})();
 document.addEventListener('keydown',function(e){var slides=document.querySelectorAll('.slide');var c=-1;slides.forEach(function(s,i){var r=s.getBoundingClientRect();if(r.top>=-100&&r.top<window.innerHeight/2)c=i});if(c<0)c=0;if(e.key==='ArrowDown'||e.key===' '||e.key==='PageDown'){e.preventDefault();if(c<slides.length-1)slides[c+1].scrollIntoView({behavior:'smooth'})}else if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();if(c>0)slides[c-1].scrollIntoView({behavior:'smooth'})}});
+/* ── 뷰포트 높이 자동 스케일링 ── */
+(function(){
+  var DESIGN_H=1080;
+  function fitSlides(){
+    var vh=window.innerHeight;
+    var scale=Math.min(1,vh/DESIGN_H);
+    var bodies=document.querySelectorAll('.slide-body');
+    if(scale>=1){
+      bodies.forEach(function(el){el.style.transform='';el.style.transformOrigin=''});
+      return;
+    }
+    bodies.forEach(function(el){
+      el.style.transform='scale('+scale+')';
+      el.style.transformOrigin='top center';
+    });
+  }
+  window.addEventListener('resize',fitSlides);
+  fitSlides();
+})();
 </script>
 </body>
 </html>
