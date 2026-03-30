@@ -328,106 +328,96 @@ ensureLibs().catch(()=>{});
 async function savePDF(){
   const btn=document.querySelector('.pdf-btn');
   btn.textContent='준비 중...';btn.disabled=true;
+  const slides=document.querySelectorAll('.slide');
+  const W=1920,H=1080;
+  const origStyles=[];
+  let styleTag=null;
   try{
     await ensureLibs();
     if(typeof html2canvas==='undefined'||!window.jspdf){
       alert('PDF 라이브러리를 불러올 수 없습니다. 네트워크 연결을 확인하거나 광고차단기를 비활성화한 뒤 새로고침해주세요.');
       btn.textContent='PDF 다운로드';btn.disabled=false;return;
     }
-    const slides=document.querySelectorAll('.slide');
-    const W=1920,H=1080;
     const Wmm=W*0.264583,Hmm=H*0.264583;
+    // 1단계: PDF 캡처용 전역 스타일 주입
+    styleTag=document.createElement('style');
+    styleTag.textContent=`
+      .rv{opacity:1!important;transform:none!important;transition:none!important}
+      *{transition:none!important;animation:none!important}
+      .nav,.pdf-btn{display:none!important}
+      .slide{width:${W}px!important;height:${H}px!important;min-height:${H}px!important;max-height:${H}px!important;overflow:hidden!important}
+      .inner{max-width:1760px!important}
+    `;
+    document.head.appendChild(styleTag);
+    // rv 클래스에 v 추가
     document.querySelectorAll('.rv').forEach(r=>r.classList.add('v'));
-    document.querySelector('.nav').style.display='none';
-    // 1단계: 슬라이드를 1920×1080에 맞추고 inner 너비 확장
-    const orig=[];
-    const inners=document.querySelectorAll('.inner');
-    inners.forEach(el=>el.style.maxWidth='1760px');
-    slides.forEach(s=>{
-      orig.push(s.getAttribute('style')||'');
-      s.style.width=W+'px';
-      s.style.minHeight=H+'px';
-      s.style.height='auto';
-      s.style.maxHeight='none';
-      s.style.overflow='visible';
-    });
-    await new Promise(r=>setTimeout(r,300));
-    // 2단계: 각 슬라이드의 실제 높이 측정 후, 넘치면 scale 적용
-    const scaleData=[];
-    slides.forEach(s=>{
-      const natural=s.scrollHeight;
-      if(natural>H){
-        const scale=H/natural;
-        scaleData.push({scale,natural});
-        s.style.height=natural+'px';
-        s.style.transformOrigin='top left';
-        s.style.transform='scale('+scale+')';
-        // scale 적용 시 부모 영역이 줄어들지 않도록 wrapper 역할
-        s.style.marginBottom=-(natural-H)+'px';
-      }else{
-        scaleData.push({scale:1,natural:H});
-        s.style.height=H+'px';
-      }
-      s.style.overflow='hidden';
-    });
-    await new Promise(r=>setTimeout(r,200));
+    // 원본 스타일 저장
+    slides.forEach(s=>origStyles.push(s.getAttribute('style')||''));
+    // 폰트 로딩 대기
+    if(document.fonts&&document.fonts.ready) await document.fonts.ready;
+    await new Promise(r=>setTimeout(r,500));
     const {jsPDF}=window.jspdf;
     const pdf=new jsPDF({orientation:'landscape',unit:'mm',format:[Wmm,Hmm]});
+    // 2단계: 슬라이드별 캡처
     for(let i=0;i<slides.length;i++){
       btn.textContent='생성 중 ('+(i+1)+'/'+slides.length+')';
-      const sd=scaleData[i];
-      // scale이 적용된 슬라이드는 원본 크기로 캡처 후 PDF에 맞춤
-      const captureH=sd.scale<1?sd.natural:H;
-      // transform 제거 후 원본 크기로 캡처
-      if(sd.scale<1){
-        slides[i].style.transform='none';
-        slides[i].style.height=sd.natural+'px';
-        slides[i].style.overflow='hidden';
-      }
       const canvas=await html2canvas(slides[i],{
-        scale:1.5,useCORS:true,logging:false,
-        width:W,height:captureH,windowWidth:W
+        scale:2,
+        useCORS:true,
+        logging:false,
+        width:W,
+        height:H,
+        windowWidth:W,
+        windowHeight:H,
+        backgroundColor:null,
+        onclone:function(doc){
+          // 클론 DOM에서 모든 rv 요소 강제 표시
+          doc.querySelectorAll('.rv').forEach(el=>{
+            el.style.opacity='1';
+            el.style.transform='none';
+          });
+          // 클론 슬라이드 고정 크기
+          const cloneSlide=doc.querySelectorAll('.slide')[i];
+          if(cloneSlide){
+            cloneSlide.style.width=W+'px';
+            cloneSlide.style.height=H+'px';
+            cloneSlide.style.minHeight=H+'px';
+            cloneSlide.style.maxHeight=H+'px';
+            cloneSlide.style.overflow='hidden';
+          }
+        }
       });
-      // 캡처 후 캔버스를 1920x1080 비율로 리사이즈
+      // 캔버스를 PDF 크기에 정확히 맞춤
       const fitCanvas=document.createElement('canvas');
-      fitCanvas.width=W*1.5;fitCanvas.height=H*1.5;
+      fitCanvas.width=W*2;fitCanvas.height=H*2;
       const ctx=fitCanvas.getContext('2d');
-      ctx.fillStyle='#ffffff';
-      ctx.fillRect(0,0,fitCanvas.width,fitCanvas.height);
-      // 슬라이드 배경색 확인
+      // 슬라이드 배경색으로 채우기
       const bg=getComputedStyle(slides[i]).backgroundColor;
-      if(bg&&bg!=='rgba(0, 0, 0, 0)'){ctx.fillStyle=bg;ctx.fillRect(0,0,fitCanvas.width,fitCanvas.height);}
-      // 비율 유지하며 축소 그리기
-      const drawScale=Math.min((W*1.5)/canvas.width,(H*1.5)/canvas.height);
-      const dw=canvas.width*drawScale;
-      const dh=canvas.height*drawScale;
-      const dx=(fitCanvas.width-dw)/2;
-      const dy=(fitCanvas.height-dh)/2;
-      ctx.drawImage(canvas,0,0,canvas.width,canvas.height,dx,dy,dw,dh);
+      ctx.fillStyle=(bg&&bg!=='rgba(0, 0, 0, 0)')?bg:'#ffffff';
+      ctx.fillRect(0,0,fitCanvas.width,fitCanvas.height);
+      // 캔버스를 1920x1080 영역에 꽉 채우기 (잘림 허용)
+      const sx=0,sy=0;
+      const sw=Math.min(canvas.width,W*2),sh=Math.min(canvas.height,H*2);
+      ctx.drawImage(canvas,sx,sy,sw,sh,0,0,fitCanvas.width,fitCanvas.height);
       canvas.remove();
-      const img=fitCanvas.toDataURL('image/jpeg',0.90);
+      const img=fitCanvas.toDataURL('image/jpeg',0.92);
       if(i>0) pdf.addPage([Wmm,Hmm],'landscape');
       pdf.addImage(img,'JPEG',0,0,Wmm,Hmm,'slide'+i,'FAST');
       fitCanvas.remove();
     }
-    slides.forEach((s,i)=>s.setAttribute('style',orig[i]));
-    inners.forEach(el=>el.style.maxWidth='');
-    document.querySelector('.nav').style.display='';
     pdf.save('AI기반_스토리추리학습_보드게임_발표.pdf');
     btn.textContent='다운로드 완료!';
     setTimeout(()=>{btn.textContent='PDF 다운로드';},2000);
-    btn.disabled=false;return;
   }catch(e){
     console.error('PDF error:',e);
     alert('PDF 생성 중 오류가 발생했습니다.\n\n'+e.message+'\n\n페이지를 새로고침 후 다시 시도해주세요.');
-    // 스타일 복원 시도
-    try{
-      document.querySelectorAll('.slide').forEach((s,i)=>{if(s._origStyle!==undefined)s.setAttribute('style',s._origStyle);});
-      document.querySelectorAll('.inner').forEach(el=>el.style.maxWidth='');
-      document.querySelector('.nav').style.display='';
-    }catch(x){}
+  }finally{
+    // 스타일 복원
+    if(styleTag) styleTag.remove();
+    slides.forEach((s,i)=>{if(origStyles[i]!==undefined)s.setAttribute('style',origStyles[i]);});
+    document.querySelector('.nav').style.display='';
+    btn.textContent='PDF 다운로드';btn.disabled=false;
   }
-  btn.textContent='PDF 다운로드';btn.disabled=false;
 }
 </script>
 
