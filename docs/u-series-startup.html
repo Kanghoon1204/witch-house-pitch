@@ -119,7 +119,7 @@ em{color:var(--primary);font-style:normal;font-weight:800}
 
 /* ── COMPARISON TABLE ── */
 .cmp{width:100%;border-collapse:separate;border-spacing:0;margin-top:0.8rem;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)}
-.cmp th{background:var(--bg-alt);color:var(--dim);font-size:1.15rem;padding:0.8rem 1rem;text-align:center;border-bottom:1px solid var(--border);font-weight:700}
+.cmp th{background:var(--bg-dark);color:rgba(255,255,255,0.85);font-size:1.15rem;padding:0.8rem 1rem;text-align:center;border-bottom:1px solid var(--border);font-weight:700}
 .cmp th:first-child{text-align:left}
 .cmp td{padding:0.7rem 1rem;text-align:center;border-bottom:1px solid var(--border);font-size:1.1rem;font-weight:500}
 .cmp td:first-child{text-align:left;color:var(--dim);font-weight:600}
@@ -280,7 +280,7 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
 .rm-h-step .dot{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;position:absolute;top:0;left:50%;transform:translateX(-50%);font-size:1.2rem;font-weight:700;box-shadow:0 0 0 4px var(--bg-alt),var(--shadow-md);z-index:2}
 .rm-h-step.current .dot{box-shadow:0 0 0 4px var(--bg-alt),0 0 0 8px rgba(51,102,255,0.25),var(--shadow-blue);animation:pulse-glow 2s infinite}
 .rm-h-step.current::after{content:'YOU ARE HERE';position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:700;color:var(--primary);letter-spacing:0.08em;white-space:nowrap;background:rgba(51,102,255,0.08);padding:2px 8px;border-radius:4px}
-.rm-h-step h3{font-size:1.15rem!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rm-h-step h3{font-size:1.1rem!important;white-space:normal;overflow:visible;line-height:1.3}
 .rm-h-step p{font-size:1.05rem!important;line-height:1.4!important;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 @keyframes pulse-glow{0%,100%{box-shadow:0 0 0 5px var(--bg-alt),0 0 0 10px rgba(51,102,255,0.25),var(--shadow-blue)}50%{box-shadow:0 0 0 5px var(--bg-alt),0 0 0 14px rgba(51,102,255,0.1),0 0 28px rgba(51,102,255,0.08)}}
 
@@ -1045,7 +1045,7 @@ async function savePDF(){
           <text x="555" y="92" font-family="'Noto Sans KR',sans-serif" font-size="14" fill="#999" text-anchor="middle" font-weight="500">영어가 무기가 됨</text>
           <line x1="650" y1="76" x2="680" y2="76" stroke="#3366FF" stroke-width="2.5" stroke-linecap="round"/>
           <polygon points="680,69 693,76 680,83" fill="#3366FF"/>
-          <text x="790" y="14" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#fff" text-anchor="middle" font-weight="600" letter-spacing="0.08em">STEP 4</text>
+          <text x="790" y="14" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#1a1a1a" text-anchor="middle" font-weight="600" letter-spacing="0.08em">STEP 4</text>
           <rect x="695" y="24" width="190" height="105" rx="14" fill="#16162a" stroke="#16162a" stroke-width="2.5"/>
           <text x="790" y="68" font-family="'Noto Sans KR',sans-serif" font-size="20" fill="#7799FF" text-anchor="middle" font-weight="800">성취 확인</text>
           <text x="790" y="92" font-family="'Noto Sans KR',sans-serif" font-size="14" fill="rgba(255,255,255,0.55)" text-anchor="middle" font-weight="500">범인을 잡았다 = 배웠다</text>
@@ -1782,7 +1782,7 @@ async function savePDF(){
               <!-- Labels positioned at arc midpoints -->
               <text x="260" y="90" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#3366FF" font-weight="800">B2C 55%</text>
               <text x="265" y="250" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#2952CC" font-weight="700">B2B 25%</text>
-              <text x="30" y="250" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#5AC8FA" font-weight="700">B2G 20%</text>
+              <text x="68" y="260" font-family="'Noto Sans KR',sans-serif" font-size="15" fill="#5AC8FA" font-weight="700">B2G 20%</text>
             </svg>
           </div>
           <div class="rev-block card-elevated" style="padding:0.8rem 1.3rem;margin-bottom:0.6rem"><div class="pct" style="font-size:1.8rem">55%</div><h3 style="font-size:1.3rem">B2C 판매</h3><p style="font-size:1.05rem">크라우드펀딩 + 스마트스토어. 시나리오당 39,900원. 시리즈 번들 할인. 확장팩 판매.</p></div>
