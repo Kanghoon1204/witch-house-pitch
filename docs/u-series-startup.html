@@ -276,12 +276,12 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
 /* ── HORIZONTAL ROADMAP ── */
 .roadmap-h{display:flex;align-items:flex-start;position:relative;padding:3rem 0 1rem}
 .roadmap-h::before{content:'';position:absolute;top:36px;left:5%;right:5%;height:4px;background:linear-gradient(90deg,var(--primary),var(--primary-dark),var(--dim) 60%,var(--dim));border-radius:2px}
-.rm-h-step{flex:1;text-align:center;position:relative;padding-top:5rem;min-width:0;overflow:hidden}
+.rm-h-step{flex:1;text-align:center;position:relative;padding-top:5rem;min-width:0;overflow:visible}
 .rm-h-step .dot{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;position:absolute;top:0;left:50%;transform:translateX(-50%);font-size:1.2rem;font-weight:700;box-shadow:0 0 0 4px var(--bg-alt),var(--shadow-md);z-index:2}
 .rm-h-step.current .dot{box-shadow:0 0 0 4px var(--bg-alt),0 0 0 8px rgba(51,102,255,0.25),var(--shadow-blue);animation:pulse-glow 2s infinite}
-.rm-h-step.current::after{content:'YOU ARE HERE';position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:700;color:var(--primary);letter-spacing:0.08em;white-space:nowrap;background:rgba(51,102,255,0.08);padding:2px 8px;border-radius:4px}
+.rm-h-step.current::after{content:'YOU ARE HERE';position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-family:'IBM Plex Mono',monospace;font-size:0.85rem;font-weight:700;color:var(--primary);letter-spacing:0.08em;white-space:nowrap;background:rgba(51,102,255,0.08);padding:2px 8px;border-radius:4px;z-index:3}
 .rm-h-step h3{font-size:1.1rem!important;white-space:normal;overflow:visible;line-height:1.3}
-.rm-h-step p{font-size:1.05rem!important;line-height:1.4!important;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.rm-h-step p{font-size:0.85rem!important;line-height:1.35!important;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-break:keep-all}
 @keyframes pulse-glow{0%,100%{box-shadow:0 0 0 5px var(--bg-alt),0 0 0 10px rgba(51,102,255,0.25),var(--shadow-blue)}50%{box-shadow:0 0 0 5px var(--bg-alt),0 0 0 14px rgba(51,102,255,0.1),0 0 28px rgba(51,102,255,0.08)}}
 
 /* ── SOURCE CITATION ── */
@@ -1151,31 +1151,31 @@ async function savePDF(){
               <div class="dot" style="background:var(--primary);color:#fff">1</div>
               <h3 style="color:var(--primary);font-size:1.1rem;margin-bottom:0.15rem">시나리오/규칙 재정비</h3>
               <div style="font-family:'IBM Plex Mono',monospace;font-size:1rem;color:var(--primary);font-weight:600;margin-bottom:0.2rem">4~6월</div>
-              <p style="font-size:1.1rem;line-height:1.5">시나리오·규칙·단서 구성 재정비. 교육·확장형 개선안 도출</p>
+              <p style="font-size:0.85rem;line-height:1.4">시나리오·규칙·단서 구성 재정비</p>
             </div>
             <div class="rm-h-step">
               <div class="dot" style="background:var(--primary-dark);color:#fff">2</div>
               <h3 style="color:var(--primary-dark);font-size:1.1rem;margin-bottom:0.15rem">전문가 자문</h3>
               <div style="font-family:'IBM Plex Mono',monospace;font-size:1rem;color:var(--primary-dark);font-weight:600;margin-bottom:0.2rem">6~7월</div>
-              <p style="font-size:1.1rem;line-height:1.5">교육 활용 요소와 상호작용 구조 점검</p>
+              <p style="font-size:0.85rem;line-height:1.4">교육 활용 요소와 상호작용 구조 점검</p>
             </div>
             <div class="rm-h-step">
               <div class="dot" style="background:var(--primary);color:#fff">3</div>
               <h3 style="color:var(--primary);font-size:1.1rem;margin-bottom:0.15rem">시제품 제작</h3>
               <div style="font-family:'IBM Plex Mono',monospace;font-size:1rem;color:var(--primary);font-weight:600;margin-bottom:0.2rem">7~8월</div>
-              <p style="font-size:1.1rem;line-height:1.5">구성물·패키지·규칙서·웹 학습 연계 반영</p>
+              <p style="font-size:0.85rem;line-height:1.4">구성물·패키지·규칙서 웹 연계 반영</p>
             </div>
             <div class="rm-h-step">
               <div class="dot" style="background:var(--primary-dark);color:#fff">4</div>
               <h3 style="color:var(--primary-dark);font-size:1.1rem;margin-bottom:0.15rem">파일럿 테스트</h3>
               <div style="font-family:'IBM Plex Mono',monospace;font-size:1rem;color:var(--primary-dark);font-weight:600;margin-bottom:0.2rem">8~10월</div>
-              <p style="font-size:1.1rem;line-height:1.5">t-test 통계분석으로 교육 효과 검증</p>
+              <p style="font-size:0.85rem;line-height:1.4">t-test 통계분석으로 교육 효과 검증</p>
             </div>
             <div class="rm-h-step">
               <div class="dot" style="background:var(--dim);color:#fff">5</div>
               <h3 style="color:var(--dim);font-size:1.1rem;margin-bottom:0.15rem">AI 고도화</h3>
               <div style="font-family:'IBM Plex Mono',monospace;font-size:1rem;color:var(--dim);font-weight:600;margin-bottom:0.2rem">9~10월</div>
-              <p style="font-size:1.1rem;line-height:1.5">AI 기반 맞춤형 기능·앱·웹 확장</p>
+              <p style="font-size:0.85rem;line-height:1.4">AI 기반 맞춤형 기능·앱·웹 확장</p>
             </div>
           </div>
         </div>
@@ -1333,7 +1333,7 @@ async function savePDF(){
       <div class="tc rv d1" style="gap:2rem">
         <div>
           <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:0.8rem;margin-bottom:0.6rem">
-            <svg viewBox="0 0 500 220" style="width:100%;max-height:300px">
+            <svg viewBox="0 0 560 220" style="width:100%;max-height:300px">
               <!-- Card Drawing -->
               <g>
                 <text x="65" y="12" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3366FF" text-anchor="middle" font-weight="600" letter-spacing="0.05em">CARD SPEC</text>
@@ -1352,7 +1352,7 @@ async function savePDF(){
                 <text x="64" y="88" font-size="8" fill="#ccc" text-anchor="middle">영문 표기</text>
               </g>
               <!-- Instruction Manual -->
-              <g transform="translate(165,0)">
+              <g transform="translate(195,0)">
                 <text x="80" y="12" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3366FF" text-anchor="middle" font-weight="600" letter-spacing="0.05em">MANUAL SPEC</text>
                 <!-- Unfolded -->
                 <rect x="0" y="22" width="160" height="75" rx="2" fill="none" stroke="#1a1a1a" stroke-width="2"/>
@@ -1367,7 +1367,7 @@ async function savePDF(){
                 <text x="100" y="158" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#3366FF">148×210mm</text>
               </g>
               <!-- Box Template -->
-              <g transform="translate(345,0)">
+              <g transform="translate(400,0)">
                 <text x="70" y="12" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#3366FF" text-anchor="middle" font-weight="600" letter-spacing="0.05em">BOX SPEC</text>
                 <!-- 3D Isometric box -->
                 <!-- Bottom -->
