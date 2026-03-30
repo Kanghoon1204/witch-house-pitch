@@ -235,7 +235,7 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
   table{font-size:0.95rem}
   .keyword{font-size:0.85rem}
   .card-elevated{box-shadow:var(--shadow-sm)!important}
-  .char-card{box-shadow:0 4px 12px rgba(0,0,0,0.3)!important}
+  .char-card{box-shadow:6px 4px 16px rgba(0,0,0,0.4)!important}
   .toc-card{box-shadow:var(--shadow-sm)!important}
   .roadmap-h{padding:2rem 0 0.5rem}
   .rm-h-step .dot{width:56px;height:56px}
@@ -266,8 +266,8 @@ td em{color:var(--primary);font-size:1rem;font-weight:700}
 .card-elevated:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
 .card-physical{background:linear-gradient(145deg,rgba(255,255,255,0.95),rgba(240,240,245,0.95));border:none;box-shadow:0 8px 32px rgba(0,0,0,0.12),0 2px 8px rgba(0,0,0,0.06),inset 0 1px 0 rgba(255,255,255,0.8);position:relative}
 .card-physical::after{content:'';position:absolute;bottom:-6px;left:8%;right:8%;height:12px;background:rgba(0,0,0,0.06);filter:blur(8px);border-radius:50%;z-index:-1}
-.char-card{background:linear-gradient(180deg,rgba(22,22,42,0.95) 0%,rgba(12,12,24,0.98) 100%);border:none;border-top:3px solid;border-radius:var(--radius);padding:1.6rem 1.2rem;text-align:center;box-shadow:12px 12px 40px rgba(0,0,0,0.55),6px 6px 20px rgba(0,0,0,0.4),0 4px 12px rgba(0,0,0,0.3);position:relative;overflow:hidden}
-.char-card::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,0.4));pointer-events:none;z-index:0}
+.char-card{background:linear-gradient(160deg,rgba(30,30,52,0.95) 0%,rgba(14,14,28,0.98) 100%);border:none;border-right:4px solid;border-radius:var(--radius);padding:1.6rem 1.2rem;text-align:center;box-shadow:8px 6px 32px rgba(0,0,0,0.6),4px 4px 16px rgba(0,0,0,0.45),-2px -1px 8px rgba(255,255,255,0.03);position:relative;overflow:hidden}
+.char-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.04) 0%,transparent 40%,transparent 60%,rgba(0,0,0,0.35) 100%);pointer-events:none;z-index:0}
 .char-card>*{position:relative;z-index:1}
 .hero-metric{text-align:center;padding:1.5rem 2rem}
 .hero-metric .val{font-family:'Black Han Sans',sans-serif;font-weight:400;font-size:5rem;line-height:1;color:var(--primary)}
@@ -766,7 +766,7 @@ async function downloadFromPreview(){
       <!-- 1x4 캐릭터 3D 카드 배치 -->
       <div class="rv d1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:1.5rem">
         <!-- 캐릭터 1: 선장 모리스 -->
-        <div class="char-card" style="border-top-color:var(--red)">
+        <div class="char-card" style="border-right-color:var(--red)">
           <svg viewBox="0 0 150 150" width="180" height="180" style="margin:0 auto 1rem;display:block">
             <defs><clipPath id="cc1"><circle cx="75" cy="75" r="73"/></clipPath></defs>
             <circle cx="75" cy="75" r="74" fill="#160505" stroke="rgba(255,59,48,0.3)" stroke-width="2"/>
@@ -789,7 +789,7 @@ async function downloadFromPreview(){
           <p style="font-size:1.15rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0">"돈이라면 뭐든 합니다."<br><span style="color:var(--red);font-weight:600">재정적 단서</span> 보유</p>
         </div>
         <!-- 캐릭터 2: 등대지기 엘라 -->
-        <div class="char-card" style="border-top-color:var(--primary)">
+        <div class="char-card" style="border-right-color:var(--primary)">
           <svg viewBox="0 0 150 150" width="180" height="180" style="margin:0 auto 1rem;display:block">
             <defs><clipPath id="cc2"><circle cx="75" cy="75" r="73"/></clipPath></defs>
             <circle cx="75" cy="75" r="74" fill="#060d1a" stroke="rgba(51,102,255,0.3)" stroke-width="2"/>
@@ -811,7 +811,7 @@ async function downloadFromPreview(){
           <p style="font-size:1.15rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0">"비밀은 나의 무기."<br><span style="color:var(--primary);font-weight:600">환경적 단서</span> 보유</p>
         </div>
         <!-- 캐릭터 3: 의사 한세진 -->
-        <div class="char-card" style="border-top-color:var(--ice)">
+        <div class="char-card" style="border-right-color:var(--ice)">
           <svg viewBox="0 0 150 150" width="180" height="180" style="margin:0 auto 1rem;display:block">
             <defs><clipPath id="cc3"><circle cx="75" cy="75" r="73"/></clipPath></defs>
             <circle cx="75" cy="75" r="74" fill="#061218" stroke="rgba(90,200,250,0.3)" stroke-width="2"/>
@@ -837,7 +837,7 @@ async function downloadFromPreview(){
           <p style="font-size:1.15rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0">"나는 돕고 싶을 뿐입니다."<br><span style="color:var(--ice);font-weight:600">의료 증거</span> 보유</p>
         </div>
         <!-- 캐릭터 4: 기자 윤서 -->
-        <div class="char-card" style="border-top-color:rgba(255,255,255,0.4)">
+        <div class="char-card" style="border-right-color:rgba(255,255,255,0.4)">
           <svg viewBox="0 0 150 150" width="180" height="180" style="margin:0 auto 1rem;display:block">
             <defs><clipPath id="cc4"><circle cx="75" cy="75" r="73"/></clipPath></defs>
             <circle cx="75" cy="75" r="74" fill="#0e0e0e" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
